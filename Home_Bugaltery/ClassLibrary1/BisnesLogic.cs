@@ -8,11 +8,13 @@ namespace ClassLibrary1
 {
     public class BisnesLogic
     {
-        HomeBookkeepingEntities db;
+        // HomeBookkeepingEntities db;
+        Database_HB_LocalEntities db;
 
         public BisnesLogic()
         {
-            db = new HomeBookkeepingEntities();
+            //db = new HomeBookkeepingEntities();
+            db = new Database_HB_LocalEntities();
    
         }
 
