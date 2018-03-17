@@ -1,4 +1,4 @@
-Create Table Categories(
+п»їCreate Table Categories(
 	[Id] int identity primary key not null,
 	[Name] nvarchar(50) not null,
 	[Type] bit not null
@@ -26,8 +26,8 @@ Create Table LogHistDateOrder(
 [Summa] money NOT NULL
 )
 
-----тригер, который автоматически после каждой покупки дописывает в отдельную таблицу количество потраченных денег 
----- (подсчёт суммы денег которая потрачена на покупки)
+----С‚СЂРёРіРµСЂ, РєРѕС‚РѕСЂС‹Р№ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РїРѕСЃР»Рµ РєР°Р¶РґРѕР№ РїРѕРєСѓРїРєРё РґРѕРїРёСЃС‹РІР°РµС‚ РІ РѕС‚РґРµР»СЊРЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕС‚СЂР°С‡РµРЅРЅС‹С… РґРµРЅРµРі 
+---- (РїРѕРґСЃС‡С‘С‚ СЃСѓРјРјС‹ РґРµРЅРµРі РєРѕС‚РѕСЂР°СЏ РїРѕС‚СЂР°С‡РµРЅР° РЅР° РїРѕРєСѓРїРєРё)
 --CREATE TRIGGER InsertGodds_tg
 --	ON Orders
 --    FOR INSERT
@@ -37,34 +37,34 @@ Create Table LogHistDateOrder(
 --		FROM inserted
 
 
---INSERT INTO Users VALUES('Ніна Нікитюк', '1234')
+--INSERT INTO Users VALUES('РќС–РЅР° РќС–РєРёС‚СЋРє', '1234')
 --INSERT INTO Users VALUES('Tarasik@', '1234')
---INSERT INTO Users VALUES('Руслан', '1234')
---INSERT INTO Users VALUES('Сергій', '1234')
+--INSERT INTO Users VALUES('Р СѓСЃР»Р°РЅ', '1234')
+--INSERT INTO Users VALUES('РЎРµСЂРіС–Р№', '1234')
 --INSERT INTO Users VALUES('TanyGmail', '1234')
 
---INSERT INTO Categories  VALUES('Зарплата', 1)
---INSERT INTO Categories  VALUES('Їжа', 0)
---INSERT INTO Categories  VALUES('Одяг', 0)
---INSERT INTO Categories  VALUES('Взуття', 0)
---INSERT INTO Categories  VALUES('Віддих і розваги', 0)
---INSERT INTO Categories  VALUES('Побутові техніка', 0)
---INSERT INTO Categories  VALUES('Аптека', 0)
---INSERT INTO Categories  VALUES('Товари для дома', 0)
---INSERT INTO Categories  VALUES('Прихід від бизнесy', 1)
---INSERT INTO Categories  VALUES('Процент по вкладу в банку', 1)
---INSERT INTO Categories  VALUES('Пенсия', 1)
---INSERT INTO Categories  VALUES('Стипендія', 1)
---INSERT INTO Categories  VALUES('Дохід від продажу особистих речей', 1)
+--INSERT INTO Categories  VALUES('Р—Р°СЂРїР»Р°С‚Р°', 1)
+--INSERT INTO Categories  VALUES('Р‡Р¶Р°', 0)
+--INSERT INTO Categories  VALUES('РћРґСЏРі', 0)
+--INSERT INTO Categories  VALUES('Р’Р·СѓС‚С‚СЏ', 0)
+--INSERT INTO Categories  VALUES('Р’С–РґРґРёС… С– СЂРѕР·РІР°РіРё', 0)
+--INSERT INTO Categories  VALUES('РџРѕР±СѓС‚РѕРІС– С‚РµС…РЅС–РєР°', 0)
+--INSERT INTO Categories  VALUES('РђРїС‚РµРєР°', 0)
+--INSERT INTO Categories  VALUES('РўРѕРІР°СЂРё РґР»СЏ РґРѕРјР°', 0)
+--INSERT INTO Categories  VALUES('РџСЂРёС…С–Рґ РІС–Рґ Р±РёР·РЅРµСЃy', 1)
+--INSERT INTO Categories  VALUES('РџСЂРѕС†РµРЅС‚ РїРѕ РІРєР»Р°РґСѓ РІ Р±Р°РЅРєСѓ', 1)
+--INSERT INTO Categories  VALUES('РџРµРЅСЃРёСЏ', 1)
+--INSERT INTO Categories  VALUES('РЎС‚РёРїРµРЅРґС–СЏ', 1)
+--INSERT INTO Categories  VALUES('Р”РѕС…С–Рґ РІС–Рґ РїСЂРѕРґР°Р¶Сѓ РѕСЃРѕР±РёСЃС‚РёС… СЂРµС‡РµР№', 1)
 
 
-	--INSERT INTO Orders VALUES (2, 1, 100, '2017-15-10', 'Хліб, цукор, масло') 
-	--INSERT INTO Orders VALUES (3, 1, 250, '2017-10-12', 'Пальто') 
-	--INSERT INTO Orders VALUES (7, 2, 150, '2017-03-10', 'Аспірин, Анальгін')
+	--INSERT INTO Orders VALUES (2, 1, 100, '2017-15-10', 'РҐР»С–Р±, С†СѓРєРѕСЂ, РјР°СЃР»Рѕ') 
+	--INSERT INTO Orders VALUES (3, 1, 250, '2017-10-12', 'РџР°Р»СЊС‚Рѕ') 
+	--INSERT INTO Orders VALUES (7, 2, 150, '2017-03-10', 'РђСЃРїС–СЂРёРЅ, РђРЅР°Р»СЊРіС–РЅ')
 	--INSERT INTO Orders VALUES (1, 3, 5000, '2017-15-10', Null) 
-	--INSERT INTO Orders VALUES (4, 5, 1500, '2018-18-01', 'Туфлі') 
-	--INSERT INTO Orders VALUES (6, 2, 450, '2018-03-02', 'Сковорідка')
-	--INSERT INTO Orders VALUES (2, 4, 200, '2018-02-02', 'Молоко, йогурт')
+	--INSERT INTO Orders VALUES (4, 5, 1500, '2018-18-01', 'РўСѓС„Р»С–') 
+	--INSERT INTO Orders VALUES (6, 2, 450, '2018-03-02', 'РЎРєРѕРІРѕСЂС–РґРєР°')
+	--INSERT INTO Orders VALUES (2, 4, 200, '2018-02-02', 'РњРѕР»РѕРєРѕ, Р№РѕРіСѓСЂС‚')
 	--INSERT INTO Orders VALUES (1, 4, 7000, '2018-03-02', null) 
 	--INSERT INTO Orders VALUES (1, 3, 10000, '2018-15-02', null)
 	--INSERT INTO Orders VALUES (1, 2, 10000, '2018-20-02', null)
