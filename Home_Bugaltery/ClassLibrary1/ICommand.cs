@@ -6,7 +6,14 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
-    interface ICommand
+    // 1. Иерархия команд
+    // ==================
+    // 1.1. Базовый интерфейс набора команд:
+
+    public interface ICommand
     {
+        void Execute();
+        void Undo();
+
     }
 }
