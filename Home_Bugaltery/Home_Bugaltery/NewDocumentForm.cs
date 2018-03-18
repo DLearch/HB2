@@ -18,18 +18,16 @@ namespace Home_Bugaltery
     }
     public partial class NewDocumentForm : Form
     {
-        //BisnesLogic bisnesLogic;
-
+       
         HomeBugaltery homeBugaltery;
         HomeBugalteryAction actHomeBogaltery;
 
-        public NewDocumentForm()
+        public NewDocumentForm(HomeBugaltery homeBugaltery, HomeBugalteryAction actHomeBogaltery)
         {
             InitializeComponent();
-            //bisnesLogic = new BisnesLogic();
 
-            homeBugaltery = new HomeBugaltery();
-            actHomeBogaltery = new HomeBugalteryAction();
+            this.homeBugaltery = homeBugaltery;
+            this.actHomeBogaltery = actHomeBogaltery;
 
             updateCategorys();
             updateUsers();
@@ -60,14 +58,18 @@ namespace Home_Bugaltery
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            if(dateTimePickerOrder.Text != "")
+            if (comboBoxCategory.SelectedIndex == -1 || comboBoxUsers.SelectedIndex == -1 
+                || numericUpDownSumm.Value <= 0)
             {
-                actHomeBogaltery.SetCommand((int)organiserActionEnum.addOrder,
-                                             new AddNewOrderCommand(homeBugaltery, comboBoxCategory.SelectedItem.ToString(), comboBoxUsers.SelectedItem.ToString(),
-                                                                    dateTimePickerOrder.Value, numericUpDownSumm.Value,
-                                                                    textBoxDescription.Text));
-                actHomeBogaltery.PressButton((int)organiserActionEnum.addOrder);
+                MessageBox.Show("Cannot add order!\nPlease check inputed data and try again!!!");
+                return;
             }
+            actHomeBogaltery.SetCommand((int)organiserActionEnum.addOrder,
+                                            new AddNewOrderCommand(homeBugaltery, comboBoxCategory.SelectedItem.ToString(), comboBoxUsers.SelectedItem.ToString(),
+                                                                dateTimePickerOrder.Value, numericUpDownSumm.Value,
+                                                                textBoxDescription.Text));
+            actHomeBogaltery.DoAction((int)organiserActionEnum.addOrder);
+            
             this.Close();
         }
 

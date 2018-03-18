@@ -33,6 +33,7 @@ namespace ClassLibrary1
         public void addOrder(string categoryName, string userName, DateTime dateOrder, decimal price, string description)
         {
             bisnesLogic.AddOrder(categoryName, userName, dateOrder, price, description);
+            validateLocalData();
         }
 
         public void addCategory(string gategoryName)

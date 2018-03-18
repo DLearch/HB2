@@ -17,12 +17,16 @@ namespace Home_Bugaltery
         HomeBugaltery homeBugaltery;
         HomeBugalteryAction actHomeBogaltery;
 
+        NewDocumentForm newDocument;
+
         public Form1()
         {
             InitializeComponent();
 
             homeBugaltery = new HomeBugaltery();
             actHomeBogaltery = new HomeBugalteryAction();
+
+            newDocument = new NewDocumentForm(homeBugaltery, actHomeBogaltery);
 
             updateOrdersGrid();
         }
@@ -48,10 +52,19 @@ namespace Home_Bugaltery
 
         private void newDocumentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            NewDocumentForm newDocument = new NewDocumentForm();
             newDocument.ShowDialog();
 
             updateOrdersGrid();
+        }
+
+        private void menuItemRedactOrder_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuItemInitialRemains_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

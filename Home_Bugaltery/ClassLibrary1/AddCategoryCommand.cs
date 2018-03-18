@@ -23,7 +23,6 @@ namespace ClassLibrary1
         public void Execute()
         {
             homeBugaltery.addCategory(categoryName);
-            homeBugaltery.validateLocalData();
         }
 
 

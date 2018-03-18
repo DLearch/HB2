@@ -13,9 +13,13 @@ namespace ClassLibrary1
     public class HomeBugalteryAction
     {
         ICommand[] commands;
+        Stack<int> doneActionsIndexes;
+
+
         public HomeBugalteryAction()
         {
             commands = new ICommand[2];
+            doneActionsIndexes = new Stack<int>(20);
 
             for (int i = 0; i < commands.Length; i++)
             {
@@ -23,19 +27,20 @@ namespace ClassLibrary1
             }
         }
 
-        public void SetCommand(int number, ICommand command)
+        public void SetCommand(int actionIndex, ICommand command)
         {
-            commands[number] = command;
+            commands[actionIndex] = command;
         }
 
-        public void PressButton(int number)
+        public void DoAction(int actionIndex)
         {
-            commands[number].Execute();
+            commands[actionIndex].Execute();
+            doneActionsIndexes.Push(actionIndex);
         }
 
-        public void PressUndo()
+        public void UndoLastAction()
         {
-
+            commands[doneActionsIndexes.Pop()].Undo();
         }
 
 
