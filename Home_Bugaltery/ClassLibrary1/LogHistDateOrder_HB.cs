@@ -12,7 +12,7 @@ namespace ClassLibrary1
     using System;
     using System.Collections.Generic;
     
-    public partial class LogHistDateOrder
+    public partial class LogHistDateOrder_HB
     {
         public int Id { get; set; }
         public int OrderId { get; set; }

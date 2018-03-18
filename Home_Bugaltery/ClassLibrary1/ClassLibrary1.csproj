@@ -70,39 +70,39 @@
     <Compile Include="AddCategoryCommand.cs" />
     <Compile Include="AddNewOrderCommand.cs" />
     <Compile Include="BisnesLogic.cs" />
-    <Compile Include="Categories.cs">
-      <DependentUpon>ModelEntity_DB_HB.tt</DependentUpon>
+    <Compile Include="Categories_HB.cs">
+      <DependentUpon>ModelEntity_HB.tt</DependentUpon>
     </Compile>
     <Compile Include="DataTypes.cs" />
     <Compile Include="DeleteOrderCommand.cs" />
     <Compile Include="HomeBugaltery.cs" />
     <Compile Include="HomeBugalteryAction.cs" />
     <Compile Include="ICommand.cs" />
-    <Compile Include="LogHistDateOrder.cs">
-      <DependentUpon>ModelEntity_DB_HB.tt</DependentUpon>
+    <Compile Include="LogHistDateOrder_HB.cs">
+      <DependentUpon>ModelEntity_HB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelEntity_DB_HB.Context.cs">
+    <Compile Include="ModelEntity_HB.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelEntity_DB_HB.Context.tt</DependentUpon>
+      <DependentUpon>ModelEntity_HB.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelEntity_DB_HB.cs">
+    <Compile Include="ModelEntity_HB.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelEntity_DB_HB.tt</DependentUpon>
+      <DependentUpon>ModelEntity_HB.tt</DependentUpon>
     </Compile>
-    <Compile Include="ModelEntity_DB_HB.Designer.cs">
+    <Compile Include="ModelEntity_HB.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>ModelEntity_DB_HB.edmx</DependentUpon>
+      <DependentUpon>ModelEntity_HB.edmx</DependentUpon>
     </Compile>
     <Compile Include="NoCommand.cs" />
-    <Compile Include="Orders.cs">
-      <DependentUpon>ModelEntity_DB_HB.tt</DependentUpon>
+    <Compile Include="Orders_HB.cs">
+      <DependentUpon>ModelEntity_HB.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Users.cs">
-      <DependentUpon>ModelEntity_DB_HB.tt</DependentUpon>
+    <Compile Include="Users_HB.cs">
+      <DependentUpon>ModelEntity_HB.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -110,12 +110,12 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="ClassDiagram1.cd" />
-    <EntityDeploy Include="ModelEntity_DB_HB.edmx">
+    <EntityDeploy Include="ModelEntity_HB.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelEntity_DB_HB.Designer.cs</LastGenOutput>
+      <LastGenOutput>ModelEntity_HB.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="ModelEntity_DB_HB.edmx.diagram">
-      <DependentUpon>ModelEntity_DB_HB.edmx</DependentUpon>
+    <None Include="ModelEntity_HB.edmx.diagram">
+      <DependentUpon>ModelEntity_HB.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
@@ -135,15 +135,15 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ModelEntity_DB_HB.Context.tt">
+    <Content Include="ModelEntity_HB.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelEntity_DB_HB.edmx</DependentUpon>
-      <LastGenOutput>ModelEntity_DB_HB.Context.cs</LastGenOutput>
+      <DependentUpon>ModelEntity_HB.edmx</DependentUpon>
+      <LastGenOutput>ModelEntity_HB.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelEntity_DB_HB.tt">
+    <Content Include="ModelEntity_HB.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelEntity_DB_HB.edmx</DependentUpon>
-      <LastGenOutput>ModelEntity_DB_HB.cs</LastGenOutput>
+      <DependentUpon>ModelEntity_HB.edmx</DependentUpon>
+      <LastGenOutput>ModelEntity_HB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,16 +12,19 @@ namespace ClassLibrary1
     using System;
     using System.Collections.Generic;
     
-    public partial class Orders
+    public partial class Users_HB
     {
-        public int Id { get; set; }
-        public int Category_Id { get; set; }
-        public int User_Id { get; set; }
-        public decimal Price { get; set; }
-        public System.DateTime Date { get; set; }
-        public string Description { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Users_HB()
+        {
+            this.Orders_HB = new HashSet<Orders_HB>();
+        }
     
-        public virtual Categories Categories { get; set; }
-        public virtual Users Users { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Password { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders_HB> Orders_HB { get; set; }
     }
 }

@@ -23,13 +23,14 @@ namespace ClassLibrary1
         public void Execute()
         {
             homeBugaltery.addCategory(categoryName);
+            homeBugaltery.validateLocalData();
         }
 
-  
+
 
         public void Undo()
         {
-            throw new NotImplementedException();
+            //Will be implemented if will be needed
         }
     }
 }

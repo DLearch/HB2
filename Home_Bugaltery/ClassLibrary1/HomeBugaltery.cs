@@ -15,15 +15,20 @@ namespace ClassLibrary1
     {
 
         BisnesLogic bisnesLogic;
+        List<OrdersView> listOrders;
+        List<Categories_HB> listCategories;
+        List<Users_HB> listUsers;
 
         public HomeBugaltery()
         {
             bisnesLogic = new BisnesLogic();
+            validateLocalData();
         }
 
-        public List<OrdersView> ListOrders { get { return bisnesLogic.ViewAllOrders(); } }
-        public List<Categories> ListCategories { get { return bisnesLogic.ViewAllCategory(); } }
-        public List<Users> ListUsers { get { return bisnesLogic.ViewAllUsers(); } }
+        public List<OrdersView> ListOrders { get { return listOrders; } }
+
+        public List<Categories_HB> ListCategories { get { return listCategories; } }
+        public List<Users_HB> ListUsers { get { return listUsers; } }
 
         public void addOrder(string categoryName, string userName, DateTime dateOrder, decimal price, string description)
         {
@@ -33,6 +38,14 @@ namespace ClassLibrary1
         public void addCategory(string gategoryName)
         {
 
+        }
+
+        public void validateLocalData()
+        {
+            // Valid data with
+            listOrders = bisnesLogic.GetAllOrders();
+            listCategories = bisnesLogic.GetAllCategory();
+            listUsers = bisnesLogic.GetAllUsers();
         }
     }
 }

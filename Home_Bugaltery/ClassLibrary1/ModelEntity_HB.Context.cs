@@ -13,10 +13,10 @@ namespace ClassLibrary1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HomeBookkeepingEntities : DbContext
+    public partial class MarketEntities : DbContext
     {
-        public HomeBookkeepingEntities()
-            : base("name=HomeBookkeepingEntities")
+        public MarketEntities()
+            : base("name=MarketEntities")
         {
         }
     
@@ -25,9 +25,9 @@ namespace ClassLibrary1
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Categories> Categories { get; set; }
-        public virtual DbSet<LogHistDateOrder> LogHistDateOrder { get; set; }
-        public virtual DbSet<Orders> Orders { get; set; }
-        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Categories_HB> Categories_HB { get; set; }
+        public virtual DbSet<LogHistDateOrder_HB> LogHistDateOrder_HB { get; set; }
+        public virtual DbSet<Orders_HB> Orders_HB { get; set; }
+        public virtual DbSet<Users_HB> Users_HB { get; set; }
     }
 }

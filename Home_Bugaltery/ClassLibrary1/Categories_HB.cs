@@ -12,19 +12,19 @@ namespace ClassLibrary1
     using System;
     using System.Collections.Generic;
     
-    public partial class Users
+    public partial class Categories_HB
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public Categories_HB()
         {
-            this.Orders = new HashSet<Orders>();
+            this.Orders_HB = new HashSet<Orders_HB>();
         }
     
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Password { get; set; }
+        public bool Type { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
+        public virtual ICollection<Orders_HB> Orders_HB { get; set; }
     }
 }

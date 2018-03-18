@@ -1,4 +1,4 @@
-﻿// Создание кода T4 для модели "D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\ModelEntity_DB_HB.edmx" включено. 
+﻿// Создание кода T4 для модели "D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\ModelEntity_HB.edmx" включено. 
 // Чтобы включить формирование кода прежних версий, измените значение свойства "Стратегия создания кода" конструктора
 // на "Legacy ObjectContext". Это свойство доступно в окне "Свойства", если модель
 // открыта в конструкторе.
