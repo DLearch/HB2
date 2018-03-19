@@ -5,15 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1.ViewModel"
         mc:Ignorable="d"
-        Title="AddOrderWindow" Height="300" Width="300">
+        Title="AddOrderWindow" Height="300" Width="300" MinWidth="200" MinHeight="180">
 
     <Window.DataContext>
         <local:AddOrderWindowViewModel></local:AddOrderWindowViewModel>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="91*"/>
-            <ColumnDefinition Width="201*"/>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="90"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -26,34 +28,34 @@
 
         <Label Content="Категорія: " VerticalAlignment="Center"/>
         <ComboBox VerticalAlignment="Center" 
-                  Grid.Column="1" Margin="10, 0"/>
+                  Grid.Column="1" Margin="10, 0" Grid.ColumnSpan="3"/>
 
         <Label Content="Користувач: " 
                VerticalAlignment="Center" Grid.Row="1"/>
         <ComboBox VerticalAlignment="Center" 
                   Grid.Column="1" Grid.Row="1"
-                  Margin="10, 0"/>
-        
+                   Margin="10, 0" Grid.ColumnSpan="3"/>
+
         <Label Content="Дата: " 
                VerticalAlignment="Center" Grid.Row="2"/>
         <DatePicker Grid.Column="1" Grid.Row="2" 
-                    VerticalAlignment="Center" Margin="10, 0"/>
+                    VerticalAlignment="Center" Margin="10, 0" Grid.ColumnSpan="3"/>
 
         <Label Content="Ціна: " 
                VerticalAlignment="Center" Grid.Row="3"/>
         <TextBox Grid.Row="3" Grid.Column="1"
-                 VerticalAlignment="Center" Margin="10, 0"/>
+                 VerticalAlignment="Center" Margin="10, 0" Grid.ColumnSpan="3"/>
 
         <Label Content="Опис: " Grid.Row="4"
                VerticalAlignment="Center"/>
         <TextBox Grid.Row="4" Grid.Column="1"
-                 VerticalAlignment="Center" Margin="10, 0"/>
+                 VerticalAlignment="Center" Margin="10, 0" Grid.ColumnSpan="3"/>
 
         <Button Grid.Row="5" 
-                VerticalAlignment="Center" 
-                Content="Додати" Margin="10, 0"/>
-        <Button Grid.Row="5" Grid.Column="1"
-                VerticalAlignment="Center" 
-                Content="Скасувати" Margin="10, 0"/>
+                VerticalAlignment="Center" Command="{Binding Add}"
+                Content="Додати"  Margin="10, 0" Grid.ColumnSpan="2"/>
+        <Button Grid.Row="5" Grid.Column="2"
+                VerticalAlignment="Center" IsCancel="True"
+                Content="Скасувати" Margin="10, 0" Grid.ColumnSpan="2"/>
     </Grid>
 </Window>

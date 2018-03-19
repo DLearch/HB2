@@ -103,7 +103,7 @@ namespace WpfApplication1.ViewModel
 
         #endregion
 
-        #region GridOrdersVisibility
+        #region DataGridOrdersItemsSource
 
         private IEnumerable<object> _dataGridOrdersItemsSource;
         public IEnumerable<object> DataGridOrdersItemsSource
@@ -117,31 +117,40 @@ namespace WpfApplication1.ViewModel
         }
 
         #endregion
-
+        
         HomeBugaltery homeBugaltery;
         HomeBugalteryAction actHomeBogaltery;
 
         ObservableCollection<OrdersView> orders;
+        ObservableCollection<Users_HB> users;
 
         public MainWindowViewModel()
         {
             homeBugaltery = new HomeBugaltery();
             actHomeBogaltery = new HomeBugalteryAction();
 
-            GridFamilyMembersVisibility = Visibility.Collapsed;
-            GridOrdersVisibility = Visibility.Visible;
-
             DataGridOrdersItemsSource = orders = new ObservableCollection<OrdersView>();
+            ListBoxFamilyMembersItemsSource = users = new ObservableCollection<Users_HB>();
 
-            UpdateOrders();
+            UpdateDataGridOrders();
+            UpdateListBoxFamilyMembers();
+
+            MoveTo.Execute("GridOrders");
         }
 
 
-        private void UpdateOrders()
+        private void UpdateDataGridOrders()
         {
             orders.Clear();
             foreach (OrdersView orderView in homeBugaltery.ListOrders)
                 orders.Add(orderView);
+        }
+
+        private void UpdateListBoxFamilyMembers()
+        {
+            users.Clear();
+            foreach (Users_HB user in homeBugaltery.ListUsers)
+                users.Add(user);
         }
 
         #region Add Family Member Command
@@ -152,18 +161,13 @@ namespace WpfApplication1.ViewModel
             get
             {
                 if (_addFamilyMemberCommand == null)
-                    _addFamilyMemberCommand = new RelayCommand(ExecuteAddFamilyMemberCommand, CanExecuteAddFamilyMemberCommand);
+                    _addFamilyMemberCommand = new RelayCommand(ExecuteAddFamilyMemberCommand);
                 return _addFamilyMemberCommand;
             }
         }
 
         public void ExecuteAddFamilyMemberCommand(object parameter)
         {
-        }
-
-        public bool CanExecuteAddFamilyMemberCommand(object parameter)
-        {
-            return true;
         }
 
         #endregion
@@ -216,61 +220,34 @@ namespace WpfApplication1.ViewModel
 
         #endregion
         
-        #region Move To Family Members Command
+        #region Move To Command
 
-        RelayCommand _moveToFamilyMembersCommand;
-        public System.Windows.Input.ICommand MoveToFamilyMembers
+        RelayCommand _moveToCommand;
+        public System.Windows.Input.ICommand MoveTo
         {
             get
             {
-                if (_moveToFamilyMembersCommand == null)
-                    _moveToFamilyMembersCommand = new RelayCommand(ExecuteMoveToFamilyMembersCommand, CanExecuteMoveToFamilyMembersCommand);
-                return _moveToFamilyMembersCommand;
+                if (_moveToCommand == null)
+                    _moveToCommand = new RelayCommand(ExecuteMoveToCommand);
+                return _moveToCommand;
             }
         }
 
-        public void ExecuteMoveToFamilyMembersCommand(object parameter)
+        public void ExecuteMoveToCommand(object parameter)
         {
-            GridFamilyMembersVisibility = Visibility.Visible;
-            GridOrdersVisibility = Visibility.Collapsed;
-        }
+            string name = parameter as string;
 
-        public bool CanExecuteMoveToFamilyMembersCommand(object parameter)
-        {
-            return true;
-        }
+            if (name == "GridOrders")
+                GridOrdersVisibility = Visibility.Visible;
+            else
+                GridOrdersVisibility = Visibility.Collapsed;
 
-        #endregion
-        
-        #region Move To Orders Command
-
-        RelayCommand _moveToOrdersCommand;
-        public System.Windows.Input.ICommand MoveToOrders
-        {
-            get
-            {
-                if (_moveToOrdersCommand == null)
-                    _moveToOrdersCommand = new RelayCommand(ExecuteMoveToOrdersCommand, CanExecuteMoveToOrdersCommand);
-                return _moveToOrdersCommand;
-            }
-        }
-
-        public void ExecuteMoveToOrdersCommand(object parameter)
-        {
-            GridFamilyMembersVisibility = Visibility.Hidden;
-            GridOrdersVisibility = Visibility.Visible;
-        }
-
-        public bool CanExecuteMoveToOrdersCommand(object parameter)
-        {
-            return true;
+            if (name == "GridFamilyMembers")
+                GridFamilyMembersVisibility = Visibility.Visible;
+            else
+                GridFamilyMembersVisibility = Visibility.Collapsed;
         }
 
         #endregion
-
-        void MoveTo(string name)
-        {
-
-        }
     }
 }

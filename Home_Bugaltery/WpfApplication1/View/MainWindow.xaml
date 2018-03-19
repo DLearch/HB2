@@ -10,12 +10,16 @@
     <Window.DataContext>
         <local:MainWindowViewModel></local:MainWindowViewModel>
     </Window.DataContext>
-    
+
     <Grid>
-        <Menu VerticalAlignment="Top">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="18"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Menu>
             <MenuItem Header="Довідники">
-                <MenuItem Header="Члени сімї" Command="{Binding MoveToFamilyMembers}"/>
-                <MenuItem Header="Доходи і витрати" Command="{Binding MoveToOrders}"/>
+                <MenuItem Header="Члени сімї" Command="{Binding MoveTo}" CommandParameter="GridFamilyMembers"/>
+                <MenuItem Header="Доходи і витрати" Command="{Binding MoveTo}" CommandParameter="GridOrders"/>
             </MenuItem>
             <MenuItem Header="Операції">
                 <MenuItem Header="Нова операція"/>
@@ -33,7 +37,7 @@
             </MenuItem>
         </Menu>
 
-        <Grid Margin="10, 28, 10, 10" Visibility="{Binding GridFamilyMembersVisibility}">
+        <Grid Margin="10" Visibility="{Binding GridFamilyMembersVisibility}" Grid.Row="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
@@ -47,7 +51,7 @@
                 <RowDefinition Height="40"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            
+
             <Label Content="Сім'я" Grid.ColumnSpan="2"/>
 
             <ListBox Grid.Row="1" Grid.RowSpan="6"
@@ -60,7 +64,7 @@
                      VerticalAlignment="Bottom" 
                      Margin="10, 0, 0, 0"
                      Text="{Binding TextBoxAddFamilyMembersText}"/>
-            
+
             <Button Grid.Row="2" Grid.Column="1" 
                     Name="BtnAddFamilyMember"
                     Content="Додати"
@@ -73,7 +77,7 @@
                      VerticalAlignment="Bottom" 
                      Margin="10, 0, 0, 0"
                      />
-            
+
             <Button Grid.Row="4" Grid.Column="1" 
                     Name="BtnEditFamilyMember"
                     Content="Редагувати" 
@@ -89,7 +93,7 @@
                     Command="{Binding RemoveFamilyMember}"/>
         </Grid>
 
-        <Grid Margin="10, 28, 10, 10" Visibility="{Binding GridOrdersVisibility}">
+        <Grid Margin="10" Visibility="{Binding GridOrdersVisibility}" Grid.Row="1">
             <DataGrid ItemsSource="{Binding DataGridOrdersItemsSource}">
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding CategoryName}" Header="Категорія"/>

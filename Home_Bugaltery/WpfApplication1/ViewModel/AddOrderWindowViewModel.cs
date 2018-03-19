@@ -10,16 +10,67 @@ namespace WpfApplication1.ViewModel
 {
     class AddOrderWindowViewModel : ViewModelBase
     {
-        private object _comboBoxCategorySelectedItem;
-        public object ComboBoxCategorySelectedItem
+        #region ComboBoxCategoriesSelectedItem
+
+        private object _comboBoxCategoriesSelectedItem;
+        public object ComboBoxCategoriesSelectedItem
         {
-            get { return _comboBoxCategorySelectedItem; }
+            get { return _comboBoxCategoriesSelectedItem; }
             set
             {
-                _comboBoxCategorySelectedItem = value;
-                OnPropertyChanged("ComboBoxCategorySelectedItem");
+                _comboBoxCategoriesSelectedItem = value;
+                OnPropertyChanged("ComboBoxCategoriesSelectedItem");
             }
         }
+
+        #endregion
+
+        #region ComboBoxCategoriesItemsSource
+
+        private object _comboBoxCategoriesItemsSource;
+        public object ComboBoxCategoriesItemsSource
+        {
+            get { return _comboBoxCategoriesItemsSource; }
+            set
+            {
+                _comboBoxCategoriesItemsSource = value;
+                OnPropertyChanged("ComboBoxCategoriesItemsSource");
+            }
+        }
+
+        #endregion
+
+        #region ComboBoxUsersSelectedItem
+
+        private object _comboBoxUsersSelectedItem;
+        public object ComboBoxUsersSelectedItem
+        {
+            get { return _comboBoxUsersSelectedItem; }
+            set
+            {
+                _comboBoxUsersSelectedItem = value;
+                OnPropertyChanged("ComboBoxUsersSelectedItem");
+            }
+        }
+
+        #endregion
+
+        #region ComboBoxUsersItemsSource
+
+        private object _comboBoxUsersItemsSource;
+        public object ComboBoxUsersItemsSource
+        {
+            get { return _comboBoxUsersItemsSource; }
+            set
+            {
+                _comboBoxUsersItemsSource = value;
+                OnPropertyChanged("ComboBoxUsersItemsSource");
+            }
+        }
+
+        #endregion
+        
+
 
         #region Add Command
 
@@ -29,42 +80,13 @@ namespace WpfApplication1.ViewModel
             get
             {
                 if (_addCommand == null)
-                    _addCommand = new RelayCommand(ExecuteAddCommand, CanExecuteAddCommand);
+                    _addCommand = new RelayCommand(ExecuteAddCommand);
                 return _addCommand;
             }
         }
 
         public void ExecuteAddCommand(object parameter)
         {
-        }
-
-        public bool CanExecuteAddCommand(object parameter)
-        {
-            return true;
-        }
-
-        #endregion
-
-        #region Cancel Command
-
-        RelayCommand _cancelCommand;
-        public ICommand Cancel
-        {
-            get
-            {
-                if (_cancelCommand == null)
-                    _cancelCommand = new RelayCommand(ExecuteCancelCommand, CanExecuteCancelCommand);
-                return _cancelCommand;
-            }
-        }
-
-        public void ExecuteCancelCommand(object parameter)
-        {
-        }
-
-        public bool CanExecuteCancelCommand(object parameter)
-        {
-            return true;
         }
 
         #endregion

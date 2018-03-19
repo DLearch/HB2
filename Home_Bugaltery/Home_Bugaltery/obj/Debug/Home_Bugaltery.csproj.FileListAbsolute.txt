@@ -17,3 +17,6 @@ C:\Users\Daniel\Desktop\HB2-Osyny\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_B
 C:\Users\Daniel\Desktop\HB2-Osyny\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.csproj.GenerateResource.Cache
 C:\Users\Daniel\Desktop\HB2-Osyny\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.exe
 C:\Users\Daniel\Desktop\HB2-Osyny\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.pdb
+C:\Users\Daniel\Desktop\Git\Home_Bugaltery\Home_Bugaltery\bin\Debug\Home_Bugaltery.exe.config
+C:\Users\Daniel\Desktop\Git\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.exe
+C:\Users\Daniel\Desktop\Git\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.pdb
