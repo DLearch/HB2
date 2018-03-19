@@ -18,12 +18,12 @@
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="Довідники">
-                <MenuItem Header="Члени сімї" Command="{Binding MoveTo}" CommandParameter="GridFamilyMembers"/>
-                <MenuItem Header="Доходи і витрати" Command="{Binding MoveTo}" CommandParameter="GridOrders"/>
+                <MenuItem Header="Члени сімї" Command="{Binding MoveToCommand}" CommandParameter="GridFamilyMembers"/>
+                <MenuItem Header="Доходи і витрати" Command="{Binding MoveToCommand}" CommandParameter="GridOrders"/>
             </MenuItem>
             <MenuItem Header="Операції">
-                <MenuItem Header="Нова операція"/>
-                <MenuItem Header="Редагувати операцію"/>
+                <MenuItem Header="Нова операція" Command="{Binding AddOrderCommand}"/>
+                <MenuItem Header="Редагувати операцію" Command="{Binding EditOrderCommand}"/>
                 <MenuItem Header="Початкові залишки"/>
             </MenuItem>
             <MenuItem Header="Звіти">
@@ -70,7 +70,7 @@
                     Content="Додати"
                     VerticalAlignment="Top" 
                     Margin="10, 0, 0, 0" 
-                    Command="{Binding AddFamilyMember}"/>
+                    Command="{Binding AddFamilyMemberCommand}"/>
 
             <TextBox Grid.Row="3" Grid.Column="1" 
                      Name="TextBoxEditFamilyMember"
@@ -83,14 +83,14 @@
                     Content="Редагувати" 
                     VerticalAlignment="Top" 
                     Margin="10, 0, 0, 0"
-                    Command="{Binding EditFamilyMember}"/>
+                    Command="{Binding EditFamilyMemberCommand}"/>
 
             <Button Grid.Row="5" Grid.Column="1" 
                     Name="BtnRemoveFamilyMember"
                     Content="Видалити" 
                     VerticalAlignment="Center" 
                     Margin="10, 0, 0, 0"
-                    Command="{Binding RemoveFamilyMember}"/>
+                    Command="{Binding RemoveFamilyMemberCommand}"/>
         </Grid>
 
         <Grid Margin="10" Visibility="{Binding GridOrdersVisibility}" Grid.Row="1">

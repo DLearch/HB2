@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WpfApplication1.Infrastructure;
+using WpfApplication1.View;
 
 namespace WpfApplication1.ViewModel
 {
@@ -117,7 +118,22 @@ namespace WpfApplication1.ViewModel
         }
 
         #endregion
-        
+
+        #region DataGridOrdersSelectedItem
+
+        private IEnumerable<object> _dataGridOrdersSelectedItem;
+        public IEnumerable<object> DataGridOrdersSelectedItem
+        {
+            get { return _dataGridOrdersSelectedItem; }
+            set
+            {
+                _dataGridOrdersSelectedItem = value;
+                OnPropertyChanged("DataGridOrdersSelectedItem");
+            }
+        }
+
+        #endregion
+
         HomeBugaltery homeBugaltery;
         HomeBugalteryAction actHomeBogaltery;
 
@@ -126,16 +142,17 @@ namespace WpfApplication1.ViewModel
 
         public MainWindowViewModel()
         {
-            homeBugaltery = new HomeBugaltery();
-            actHomeBogaltery = new HomeBugalteryAction();
+            //    homeBugaltery = new HomeBugaltery();
+            //    actHomeBogaltery = new HomeBugalteryAction();
 
-            DataGridOrdersItemsSource = orders = new ObservableCollection<OrdersView>();
-            ListBoxFamilyMembersItemsSource = users = new ObservableCollection<Users_HB>();
+            //    DataGridOrdersItemsSource = orders = new ObservableCollection<OrdersView>();
+            //    ListBoxFamilyMembersItemsSource = users = new ObservableCollection<Users_HB>();
 
-            UpdateDataGridOrders();
-            UpdateListBoxFamilyMembers();
+            //    UpdateDataGridOrders();
+            //    UpdateListBoxFamilyMembers();
 
-            MoveTo.Execute("GridOrders");
+            MoveToCommand.Execute("GridOrders");
+
         }
 
 
@@ -156,7 +173,7 @@ namespace WpfApplication1.ViewModel
         #region Add Family Member Command
 
         RelayCommand _addFamilyMemberCommand;
-        public System.Windows.Input.ICommand AddFamilyMember
+        public System.Windows.Input.ICommand AddFamilyMemberCommand
         {
             get
             {
@@ -175,7 +192,7 @@ namespace WpfApplication1.ViewModel
         # region Edit Family Member Command
 
         RelayCommand _editFamilyMemberCommand;
-        public System.Windows.Input.ICommand EditFamilyMember
+        public System.Windows.Input.ICommand EditFamilyMemberCommand
         {
             get
             {
@@ -199,7 +216,7 @@ namespace WpfApplication1.ViewModel
         #region Remove Family Member Command
 
         RelayCommand _removeFamilyMemberCommand;
-        public System.Windows.Input.ICommand RemoveFamilyMember
+        public System.Windows.Input.ICommand RemoveFamilyMemberCommand
         {
             get
             {
@@ -223,7 +240,7 @@ namespace WpfApplication1.ViewModel
         #region Move To Command
 
         RelayCommand _moveToCommand;
-        public System.Windows.Input.ICommand MoveTo
+        public System.Windows.Input.ICommand MoveToCommand
         {
             get
             {
@@ -248,6 +265,81 @@ namespace WpfApplication1.ViewModel
                 GridFamilyMembersVisibility = Visibility.Collapsed;
         }
 
+        #endregion
+
+        #region Add Order Command
+
+        RelayCommand _addOrderCommand;
+        public System.Windows.Input.ICommand AddOrderCommand
+        {
+            get
+            {
+                if (_addOrderCommand == null)
+                    _addOrderCommand = new RelayCommand(ExecuteAddOrderCommand);
+                return _addOrderCommand;
+            }
+        }
+        enum organiserActionEnum
+        {
+            addOrder = 0,
+
+        }
+
+        public void ExecuteAddOrderCommand(object parameter)
+        {
+            OrderWindow w = new OrderWindow();
+            if(ShowDialog(w) == true)
+            {
+                OrdersView order = (w.DataContext as OrderWindowViewModel).Order;
+                actHomeBogaltery.SetCommand((int)organiserActionEnum.addOrder,
+                                                new AddNewOrderCommand( homeBugaltery, 
+                                                                        order.CategoryName, 
+                                                                        order.UserName,
+                                                                        order.DateOrder, 
+                                                                        order.Price,
+                                                                        order.Description));
+                actHomeBogaltery.DoAction((int)organiserActionEnum.addOrder);
+            }
+        }
+
+        #endregion
+        
+        #region Edit Order Command
+
+        RelayCommand _editOrderCommand;
+        public System.Windows.Input.ICommand EditOrderCommand
+        {
+            get
+            {
+                if (_editOrderCommand == null)
+                    _editOrderCommand = new RelayCommand(ExecuteEditOrderCommand, CanExecuteEditOrderCommand);
+                return _editOrderCommand;
+            }
+        }
+
+        public void ExecuteEditOrderCommand(object parameter)
+        {
+            OrderWindow w = new OrderWindow();
+            (w.DataContext as OrderWindowViewModel).Order = DataGridOrdersSelectedItem as OrdersView;
+            if (ShowDialog(w) == true)
+            {
+                OrdersView order = (w.DataContext as OrderWindowViewModel).Order;
+
+                actHomeBogaltery.SetCommand((int)organiserActionEnum.addOrder,
+                                                new AddNewOrderCommand(homeBugaltery,
+                                                                        order.CategoryName,
+                                                                        order.UserName,
+                                                                        order.DateOrder,
+                                                                        order.Price,
+                                                                        order.Description));
+                actHomeBogaltery.DoAction((int)organiserActionEnum.addOrder);
+            }
+        }
+
+        public bool CanExecuteEditOrderCommand(object parameter)
+        {
+            return DataGridOrdersSelectedItem != null;
+        }
         #endregion
     }
 }

@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace WpfApplication1
+namespace WpfApplication1.View
 {
     /// <summary>
-    /// Interaction logic for AddOrderWindow.xaml
+    /// Interaction logic for OrderWindow.xaml
     /// </summary>
-    public partial class AddOrderWindow : Window
+    public partial class OrderWindow : Window
     {
-        public AddOrderWindow()
+        public OrderWindow()
         {
             InitializeComponent();
         }

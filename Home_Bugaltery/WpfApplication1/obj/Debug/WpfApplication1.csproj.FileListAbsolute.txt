@@ -48,14 +48,14 @@ C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\bin\Debug\ClassLibrar
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\bin\Debug\EntityFramework.xml
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\bin\Debug\ru\EntityFramework.resources.dll
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.csprojResolveAssemblyReference.cache
-C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\View\AddOrderWindow.g.cs
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\View\MainWindow.g.cs
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\App.g.cs
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\GeneratedInternalTypeHelper.g.cs
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1_MarkupCompile.cache
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1_MarkupCompile.lref
-C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\View\AddOrderWindow.baml
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\View\MainWindow.baml
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.g.resources
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.Properties.Resources.resources
 C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.csproj.GenerateResource.Cache
+C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\View\OrderWindow.g.cs
+C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\obj\Debug\View\OrderWindow.baml

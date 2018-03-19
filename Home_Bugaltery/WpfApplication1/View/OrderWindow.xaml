@@ -1,14 +1,14 @@
-﻿<Window x:Class="WpfApplication1.AddOrderWindow"
+﻿<Window x:Class="WpfApplication1.View.OrderWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1.ViewModel"
         mc:Ignorable="d"
-        Title="AddOrderWindow" Height="300" Width="300" MinWidth="200" MinHeight="180">
+        Title="OrderWindow" Height="300" Width="300" MinWidth="200" MinHeight="180">
 
     <Window.DataContext>
-        <local:AddOrderWindowViewModel></local:AddOrderWindowViewModel>
+        <local:OrderWindowViewModel></local:OrderWindowViewModel>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -38,22 +38,22 @@
 
         <Label Content="Дата: " 
                VerticalAlignment="Center" Grid.Row="2"/>
-        <DatePicker Grid.Column="1" Grid.Row="2" 
+        <DatePicker SelectedDate="{Binding DatePickerDateSelectedDate}" Grid.Column="1" Grid.Row="2" 
                     VerticalAlignment="Center" Margin="10, 0" Grid.ColumnSpan="3"/>
 
         <Label Content="Ціна: " 
                VerticalAlignment="Center" Grid.Row="3"/>
-        <TextBox Grid.Row="3" Grid.Column="1"
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding TextBoxPriceText}"
                  VerticalAlignment="Center" Margin="10, 0" Grid.ColumnSpan="3"/>
 
         <Label Content="Опис: " Grid.Row="4"
                VerticalAlignment="Center"/>
-        <TextBox Grid.Row="4" Grid.Column="1"
+        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding TextBoxDescriptionText}"
                  VerticalAlignment="Center" Margin="10, 0" Grid.ColumnSpan="3"/>
 
         <Button Grid.Row="5" 
-                VerticalAlignment="Center" Command="{Binding Add}"
-                Content="Додати"  Margin="10, 0" Grid.ColumnSpan="2"/>
+                VerticalAlignment="Center" Command="{Binding AddCommand}"
+                Content="Ок"  Margin="10, 0" Grid.ColumnSpan="2"/>
         <Button Grid.Row="5" Grid.Column="2"
                 VerticalAlignment="Center" IsCancel="True"
                 Content="Скасувати" Margin="10, 0" Grid.ColumnSpan="2"/>
