@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
-
     // 3. Инициатор (менеджер команд)
     // ==============================
 

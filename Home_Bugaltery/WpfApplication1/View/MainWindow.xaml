@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" MinHeight="270" MinWidth="280">
+        Title="MainWindow" Height="350" Width="376.222" MinHeight="270" MinWidth="280">
 
     <Window.DataContext>
         <local:MainWindowViewModel></local:MainWindowViewModel>
@@ -94,7 +94,15 @@
         </Grid>
 
         <Grid Margin="10" Visibility="{Binding GridOrdersVisibility}" Grid.Row="1">
-            <DataGrid ItemsSource="{Binding DataGridOrdersItemsSource}">
+            <DataGrid ItemsSource="{Binding DataGridOrdersItemsSource}" RenderTransformOrigin="0.5,0.5">
+                <DataGrid.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.388"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-3.57"/>
+                    </TransformGroup>
+                </DataGrid.RenderTransform>
                 <DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding CategoryName}" Header="Категорія"/>
                     <DataGridTextColumn Binding="{Binding UserName}" Header="Користувач"/>

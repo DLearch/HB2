@@ -142,14 +142,14 @@ namespace WpfApplication1.ViewModel
 
         public MainWindowViewModel()
         {
-            //    homeBugaltery = new HomeBugaltery();
-            //    actHomeBogaltery = new HomeBugalteryAction();
+            homeBugaltery = new HomeBugaltery();
+            actHomeBogaltery = new HomeBugalteryAction();
 
-            //    DataGridOrdersItemsSource = orders = new ObservableCollection<OrdersView>();
-            //    ListBoxFamilyMembersItemsSource = users = new ObservableCollection<Users_HB>();
+            DataGridOrdersItemsSource = orders = new ObservableCollection<OrdersView>();
+            ListBoxFamilyMembersItemsSource = users = new ObservableCollection<Users_HB>();
 
-            //    UpdateDataGridOrders();
-            //    UpdateListBoxFamilyMembers();
+            UpdateDataGridOrders();
+            UpdateListBoxFamilyMembers();
 
             MoveToCommand.Execute("GridOrders");
 
