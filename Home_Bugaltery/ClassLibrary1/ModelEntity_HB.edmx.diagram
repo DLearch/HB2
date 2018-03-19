@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2c5a2b76fb6843c9b3f3e17cc65dbd5c" Name="Diagram1">
+        <EntityTypeShape EntityType="MarketModel.Categories_HB" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketModel.LogHistDateOrder_HB" Width="1.5" PointX="7.875" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketModel.Orders_HB" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketModel.Users_HB" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <AssociationConnector Association="MarketModel.FK__Orders_HB__Categ__7A672E12" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketModel.FK__Orders_HB__User___7B5B524B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
