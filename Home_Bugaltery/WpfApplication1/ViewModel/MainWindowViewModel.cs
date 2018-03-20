@@ -104,35 +104,37 @@ namespace WpfApplication1.ViewModel
 
         #endregion
 
-        #region DataGridOrdersItemsSource
+        #region ListViewOrdersItemsSource
 
-        private IEnumerable<object> _dataGridOrdersItemsSource;
-        public IEnumerable<object> DataGridOrdersItemsSource
+        private IEnumerable<object> _listViewOrdersItemsSource;
+        public IEnumerable<object> ListViewOrdersItemsSource
         {
-            get { return _dataGridOrdersItemsSource; }
+            get { return _listViewOrdersItemsSource; }
             set
             {
-                _dataGridOrdersItemsSource = value;
-                OnPropertyChanged("DataGridOrdersItemsSource");
+                _listViewOrdersItemsSource = value;
+                OnPropertyChanged("ListViewOrdersItemsSource");
             }
         }
 
         #endregion
 
-        #region DataGridOrdersSelectedItem
+        #region ListViewOrdersSelectedItem
 
-        private IEnumerable<object> _dataGridOrdersSelectedItem;
-        public IEnumerable<object> DataGridOrdersSelectedItem
+        private object _listViewOrdersSelectedItem;
+        public object ListViewOrdersSelectedItem
         {
-            get { return _dataGridOrdersSelectedItem; }
+            get { return _listViewOrdersSelectedItem; }
             set
             {
-                _dataGridOrdersSelectedItem = value;
-                OnPropertyChanged("DataGridOrdersSelectedItem");
+                _listViewOrdersSelectedItem = value;
+                OnPropertyChanged("ListViewOrdersSelectedItem");
             }
         }
 
         #endregion
+
+        #region Fields
 
         HomeBugaltery homeBugaltery;
         HomeBugalteryAction actHomeBogaltery;
@@ -140,24 +142,26 @@ namespace WpfApplication1.ViewModel
         ObservableCollection<OrdersView> orders;
         ObservableCollection<Users> users;
 
+        #endregion
+
         public MainWindowViewModel()
         {
             homeBugaltery = new HomeBugaltery();
             actHomeBogaltery = new HomeBugalteryAction();
 
-            orders = new ObservableCollection<OrdersView>();
-            DataGridOrdersItemsSource = orders;
+            ListViewOrdersItemsSource = orders = new ObservableCollection<OrdersView>();
             ListBoxFamilyMembersItemsSource = users = new ObservableCollection<Users>();
 
-            UpdateDataGridOrders();
+            UpdateListViewOrders();
             UpdateListBoxFamilyMembers();
 
             MoveToCommand.Execute("GridOrders");
 
         }
 
+        #region Update
 
-        private void UpdateDataGridOrders()
+        private void UpdateListViewOrders()
         {
             orders.Clear();
             foreach (OrdersView orderView in homeBugaltery.ListOrders)
@@ -170,6 +174,8 @@ namespace WpfApplication1.ViewModel
             foreach (Users user in homeBugaltery.ListUsers)
                 users.Add(user);
         }
+
+        #endregion
 
         #region Add Family Member Command
 
@@ -186,6 +192,7 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteAddFamilyMemberCommand(object parameter)
         {
+            UpdateListBoxFamilyMembers();
         }
 
         #endregion
@@ -205,6 +212,7 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteEditFamilyMemberCommand(object parameter)
         {
+            UpdateListBoxFamilyMembers();
         }
 
         public bool CanExecuteEditFamilyMemberCommand(object parameter)
@@ -229,6 +237,7 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteRemoveFamilyMemberCommand(object parameter)
         {
+            UpdateListBoxFamilyMembers();
         }
 
         public bool CanExecuteRemoveFamilyMemberCommand(object parameter)
@@ -289,17 +298,22 @@ namespace WpfApplication1.ViewModel
         public void ExecuteAddOrderCommand(object parameter)
         {
             OrderWindow w = new OrderWindow();
-            if(ShowDialog(w) == true)
+            var datacontext = w.DataContext as OrderWindowViewModel;
+            datacontext.Categories = homeBugaltery.ListCategories;
+            datacontext.Users = homeBugaltery.ListUsers;
+            //datacontext.Order = ListViewOrdersSelectedItem as OrdersView;
+            if (ShowDialog(w) == true)
             {
                 OrdersView order = (w.DataContext as OrderWindowViewModel).Order;
                 actHomeBogaltery.SetCommand((int)organiserActionEnum.addOrder,
-                                                new AddNewOrderCommand( homeBugaltery, 
-                                                                        order.CategoryName, 
+                                                new AddNewOrderCommand(homeBugaltery,
+                                                                        order.CategoryName,
                                                                         order.UserName,
-                                                                        order.DateOrder, 
+                                                                        order.DateOrder,
                                                                         order.Price,
                                                                         order.Description));
                 actHomeBogaltery.DoAction((int)organiserActionEnum.addOrder);
+                UpdateListViewOrders();
             }
         }
 
@@ -321,25 +335,44 @@ namespace WpfApplication1.ViewModel
         public void ExecuteEditOrderCommand(object parameter)
         {
             OrderWindow w = new OrderWindow();
-            (w.DataContext as OrderWindowViewModel).Order = DataGridOrdersSelectedItem as OrdersView;
+            var datacontext = w.DataContext as OrderWindowViewModel;
+            datacontext.Categories = homeBugaltery.ListCategories;
+            datacontext.Users = homeBugaltery.ListUsers;
+            //datacontext.Order = ListViewOrdersSelectedItem as OrdersView;
             if (ShowDialog(w) == true)
             {
-                OrdersView order = (w.DataContext as OrderWindowViewModel).Order;
+                // Тут должен быть код изменения 
 
-                actHomeBogaltery.SetCommand((int)organiserActionEnum.addOrder,
-                                                new AddNewOrderCommand(homeBugaltery,
-                                                                        order.CategoryName,
-                                                                        order.UserName,
-                                                                        order.DateOrder,
-                                                                        order.Price,
-                                                                        order.Description));
-                actHomeBogaltery.DoAction((int)organiserActionEnum.addOrder);
+                UpdateListViewOrders();
             }
         }
 
         public bool CanExecuteEditOrderCommand(object parameter)
         {
-            return DataGridOrdersSelectedItem != null;
+            return false;
+        }
+        #endregion
+
+        #region Remove Order Command
+
+        RelayCommand _removeOrderCommand;
+        public System.Windows.Input.ICommand RemoveOrderCommand
+        {
+            get
+            {
+                if (_removeOrderCommand == null)
+                    _removeOrderCommand = new RelayCommand(ExecuteRemoveOrderCommand, CanExecuteRemoveOrderCommand);
+                return _removeOrderCommand;
+            }
+        }
+
+        public void ExecuteRemoveOrderCommand(object parameter)
+        {
+        }
+
+        public bool CanExecuteRemoveOrderCommand(object parameter)
+        {
+            return false;
         }
         #endregion
     }

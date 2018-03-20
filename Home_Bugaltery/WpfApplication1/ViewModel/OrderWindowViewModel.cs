@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WpfApplication1.Infrastructure;
 
 namespace WpfApplication1.ViewModel
@@ -21,6 +22,21 @@ namespace WpfApplication1.ViewModel
             {
                 _comboBoxCategoriesSelectedItem = value;
                 OnPropertyChanged("ComboBoxCategoriesSelectedItem");
+            }
+        }
+
+        #endregion
+
+        #region ComboBoxCategoriesSelectedIndex
+
+        private int _comboBoxCategoriesSelectedIndex;
+        public int ComboBoxCategoriesSelectedIndex
+        {
+            get { return _comboBoxCategoriesSelectedIndex; }
+            set
+            {
+                _comboBoxCategoriesSelectedIndex = value;
+                OnPropertyChanged("ComboBoxCategoriesSelectedIndex");
             }
         }
 
@@ -51,6 +67,21 @@ namespace WpfApplication1.ViewModel
             {
                 _comboBoxUsersSelectedItem = value;
                 OnPropertyChanged("ComboBoxUsersSelectedItem");
+            }
+        }
+
+        #endregion
+
+        #region ComboBoxUsersSelectedIndex
+
+        private int _comboBoxUsersSelectedIndex;
+        public int ComboBoxUsersSelectedIndex
+        {
+            get { return _comboBoxUsersSelectedIndex; }
+            set
+            {
+                _comboBoxUsersSelectedIndex = value;
+                OnPropertyChanged("ComboBoxUsersSelectedIndex");
             }
         }
 
@@ -115,17 +146,44 @@ namespace WpfApplication1.ViewModel
         }
 
         #endregion
-        
+
+        private ObservableCollection<Users> _users;
+
+        public IEnumerable<Users> Users
+        {
+            set
+            {
+                _users.Clear();
+                foreach (var user in value)
+                    _users.Add(user);
+                ComboBoxUsersItemsSource = _users;
+            }
+        }
+        private ObservableCollection<Categories> _categories;
+
+        public IEnumerable<Categories> Categories
+        {
+            set
+            {
+                _categories.Clear();
+                foreach (var category in value)
+                    _categories.Add(category);
+                ComboBoxCategoriesItemsSource = _categories;
+            }
+        }
+
+
+
         public OrdersView Order
         {
             get
             {
                 decimal price;
-                if (!decimal.TryParse(TextBoxPriceText, out price))
+                if (decimal.TryParse(TextBoxPriceText, out price))
                     return new OrdersView()
                     {
                         CategoryName = (ComboBoxCategoriesSelectedItem as Categories).Name,
-                        UserName = (ComboBoxCategoriesSelectedItem as Users).Name,
+                        UserName = (ComboBoxUsersSelectedItem as Users).Name,
                         DateOrder = DatePickerDateSelectedDate,
                         Price = price,
                         Description = TextBoxDescriptionText
@@ -135,6 +193,30 @@ namespace WpfApplication1.ViewModel
             }
             set
             {
+                ComboBoxCategoriesSelectedIndex = -1;
+                for (int i = 0; i < _categories.Count; i++)
+                {
+                    if (_categories[i].Name == value.CategoryName)
+                    {
+                        ComboBoxCategoriesSelectedIndex = i;
+                        break;
+                    }
+                }
+                if (ComboBoxCategoriesSelectedIndex == -1)
+                    throw new Exception(value.CategoryName + " не найден.");
+
+                ComboBoxUsersSelectedIndex = -1;
+                for (int i = 0; i < _users.Count; i++)
+                {
+                    if (_users[i].Name == value.UserName)
+                    {
+                        ComboBoxUsersSelectedIndex = i;
+                        break;
+                    }
+                }
+                if (ComboBoxUsersSelectedIndex == -1)
+                    throw new Exception(value.UserName + " не найден.");
+
                 DatePickerDateSelectedDate = value.DateOrder;
                 TextBoxPriceText = value.Price.ToString();
                 TextBoxDescriptionText = value.Description;
@@ -143,6 +225,9 @@ namespace WpfApplication1.ViewModel
 
         public OrderWindowViewModel()
         {
+            DatePickerDateSelectedDate = DateTime.Now;
+            _users = new ObservableCollection<Users>();
+            _categories = new ObservableCollection<Categories>();
         }
 
 

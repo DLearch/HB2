@@ -28,11 +28,19 @@
 
         <Label Content="Категорія: " VerticalAlignment="Center"/>
         <ComboBox VerticalAlignment="Center" 
+                  ItemsSource="{Binding ComboBoxCategoriesItemsSource}"
+                  SelectedItem="{Binding ComboBoxCategoriesSelectedItem}"
+                  SelectedIndex="{Binding ComboBoxCategoriesSelectedIndex}"
+                  DisplayMemberPath="Name"
                   Grid.Column="1" Margin="10, 0" Grid.ColumnSpan="3"/>
 
         <Label Content="Користувач: " 
                VerticalAlignment="Center" Grid.Row="1"/>
         <ComboBox VerticalAlignment="Center" 
+                  ItemsSource="{Binding ComboBoxUsersItemsSource}"
+                  SelectedItem="{Binding ComboBoxUsersSelectedItem}"
+                  SelectedIndex="{Binding ComboBoxUsersSelectedIndex}"
+                  DisplayMemberPath="Name"
                   Grid.Column="1" Grid.Row="1"
                    Margin="10, 0" Grid.ColumnSpan="3"/>
 
@@ -52,7 +60,7 @@
                  VerticalAlignment="Center" Margin="10, 0" Grid.ColumnSpan="3"/>
 
         <Button Grid.Row="5" 
-                VerticalAlignment="Center" Command="{Binding AddCommand}"
+                VerticalAlignment="Center" Command="{Binding OkCommand}"
                 Content="Ок"  Margin="10, 0" Grid.ColumnSpan="2"/>
         <Button Grid.Row="5" Grid.Column="2"
                 VerticalAlignment="Center" IsCancel="True"

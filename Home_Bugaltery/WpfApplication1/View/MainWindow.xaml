@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="400" Width="500" MinHeight="270" MinWidth="280">
+        Title="MainWindow" Height="400" Width="600" MinHeight="270" MinWidth="280">
 
     <Window.DataContext>
         <local:MainWindowViewModel></local:MainWindowViewModel>
@@ -23,7 +23,6 @@
             </MenuItem>
             <MenuItem Header="Операції">
                 <MenuItem Header="Нова операція" Command="{Binding AddOrderCommand}"/>
-                <MenuItem Header="Редагувати операцію" Command="{Binding EditOrderCommand}"/>
                 <MenuItem Header="Початкові залишки"/>
             </MenuItem>
             <MenuItem Header="Звіти">
@@ -95,8 +94,10 @@
         </Grid>
 
         <Grid Margin="10" Visibility="{Binding GridOrdersVisibility}" Grid.Row="1">
-            <DataGrid ItemsSource="{Binding DataGridOrdersItemsSource}">
-                <!--<ListView.View>
+            <ListView ItemsSource="{Binding ListViewOrdersItemsSource}" 
+                      SelectedItem="{Binding ListViewOrdersSelectedItem}"
+                      SelectionMode="Single">
+                <ListView.View>
                     <GridView>
                         <GridViewColumn DisplayMemberBinding="{Binding CategoryName}" Header="Категорія"/>
                         <GridViewColumn DisplayMemberBinding="{Binding UserName}" Header="Користувач"/>
@@ -104,15 +105,18 @@
                         <GridViewColumn DisplayMemberBinding="{Binding Price}" Header="Ціна"/>
                         <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Опис"/>
                     </GridView>
-                </ListView.View>-->
-                <!--<DataGrid.Columns>
-                    <DataGridTextColumn Binding="{Binding CategoryName}" Header="Категорія"/>
-                    <DataGridTextColumn Binding="{Binding UserName}" Header="Користувач"/>
-                    <DataGridTextColumn Binding="{Binding DateOrder}" Header="Дата"/>
-                    <DataGridTextColumn Binding="{Binding Price}" Header="Ціна"/>
-                    <DataGridTextColumn Binding="{Binding Description}" Header="Опис"/>
-                </DataGrid.Columns>-->
-            </DataGrid>
+                </ListView.View>
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Header="Редагувати"
+                                  Command="{Binding EditOrderCommand}"
+                                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" />
+                        <MenuItem Header="Видалити"
+                                  Command="{Binding RemoveOrderCommand}"
+                                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" />
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
         </Grid>
     </Grid>
 </Window>

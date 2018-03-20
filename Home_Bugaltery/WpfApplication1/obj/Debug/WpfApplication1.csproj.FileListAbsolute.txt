@@ -136,3 +136,6 @@ D:\my\KP\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\View\OrderWindow.baml
 D:\my\KP\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.g.resources
 D:\my\KP\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.Properties.Resources.resources
 D:\my\KP\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.csproj.GenerateResource.Cache
+C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Daniel\Desktop\Git\Home_Bugaltery\WpfApplication1\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
