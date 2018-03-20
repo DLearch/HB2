@@ -16,19 +16,22 @@ namespace ClassLibrary1
 
         BisnesLogic bisnesLogic;
         List<OrdersView> listOrders;
-        List<Categories_HB> listCategories;
-        List<Users_HB> listUsers;
+        List<OrdersView> filteredListOrders;
+        List<Categories> listCategories;
+        List<Users> listUsers;
 
         public HomeBugaltery()
         {
             bisnesLogic = new BisnesLogic();
+
+            filteredListOrders = new List<OrdersView>();
             validateLocalData();
         }
 
-        public List<OrdersView> ListOrders { get { return listOrders; } }
+        public List<OrdersView> ListOrders { get { if (filteredListOrders.Count == 0) return listOrders; else return filteredListOrders; } }
 
-        public List<Categories_HB> ListCategories { get { return listCategories; } }
-        public List<Users_HB> ListUsers { get { return listUsers; } }
+        public List<Categories> ListCategories { get { return listCategories; } }
+        public List<Users> ListUsers { get { return listUsers; } }
 
         public void addOrder(string categoryName, string userName, DateTime dateOrder, decimal price, string description)
         {
@@ -47,6 +50,42 @@ namespace ClassLibrary1
             listOrders = bisnesLogic.GetAllOrders();
             listCategories = bisnesLogic.GetAllCategory();
             listUsers = bisnesLogic.GetAllUsers();
+        }
+
+        public void aplyOrdersFilters(List<string> categoriesNames, List<string> usersNames = null, string dateFrom = null, string dateTo = null)
+        {
+            filteredListOrders.Clear();
+
+            foreach(OrdersView order in listOrders)
+            {
+                if (categoriesNames != null)
+                {
+                    foreach (string categoryName in categoriesNames)
+                    {
+                        if (order.CategoryName == categoryName)
+                        {
+                            filteredListOrders.Add(order);
+                        }
+                    }
+                }
+
+                if (usersNames != null)
+                {
+                    foreach (string userName in usersNames)
+                    {
+                        if (order.UserName == userName)
+                        {
+                            filteredListOrders.Add(order);
+                        }
+                    }
+                }
+
+            }
+        }
+
+        public void ClearOrdersFilters()
+        {
+            filteredListOrders.Clear();
         }
     }
 }

@@ -29,6 +29,7 @@ namespace Home_Bugaltery
             newDocument = new NewDocumentForm(homeBugaltery, actHomeBogaltery);
 
             updateOrdersGrid();
+            updateCategorys();
         }
 
 
@@ -47,8 +48,18 @@ namespace Home_Bugaltery
 
             }
         }
+        private void updateCategorys()
+        {
+            comboBoxCategories.Items.Clear();
 
-     
+            foreach (Categories_HB category in homeBugaltery.ListCategories)
+            {
+                comboBoxCategories.Items.Add(category.Name);
+                comboBoxCategories.SelectedIndex = 0;
+            }
+        }
+
+
 
         private void newDocumentToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -57,14 +68,41 @@ namespace Home_Bugaltery
             updateOrdersGrid();
         }
 
-        private void menuItemRedactOrder_Click(object sender, EventArgs e)
+        private void btnAddCategoryFilter_Click(object sender, EventArgs e)
         {
-
+            listBoxFilterCategories.Items.Add(comboBoxCategories.SelectedItem.ToString());    
         }
 
-        private void menuItemInitialRemains_Click(object sender, EventArgs e)
+        private void btnRemoveCategoryFilter_Click(object sender, EventArgs e)
         {
+            object selectedCategory = listBoxFilterCategories.SelectedItem;
+            if (selectedCategory != null)
+                listBoxFilterCategories.Items.Remove(selectedCategory);
+        }
 
+
+        private void btnApplyFilters_Click(object sender, EventArgs e)
+        {
+            if (checkBoxEnableCategoryFilter.Checked == false)
+            {
+                homeBugaltery.ClearOrdersFilters();
+                updateOrdersGrid();
+                return;
+            }
+
+            //Categories
+            List<string> categoriesList = new List<string>();
+            categoriesList.AddRange(listBoxFilterCategories.Items.Cast<string>());
+            //actHomeBogaltery.SetCommand(HomeActionEnum.addOrder, new homeBugaltery.aplyOrdersFilters(categoriesList));
+            homeBugaltery.aplyOrdersFilters(categoriesList);
+
+
+            //Users
+
+
+            //Dates
+
+            updateOrdersGrid();
         }
     }
 }

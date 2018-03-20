@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1.ViewModel"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525" MinHeight="270" MinWidth="280">
+        Title="MainWindow" Height="400" Width="500" MinHeight="270" MinWidth="280">
 
     <Window.DataContext>
         <local:MainWindowViewModel></local:MainWindowViewModel>
@@ -13,7 +13,7 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="18"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <Menu>
@@ -57,6 +57,7 @@
             <ListBox Grid.Row="1" Grid.RowSpan="6"
                      SelectedItem="{Binding ListBoxFamilyMembersSelectedItem}"
                      ItemsSource="{Binding ListBoxFamilyMembersItemsSource}"
+                     DisplayMemberPath="Name"
                      Margin="0, 0, 10, 0"/>
 
             <TextBox Grid.Row="1" Grid.Column="1" 
@@ -95,13 +96,22 @@
 
         <Grid Margin="10" Visibility="{Binding GridOrdersVisibility}" Grid.Row="1">
             <DataGrid ItemsSource="{Binding DataGridOrdersItemsSource}">
-                <DataGrid.Columns>
+                <!--<ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding CategoryName}" Header="Категорія"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding UserName}" Header="Користувач"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding DateOrder}" Header="Дата"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Price}" Header="Ціна"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Опис"/>
+                    </GridView>
+                </ListView.View>-->
+                <!--<DataGrid.Columns>
                     <DataGridTextColumn Binding="{Binding CategoryName}" Header="Категорія"/>
                     <DataGridTextColumn Binding="{Binding UserName}" Header="Користувач"/>
                     <DataGridTextColumn Binding="{Binding DateOrder}" Header="Дата"/>
                     <DataGridTextColumn Binding="{Binding Price}" Header="Ціна"/>
                     <DataGridTextColumn Binding="{Binding Description}" Header="Опис"/>
-                </DataGrid.Columns>
+                </DataGrid.Columns>-->
             </DataGrid>
         </Grid>
     </Grid>

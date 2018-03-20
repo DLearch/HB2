@@ -11,10 +11,10 @@ using ClassLibrary1;
 
 namespace Home_Bugaltery
 {
-    enum organiserActionEnum
+    enum HomeActionEnum
     {
         addOrder = 0,
-        
+
     }
     public partial class NewDocumentForm : Form
     {
@@ -64,11 +64,11 @@ namespace Home_Bugaltery
                 MessageBox.Show("Cannot add order!\nPlease check inputed data and try again!!!");
                 return;
             }
-            actHomeBogaltery.SetCommand((int)organiserActionEnum.addOrder,
+            actHomeBogaltery.SetCommand((int)HomeActionEnum.addOrder,
                                             new AddNewOrderCommand(homeBugaltery, comboBoxCategory.SelectedItem.ToString(), comboBoxUsers.SelectedItem.ToString(),
                                                                 dateTimePickerOrder.Value, numericUpDownSumm.Value,
                                                                 textBoxDescription.Text));
-            actHomeBogaltery.DoAction((int)organiserActionEnum.addOrder);
+            actHomeBogaltery.DoAction((int)HomeActionEnum.addOrder);
             
             this.Close();
         }
