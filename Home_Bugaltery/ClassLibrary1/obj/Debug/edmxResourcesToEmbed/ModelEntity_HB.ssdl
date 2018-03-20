@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Хранилище MarketModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="Categories_HB">
+<Schema Namespace="MarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Categories">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -8,7 +8,7 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Type" Type="bit" Nullable="false" />
   </EntityType>
-  <EntityType Name="LogHistDateOrder_HB">
+  <EntityType Name="LogHistDateOrder">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -17,7 +17,7 @@
     <Property Name="DateOrder" Type="datetime" Nullable="false" />
     <Property Name="Summa" Type="money" Nullable="false" />
   </EntityType>
-  <EntityType Name="Orders_HB">
+  <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -28,7 +28,7 @@
     <Property Name="Date" Type="datetime" Nullable="false" />
     <Property Name="Description" Type="nvarchar(max)" />
   </EntityType>
-  <EntityType Name="Users_HB">
+  <EntityType Name="Users">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -36,42 +36,42 @@
     <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
   </EntityType>
-  <Association Name="FK__Orders_HB__Categ__7A672E12">
-    <End Role="Categories_HB" Type="Self.Categories_HB" Multiplicity="1" />
-    <End Role="Orders_HB" Type="Self.Orders_HB" Multiplicity="*" />
+  <Association Name="FK__Orders__Category__690797E6">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Categories_HB">
+      <Principal Role="Categories">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Orders_HB">
+      <Dependent Role="Orders">
         <PropertyRef Name="Category_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders_HB__User___7B5B524B">
-    <End Role="Users_HB" Type="Self.Users_HB" Multiplicity="1" />
-    <End Role="Orders_HB" Type="Self.Orders_HB" Multiplicity="*" />
+  <Association Name="FK__Orders__User_Id__69FBBC1F">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Users_HB">
+      <Principal Role="Users">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Orders_HB">
+      <Dependent Role="Orders">
         <PropertyRef Name="User_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="Хранилище MarketModelContainer">
-    <EntitySet Name="Categories_HB" EntityType="Self.Categories_HB" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="LogHistDateOrder_HB" EntityType="Self.LogHistDateOrder_HB" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Orders_HB" EntityType="Self.Orders_HB" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="Users_HB" EntityType="Self.Users_HB" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Orders_HB__Categ__7A672E12" Association="Self.FK__Orders_HB__Categ__7A672E12">
-      <End Role="Categories_HB" EntitySet="Categories_HB" />
-      <End Role="Orders_HB" EntitySet="Orders_HB" />
+  <EntityContainer Name="MarketModelStoreContainer">
+    <EntitySet Name="Categories" EntityType="Self.Categories" Schema="HB" store:Type="Tables" />
+    <EntitySet Name="LogHistDateOrder" EntityType="Self.LogHistDateOrder" Schema="HB" store:Type="Tables" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" Schema="HB" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="HB" store:Type="Tables" />
+    <AssociationSet Name="FK__Orders__Category__690797E6" Association="Self.FK__Orders__Category__690797E6">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders_HB__User___7B5B524B" Association="Self.FK__Orders_HB__User___7B5B524B">
-      <End Role="Users_HB" EntitySet="Users_HB" />
-      <End Role="Orders_HB" EntitySet="Orders_HB" />
+    <AssociationSet Name="FK__Orders__User_Id__69FBBC1F" Association="Self.FK__Orders__User_Id__69FBBC1F">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

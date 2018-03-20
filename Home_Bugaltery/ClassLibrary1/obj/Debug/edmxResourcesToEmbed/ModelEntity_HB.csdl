@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="MarketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-  <EntityType Name="Categories_HB">
+  <EntityType Name="Categories">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Type" Type="Boolean" Nullable="false" />
-    <NavigationProperty Name="Orders_HB" Relationship="Self.FK__Orders_HB__Categ__7A672E12" FromRole="Categories_HB" ToRole="Orders_HB" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Category__690797E6" FromRole="Categories" ToRole="Orders" />
   </EntityType>
-  <EntityType Name="LogHistDateOrder_HB">
+  <EntityType Name="LogHistDateOrder">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -18,7 +18,7 @@
     <Property Name="DateOrder" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Summa" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
   </EntityType>
-  <EntityType Name="Orders_HB">
+  <EntityType Name="Orders">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
@@ -28,54 +28,54 @@
     <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
     <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="Categories_HB" Relationship="Self.FK__Orders_HB__Categ__7A672E12" FromRole="Orders_HB" ToRole="Categories_HB" />
-    <NavigationProperty Name="Users_HB" Relationship="Self.FK__Orders_HB__User___7B5B524B" FromRole="Orders_HB" ToRole="Users_HB" />
+    <NavigationProperty Name="Categories" Relationship="Self.FK__Orders__Category__690797E6" FromRole="Orders" ToRole="Categories" />
+    <NavigationProperty Name="Users" Relationship="Self.FK__Orders__User_Id__69FBBC1F" FromRole="Orders" ToRole="Users" />
   </EntityType>
-  <EntityType Name="Users_HB">
+  <EntityType Name="Users">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="Orders_HB" Relationship="Self.FK__Orders_HB__User___7B5B524B" FromRole="Users_HB" ToRole="Orders_HB" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__User_Id__69FBBC1F" FromRole="Users" ToRole="Orders" />
   </EntityType>
-  <Association Name="FK__Orders_HB__Categ__7A672E12">
-    <End Role="Categories_HB" Type="Self.Categories_HB" Multiplicity="1" />
-    <End Role="Orders_HB" Type="Self.Orders_HB" Multiplicity="*" />
+  <Association Name="FK__Orders__Category__690797E6">
+    <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Categories_HB">
+      <Principal Role="Categories">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Orders_HB">
+      <Dependent Role="Orders">
         <PropertyRef Name="Category_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Orders_HB__User___7B5B524B">
-    <End Role="Users_HB" Type="Self.Users_HB" Multiplicity="1" />
-    <End Role="Orders_HB" Type="Self.Orders_HB" Multiplicity="*" />
+  <Association Name="FK__Orders__User_Id__69FBBC1F">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="Users_HB">
+      <Principal Role="Users">
         <PropertyRef Name="Id" />
       </Principal>
-      <Dependent Role="Orders_HB">
+      <Dependent Role="Orders">
         <PropertyRef Name="User_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <EntityContainer Name="MarketEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="Categories_HB" EntityType="Self.Categories_HB" />
-    <EntitySet Name="LogHistDateOrder_HB" EntityType="Self.LogHistDateOrder_HB" />
-    <EntitySet Name="Orders_HB" EntityType="Self.Orders_HB" />
-    <EntitySet Name="Users_HB" EntityType="Self.Users_HB" />
-    <AssociationSet Name="FK__Orders_HB__Categ__7A672E12" Association="Self.FK__Orders_HB__Categ__7A672E12">
-      <End Role="Categories_HB" EntitySet="Categories_HB" />
-      <End Role="Orders_HB" EntitySet="Orders_HB" />
+  <EntityContainer Name="MarketEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Categories" EntityType="Self.Categories" />
+    <EntitySet Name="LogHistDateOrder" EntityType="Self.LogHistDateOrder" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" />
+    <EntitySet Name="Users" EntityType="Self.Users" />
+    <AssociationSet Name="FK__Orders__Category__690797E6" Association="Self.FK__Orders__Category__690797E6">
+      <End Role="Categories" EntitySet="Categories" />
+      <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
-    <AssociationSet Name="FK__Orders_HB__User___7B5B524B" Association="Self.FK__Orders_HB__User___7B5B524B">
-      <End Role="Users_HB" EntitySet="Users_HB" />
-      <End Role="Orders_HB" EntitySet="Orders_HB" />
+    <AssociationSet Name="FK__Orders__User_Id__69FBBC1F" Association="Self.FK__Orders__User_Id__69FBBC1F">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Orders" EntitySet="Orders" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

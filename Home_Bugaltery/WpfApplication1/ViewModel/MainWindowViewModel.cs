@@ -138,7 +138,7 @@ namespace WpfApplication1.ViewModel
         HomeBugalteryAction actHomeBogaltery;
 
         ObservableCollection<OrdersView> orders;
-        ObservableCollection<Users_HB> users;
+        ObservableCollection<Users> users;
 
         public MainWindowViewModel()
         {
@@ -146,7 +146,7 @@ namespace WpfApplication1.ViewModel
             actHomeBogaltery = new HomeBugalteryAction();
 
             DataGridOrdersItemsSource = orders = new ObservableCollection<OrdersView>();
-            ListBoxFamilyMembersItemsSource = users = new ObservableCollection<Users_HB>();
+            ListBoxFamilyMembersItemsSource = users = new ObservableCollection<Users>();
 
             UpdateDataGridOrders();
             UpdateListBoxFamilyMembers();
@@ -166,7 +166,7 @@ namespace WpfApplication1.ViewModel
         private void UpdateListBoxFamilyMembers()
         {
             users.Clear();
-            foreach (Users_HB user in homeBugaltery.ListUsers)
+            foreach (Users user in homeBugaltery.ListUsers)
                 users.Add(user);
         }
 

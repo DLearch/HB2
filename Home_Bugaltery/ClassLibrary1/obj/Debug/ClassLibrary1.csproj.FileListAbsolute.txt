@@ -35,3 +35,15 @@ C:\Users\student.LAN\Source\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru\Entity
 C:\Users\student.LAN\Source\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
 C:\Users\student.LAN\Source\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\student.LAN\Source\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.dll
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.dll
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.xml
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru\EntityFramework.resources.dll
+D:\my\KP\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru\EntityFramework.SqlServer.resources.dll

@@ -17,8 +17,8 @@ namespace ClassLibrary1
         BisnesLogic bisnesLogic;
         List<OrdersView> listOrders;
         List<OrdersView> filteredListOrders;
-        List<Categories_HB> listCategories;
-        List<Users_HB> listUsers;
+        List<Categories> listCategories;
+        List<Users> listUsers;
 
         public HomeBugaltery()
         {
@@ -30,8 +30,8 @@ namespace ClassLibrary1
 
         public List<OrdersView> ListOrders { get { if (filteredListOrders.Count == 0) return listOrders; else return filteredListOrders; } }
 
-        public List<Categories_HB> ListCategories { get { return listCategories; } }
-        public List<Users_HB> ListUsers { get { return listUsers; } }
+        public List<Categories> ListCategories { get { return listCategories; } }
+        public List<Users> ListUsers { get { return listUsers; } }
 
         public void addOrder(string categoryName, string userName, DateTime dateOrder, decimal price, string description)
         {

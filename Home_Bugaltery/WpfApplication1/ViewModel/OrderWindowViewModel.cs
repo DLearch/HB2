@@ -124,8 +124,8 @@ namespace WpfApplication1.ViewModel
                 if (!decimal.TryParse(TextBoxPriceText, out price))
                     return new OrdersView()
                     {
-                        CategoryName = (ComboBoxCategoriesSelectedItem as Categories_HB).Name,
-                        UserName = (ComboBoxCategoriesSelectedItem as Users_HB).Name,
+                        CategoryName = (ComboBoxCategoriesSelectedItem as Categories).Name,
+                        UserName = (ComboBoxCategoriesSelectedItem as Users).Name,
                         DateOrder = DatePickerDateSelectedDate,
                         Price = price,
                         Description = TextBoxDescriptionText

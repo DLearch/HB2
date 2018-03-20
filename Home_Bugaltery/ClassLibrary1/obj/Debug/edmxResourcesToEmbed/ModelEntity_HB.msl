@@ -1,18 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="Хранилище MarketModelContainer" CdmEntityContainer="MarketEntities">
-    <EntitySetMapping Name="Categories_HB">
-      <EntityTypeMapping TypeName="MarketModel.Categories_HB">
-        <MappingFragment StoreEntitySet="Categories_HB">
+  <EntityContainerMapping StorageEntityContainer="MarketModelStoreContainer" CdmEntityContainer="MarketEntities1">
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="MarketModel.Categories">
+        <MappingFragment StoreEntitySet="Categories">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Type" ColumnName="Type" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="LogHistDateOrder_HB">
-      <EntityTypeMapping TypeName="MarketModel.LogHistDateOrder_HB">
-        <MappingFragment StoreEntitySet="LogHistDateOrder_HB">
+    <EntitySetMapping Name="LogHistDateOrder">
+      <EntityTypeMapping TypeName="MarketModel.LogHistDateOrder">
+        <MappingFragment StoreEntitySet="LogHistDateOrder">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="OrderId" ColumnName="OrderId" />
           <ScalarProperty Name="DateOrder" ColumnName="DateOrder" />
@@ -20,9 +20,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Orders_HB">
-      <EntityTypeMapping TypeName="MarketModel.Orders_HB">
-        <MappingFragment StoreEntitySet="Orders_HB">
+    <EntitySetMapping Name="Orders">
+      <EntityTypeMapping TypeName="MarketModel.Orders">
+        <MappingFragment StoreEntitySet="Orders">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Category_Id" ColumnName="Category_Id" />
           <ScalarProperty Name="User_Id" ColumnName="User_Id" />
@@ -32,9 +32,9 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Users_HB">
-      <EntityTypeMapping TypeName="MarketModel.Users_HB">
-        <MappingFragment StoreEntitySet="Users_HB">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="MarketModel.Users">
+        <MappingFragment StoreEntitySet="Users">
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Password" ColumnName="Password" />
