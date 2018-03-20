@@ -53,16 +53,30 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panelFilters = new System.Windows.Forms.Panel();
             this.btnApplyFilters = new System.Windows.Forms.Button();
+            this.panelUserFilter = new System.Windows.Forms.Panel();
+            this.listBoxFilterUsers = new System.Windows.Forms.ListBox();
+            this.comboBoxUsers = new System.Windows.Forms.ComboBox();
             this.panelCategoryFilter = new System.Windows.Forms.Panel();
             this.listBoxFilterCategories = new System.Windows.Forms.ListBox();
+            this.btnRemoveCategoryFilter = new System.Windows.Forms.Button();
             this.btnAddCategoryFilter = new System.Windows.Forms.Button();
             this.comboBoxCategories = new System.Windows.Forms.ComboBox();
             this.checkBoxEnableCategoryFilter = new System.Windows.Forms.CheckBox();
-            this.btnRemoveCategoryFilter = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
+            this.btnRemoveUser = new System.Windows.Forms.Button();
+            this.checkBoxUserEnabletFilter = new System.Windows.Forms.CheckBox();
+            this.panelDateFilter = new System.Windows.Forms.Panel();
+            this.checkBoxDateFilter = new System.Windows.Forms.CheckBox();
+            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.panelFilters.SuspendLayout();
+            this.panelUserFilter.SuspendLayout();
             this.panelCategoryFilter.SuspendLayout();
+            this.panelDateFilter.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -243,11 +257,16 @@
             // panelFilters
             // 
             this.panelFilters.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelFilters.Controls.Add(this.checkBoxDateFilter);
+            this.panelFilters.Controls.Add(this.panelDateFilter);
+            this.panelFilters.Controls.Add(this.checkBoxUserEnabletFilter);
             this.panelFilters.Controls.Add(this.btnApplyFilters);
+            this.panelFilters.Controls.Add(this.panelUserFilter);
             this.panelFilters.Controls.Add(this.panelCategoryFilter);
-            this.panelFilters.Location = new System.Drawing.Point(12, 36);
+            this.panelFilters.Controls.Add(this.checkBoxEnableCategoryFilter);
+            this.panelFilters.Location = new System.Drawing.Point(12, 37);
             this.panelFilters.Name = "panelFilters";
-            this.panelFilters.Size = new System.Drawing.Size(765, 210);
+            this.panelFilters.Size = new System.Drawing.Size(765, 209);
             this.panelFilters.TabIndex = 27;
             // 
             // btnApplyFilters
@@ -260,6 +279,35 @@
             this.btnApplyFilters.UseVisualStyleBackColor = true;
             this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
             // 
+            // panelUserFilter
+            // 
+            this.panelUserFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelUserFilter.Controls.Add(this.btnRemoveUser);
+            this.panelUserFilter.Controls.Add(this.btnAddUser);
+            this.panelUserFilter.Controls.Add(this.listBoxFilterUsers);
+            this.panelUserFilter.Controls.Add(this.comboBoxUsers);
+            this.panelUserFilter.Location = new System.Drawing.Point(203, 24);
+            this.panelUserFilter.Name = "panelUserFilter";
+            this.panelUserFilter.Size = new System.Drawing.Size(147, 139);
+            this.panelUserFilter.TabIndex = 0;
+            // 
+            // listBoxFilterUsers
+            // 
+            this.listBoxFilterUsers.FormattingEnabled = true;
+            this.listBoxFilterUsers.Location = new System.Drawing.Point(9, 34);
+            this.listBoxFilterUsers.Name = "listBoxFilterUsers";
+            this.listBoxFilterUsers.Size = new System.Drawing.Size(125, 69);
+            this.listBoxFilterUsers.TabIndex = 3;
+            // 
+            // comboBoxUsers
+            // 
+            this.comboBoxUsers.FormattingEnabled = true;
+            this.comboBoxUsers.Location = new System.Drawing.Point(9, 5);
+            this.comboBoxUsers.Name = "comboBoxUsers";
+            this.comboBoxUsers.Size = new System.Drawing.Size(125, 21);
+            this.comboBoxUsers.TabIndex = 1;
+            this.comboBoxUsers.SelectedIndexChanged += new System.EventHandler(this.comboBoxUsers_SelectedIndexChanged);
+            // 
             // panelCategoryFilter
             // 
             this.panelCategoryFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -267,23 +315,32 @@
             this.panelCategoryFilter.Controls.Add(this.btnRemoveCategoryFilter);
             this.panelCategoryFilter.Controls.Add(this.btnAddCategoryFilter);
             this.panelCategoryFilter.Controls.Add(this.comboBoxCategories);
-            this.panelCategoryFilter.Controls.Add(this.checkBoxEnableCategoryFilter);
-            this.panelCategoryFilter.Location = new System.Drawing.Point(3, 3);
+            this.panelCategoryFilter.Location = new System.Drawing.Point(3, 21);
             this.panelCategoryFilter.Name = "panelCategoryFilter";
-            this.panelCategoryFilter.Size = new System.Drawing.Size(147, 162);
+            this.panelCategoryFilter.Size = new System.Drawing.Size(147, 144);
             this.panelCategoryFilter.TabIndex = 0;
             // 
             // listBoxFilterCategories
             // 
             this.listBoxFilterCategories.FormattingEnabled = true;
-            this.listBoxFilterCategories.Location = new System.Drawing.Point(9, 56);
+            this.listBoxFilterCategories.Location = new System.Drawing.Point(9, 34);
             this.listBoxFilterCategories.Name = "listBoxFilterCategories";
             this.listBoxFilterCategories.Size = new System.Drawing.Size(125, 69);
             this.listBoxFilterCategories.TabIndex = 3;
             // 
+            // btnRemoveCategoryFilter
+            // 
+            this.btnRemoveCategoryFilter.Location = new System.Drawing.Point(79, 112);
+            this.btnRemoveCategoryFilter.Name = "btnRemoveCategoryFilter";
+            this.btnRemoveCategoryFilter.Size = new System.Drawing.Size(55, 23);
+            this.btnRemoveCategoryFilter.TabIndex = 2;
+            this.btnRemoveCategoryFilter.Text = "Remove";
+            this.btnRemoveCategoryFilter.UseVisualStyleBackColor = true;
+            this.btnRemoveCategoryFilter.Click += new System.EventHandler(this.btnRemoveCategoryFilter_Click);
+            // 
             // btnAddCategoryFilter
             // 
-            this.btnAddCategoryFilter.Location = new System.Drawing.Point(11, 134);
+            this.btnAddCategoryFilter.Location = new System.Drawing.Point(11, 112);
             this.btnAddCategoryFilter.Name = "btnAddCategoryFilter";
             this.btnAddCategoryFilter.Size = new System.Drawing.Size(52, 23);
             this.btnAddCategoryFilter.TabIndex = 2;
@@ -294,7 +351,7 @@
             // comboBoxCategories
             // 
             this.comboBoxCategories.FormattingEnabled = true;
-            this.comboBoxCategories.Location = new System.Drawing.Point(9, 27);
+            this.comboBoxCategories.Location = new System.Drawing.Point(9, 5);
             this.comboBoxCategories.Name = "comboBoxCategories";
             this.comboBoxCategories.Size = new System.Drawing.Size(125, 21);
             this.comboBoxCategories.TabIndex = 1;
@@ -302,22 +359,102 @@
             // checkBoxEnableCategoryFilter
             // 
             this.checkBoxEnableCategoryFilter.AutoSize = true;
-            this.checkBoxEnableCategoryFilter.Location = new System.Drawing.Point(9, 9);
+            this.checkBoxEnableCategoryFilter.Location = new System.Drawing.Point(13, 3);
             this.checkBoxEnableCategoryFilter.Name = "checkBoxEnableCategoryFilter";
             this.checkBoxEnableCategoryFilter.Size = new System.Drawing.Size(125, 17);
             this.checkBoxEnableCategoryFilter.TabIndex = 0;
             this.checkBoxEnableCategoryFilter.Text = "Enable category filter";
             this.checkBoxEnableCategoryFilter.UseVisualStyleBackColor = true;
+            this.checkBoxEnableCategoryFilter.CheckedChanged += new System.EventHandler(this.checkBoxEnableCategoryFilter_CheckedChanged);
             // 
-            // btnRemoveCategoryFilter
+            // btnAddUser
             // 
-            this.btnRemoveCategoryFilter.Location = new System.Drawing.Point(79, 134);
-            this.btnRemoveCategoryFilter.Name = "btnRemoveCategoryFilter";
-            this.btnRemoveCategoryFilter.Size = new System.Drawing.Size(55, 23);
-            this.btnRemoveCategoryFilter.TabIndex = 2;
-            this.btnRemoveCategoryFilter.Text = "Remove";
-            this.btnRemoveCategoryFilter.UseVisualStyleBackColor = true;
-            this.btnRemoveCategoryFilter.Click += new System.EventHandler(this.btnRemoveCategoryFilter_Click);
+            this.btnAddUser.Location = new System.Drawing.Point(9, 109);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(55, 23);
+            this.btnAddUser.TabIndex = 4;
+            this.btnAddUser.Text = "Add";
+            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            // 
+            // btnRemoveUser
+            // 
+            this.btnRemoveUser.Location = new System.Drawing.Point(75, 109);
+            this.btnRemoveUser.Name = "btnRemoveUser";
+            this.btnRemoveUser.Size = new System.Drawing.Size(59, 23);
+            this.btnRemoveUser.TabIndex = 4;
+            this.btnRemoveUser.Text = "Remove";
+            this.btnRemoveUser.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnRemoveUser.UseVisualStyleBackColor = true;
+            this.btnRemoveUser.Click += new System.EventHandler(this.btnRemoveUser_Click);
+            // 
+            // checkBoxUserEnabletFilter
+            // 
+            this.checkBoxUserEnabletFilter.AutoSize = true;
+            this.checkBoxUserEnabletFilter.Location = new System.Drawing.Point(207, 3);
+            this.checkBoxUserEnabletFilter.Name = "checkBoxUserEnabletFilter";
+            this.checkBoxUserEnabletFilter.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxUserEnabletFilter.TabIndex = 5;
+            this.checkBoxUserEnabletFilter.Text = "Enabled user filter";
+            this.checkBoxUserEnabletFilter.UseVisualStyleBackColor = true;
+            this.checkBoxUserEnabletFilter.CheckedChanged += new System.EventHandler(this.checkBoxUserEnabletFilter_CheckedChanged);
+            // 
+            // panelDateFilter
+            // 
+            this.panelDateFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDateFilter.Controls.Add(this.dateTimePickerTo);
+            this.panelDateFilter.Controls.Add(this.label2);
+            this.panelDateFilter.Controls.Add(this.label1);
+            this.panelDateFilter.Controls.Add(this.dateTimePickerFrom);
+            this.panelDateFilter.Location = new System.Drawing.Point(500, 26);
+            this.panelDateFilter.Name = "panelDateFilter";
+            this.panelDateFilter.Size = new System.Drawing.Size(166, 133);
+            this.panelDateFilter.TabIndex = 6;
+            // 
+            // checkBoxDateFilter
+            // 
+            this.checkBoxDateFilter.AutoSize = true;
+            this.checkBoxDateFilter.Location = new System.Drawing.Point(504, 3);
+            this.checkBoxDateFilter.Name = "checkBoxDateFilter";
+            this.checkBoxDateFilter.Size = new System.Drawing.Size(111, 17);
+            this.checkBoxDateFilter.TabIndex = 7;
+            this.checkBoxDateFilter.Text = "Enabled date filter";
+            this.checkBoxDateFilter.UseVisualStyleBackColor = true;
+            this.checkBoxDateFilter.CheckedChanged += new System.EventHandler(this.checkBoxDateFilter_CheckedChanged);
+            // 
+            // dateTimePickerFrom
+            // 
+            this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(12, 23);
+            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(133, 20);
+            this.dateTimePickerFrom.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Date from :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Date to :";
+            // 
+            // dateTimePickerTo
+            // 
+            this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerTo.Location = new System.Drawing.Point(14, 82);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(131, 20);
+            this.dateTimePickerTo.TabIndex = 3;
             // 
             // Form1
             // 
@@ -335,8 +472,11 @@
             this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             this.panelFilters.ResumeLayout(false);
+            this.panelFilters.PerformLayout();
+            this.panelUserFilter.ResumeLayout(false);
             this.panelCategoryFilter.ResumeLayout(false);
-            this.panelCategoryFilter.PerformLayout();
+            this.panelDateFilter.ResumeLayout(false);
+            this.panelDateFilter.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -375,6 +515,18 @@
         private System.Windows.Forms.ComboBox comboBoxCategories;
         private System.Windows.Forms.CheckBox checkBoxEnableCategoryFilter;
         private System.Windows.Forms.Button btnRemoveCategoryFilter;
+        private System.Windows.Forms.Panel panelUserFilter;
+        private System.Windows.Forms.ListBox listBoxFilterUsers;
+        private System.Windows.Forms.ComboBox comboBoxUsers;
+        private System.Windows.Forms.Button btnRemoveUser;
+        private System.Windows.Forms.Button btnAddUser;
+        private System.Windows.Forms.CheckBox checkBoxUserEnabletFilter;
+        private System.Windows.Forms.CheckBox checkBoxDateFilter;
+        private System.Windows.Forms.Panel panelDateFilter;
+        private System.Windows.Forms.DateTimePicker dateTimePickerTo;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
     }
 }
 

@@ -38,7 +38,7 @@ namespace Home_Bugaltery
         {
             comboBoxCategory.Items.Clear();
 
-            foreach(Categories_HB category in homeBugaltery.ListCategories)
+            foreach(Categories category in homeBugaltery.ListCategories)
             {
                 comboBoxCategory.Items.Add(category.Name);
                 comboBoxCategory.SelectedIndex = 0;
@@ -49,7 +49,7 @@ namespace Home_Bugaltery
         {
             comboBoxUsers.Items.Clear();
 
-            foreach (Users_HB user in homeBugaltery.ListUsers)
+            foreach (Users user in homeBugaltery.ListUsers)
             {
                 comboBoxUsers.Items.Add(user.Name);
                 comboBoxUsers.SelectedIndex = 0;

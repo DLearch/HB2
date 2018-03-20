@@ -25,6 +25,7 @@ namespace ClassLibrary1
             bisnesLogic = new BisnesLogic();
 
             filteredListOrders = new List<OrdersView>();
+
             validateLocalData();
         }
 
@@ -52,33 +53,40 @@ namespace ClassLibrary1
             listUsers = bisnesLogic.GetAllUsers();
         }
 
+        // Filter for Orders
         public void aplyOrdersFilters(List<string> categoriesNames, List<string> usersNames = null, string dateFrom = null, string dateTo = null)
         {
             filteredListOrders.Clear();
 
             foreach(OrdersView order in listOrders)
             {
-                if (categoriesNames != null)
+                if ((categoriesNames == null || categoriesNames.IndexOf(order.CategoryName) != -1) &&
+                    (usersNames == null || usersNames.IndexOf(order.UserName) != -1))
                 {
-                    foreach (string categoryName in categoriesNames)
-                    {
-                        if (order.CategoryName == categoryName)
-                        {
-                            filteredListOrders.Add(order);
-                        }
-                    }
+                    filteredListOrders.Add(order);
                 }
 
-                if (usersNames != null)
-                {
-                    foreach (string userName in usersNames)
-                    {
-                        if (order.UserName == userName)
-                        {
-                            filteredListOrders.Add(order);
-                        }
-                    }
-                }
+                //if (categoriesNames != null)
+                //{
+                //    foreach (string categoryName in categoriesNames)
+                //    {
+                //        if (order.CategoryName == categoryName)
+                //        {
+                //            filteredListOrders.Add(order);
+                //        }
+                //    }
+                //}
+
+                //if (usersNames != null)
+                //{
+                //    foreach (string userName in usersNames)
+                //    {
+                //        if (order.UserName == userName)
+                //        {
+                //            filteredListOrders.Add(order);
+                //        }
+                //    }
+                //}
 
             }
         }
@@ -87,5 +95,6 @@ namespace ClassLibrary1
         {
             filteredListOrders.Clear();
         }
+       
     }
 }
