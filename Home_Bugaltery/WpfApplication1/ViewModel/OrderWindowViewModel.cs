@@ -146,34 +146,32 @@ namespace WpfApplication1.ViewModel
         }
 
         #endregion
-
-        private ObservableCollection<Users> _users;
-
+        
         public IEnumerable<Users> Users
         {
             set
             {
-                _users.Clear();
-                foreach (var user in value)
-                    _users.Add(user);
-                ComboBoxUsersItemsSource = _users;
+                ComboBoxUsersItemsSource = value;
+            }
+            get
+            {
+                return ComboBoxUsersItemsSource as IEnumerable<Users>;
             }
         }
-        private ObservableCollection<Categories> _categories;
 
         public IEnumerable<Categories> Categories
         {
             set
             {
-                _categories.Clear();
-                foreach (var category in value)
-                    _categories.Add(category);
-                ComboBoxCategoriesItemsSource = _categories;
+                ComboBoxCategoriesItemsSource = value;
+            }
+            get
+            {
+                return ComboBoxCategoriesItemsSource as IEnumerable<Categories>;
             }
         }
 
-
-
+        
         public OrdersView Order
         {
             get
@@ -194,28 +192,28 @@ namespace WpfApplication1.ViewModel
             set
             {
                 ComboBoxCategoriesSelectedIndex = -1;
-                for (int i = 0; i < _categories.Count; i++)
+                for (int i = 0; i < Categories.Count(); i++)
                 {
-                    if (_categories[i].Name == value.CategoryName)
+                    if (Categories.ElementAt(i).Name == value.CategoryName)
                     {
                         ComboBoxCategoriesSelectedIndex = i;
                         break;
                     }
                 }
                 if (ComboBoxCategoriesSelectedIndex == -1)
-                    throw new Exception(value.CategoryName + " не найден.");
+                    throw new Exception(value.CategoryName + " - не найдено.");
 
                 ComboBoxUsersSelectedIndex = -1;
-                for (int i = 0; i < _users.Count; i++)
+                for (int i = 0; i < Users.Count(); i++)
                 {
-                    if (_users[i].Name == value.UserName)
+                    if (Users.ElementAt(i).Name == value.UserName)
                     {
                         ComboBoxUsersSelectedIndex = i;
                         break;
                     }
                 }
                 if (ComboBoxUsersSelectedIndex == -1)
-                    throw new Exception(value.UserName + " не найден.");
+                    throw new Exception(value.UserName + " - не найдено.");
 
                 DatePickerDateSelectedDate = value.DateOrder;
                 TextBoxPriceText = value.Price.ToString();
@@ -226,8 +224,6 @@ namespace WpfApplication1.ViewModel
         public OrderWindowViewModel()
         {
             DatePickerDateSelectedDate = DateTime.Now;
-            _users = new ObservableCollection<Users>();
-            _categories = new ObservableCollection<Categories>();
         }
 
 

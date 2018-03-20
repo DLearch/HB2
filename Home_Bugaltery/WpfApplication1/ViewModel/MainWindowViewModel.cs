@@ -301,7 +301,7 @@ namespace WpfApplication1.ViewModel
             var datacontext = w.DataContext as OrderWindowViewModel;
             datacontext.Categories = homeBugaltery.ListCategories;
             datacontext.Users = homeBugaltery.ListUsers;
-            //datacontext.Order = ListViewOrdersSelectedItem as OrdersView;
+            datacontext.Order = ListViewOrdersSelectedItem as OrdersView;
             if (ShowDialog(w) == true)
             {
                 OrdersView order = (w.DataContext as OrderWindowViewModel).Order;
@@ -338,7 +338,7 @@ namespace WpfApplication1.ViewModel
             var datacontext = w.DataContext as OrderWindowViewModel;
             datacontext.Categories = homeBugaltery.ListCategories;
             datacontext.Users = homeBugaltery.ListUsers;
-            //datacontext.Order = ListViewOrdersSelectedItem as OrdersView;
+            datacontext.Order = ListViewOrdersSelectedItem as OrdersView;
             if (ShowDialog(w) == true)
             {
                 // Тут должен быть код изменения 
