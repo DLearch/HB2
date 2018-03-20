@@ -145,7 +145,8 @@ namespace WpfApplication1.ViewModel
             homeBugaltery = new HomeBugaltery();
             actHomeBogaltery = new HomeBugalteryAction();
 
-            DataGridOrdersItemsSource = orders = new ObservableCollection<OrdersView>();
+            orders = new ObservableCollection<OrdersView>();
+            DataGridOrdersItemsSource = orders;
             ListBoxFamilyMembersItemsSource = users = new ObservableCollection<Users>();
 
             UpdateDataGridOrders();
