@@ -33,6 +33,20 @@ Create Table HB.LogHistDateOrder(
 [Summa] money NOT NULL
 )
 
+/* 
+Create Table HB.Users(
+	[Id] int identity primary key not null,
+	[Email] nvarchar(50) not null,
+	[Name] nvarchar(50) not null,
+	[Password] nvarchar(50) not null
+)
+
+Create Table HB.FamilyMembers(
+	[Id] int identity primary key not null,
+	[Name] nvarchar(50) not null,
+	[User_Id] int not null foreign key references HB.Users(Id)
+)
+ */
 --тригер, который автоматически после каждой покупки дописывает в отдельную таблицу количество потраченных денег 
 -- (подсчёт суммы денег которая потрачена на покупки)
 CREATE TRIGGER HB.InsertGodds_tg
