@@ -73,6 +73,7 @@
     <Compile Include="Categories.cs">
       <DependentUpon>ModelEntity_HB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ChangeOrderCommand.cs" />
     <Compile Include="DataTypes.cs" />
     <Compile Include="DeleteOrderCommand.cs" />
     <Compile Include="HomeBugaltery.cs" />

@@ -13,6 +13,7 @@ namespace Home_Bugaltery
 {
     public partial class Form1 : Form
     {
+        ContextMenu dataGridContextMenu;
 
         HomeBugaltery homeBugaltery;
         HomeBugalteryAction actHomeBogaltery;
@@ -23,11 +24,20 @@ namespace Home_Bugaltery
         {
             InitializeComponent();
 
+            // ContextMenu for dataGrid "Edit", "delete"
+            dataGridContextMenu = new ContextMenu(new MenuItem[] { new MenuItem("Edit", new EventHandler(onContextEditClick)),
+                                                                   new MenuItem("Delete", new EventHandler(onContextDeleteClick))});
+
+            dataGridViewOrders.ContextMenu = dataGridContextMenu;
+
+
+
             homeBugaltery = new HomeBugaltery();
             actHomeBogaltery = new HomeBugalteryAction();
 
             newDocument = new NewDocumentForm(homeBugaltery, actHomeBogaltery);
 
+            // Update
             updateOrdersGrid();
 
             updateCategorysFilter();
@@ -50,6 +60,8 @@ namespace Home_Bugaltery
                 dataGridViewOrders.Rows[rowIndex].Cells[2].Value = orderView.DateOrder;
                 dataGridViewOrders.Rows[rowIndex].Cells[3].Value = orderView.Price;
                 dataGridViewOrders.Rows[rowIndex].Cells[4].Value = orderView.Description;
+                //Tag - id order
+                dataGridViewOrders.Rows[rowIndex].Tag = orderView.Id;
 
             }
         }
@@ -77,7 +89,7 @@ namespace Home_Bugaltery
         // New Orders
         private void newDocumentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newDocument.ShowDialog();
+            newDocument.showForm();
 
             updateOrdersGrid();
         }
@@ -109,7 +121,7 @@ namespace Home_Bugaltery
                 listBoxFilterUsers.Items.Remove(selectedUser);
         }
 
-
+        // Apply filter
         private void btnApplyFilters_Click(object sender, EventArgs e)
         {
             if (checkBoxEnableCategoryFilter.Checked == false && checkBoxUserEnabletFilter.Checked == false && checkBoxDateFilter.Checked == false)
@@ -158,6 +170,7 @@ namespace Home_Bugaltery
 
         }
 
+        // checkBoxUserFilter
         private void checkBoxUserEnabletFilter_CheckedChanged(object sender, EventArgs e)
         {
             panelUserFilter.Enabled = checkBoxUserEnabletFilter.Checked;
@@ -165,6 +178,7 @@ namespace Home_Bugaltery
                 listBoxFilterUsers.Items.Clear();
         }
 
+        //checkBoxCategoryFilter
         private void checkBoxEnableCategoryFilter_CheckedChanged(object sender, EventArgs e)
         {
             panelCategoryFilter.Enabled = checkBoxEnableCategoryFilter.Checked;
@@ -172,10 +186,45 @@ namespace Home_Bugaltery
                 listBoxFilterCategories.Items.Clear();
         }
 
+        //checkBoxDateFilter
         private void checkBoxDateFilter_CheckedChanged(object sender, EventArgs e)
         {
             //panelDateFilter.Enabled = checkBoxDateFilter.Checked;
             checkBoxDateFilter.Enabled = false;
         }
+
+        private void dataGridViewOrders_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dataGridViewOrders_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                dataGridViewOrders.ClearSelection();
+                dataGridViewOrders.Rows[e.RowIndex].Selected = true;
+                dataGridViewOrders.ContextMenu.Show(dataGridViewOrders, dataGridViewOrders.PointToClient(Cursor.Position));
+            }
+        }
+
+        private void onContextEditClick(object o, EventArgs ea)
+        {
+            newDocument.showForm((int)dataGridViewOrders.SelectedRows[0].Tag);
+            updateOrdersGrid();
+        }
+
+        private void onContextDeleteClick(object o, EventArgs ea)
+        {
+            MessageBox.Show("Delete");
+
+            if (dataGridViewOrders.SelectedRows.Count > 0)
+            {
+                homeBugaltery.deleteOrder((int)dataGridViewOrders.SelectedRows[0].Tag);
+            }
+
+            updateOrdersGrid();
+        }
+
     }
 }

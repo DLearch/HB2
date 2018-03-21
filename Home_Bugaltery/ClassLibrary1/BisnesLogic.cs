@@ -16,14 +16,14 @@ namespace ClassLibrary1
 
         }
 
-        public List<Users> GetAllUsers()
+        public List<Users> getAllUsers()
         {
             var users = db.Users.Select(user => user);
 
             return users.ToList();
         }
 
-        public List<Categories> GetAllCategory()
+        public List<Categories> getAllCategory()
         {
             //var result = from i in db.Categories
             //           select i;
@@ -34,7 +34,7 @@ namespace ClassLibrary1
             return result.ToList();
         }
 
-        public List<OrdersView> GetAllOrders()
+        public List<OrdersView> getAllOrders()
         {
 
             var result = (from order in db.Orders
@@ -42,6 +42,7 @@ namespace ClassLibrary1
                           join user in db.Users on order.User_Id equals user.Id
                           select new OrdersView
                           {
+                              Id = order.Id,
                               CategoryName = category.Name,
                               UserName = user.Name,
                               DateOrder = order.Date,
@@ -53,14 +54,23 @@ namespace ClassLibrary1
             return result;
         }
 
-        public string GetCategoryName(int index)
+        public string getCategoryName(int index)
         {
             var categoryName = db.Categories.FirstOrDefault(categ => categ.Id == index).Name;
 
             return categoryName;
         }
 
-        public void AddOrder(string categoryName, string userName, DateTime dateOrder, decimal price, string description)
+        public bool userIdentification(string login, string pass)
+        {
+            var user = db.Users.Where(u => u.Name == login && u.Password == pass);
+            return true;
+        }
+
+
+
+
+        public void addOrder(string categoryName, string userName, DateTime dateOrder, decimal price, string description)
         {
             var categoryId = db.Categories.Where(cat => cat.Name == categoryName)
                                           .Select(x => x.Id).FirstOrDefault();
@@ -71,6 +81,68 @@ namespace ClassLibrary1
             var newOrder = new Orders() { Category_Id = categoryId, User_Id = userId, Date = dateOrder, Price = price, Description = description };
             db.Orders.Add(newOrder);
             db.SaveChanges();
+        }
+
+        public void addCategory(string categoryName, bool type)
+        {
+            var newCategory = new Categories()
+            {
+                Name = categoryName,
+                Type = type
+            };
+
+            db.Categories.Add(newCategory);
+            db.SaveChanges();
+        }
+
+        public void addUser(string userName, string pass)
+        {
+            var newUser = new Users()
+            {
+                Name = userName,
+                Password = pass
+            };
+
+            db.Users.Add(newUser);
+            db.SaveChanges();
+        }
+
+
+
+
+        public void deleteOrder(int id)
+        {
+            var orderToDelete = db.Orders.Where(o => o.Id == id).FirstOrDefault();
+
+            if (orderToDelete != null)
+            {
+                db.Orders.Remove(orderToDelete);
+                db.SaveChanges();
+            }
+        }
+
+        public void changeOrder(int id, string categoryName, string userName, DateTime dateOrder, decimal price, string description)
+        {
+            var orderToChange = db.Orders.Where(o => o.Id == id).FirstOrDefault();
+
+            //Orders orderToChange = new Orders();
+
+            var categoryId = db.Categories.Where(cat => cat.Name == categoryName)
+                                          .Select(x => x.Id).FirstOrDefault();
+
+            var userId = db.Users.Where(user => user.Name == userName)
+                                          .Select(u => u.Id).FirstOrDefault();
+            orderToChange.Category_Id = categoryId;
+            orderToChange.User_Id = userId;
+            orderToChange.Date = dateOrder;
+            orderToChange.Price = price;
+            orderToChange.Description = description;
+
+            //db.Orders.Add(orderToChange);
+            //db.Entry(orderToChange).State = System.Data.Entity.EntityState.Modified;
+
+            db.SaveChanges();
+
         }
     }
 }

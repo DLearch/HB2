@@ -36,21 +36,34 @@ namespace ClassLibrary1
 
         public void addOrder(string categoryName, string userName, DateTime dateOrder, decimal price, string description)
         {
-            bisnesLogic.AddOrder(categoryName, userName, dateOrder, price, description);
+            bisnesLogic.addOrder(categoryName, userName, dateOrder, price, description);
             validateLocalData();
         }
 
-        public void addCategory(string gategoryName)
+        public void addCategory(string categoryName, bool type)
         {
+            bisnesLogic.addCategory(categoryName, type);
+            validateLocalData();
+        }
 
+        public void changeOrder(int id, string categoryName, string userName, DateTime dateOrder, decimal price, string description)
+        {
+            bisnesLogic.changeOrder(id, categoryName, userName, dateOrder, price, description);
+            validateLocalData();
+        }
+
+        public void deleteOrder(int index)
+        {      
+            bisnesLogic.deleteOrder(index);
+            validateLocalData();
         }
 
         public void validateLocalData()
         {
             // Valid data with
-            listOrders = bisnesLogic.GetAllOrders();
-            listCategories = bisnesLogic.GetAllCategory();
-            listUsers = bisnesLogic.GetAllUsers();
+            listOrders = bisnesLogic.getAllOrders();
+            listCategories = bisnesLogic.getAllCategory();
+            listUsers = bisnesLogic.getAllUsers();
         }
 
         // Filter for Orders

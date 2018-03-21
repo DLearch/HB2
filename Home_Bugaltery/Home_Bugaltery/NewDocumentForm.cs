@@ -14,11 +14,11 @@ namespace Home_Bugaltery
     enum HomeActionEnum
     {
         addOrder = 0,
-
+        changeOrder = 1
     }
     public partial class NewDocumentForm : Form
     {
-       
+        OrdersView currentOrder = null;       
         HomeBugaltery homeBugaltery;
         HomeBugalteryAction actHomeBogaltery;
 
@@ -28,10 +28,14 @@ namespace Home_Bugaltery
 
             this.homeBugaltery = homeBugaltery;
             this.actHomeBogaltery = actHomeBogaltery;
+        }
 
-            updateCategorys();
-            updateUsers();
-
+        public void showForm(int orderId = -1)
+        {
+           
+            currentOrder = homeBugaltery.ListOrders.Find(x => x.Id == orderId);
+            updateForm();
+            ShowDialog();
         }
 
         private void updateCategorys()
@@ -41,8 +45,8 @@ namespace Home_Bugaltery
             foreach(Categories category in homeBugaltery.ListCategories)
             {
                 comboBoxCategory.Items.Add(category.Name);
-                comboBoxCategory.SelectedIndex = 0;
             }
+            comboBoxCategory.SelectedIndex = 0;
         }
 
         private void updateUsers()
@@ -52,7 +56,28 @@ namespace Home_Bugaltery
             foreach (Users user in homeBugaltery.ListUsers)
             {
                 comboBoxUsers.Items.Add(user.Name);
-                comboBoxUsers.SelectedIndex = 0;
+            }
+            comboBoxUsers.SelectedIndex = 0;
+        }
+
+        private void updateForm()
+        {
+            updateCategorys();
+            updateUsers();
+
+            if (currentOrder != null)
+            {
+                comboBoxCategory.SelectedItem = currentOrder.CategoryName;
+                comboBoxUsers.SelectedItem = currentOrder.UserName;
+                dateTimePickerOrder.Value = currentOrder.DateOrder;
+                numericUpDownSumm.Value = currentOrder.Price;
+                textBoxDescription.Text = currentOrder.Description;
+            }
+            else
+            {
+                numericUpDownSumm.Value = 0;
+                textBoxDescription.Text = "";
+                dateTimePickerOrder.Value = DateTime.Now;
             }
         }
 
@@ -64,11 +89,24 @@ namespace Home_Bugaltery
                 MessageBox.Show("Cannot add order!\nPlease check inputed data and try again!!!");
                 return;
             }
-            actHomeBogaltery.SetCommand((int)HomeActionEnum.addOrder,
-                                            new AddNewOrderCommand(homeBugaltery, comboBoxCategory.SelectedItem.ToString(), comboBoxUsers.SelectedItem.ToString(),
-                                                                dateTimePickerOrder.Value, numericUpDownSumm.Value,
-                                                                textBoxDescription.Text));
-            actHomeBogaltery.DoAction((int)HomeActionEnum.addOrder);
+            // Command change
+            if (currentOrder != null)
+            {
+                // MessageBox.Show("Need to implement edit logics");
+                actHomeBogaltery.SetCommand((int)HomeActionEnum.changeOrder, new ChangeOrderCommand(homeBugaltery, currentOrder.Id,
+                                                                            comboBoxCategory.SelectedItem.ToString(), comboBoxUsers.SelectedItem.ToString(),
+                                                                            dateTimePickerOrder.Value, numericUpDownSumm.Value,
+                                                                            textBoxDescription.Text));
+                actHomeBogaltery.DoAction((int)HomeActionEnum.changeOrder);
+            }
+            else
+            {
+                actHomeBogaltery.SetCommand((int)HomeActionEnum.addOrder,
+                                                new AddNewOrderCommand(homeBugaltery, comboBoxCategory.SelectedItem.ToString(), comboBoxUsers.SelectedItem.ToString(),
+                                                                    dateTimePickerOrder.Value, numericUpDownSumm.Value,
+                                                                    textBoxDescription.Text));
+                actHomeBogaltery.DoAction((int)HomeActionEnum.addOrder);
+            }
             
             this.Close();
         }

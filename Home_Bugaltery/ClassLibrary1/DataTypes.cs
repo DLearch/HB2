@@ -8,6 +8,7 @@ namespace ClassLibrary1
 {
     public class OrdersView
     {
+        public int Id { get; set; }
         public string CategoryName { get; set; }
         public string UserName { get; set; }
         public System.DateTime DateOrder { get; set; }

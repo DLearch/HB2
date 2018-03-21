@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.довідникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.члениСімїToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,8 +53,17 @@
             this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.panelFilters = new System.Windows.Forms.Panel();
+            this.checkBoxDateFilter = new System.Windows.Forms.CheckBox();
+            this.panelDateFilter = new System.Windows.Forms.Panel();
+            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
+            this.checkBoxUserEnabletFilter = new System.Windows.Forms.CheckBox();
             this.btnApplyFilters = new System.Windows.Forms.Button();
             this.panelUserFilter = new System.Windows.Forms.Panel();
+            this.btnRemoveUser = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
             this.listBoxFilterUsers = new System.Windows.Forms.ListBox();
             this.comboBoxUsers = new System.Windows.Forms.ComboBox();
             this.panelCategoryFilter = new System.Windows.Forms.Panel();
@@ -62,21 +72,16 @@
             this.btnAddCategoryFilter = new System.Windows.Forms.Button();
             this.comboBoxCategories = new System.Windows.Forms.ComboBox();
             this.checkBoxEnableCategoryFilter = new System.Windows.Forms.CheckBox();
-            this.btnAddUser = new System.Windows.Forms.Button();
-            this.btnRemoveUser = new System.Windows.Forms.Button();
-            this.checkBoxUserEnabletFilter = new System.Windows.Forms.CheckBox();
-            this.panelDateFilter = new System.Windows.Forms.Panel();
-            this.checkBoxDateFilter = new System.Windows.Forms.CheckBox();
-            this.dateTimePickerFrom = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
+            this.contextMenuCategories = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.додатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.редагуватиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.panelFilters.SuspendLayout();
+            this.panelDateFilter.SuspendLayout();
             this.panelUserFilter.SuspendLayout();
             this.panelCategoryFilter.SuspendLayout();
-            this.panelDateFilter.SuspendLayout();
+            this.contextMenuCategories.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -211,8 +216,11 @@
             this.dataGridViewOrders.Location = new System.Drawing.Point(12, 277);
             this.dataGridViewOrders.Name = "dataGridViewOrders";
             this.dataGridViewOrders.ReadOnly = true;
+            this.dataGridViewOrders.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewOrders.Size = new System.Drawing.Size(765, 311);
             this.dataGridViewOrders.TabIndex = 26;
+            this.dataGridViewOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrders_CellClick);
+            this.dataGridViewOrders.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOrders_CellMouseClick);
             // 
             // Category
             // 
@@ -269,6 +277,74 @@
             this.panelFilters.Size = new System.Drawing.Size(765, 209);
             this.panelFilters.TabIndex = 27;
             // 
+            // checkBoxDateFilter
+            // 
+            this.checkBoxDateFilter.AutoSize = true;
+            this.checkBoxDateFilter.Location = new System.Drawing.Point(504, 3);
+            this.checkBoxDateFilter.Name = "checkBoxDateFilter";
+            this.checkBoxDateFilter.Size = new System.Drawing.Size(111, 17);
+            this.checkBoxDateFilter.TabIndex = 7;
+            this.checkBoxDateFilter.Text = "Enabled date filter";
+            this.checkBoxDateFilter.UseVisualStyleBackColor = true;
+            this.checkBoxDateFilter.CheckedChanged += new System.EventHandler(this.checkBoxDateFilter_CheckedChanged);
+            // 
+            // panelDateFilter
+            // 
+            this.panelDateFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDateFilter.Controls.Add(this.dateTimePickerTo);
+            this.panelDateFilter.Controls.Add(this.label2);
+            this.panelDateFilter.Controls.Add(this.label1);
+            this.panelDateFilter.Controls.Add(this.dateTimePickerFrom);
+            this.panelDateFilter.Location = new System.Drawing.Point(500, 26);
+            this.panelDateFilter.Name = "panelDateFilter";
+            this.panelDateFilter.Size = new System.Drawing.Size(166, 133);
+            this.panelDateFilter.TabIndex = 6;
+            // 
+            // dateTimePickerTo
+            // 
+            this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerTo.Location = new System.Drawing.Point(14, 82);
+            this.dateTimePickerTo.Name = "dateTimePickerTo";
+            this.dateTimePickerTo.Size = new System.Drawing.Size(131, 20);
+            this.dateTimePickerTo.TabIndex = 3;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(18, 66);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Date to :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Date from :";
+            // 
+            // dateTimePickerFrom
+            // 
+            this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dateTimePickerFrom.Location = new System.Drawing.Point(12, 23);
+            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
+            this.dateTimePickerFrom.Size = new System.Drawing.Size(133, 20);
+            this.dateTimePickerFrom.TabIndex = 0;
+            // 
+            // checkBoxUserEnabletFilter
+            // 
+            this.checkBoxUserEnabletFilter.AutoSize = true;
+            this.checkBoxUserEnabletFilter.Location = new System.Drawing.Point(207, 3);
+            this.checkBoxUserEnabletFilter.Name = "checkBoxUserEnabletFilter";
+            this.checkBoxUserEnabletFilter.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxUserEnabletFilter.TabIndex = 5;
+            this.checkBoxUserEnabletFilter.Text = "Enabled user filter";
+            this.checkBoxUserEnabletFilter.UseVisualStyleBackColor = true;
+            this.checkBoxUserEnabletFilter.CheckedChanged += new System.EventHandler(this.checkBoxUserEnabletFilter_CheckedChanged);
+            // 
             // btnApplyFilters
             // 
             this.btnApplyFilters.Location = new System.Drawing.Point(3, 171);
@@ -290,6 +366,27 @@
             this.panelUserFilter.Name = "panelUserFilter";
             this.panelUserFilter.Size = new System.Drawing.Size(147, 139);
             this.panelUserFilter.TabIndex = 0;
+            // 
+            // btnRemoveUser
+            // 
+            this.btnRemoveUser.Location = new System.Drawing.Point(75, 109);
+            this.btnRemoveUser.Name = "btnRemoveUser";
+            this.btnRemoveUser.Size = new System.Drawing.Size(59, 23);
+            this.btnRemoveUser.TabIndex = 4;
+            this.btnRemoveUser.Text = "Remove";
+            this.btnRemoveUser.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btnRemoveUser.UseVisualStyleBackColor = true;
+            this.btnRemoveUser.Click += new System.EventHandler(this.btnRemoveUser_Click);
+            // 
+            // btnAddUser
+            // 
+            this.btnAddUser.Location = new System.Drawing.Point(9, 109);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(55, 23);
+            this.btnAddUser.TabIndex = 4;
+            this.btnAddUser.Text = "Add";
+            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // listBoxFilterUsers
             // 
@@ -367,94 +464,25 @@
             this.checkBoxEnableCategoryFilter.UseVisualStyleBackColor = true;
             this.checkBoxEnableCategoryFilter.CheckedChanged += new System.EventHandler(this.checkBoxEnableCategoryFilter_CheckedChanged);
             // 
-            // btnAddUser
+            // contextMenuCategories
             // 
-            this.btnAddUser.Location = new System.Drawing.Point(9, 109);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(55, 23);
-            this.btnAddUser.TabIndex = 4;
-            this.btnAddUser.Text = "Add";
-            this.btnAddUser.UseVisualStyleBackColor = true;
-            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            this.contextMenuCategories.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.додатиToolStripMenuItem,
+            this.редагуватиToolStripMenuItem});
+            this.contextMenuCategories.Name = "contextMenuCategories";
+            this.contextMenuCategories.Size = new System.Drawing.Size(135, 48);
             // 
-            // btnRemoveUser
+            // додатиToolStripMenuItem
             // 
-            this.btnRemoveUser.Location = new System.Drawing.Point(75, 109);
-            this.btnRemoveUser.Name = "btnRemoveUser";
-            this.btnRemoveUser.Size = new System.Drawing.Size(59, 23);
-            this.btnRemoveUser.TabIndex = 4;
-            this.btnRemoveUser.Text = "Remove";
-            this.btnRemoveUser.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
-            this.btnRemoveUser.UseVisualStyleBackColor = true;
-            this.btnRemoveUser.Click += new System.EventHandler(this.btnRemoveUser_Click);
+            this.додатиToolStripMenuItem.Name = "додатиToolStripMenuItem";
+            this.додатиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.додатиToolStripMenuItem.Text = "Додати";
             // 
-            // checkBoxUserEnabletFilter
+            // редагуватиToolStripMenuItem
             // 
-            this.checkBoxUserEnabletFilter.AutoSize = true;
-            this.checkBoxUserEnabletFilter.Location = new System.Drawing.Point(207, 3);
-            this.checkBoxUserEnabletFilter.Name = "checkBoxUserEnabletFilter";
-            this.checkBoxUserEnabletFilter.Size = new System.Drawing.Size(110, 17);
-            this.checkBoxUserEnabletFilter.TabIndex = 5;
-            this.checkBoxUserEnabletFilter.Text = "Enabled user filter";
-            this.checkBoxUserEnabletFilter.UseVisualStyleBackColor = true;
-            this.checkBoxUserEnabletFilter.CheckedChanged += new System.EventHandler(this.checkBoxUserEnabletFilter_CheckedChanged);
-            // 
-            // panelDateFilter
-            // 
-            this.panelDateFilter.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelDateFilter.Controls.Add(this.dateTimePickerTo);
-            this.panelDateFilter.Controls.Add(this.label2);
-            this.panelDateFilter.Controls.Add(this.label1);
-            this.panelDateFilter.Controls.Add(this.dateTimePickerFrom);
-            this.panelDateFilter.Location = new System.Drawing.Point(500, 26);
-            this.panelDateFilter.Name = "panelDateFilter";
-            this.panelDateFilter.Size = new System.Drawing.Size(166, 133);
-            this.panelDateFilter.TabIndex = 6;
-            // 
-            // checkBoxDateFilter
-            // 
-            this.checkBoxDateFilter.AutoSize = true;
-            this.checkBoxDateFilter.Location = new System.Drawing.Point(504, 3);
-            this.checkBoxDateFilter.Name = "checkBoxDateFilter";
-            this.checkBoxDateFilter.Size = new System.Drawing.Size(111, 17);
-            this.checkBoxDateFilter.TabIndex = 7;
-            this.checkBoxDateFilter.Text = "Enabled date filter";
-            this.checkBoxDateFilter.UseVisualStyleBackColor = true;
-            this.checkBoxDateFilter.CheckedChanged += new System.EventHandler(this.checkBoxDateFilter_CheckedChanged);
-            // 
-            // dateTimePickerFrom
-            // 
-            this.dateTimePickerFrom.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerFrom.Location = new System.Drawing.Point(12, 23);
-            this.dateTimePickerFrom.Name = "dateTimePickerFrom";
-            this.dateTimePickerFrom.Size = new System.Drawing.Size(133, 20);
-            this.dateTimePickerFrom.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Date from :";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(18, 66);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Date to :";
-            // 
-            // dateTimePickerTo
-            // 
-            this.dateTimePickerTo.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePickerTo.Location = new System.Drawing.Point(14, 82);
-            this.dateTimePickerTo.Name = "dateTimePickerTo";
-            this.dateTimePickerTo.Size = new System.Drawing.Size(131, 20);
-            this.dateTimePickerTo.TabIndex = 3;
+            this.редагуватиToolStripMenuItem.Name = "редагуватиToolStripMenuItem";
+            this.редагуватиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
+            this.редагуватиToolStripMenuItem.Text = "Редагувати";
             // 
             // Form1
             // 
@@ -473,10 +501,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).EndInit();
             this.panelFilters.ResumeLayout(false);
             this.panelFilters.PerformLayout();
-            this.panelUserFilter.ResumeLayout(false);
-            this.panelCategoryFilter.ResumeLayout(false);
             this.panelDateFilter.ResumeLayout(false);
             this.panelDateFilter.PerformLayout();
+            this.panelUserFilter.ResumeLayout(false);
+            this.panelCategoryFilter.ResumeLayout(false);
+            this.contextMenuCategories.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -527,6 +556,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DateTimePicker dateTimePickerFrom;
+        private System.Windows.Forms.ContextMenuStrip contextMenuCategories;
+        private System.Windows.Forms.ToolStripMenuItem додатиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem редагуватиToolStripMenuItem;
     }
 }
 

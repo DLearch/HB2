@@ -6,23 +6,22 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
+    // 1.3. Конкретная команда - AddCategory
     public class AddCategoryCommand : ICommand
     {
         HomeBugaltery homeBugaltery;
         string categoryName;
-        string price;
-        string description;
+        bool type;
 
-        public AddCategoryCommand(HomeBugaltery homeBugaltery, string categoryName, string price, string description)
+        public AddCategoryCommand(HomeBugaltery homeBugaltery, string categoryName, bool type)
         {
             this.homeBugaltery = homeBugaltery;
             this.categoryName = categoryName;
-            this.price = price;
-            this.description = description;
+            this.type = type;
         }
         public void Execute()
         {
-            homeBugaltery.addCategory(categoryName);
+            homeBugaltery.addCategory(categoryName, type);
         }
 
 
