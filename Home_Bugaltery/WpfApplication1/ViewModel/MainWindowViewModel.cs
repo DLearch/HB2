@@ -59,6 +59,10 @@ namespace WpfApplication1.ViewModel
             ShowCommand.Execute("GridOrdersUControl");
         }
 
+        void UpdateGridOrdersUControl()
+        {
+            (GridOrdersUControlDataContext as GridOrdersUControlViewModel).Update();
+        }
 
         #region Show Command
 
@@ -128,11 +132,6 @@ namespace WpfApplication1.ViewModel
                 return _addOrderCommand;
             }
         }
-        enum organiserActionEnum
-        {
-            addOrder = 0,
-
-        }
 
         public void ExecuteAddOrderCommand(object parameter)
         {
@@ -143,14 +142,14 @@ namespace WpfApplication1.ViewModel
             if (ShowDialog(w) == true)
             {
                 OrdersView order = (w.DataContext as OrderWindowViewModel).Order;
-                actHomeBogaltery.SetCommand((int)organiserActionEnum.addOrder,
-                                                new AddNewOrderCommand(homeBugaltery,
-                                                                        order.CategoryName,
-                                                                        order.UserName,
-                                                                        order.DateOrder,
-                                                                        order.Price,
-                                                                        order.Description));
-                actHomeBogaltery.DoAction((int)organiserActionEnum.addOrder);
+
+                homeBugaltery.addOrder(order.CategoryName,
+                                        order.UserName,
+                                        order.DateOrder,
+                                        order.Price,
+                                        order.Description);
+
+                UpdateGridOrdersUControl();
             }
         }
 

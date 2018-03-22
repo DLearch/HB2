@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using WpfApplication1.Infrastructure;
+using WpfApplication1.View;
 
 namespace WpfApplication1.ViewModel
 {
@@ -85,11 +86,34 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteEditOrderCommand(object parameter)
         {
+            OrdersView oldOrder = parameter as OrdersView;
+
+            OrderWindow w = new OrderWindow();
+
+            var datacontext = w.DataContext as OrderWindowViewModel;
+
+            datacontext.Categories = HomeBugaltery.ListCategories;
+            datacontext.Users = HomeBugaltery.ListUsers;
+            datacontext.Order = oldOrder;
+
+            if (ShowDialog(w) == true)
+            {
+                HomeBugaltery.deleteOrder(orders.IndexOf(oldOrder));
+                OrdersView newOrder = datacontext.Order;
+                
+                HomeBugaltery.addOrder(newOrder.CategoryName,
+                                        newOrder.UserName,
+                                        newOrder.DateOrder,
+                                        newOrder.Price,
+                                        newOrder.Description);
+
+                Update();
+            }
         }
 
         public bool CanExecuteEditOrderCommand(object parameter)
         {
-            return false;
+            return parameter != null;
         }
         #endregion
 
@@ -108,11 +132,13 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteRemoveOrderCommand(object parameter)
         {
+            HomeBugaltery.deleteOrder(HomeBugaltery.ListOrders.IndexOf(parameter as OrdersView));
+            Update();
         }
 
         public bool CanExecuteRemoveOrderCommand(object parameter)
         {
-            return false;
+            return parameter != null;
         }
         #endregion
         
