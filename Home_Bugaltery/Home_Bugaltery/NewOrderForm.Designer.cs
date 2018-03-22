@@ -1,6 +1,6 @@
 ﻿namespace Home_Bugaltery
 {
-    partial class NewDocumentForm
+    partial class NewOrderForm
     {
         /// <summary>
         /// Required designer variable.

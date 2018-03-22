@@ -33,6 +33,7 @@
             this.довідникиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.члениСімїToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.категоріїToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.операціяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemRedactOrder = new System.Windows.Forms.ToolStripMenuItem();
@@ -46,11 +47,6 @@
             this.допомогаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проРозробниківToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.panelFilters = new System.Windows.Forms.Panel();
             this.checkBoxDateFilter = new System.Windows.Forms.CheckBox();
@@ -75,6 +71,11 @@
             this.contextMenuCategories = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.додатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.редагуватиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.panelFilters.SuspendLayout();
@@ -101,7 +102,8 @@
             // 
             this.довідникиToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.члениСімїToolStripMenuItem,
-            this.категоріїToolStripMenuItem});
+            this.категоріїToolStripMenuItem,
+            this.categoryToolStripMenuItem});
             this.довідникиToolStripMenuItem.Name = "довідникиToolStripMenuItem";
             this.довідникиToolStripMenuItem.Size = new System.Drawing.Size(76, 20);
             this.довідникиToolStripMenuItem.Text = "Довідники";
@@ -117,6 +119,13 @@
             this.категоріїToolStripMenuItem.Name = "категоріїToolStripMenuItem";
             this.категоріїToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
             this.категоріїToolStripMenuItem.Text = "Доходи і витрати";
+            // 
+            // categoryToolStripMenuItem
+            // 
+            this.categoryToolStripMenuItem.Name = "categoryToolStripMenuItem";
+            this.categoryToolStripMenuItem.Size = new System.Drawing.Size(166, 22);
+            this.categoryToolStripMenuItem.Text = "Категорії";
+            this.categoryToolStripMenuItem.Click += new System.EventHandler(this.categoryToolStripMenuItem_Click);
             // 
             // операціяToolStripMenuItem
             // 
@@ -222,37 +231,6 @@
             this.dataGridViewOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrders_CellClick);
             this.dataGridViewOrders.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOrders_CellMouseClick);
             // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
-            // User
-            // 
-            this.User.HeaderText = "User";
-            this.User.Name = "User";
-            this.User.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Price";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Description";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 320;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -282,9 +260,9 @@
             this.checkBoxDateFilter.AutoSize = true;
             this.checkBoxDateFilter.Location = new System.Drawing.Point(504, 3);
             this.checkBoxDateFilter.Name = "checkBoxDateFilter";
-            this.checkBoxDateFilter.Size = new System.Drawing.Size(111, 17);
+            this.checkBoxDateFilter.Size = new System.Drawing.Size(108, 17);
             this.checkBoxDateFilter.TabIndex = 7;
-            this.checkBoxDateFilter.Text = "Enabled date filter";
+            this.checkBoxDateFilter.Text = "Фільтр по датах";
             this.checkBoxDateFilter.UseVisualStyleBackColor = true;
             this.checkBoxDateFilter.CheckedChanged += new System.EventHandler(this.checkBoxDateFilter_CheckedChanged);
             // 
@@ -313,18 +291,18 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(18, 66);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(48, 13);
+            this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Date to :";
+            this.label2.Text = "Дата до :";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 6);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(59, 13);
+            this.label1.Size = new System.Drawing.Size(56, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "Date from :";
+            this.label1.Text = "Дата від :";
             // 
             // dateTimePickerFrom
             // 
@@ -339,9 +317,9 @@
             this.checkBoxUserEnabletFilter.AutoSize = true;
             this.checkBoxUserEnabletFilter.Location = new System.Drawing.Point(207, 3);
             this.checkBoxUserEnabletFilter.Name = "checkBoxUserEnabletFilter";
-            this.checkBoxUserEnabletFilter.Size = new System.Drawing.Size(110, 17);
+            this.checkBoxUserEnabletFilter.Size = new System.Drawing.Size(136, 17);
             this.checkBoxUserEnabletFilter.TabIndex = 5;
-            this.checkBoxUserEnabletFilter.Text = "Enabled user filter";
+            this.checkBoxUserEnabletFilter.Text = "Фільтер користувачів";
             this.checkBoxUserEnabletFilter.UseVisualStyleBackColor = true;
             this.checkBoxUserEnabletFilter.CheckedChanged += new System.EventHandler(this.checkBoxUserEnabletFilter_CheckedChanged);
             // 
@@ -351,7 +329,7 @@
             this.btnApplyFilters.Name = "btnApplyFilters";
             this.btnApplyFilters.Size = new System.Drawing.Size(746, 26);
             this.btnApplyFilters.TabIndex = 1;
-            this.btnApplyFilters.Text = "Apply filters";
+            this.btnApplyFilters.Text = "Застосувати фільтри";
             this.btnApplyFilters.UseVisualStyleBackColor = true;
             this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
             // 
@@ -403,7 +381,6 @@
             this.comboBoxUsers.Name = "comboBoxUsers";
             this.comboBoxUsers.Size = new System.Drawing.Size(125, 21);
             this.comboBoxUsers.TabIndex = 1;
-            this.comboBoxUsers.SelectedIndexChanged += new System.EventHandler(this.comboBoxUsers_SelectedIndexChanged);
             // 
             // panelCategoryFilter
             // 
@@ -458,9 +435,9 @@
             this.checkBoxEnableCategoryFilter.AutoSize = true;
             this.checkBoxEnableCategoryFilter.Location = new System.Drawing.Point(13, 3);
             this.checkBoxEnableCategoryFilter.Name = "checkBoxEnableCategoryFilter";
-            this.checkBoxEnableCategoryFilter.Size = new System.Drawing.Size(125, 17);
+            this.checkBoxEnableCategoryFilter.Size = new System.Drawing.Size(113, 17);
             this.checkBoxEnableCategoryFilter.TabIndex = 0;
-            this.checkBoxEnableCategoryFilter.Text = "Enable category filter";
+            this.checkBoxEnableCategoryFilter.Text = "Фільтр категорій";
             this.checkBoxEnableCategoryFilter.UseVisualStyleBackColor = true;
             this.checkBoxEnableCategoryFilter.CheckedChanged += new System.EventHandler(this.checkBoxEnableCategoryFilter_CheckedChanged);
             // 
@@ -483,6 +460,37 @@
             this.редагуватиToolStripMenuItem.Name = "редагуватиToolStripMenuItem";
             this.редагуватиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.редагуватиToolStripMenuItem.Text = "Редагувати";
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Категорія";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // User
+            // 
+            this.User.HeaderText = "Користувач";
+            this.User.Name = "User";
+            this.User.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Дата";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Ціна";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Опис";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 320;
             // 
             // Form1
             // 
@@ -531,11 +539,6 @@
         private System.Windows.Forms.ToolStripMenuItem всіДокументиToolStripMenuItem;
         private System.Windows.Forms.DataGridView dataGridViewOrders;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn User;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
         private System.Windows.Forms.Panel panelFilters;
         private System.Windows.Forms.Button btnApplyFilters;
         private System.Windows.Forms.Panel panelCategoryFilter;
@@ -559,6 +562,12 @@
         private System.Windows.Forms.ContextMenuStrip contextMenuCategories;
         private System.Windows.Forms.ToolStripMenuItem додатиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem редагуватиToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoryToolStripMenuItem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn User;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Description;
     }
 }
 

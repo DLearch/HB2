@@ -18,7 +18,8 @@ namespace Home_Bugaltery
         HomeBugaltery homeBugaltery;
         HomeBugalteryAction actHomeBogaltery;
 
-        NewDocumentForm newDocument;
+        NewOrderForm newOrder;
+        NewCategoryForm newCategory;
 
         public Form1()
         {
@@ -35,7 +36,7 @@ namespace Home_Bugaltery
             homeBugaltery = new HomeBugaltery();
             actHomeBogaltery = new HomeBugalteryAction();
 
-            newDocument = new NewDocumentForm(homeBugaltery, actHomeBogaltery);
+            newOrder = new NewOrderForm(homeBugaltery, actHomeBogaltery);
 
             // Update
             updateOrdersGrid();
@@ -43,8 +44,10 @@ namespace Home_Bugaltery
             updateCategorysFilter();
             updateUsersFilter();
 
+
             panelUserFilter.Enabled = checkBoxUserEnabletFilter.Checked;
             panelCategoryFilter.Enabled = checkBoxEnableCategoryFilter.Checked;
+            panelDateFilter.Enabled = checkBoxDateFilter.Checked;
         }
 
 
@@ -54,7 +57,7 @@ namespace Home_Bugaltery
             dataGridViewOrders.Rows.Clear();
             foreach (OrdersView orderView in homeBugaltery.ListOrders)
             {
-                //var categoryName = homeBugaltery.
+                
                 int rowIndex = dataGridViewOrders.Rows.Add(orderView.CategoryName);
                 dataGridViewOrders.Rows[rowIndex].Cells[1].Value = orderView.UserName;
                 dataGridViewOrders.Rows[rowIndex].Cells[2].Value = orderView.DateOrder;
@@ -65,6 +68,8 @@ namespace Home_Bugaltery
 
             }
         }
+
+        // Update Filter Category
         private void updateCategorysFilter()
         {
             comboBoxCategories.Items.Clear();
@@ -75,6 +80,7 @@ namespace Home_Bugaltery
                 comboBoxCategories.SelectedIndex = 0;
             }
         }
+        // Update Filter User
         private void updateUsersFilter()
         {
             comboBoxUsers.Items.Clear();
@@ -89,9 +95,16 @@ namespace Home_Bugaltery
         // New Orders
         private void newDocumentToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newDocument.showForm();
+            newOrder.showForm();
 
             updateOrdersGrid();
+        }
+
+        // New Category
+        private void categoryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            newCategory = new NewCategoryForm(homeBugaltery, actHomeBogaltery);
+            newCategory.ShowDialog();//.showForm();
         }
 
         // Filter for category
@@ -133,7 +146,7 @@ namespace Home_Bugaltery
 
             List<string> categoriesList = null;
             List<string> usersList = null;
-            string dateFrom = "";
+            string dateFrom  = "";
             string dateTo = "";
 
 
@@ -165,10 +178,7 @@ namespace Home_Bugaltery
             updateOrdersGrid();
         }
 
-        private void comboBoxUsers_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
-        }
 
         // checkBoxUserFilter
         private void checkBoxUserEnabletFilter_CheckedChanged(object sender, EventArgs e)
@@ -189,8 +199,8 @@ namespace Home_Bugaltery
         //checkBoxDateFilter
         private void checkBoxDateFilter_CheckedChanged(object sender, EventArgs e)
         {
-            //panelDateFilter.Enabled = checkBoxDateFilter.Checked;
-            checkBoxDateFilter.Enabled = false;
+            panelDateFilter.Enabled = checkBoxDateFilter.Checked;
+            
         }
 
         private void dataGridViewOrders_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -208,23 +218,27 @@ namespace Home_Bugaltery
             }
         }
 
+        //Context menu (edit) on clik order
         private void onContextEditClick(object o, EventArgs ea)
         {
-            newDocument.showForm((int)dataGridViewOrders.SelectedRows[0].Tag);
+            newOrder.showForm((int)dataGridViewOrders.SelectedRows[0].Tag);
             updateOrdersGrid();
         }
 
+        //Context menu (delete) on clik order
         private void onContextDeleteClick(object o, EventArgs ea)
         {
-            MessageBox.Show("Delete");
+            MessageBox.Show("Delete? You are sure?");
 
             if (dataGridViewOrders.SelectedRows.Count > 0)
             {
+                // Delete for Id - ((int)dataGridViewOrders.SelectedRows[0].Tag)
                 homeBugaltery.deleteOrder((int)dataGridViewOrders.SelectedRows[0].Tag);
             }
 
             updateOrdersGrid();
         }
 
+       
     }
 }

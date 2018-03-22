@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ClassLibrary1
 {
+    // 1.2. Конкретная команда - DeleteOrder
     class DeleteOrderCommand : ICommand
     {
         HomeBugaltery homeBugaltery;
