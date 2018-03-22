@@ -54,25 +54,26 @@ namespace WpfApplication1.ViewModel
             homeBugaltery = new HomeBugaltery();
             actHomeBogaltery = new HomeBugalteryAction();
 
-            (GridOrdersUControlDataContext as GridOrdersUControlViewModel).HomeBugaltery = homeBugaltery;
+            GridOrdersUControlDataContext = new GridOrdersUControlViewModel() { HomeBugaltery = homeBugaltery };
 
-            MoveToCommand.Execute("GridOrdersUControl");
+            ShowCommand.Execute("GridOrdersUControl");
         }
-        
-        #region Move To Command
 
-        RelayCommand _moveToCommand;
-        public System.Windows.Input.ICommand MoveToCommand
+
+        #region Show Command
+
+        RelayCommand _showCommand;
+        public System.Windows.Input.ICommand ShowCommand
         {
             get
             {
-                if (_moveToCommand == null)
-                    _moveToCommand = new RelayCommand(ExecuteMoveToCommand);
-                return _moveToCommand;
+                if (_showCommand == null)
+                    _showCommand = new RelayCommand(ExecuteShowCommand);
+                return _showCommand;
             }
         }
 
-        public void ExecuteMoveToCommand(object parameter)
+        public void ExecuteShowCommand(object parameter)
         {
             string name = parameter as string;
 
@@ -103,11 +104,13 @@ namespace WpfApplication1.ViewModel
         {
             string name = parameter as string;
 
-            if (name == "FamilyMembers")
+            switch (name)
             {
-                FamilyMembersWindow w = new FamilyMembersWindow();
-                (w.DataContext as FamilyMembersViewModel).HomeBugaltery = homeBugaltery;
-                ShowDialog(w);
+                case "FamilyMembers":
+                    FamilyMembersWindow w = new FamilyMembersWindow();
+                    (w.DataContext as FamilyMembersViewModel).HomeBugaltery = homeBugaltery;
+                    ShowDialog(w);
+                    break;
             }
         }
 

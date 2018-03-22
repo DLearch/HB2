@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using WpfApplication1.Infrastructure;
 
 namespace WpfApplication1.ViewModel
@@ -25,22 +26,7 @@ namespace WpfApplication1.ViewModel
         }
 
         #endregion
-
-        #region TextBoxAddFamilyMembersText
-
-        private string _textBoxAddFamilyMembersText;
-        public string TextBoxAddFamilyMembersText
-        {
-            get { return _textBoxAddFamilyMembersText; }
-            set
-            {
-                _textBoxAddFamilyMembersText = value;
-                OnPropertyChanged("TextBoxAddFamilyMembersText");
-            }
-        }
-
-        #endregion
-
+        
         #region TextBoxEditFamilyMembersText
 
         private string _textBoxEditFamilyMembersText;
@@ -129,6 +115,10 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteAddFamilyMemberCommand(object parameter)
         {
+            string name = parameter as string;
+            
+
+            UpdateListBoxFamilyMembers();
         }
 
         #endregion
@@ -148,6 +138,8 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteEditFamilyMemberCommand(object parameter)
         {
+
+            UpdateListBoxFamilyMembers();
         }
 
         public bool CanExecuteEditFamilyMemberCommand(object parameter)
@@ -182,6 +174,8 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteRemoveFamilyMemberCommand(object parameter)
         {
+
+            UpdateListBoxFamilyMembers();
         }
 
         public bool CanExecuteRemoveFamilyMemberCommand(object parameter)

@@ -20,7 +20,7 @@
         <Menu>
             <MenuItem Header="Довідники">
                 <MenuItem Header="Члени сімї" Command="{Binding OpenWindowCommand}" CommandParameter="FamilyMembers"/>
-                <MenuItem Header="Доходи і витрати" Command="{Binding MoveToCommand}" CommandParameter="GridOrdersUControl"/>
+                <MenuItem Header="Доходи і витрати" Command="{Binding ShowCommand}" CommandParameter="GridOrdersUControl"/>
             </MenuItem>
             <MenuItem Header="Операції">
                 <MenuItem Header="Нова операція" Command="{Binding AddOrderCommand}"/>

@@ -11,14 +11,29 @@
     </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="10">
+            <Grid Height="100">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+
+                <CheckBox IsChecked="{x:Null}" />
+            </Grid>
+        </StackPanel>
+
+        <GridSplitter HorizontalAlignment="Center" VerticalAlignment="Stretch" 
+                      ShowsPreview="False" Grid.Column="1" Width="4"/>
 
         <ListView ItemsSource="{Binding ListViewOrdersItemsSource}" 
                       SelectedItem="{Binding ListViewOrdersSelectedItem}"
                       SelectionMode="Single"
-                      Margin="10" Grid.ColumnSpan="2">
+                      Margin="10" Grid.Column="2">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding CategoryName}" Header="Категорія"/>
