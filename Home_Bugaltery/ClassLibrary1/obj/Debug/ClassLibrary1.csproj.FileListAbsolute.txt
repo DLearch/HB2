@@ -71,3 +71,15 @@ D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2-master\Home
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2-master\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2-master\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2-master\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.dll
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.xml
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\student.LAN\Desktop\L_GIT\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
