@@ -62,3 +62,6 @@ D:\my\KP\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.NewCategoryF
 D:\my\KP\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.NewOrderForm.resources
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2-master\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.NewCategoryForm.resources
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2-master\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.NewOrderForm.resources
+C:\Users\student.LAN\Source\Repos\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\Home_Bugaltery.exe.config
+C:\Users\student.LAN\Source\Repos\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.exe
+C:\Users\student.LAN\Source\Repos\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.pdb
