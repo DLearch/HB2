@@ -14,15 +14,16 @@ namespace Home_Bugaltery
     enum HomeActionEnum
     {
         addOrder = 0,
-        changeOrder = 1
+        changeOrder = 1,
+        addCategory = 2
     }
-    public partial class NewDocumentForm : Form
+    public partial class NewOrderForm : Form
     {
         OrdersView currentOrder = null;       
         HomeBugaltery homeBugaltery;
         HomeBugalteryAction actHomeBogaltery;
 
-        public NewDocumentForm(HomeBugaltery homeBugaltery, HomeBugalteryAction actHomeBogaltery)
+        public NewOrderForm(HomeBugaltery homeBugaltery, HomeBugalteryAction actHomeBogaltery)
         {
             InitializeComponent();
 

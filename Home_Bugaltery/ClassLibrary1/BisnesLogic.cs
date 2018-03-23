@@ -125,7 +125,6 @@ namespace ClassLibrary1
         {
             var orderToChange = db.Orders.Where(o => o.Id == id).FirstOrDefault();
 
-            //Orders orderToChange = new Orders();
 
             var categoryId = db.Categories.Where(cat => cat.Name == categoryName)
                                           .Select(x => x.Id).FirstOrDefault();

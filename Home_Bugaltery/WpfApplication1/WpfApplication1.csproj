@@ -62,10 +62,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\CategoriesWindowViewModel.cs" />
+    <Compile Include="ViewModel\FamilyMembersViewModel.cs" />
+    <Compile Include="ViewModel\GridOrdersUControlViewModel.cs" />
+    <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\OrderWindowViewModel.cs" />
+    <Compile Include="View\CategoriesWindow.xaml.cs">
+      <DependentUpon>CategoriesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\FamilyMembersWindow.xaml.cs">
+      <DependentUpon>FamilyMembersWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\GridOrdersUControl.xaml.cs">
+      <DependentUpon>GridOrdersUControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\OrderWindow.xaml.cs">
       <DependentUpon>OrderWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\CategoriesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FamilyMembersWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\GridOrdersUControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

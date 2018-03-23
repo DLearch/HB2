@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1.ViewModel"
+        xmlns:wind="clr-namespace:WpfApplication1.View"
         mc:Ignorable="d"
         Title="MainWindow" Height="400" Width="600" MinHeight="270" MinWidth="280">
 
@@ -18,8 +19,9 @@
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="Довідники">
-                <MenuItem Header="Члени сімї" Command="{Binding MoveToCommand}" CommandParameter="GridFamilyMembers"/>
-                <MenuItem Header="Доходи і витрати" Command="{Binding MoveToCommand}" CommandParameter="GridOrders"/>
+                <MenuItem Header="Доходи і витрати" Command="{Binding ShowCommand}" CommandParameter="GridOrdersUControl"/>
+                <MenuItem Header="Члени сімї" Command="{Binding OpenWindowCommand}" CommandParameter="FamilyMembers"/>
+                <MenuItem Header="Категорії" Command="{Binding OpenWindowCommand}" CommandParameter="Categories"/>
             </MenuItem>
             <MenuItem Header="Операції">
                 <MenuItem Header="Нова операція" Command="{Binding AddOrderCommand}"/>
@@ -36,87 +38,8 @@
             </MenuItem>
         </Menu>
 
-        <Grid Margin="10" Visibility="{Binding GridFamilyMembersVisibility}" Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="28"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="28"/>
-                <RowDefinition Height="30"/>
-                <RowDefinition Height="40"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-
-            <Label Content="Сім'я" Grid.ColumnSpan="2"/>
-
-            <ListBox Grid.Row="1" Grid.RowSpan="6"
-                     SelectedItem="{Binding ListBoxFamilyMembersSelectedItem}"
-                     ItemsSource="{Binding ListBoxFamilyMembersItemsSource}"
-                     DisplayMemberPath="Name"
-                     Margin="0, 0, 10, 0"/>
-
-            <TextBox Grid.Row="1" Grid.Column="1" 
-                     Name="TextBoxAddFamilyMember"
-                     VerticalAlignment="Bottom" 
-                     Margin="10, 0, 0, 0"
-                     Text="{Binding TextBoxAddFamilyMembersText}"/>
-
-            <Button Grid.Row="2" Grid.Column="1" 
-                    Name="BtnAddFamilyMember"
-                    Content="Додати"
-                    VerticalAlignment="Top" 
-                    Margin="10, 0, 0, 0" 
-                    Command="{Binding AddFamilyMemberCommand}"/>
-
-            <TextBox Grid.Row="3" Grid.Column="1" 
-                     Name="TextBoxEditFamilyMember"
-                     VerticalAlignment="Bottom" 
-                     Margin="10, 0, 0, 0"
-                     />
-
-            <Button Grid.Row="4" Grid.Column="1" 
-                    Name="BtnEditFamilyMember"
-                    Content="Редагувати" 
-                    VerticalAlignment="Top" 
-                    Margin="10, 0, 0, 0"
-                    Command="{Binding EditFamilyMemberCommand}"/>
-
-            <Button Grid.Row="5" Grid.Column="1" 
-                    Name="BtnRemoveFamilyMember"
-                    Content="Видалити" 
-                    VerticalAlignment="Center" 
-                    Margin="10, 0, 0, 0"
-                    Command="{Binding RemoveFamilyMemberCommand}"/>
-        </Grid>
-
-        <Grid Margin="10" Visibility="{Binding GridOrdersVisibility}" Grid.Row="1">
-            <ListView ItemsSource="{Binding ListViewOrdersItemsSource}" 
-                      SelectedItem="{Binding ListViewOrdersSelectedItem}"
-                      SelectionMode="Single">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn DisplayMemberBinding="{Binding CategoryName}" Header="Категорія"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding UserName}" Header="Користувач"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding DateOrder}" Header="Дата"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Price}" Header="Ціна"/>
-                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Опис"/>
-                    </GridView>
-                </ListView.View>
-                <ListView.ContextMenu>
-                    <ContextMenu>
-                        <MenuItem Header="Редагувати"
-                                  Command="{Binding EditOrderCommand}"
-                                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" />
-                        <MenuItem Header="Видалити"
-                                  Command="{Binding RemoveOrderCommand}"
-                                  CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=ContextMenu}, Path=PlacementTarget.SelectedItem}" />
-                    </ContextMenu>
-                </ListView.ContextMenu>
-            </ListView>
+        <Grid Grid.Row="1">
+            <wind:GridOrdersUControl DataContext="{Binding GridOrdersUControlDataContext}" Visibility="{Binding GridOrdersUControlVisibility}"/>
         </Grid>
     </Grid>
 </Window>
