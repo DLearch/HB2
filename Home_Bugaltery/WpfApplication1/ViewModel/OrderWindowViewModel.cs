@@ -146,32 +146,86 @@ namespace WpfApplication1.ViewModel
         }
 
         #endregion
-        
-        public IEnumerable<Users> Users
+
+        #region ButtonOkContent
+
+        private string _buttonOkContent;
+        public string ButtonOkContent
         {
+            get { return _buttonOkContent; }
             set
             {
-                ComboBoxUsersItemsSource = value;
-            }
-            get
-            {
-                return ComboBoxUsersItemsSource as IEnumerable<Users>;
+                _buttonOkContent = value;
+                OnPropertyChanged("ButtonOkContent");
             }
         }
 
-        public IEnumerable<Categories> Categories
+        #endregion
+
+        #region WindowTitle
+
+        private string _windowTitle;
+        public string WindowTitle
         {
+            get { return _windowTitle; }
             set
             {
-                ComboBoxCategoriesItemsSource = value;
-            }
-            get
-            {
-                return ComboBoxCategoriesItemsSource as IEnumerable<Categories>;
+                _windowTitle = value;
+                OnPropertyChanged("WindowTitle");
             }
         }
 
+        #endregion
         
+        #region HomeBugaltery
+
+        HomeBugaltery _homeBugaltery;
+        public HomeBugaltery HomeBugaltery
+        {
+            set
+            {
+                _homeBugaltery = value;
+                Update();
+            }
+            private get
+            {
+                return _homeBugaltery;
+            }
+        }
+
+        #endregion
+
+        #region Mode
+
+        private OrderWindowMode mode;
+        public OrderWindowMode Mode
+        {
+            get
+            {
+                return mode;
+            }
+            set
+            {
+                mode = value;
+                switch (mode)
+                {
+                    case OrderWindowMode.Add:
+                        WindowTitle = "Додати операцію";
+                        ButtonOkContent = "Додати";
+                        break;
+                    case OrderWindowMode.Edit:
+                        WindowTitle = "Змінити операцію";
+                        ButtonOkContent = "Зберегти";
+                        break;
+                }
+            }
+        }
+        #endregion
+
+        #region Order
+
+        int orderId;
+
         public OrdersView Order
         {
             get
@@ -180,6 +234,7 @@ namespace WpfApplication1.ViewModel
                 if (decimal.TryParse(TextBoxPriceText, out price))
                     return new OrdersView()
                     {
+                        Id = orderId,
                         CategoryName = (ComboBoxCategoriesSelectedItem as Categories).Name,
                         UserName = (ComboBoxUsersSelectedItem as Users).Name,
                         DateOrder = DatePickerDateSelectedDate,
@@ -191,29 +246,27 @@ namespace WpfApplication1.ViewModel
             }
             set
             {
+                orderId = value.Id;
+
                 ComboBoxCategoriesSelectedIndex = -1;
-                for (int i = 0; i < Categories.Count(); i++)
+                for (int i = 0; i<categories.Count(); i++)
                 {
-                    if (Categories.ElementAt(i).Name == value.CategoryName)
+                    if (categories.ElementAt(i).Name == value.CategoryName)
                     {
                         ComboBoxCategoriesSelectedIndex = i;
                         break;
                     }
                 }
-                if (ComboBoxCategoriesSelectedIndex == -1)
-                    throw new Exception(value.CategoryName + " - не найдено.");
 
                 ComboBoxUsersSelectedIndex = -1;
-                for (int i = 0; i < Users.Count(); i++)
+                for (int i = 0; i<users.Count(); i++)
                 {
-                    if (Users.ElementAt(i).Name == value.UserName)
+                    if (users.ElementAt(i).Name == value.UserName)
                     {
                         ComboBoxUsersSelectedIndex = i;
                         break;
                     }
                 }
-                if (ComboBoxUsersSelectedIndex == -1)
-                    throw new Exception(value.UserName + " - не найдено.");
 
                 DatePickerDateSelectedDate = value.DateOrder;
                 TextBoxPriceText = value.Price.ToString();
@@ -221,11 +274,31 @@ namespace WpfApplication1.ViewModel
             }
         }
 
+        #endregion
+
+        ObservableCollection<Categories> categories;
+        ObservableCollection<Users> users;
+
         public OrderWindowViewModel()
         {
+            ComboBoxCategoriesItemsSource = categories = new ObservableCollection<Categories>();
+            ComboBoxUsersItemsSource = users = new ObservableCollection<Users>();
+
             DatePickerDateSelectedDate = DateTime.Now;
+
+            Mode = OrderWindowMode.Add;
         }
 
+        void Update()
+        {
+            users.Clear();
+            foreach (Users user in HomeBugaltery.ListUsers)
+                users.Add(user);
+
+            categories.Clear();
+            foreach (Categories categorty in HomeBugaltery.ListCategories)
+                categories.Add(categorty);
+        }
 
         #region Ok Command
 
@@ -242,10 +315,49 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteOkCommand(object parameter)
         {
+            OrdersView order;
+
+            switch (mode)
+            {
+                case OrderWindowMode.Add:
+
+                    order = Order;
+
+                    HomeBugaltery.addOrder(order.CategoryName,
+                                        order.UserName,
+                                        order.DateOrder,
+                                        order.Price,
+                                        order.Description);
+                    Update();
+
+                    break;
+                case OrderWindowMode.Edit:
+
+                    order = Order;
+
+                    HomeBugaltery.changeOrder(order.Id,
+                                            order.CategoryName,
+                                            order.UserName,
+                                            order.DateOrder,
+                                            order.Price,
+                                            order.Description);
+
+                    Update();
+
+                    break;
+            }
+
             DialogResult = true;
             Close();
         }
 
         #endregion
+        
+    }
+
+    enum OrderWindowMode
+    {
+        Add,
+        Edit
     }
 }

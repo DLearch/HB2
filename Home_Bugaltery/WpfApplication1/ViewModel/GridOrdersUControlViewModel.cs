@@ -86,29 +86,15 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteEditOrderCommand(object parameter)
         {
-            OrdersView oldOrder = parameter as OrdersView;
-
             OrderWindow w = new OrderWindow();
 
             var datacontext = w.DataContext as OrderWindowViewModel;
 
-            datacontext.Categories = HomeBugaltery.ListCategories;
-            datacontext.Users = HomeBugaltery.ListUsers;
-            datacontext.Order = oldOrder;
+            datacontext.HomeBugaltery = HomeBugaltery;
+            datacontext.Order = parameter as OrdersView;
 
             if (ShowDialog(w) == true)
-            {
-                OrdersView newOrder = datacontext.Order;
-                
-                HomeBugaltery.changeOrder(oldOrder.Id, 
-                                        newOrder.CategoryName,
-                                        newOrder.UserName,
-                                        newOrder.DateOrder,
-                                        newOrder.Price,
-                                        newOrder.Description);
-
                 Update();
-            }
         }
 
         public bool CanExecuteEditOrderCommand(object parameter)

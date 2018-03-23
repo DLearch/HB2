@@ -5,14 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1.ViewModel"
         mc:Ignorable="d"
-        Title="CategoriesWindow" Height="300" Width="300">
+        Title="CategoriesWindow" Height="300" Width="300" MinHeight="300" MinWidth="230">
     <Window.DataContext>
         <local:CategoriesWindowViewModel></local:CategoriesWindowViewModel>
     </Window.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*" MaxWidth="400"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>

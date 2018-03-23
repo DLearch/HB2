@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1.ViewModel"
         mc:Ignorable="d"
-        Title="OrderWindow" Height="300" Width="300" MinWidth="200" MinHeight="180">
+        Title="{Binding WindowTitle}" Height="300" Width="300" MinWidth="200" MinHeight="180">
 
     <Window.DataContext>
         <local:OrderWindowViewModel></local:OrderWindowViewModel>
@@ -61,7 +61,7 @@
 
         <Button Grid.Row="5" 
                 VerticalAlignment="Center" Command="{Binding OkCommand}"
-                Content="Ок"  Margin="10, 0" Grid.ColumnSpan="2"/>
+                Content="{Binding ButtonOkContent}"  Margin="10, 0" Grid.ColumnSpan="2"/>
         <Button Grid.Row="5" Grid.Column="2"
                 VerticalAlignment="Center" IsCancel="True"
                 Content="Скасувати" Margin="10, 0" Grid.ColumnSpan="2"/>
