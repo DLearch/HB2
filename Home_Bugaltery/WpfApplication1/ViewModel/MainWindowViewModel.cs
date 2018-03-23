@@ -107,55 +107,32 @@ namespace WpfApplication1.ViewModel
         public void ExecuteOpenWindowCommand(object parameter)
         {
             string name = parameter as string;
+            Window window;
 
             switch (name)
             {
                 case "FamilyMembers":
-                    FamilyMembersWindow fmw = new FamilyMembersWindow();
-                    (fmw.DataContext as FamilyMembersViewModel).HomeBugaltery = homeBugaltery;
-                    ShowDialog(fmw);
+                    window = new FamilyMembersWindow();
+                    (window.DataContext as FamilyMembersViewModel).HomeBugaltery = homeBugaltery;
                     break;
                 case "Categories":
-                    CategoriesWindow cw = new CategoriesWindow();
-                    (cw.DataContext as CategoriesWindowViewModel).HomeBugaltery = homeBugaltery;
-                    ShowDialog(cw);
+                    window = new CategoriesWindow();
+                    (window.DataContext as CategoriesWindowViewModel).HomeBugaltery = homeBugaltery;
                     break;
+                case "AddOrder":
+                    window = new OrderWindow();
+                    OrderWindowViewModel dc = window.DataContext as OrderWindowViewModel;
+                    dc.HomeBugaltery = homeBugaltery;
+                    dc.Mode = OrderWindowMode.Add;
+
+                    break;
+                default:
+                    return;
             }
-        }
 
-        #endregion
+            ShowDialog(window);
 
-        #region Add Order Command
-
-        RelayCommand _addOrderCommand;
-        public System.Windows.Input.ICommand AddOrderCommand
-        {
-            get
-            {
-                if (_addOrderCommand == null)
-                    _addOrderCommand = new RelayCommand(ExecuteAddOrderCommand);
-                return _addOrderCommand;
-            }
-        }
-
-        public void ExecuteAddOrderCommand(object parameter)
-        {
-            OrderWindow w = new OrderWindow();
-            var datacontext = w.DataContext as OrderWindowViewModel;
-            datacontext.Categories = homeBugaltery.ListCategories;
-            datacontext.Users = homeBugaltery.ListUsers;
-            if (ShowDialog(w) == true)
-            {
-                OrdersView order = (w.DataContext as OrderWindowViewModel).Order;
-
-                homeBugaltery.addOrder(order.CategoryName,
-                                        order.UserName,
-                                        order.DateOrder,
-                                        order.Price,
-                                        order.Description);
-
-                UpdateGridOrdersUControl();
-            }
+            UpdateGridOrdersUControl();
         }
 
         #endregion

@@ -43,9 +43,9 @@ namespace WpfApplication1.ViewModel
 
         #endregion
 
-        ObservableCollection<OrdersView> orders;
-        HomeBugaltery _homeBugaltery;
+        #region HomeBugaltery
 
+        HomeBugaltery _homeBugaltery;
         public HomeBugaltery HomeBugaltery
         {
             set
@@ -60,9 +60,9 @@ namespace WpfApplication1.ViewModel
             }
         }
 
-        public GridOrdersUControlViewModel()
-        {
-        }
+        #endregion 
+
+        ObservableCollection<OrdersView> orders;
 
         public void Update()
         {
@@ -86,14 +86,13 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteEditOrderCommand(object parameter)
         {
-            OrderWindow w = new OrderWindow();
+            OrderWindow window = new OrderWindow();
+            OrderWindowViewModel dc = window.DataContext as OrderWindowViewModel;
+            dc.HomeBugaltery = HomeBugaltery;
+            dc.Mode = OrderWindowMode.Edit;
+            dc.Order = parameter as OrdersView;
 
-            var datacontext = w.DataContext as OrderWindowViewModel;
-
-            datacontext.HomeBugaltery = HomeBugaltery;
-            datacontext.Order = parameter as OrdersView;
-
-            if (ShowDialog(w) == true)
+            if(ShowDialog(window) == true)
                 Update();
         }
 

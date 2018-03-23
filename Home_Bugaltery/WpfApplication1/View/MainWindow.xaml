@@ -19,12 +19,23 @@
         </Grid.RowDefinitions>
         <Menu>
             <MenuItem Header="Довідники">
-                <MenuItem Header="Доходи і витрати" Command="{Binding ShowCommand}" CommandParameter="GridOrdersUControl"/>
-                <MenuItem Header="Члени сімї" Command="{Binding OpenWindowCommand}" CommandParameter="FamilyMembers"/>
-                <MenuItem Header="Категорії" Command="{Binding OpenWindowCommand}" CommandParameter="Categories"/>
+                <MenuItem Header="Доходи і витрати" 
+                          Command="{Binding ShowCommand}" 
+                          CommandParameter="GridOrdersUControl"/>
+                
+                <MenuItem Header="Члени сімї" 
+                          Command="{Binding OpenWindowCommand}" 
+                          CommandParameter="FamilyMembers"/>
+                
+                <MenuItem Header="Категорії" 
+                          Command="{Binding OpenWindowCommand}" 
+                          CommandParameter="Categories"/>
             </MenuItem>
             <MenuItem Header="Операції">
-                <MenuItem Header="Нова операція" Command="{Binding AddOrderCommand}"/>
+                <MenuItem Header="Нова операція" 
+                          Command="{Binding OpenWindowCommand}" 
+                          CommandParameter="AddOrder"/>
+                
                 <MenuItem Header="Початкові залишки"/>
             </MenuItem>
             <MenuItem Header="Звіти">
