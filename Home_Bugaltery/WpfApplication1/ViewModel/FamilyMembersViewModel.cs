@@ -88,10 +88,6 @@ namespace WpfApplication1.ViewModel
                 return _homeBugaltery;
             }
         }
-
-        public FamilyMembersViewModel()
-        {
-        }
         
         private void UpdateListBoxFamilyMembers()
         {

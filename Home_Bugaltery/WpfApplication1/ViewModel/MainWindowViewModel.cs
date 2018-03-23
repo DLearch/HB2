@@ -111,9 +111,14 @@ namespace WpfApplication1.ViewModel
             switch (name)
             {
                 case "FamilyMembers":
-                    FamilyMembersWindow w = new FamilyMembersWindow();
-                    (w.DataContext as FamilyMembersViewModel).HomeBugaltery = homeBugaltery;
-                    ShowDialog(w);
+                    FamilyMembersWindow fmw = new FamilyMembersWindow();
+                    (fmw.DataContext as FamilyMembersViewModel).HomeBugaltery = homeBugaltery;
+                    ShowDialog(fmw);
+                    break;
+                case "Categories":
+                    CategoriesWindow cw = new CategoriesWindow();
+                    (cw.DataContext as CategoriesWindowViewModel).HomeBugaltery = homeBugaltery;
+                    ShowDialog(cw);
                     break;
             }
         }

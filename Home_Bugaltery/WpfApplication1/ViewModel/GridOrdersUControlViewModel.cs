@@ -98,10 +98,10 @@ namespace WpfApplication1.ViewModel
 
             if (ShowDialog(w) == true)
             {
-                HomeBugaltery.deleteOrder(oldOrder.Id);
                 OrdersView newOrder = datacontext.Order;
                 
-                HomeBugaltery.addOrder(newOrder.CategoryName,
+                HomeBugaltery.changeOrder(oldOrder.Id, 
+                                        newOrder.CategoryName,
                                         newOrder.UserName,
                                         newOrder.DateOrder,
                                         newOrder.Price,

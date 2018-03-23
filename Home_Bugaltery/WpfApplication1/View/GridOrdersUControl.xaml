@@ -22,8 +22,8 @@
                     <RowDefinition/>
                     <RowDefinition Height="3*"/>
                 </Grid.RowDefinitions>
-
-                <CheckBox IsChecked="{x:Null}" />
+                
+                
             </Grid>
         </StackPanel>
 

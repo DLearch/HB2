@@ -257,3 +257,5 @@ C:\Users\student.LAN\Source\Repos\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\V
 C:\Users\student.LAN\Source\Repos\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.g.resources
 C:\Users\student.LAN\Source\Repos\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.Properties.Resources.resources
 C:\Users\student.LAN\Source\Repos\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.csproj.GenerateResource.Cache
+C:\Users\student.LAN\Source\Repos\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\View\CategoriesWindow.g.cs
+C:\Users\student.LAN\Source\Repos\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\View\CategoriesWindow.baml
