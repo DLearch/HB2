@@ -98,7 +98,7 @@ namespace WpfApplication1.ViewModel
 
             if (ShowDialog(w) == true)
             {
-                HomeBugaltery.deleteOrder(orders.IndexOf(oldOrder));
+                HomeBugaltery.deleteOrder(oldOrder.Id);
                 OrdersView newOrder = datacontext.Order;
                 
                 HomeBugaltery.addOrder(newOrder.CategoryName,
@@ -132,7 +132,7 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteRemoveOrderCommand(object parameter)
         {
-            HomeBugaltery.deleteOrder(HomeBugaltery.ListOrders.IndexOf(parameter as OrdersView));
+            HomeBugaltery.deleteOrder((parameter as OrdersView).Id);
             Update();
         }
 

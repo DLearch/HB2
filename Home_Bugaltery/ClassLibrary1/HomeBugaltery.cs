@@ -52,9 +52,9 @@ namespace ClassLibrary1
             validateLocalData();
         }
 
-        public void deleteOrder(int index)
+        public void deleteOrder(int id)
         {      
-            bisnesLogic.deleteOrder(index);
+            bisnesLogic.deleteOrder(id);
             validateLocalData();
         }
 
