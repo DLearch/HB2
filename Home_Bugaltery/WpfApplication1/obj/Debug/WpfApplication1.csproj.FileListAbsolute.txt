@@ -164,3 +164,6 @@ D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2-master\Home
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2-master\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.csproj.CoreCompileInputs.cache
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2-master\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.exe
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2-master\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.pdb
+C:\Users\Daniel\Source\hhbb2\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\WpfApplication1.exe.config
+C:\Users\Daniel\Source\hhbb2\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.exe
+C:\Users\Daniel\Source\hhbb2\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.pdb
