@@ -103,15 +103,15 @@ namespace ClassLibrary1
         }
 
         // Filter for Orders
-        public void aplyOrdersFilters(List<string> categoriesNames, List<string> usersNames = null, string dateFrom = null /*default(DateTime)*/, string dateTo = null)
+        public void aplyOrdersFilters(List<string> categoriesNames, List<string> usersNames = null, DateTime? dateFrom = null , DateTime? dateTo = null)
         {
             filteredListOrders.Clear();
 
             foreach(OrdersView order in listOrders)
             {
                 if ((categoriesNames == null || categoriesNames.IndexOf(order.CategoryName) != -1) &&
-                    (usersNames == null || usersNames.IndexOf(order.UserName) != -1)) /*&&
-                     (dateFrom >= order.DateOrder && dateTo <= order.DateOrder))*/
+                    (usersNames == null || usersNames.IndexOf(order.UserName) != -1) &&
+                     (dateFrom == null || dateFrom <= order.DateOrder) && (dateTo == null || dateTo >= order.DateOrder))
                 {
                     filteredListOrders.Add(order);
                 }

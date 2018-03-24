@@ -21,7 +21,7 @@ namespace Home_Bugaltery
 
         Categories curentCategory = null;
 
-        int typeValue = -1;
+        string typeValue= "";
 
         public ModifiCategoryForm(HomeBugaltery homeBugaltery, HomeBugalteryAction actHomeBogaltery)
         {
@@ -44,9 +44,9 @@ namespace Home_Bugaltery
             foreach (Categories category in homeBugaltery.ListCategories)
             {
                 if (category.Type == false)
-                    typeValue = 0;
+                    typeValue = "розхід";
                 else
-                    typeValue = 1;
+                    typeValue = "прихід";
 
                 int rowIndex = dataGridViewCategory.Rows.Add(category.Name);
                 dataGridViewCategory.Rows[rowIndex].Cells[1].Value = typeValue;

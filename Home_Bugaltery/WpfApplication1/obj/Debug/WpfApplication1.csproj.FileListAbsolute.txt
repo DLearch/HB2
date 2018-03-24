@@ -276,3 +276,13 @@ C:\Users\Daniel\Source\Repos\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\ko\Sys
 C:\Users\Daniel\Source\Repos\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\ru\System.Windows.Interactivity.resources.dll
 C:\Users\Daniel\Source\Repos\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
 C:\Users\Daniel\Source\Repos\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\de\System.Windows.Interactivity.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\en\System.Windows.Interactivity.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\es\System.Windows.Interactivity.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\fr\System.Windows.Interactivity.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\it\System.Windows.Interactivity.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\ja\System.Windows.Interactivity.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\ko\System.Windows.Interactivity.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\ru\System.Windows.Interactivity.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\zh-Hans\System.Windows.Interactivity.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\bin\Debug\zh-Hant\System.Windows.Interactivity.resources.dll

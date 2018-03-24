@@ -154,8 +154,8 @@ namespace Home_Bugaltery
 
             List<string> categoriesList = null;
             List<string> usersList = null;
-            string dateFrom  = "";
-            string dateTo = "";
+            DateTime? dateFrom = null;
+            DateTime? dateTo = null;
 
 
             //Categories
@@ -175,13 +175,10 @@ namespace Home_Bugaltery
             // Date
             if(checkBoxDateFilter.Checked)
             {
-                dateFrom = dateTimePickerFrom.Value.ToString();
-                dateTo = dateTimePickerTo.Value.ToString();
+                dateFrom = dateTimePickerFrom.Value;
+                dateTo = dateTimePickerTo.Value;
             }
-
             homeBugaltery.aplyOrdersFilters(categoriesList, usersList, dateFrom, dateTo);
-
-            //Dates треба Доробити
 
             updateOrdersGrid();
         }
@@ -251,6 +248,21 @@ namespace Home_Bugaltery
         {
             addChangeUser = new ModifiUserForm(curentUser, homeBugaltery, actHomeBogaltery);
             addChangeUser.ShowDialog();
+        }
+
+        private void menuItemRevenues_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuItemCosts_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void menuItemSaldo_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
