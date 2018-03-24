@@ -13,16 +13,19 @@ namespace ClassLibrary1
         string userEmail;
         string userName;
         string userPassword;
-        public AddNewUserCommand(HomeBugaltery homeBugaltery, string email, string name, string password)
+        int familyId;
+
+        public AddNewUserCommand(HomeBugaltery homeBugaltery, string email, string name, string password, int familyId)
         {
             this.homeBugaltery = homeBugaltery;
             this.userEmail = email;
             this.userName = name;
             this.userPassword = password;
+            this.familyId = familyId;
         }
         public void Execute()
         {
-           homeBugaltery.addNewUser(userEmail, userName, userPassword);
+           homeBugaltery.addNewUser(userEmail, userName, userPassword, familyId);
         }
 
         public void Undo()

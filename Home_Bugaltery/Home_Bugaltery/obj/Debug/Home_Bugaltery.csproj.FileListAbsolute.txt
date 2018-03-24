@@ -87,7 +87,6 @@ C:\Users\Dyka\Downloads\GIT\HB2_AddCategory\Home_Bugaltery\Home_Bugaltery\obj\De
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.csprojResolveAssemblyReference.cache
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.exe
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.pdb
-D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ChangeOrderForm.resources
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.Form1.resources
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.NewOrderForm.resources
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.Properties.Resources.resources
@@ -107,3 +106,4 @@ D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugalt
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ModifiCategoryForm.resources
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ModifiUserForm.resources
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ModifyOrderForm.resources

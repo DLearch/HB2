@@ -61,12 +61,17 @@ namespace ClassLibrary1
         }
 
         public bool userIdentification(string login, string pass)
-        {
-            var user = db.Users.Where(u => u.Name == login && u.Password == pass);
+        {          
+            var user = db.Users.Where(u => u.Name == login && u.Password == pass).FirstOrDefault();
             return true;
         }
 
+        public FamilyMembers getFamilyName(int id)
+        {
+            var family = db.FamilyMembers.Where(f => f.Id == id).FirstOrDefault();
 
+            return family;
+        }
 
 
         public void addOrder(string categoryName, string userName, DateTime dateOrder, decimal price, string description)
@@ -165,13 +170,17 @@ namespace ClassLibrary1
         }
 
         // Add newUser
-        public void addNewUser(string email, string userName, string pass)
+        public void addNewUser(string email, string userName, string pass, int familyId)
         {
+
+            var family = db.FamilyMembers.Where(f => f.Id == familyId).FirstOrDefault();
+
             var newUser = new Users()
             {
-                //Email = email,
+                Email = email,
                 Name = userName,
-                Password = pass
+                Password = pass, 
+                FamilyMembers = family
             };
 
             db.Users.Add(newUser);
@@ -180,13 +189,19 @@ namespace ClassLibrary1
 
 
         // Delete user
-        public void delateUser(int id)
+        public void deleteUser(int id)
         {
-            var categoryToDelete = db.Categories.Where(o => o.Id == id).FirstOrDefault();
+            var userToDelete = db.Users.Where(o => o.Id == id).FirstOrDefault();
 
-            if (categoryToDelete != null)
+            var useOrders = db.Orders.Where(ord => ord.User_Id == id);
+            if (useOrders.Count() > 0)
             {
-                db.Categories.Remove(categoryToDelete);
+                throw new Exception("User is used in orders!!!");
+            }
+
+            if (userToDelete != null)
+            {
+                db.Users.Remove(userToDelete);
                 db.SaveChanges();
             }
         }
@@ -194,13 +209,14 @@ namespace ClassLibrary1
 
 
         // Change my data
-        public void changeCurentUser(int id, string email, string name, string pass)
+        public void changeCurentUser(int id, string email, string name, string pass, int familyId)
         {
             var userToChange = db.Users.Where(c => c.Id == id).FirstOrDefault();
 
-           // userToChange.Email = email;
+            userToChange.Email = email;
             userToChange.Name = name;
             userToChange.Password = pass;
+            userToChange.Family_Id = familyId;
 
             db.SaveChanges();
         }

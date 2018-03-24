@@ -74,23 +74,23 @@ namespace ClassLibrary1
         }
 
         // add user
-        public void addNewUser(string email, string name, string password)
+        public void addNewUser(string email, string name, string password, int famalyId)
         {
-            bisnesLogic.addNewUser(email, name, password);
+            bisnesLogic.addNewUser(email, name, password, famalyId);
             validateLocalData();
         }
 
         //CHANGE local user
-        public void changeDataCurentUser(int id, string email, string name, string pass)
+        public void changeDataCurentUser(int id, string email, string name, string pass, int familyId)
         {
-            bisnesLogic.changeCurentUser(id, email, name, pass);
+            bisnesLogic.changeCurentUser(id, email, name, pass, familyId);
             validateLocalData();
         }
 
         // Delete user for Id
         public void deleteUser(int id)
         {
-            bisnesLogic.delateUser(id);
+            bisnesLogic.deleteUser(id);
             validateLocalData();
         }
 
@@ -144,6 +144,12 @@ namespace ClassLibrary1
         public void ClearOrdersFilters()
         {
             filteredListOrders.Clear();
+        }
+
+        public string getFamilyName(int id)
+        {
+           var fam = bisnesLogic.getFamilyName(id).Name;
+            return fam;
         }
        
     }

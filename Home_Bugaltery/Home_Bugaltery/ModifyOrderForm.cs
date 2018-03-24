@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Home_Bugaltery
 {
-    public partial class ChangeOrderForm : Form
+    public partial class ModifyOrderForm : Form
     {
-        public ChangeOrderForm()
+        public ModifyOrderForm()
         {
             InitializeComponent();
         }

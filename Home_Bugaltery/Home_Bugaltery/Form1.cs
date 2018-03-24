@@ -30,7 +30,7 @@ namespace Home_Bugaltery
         {
             InitializeComponent();
 
-            curentUser = new Users() { Email = "nina_3@email.com", Name = "НінаНікитюк", Password = "1234", Family_Id = 1 };
+            curentUser = new Users() { Id = 1, Email = "nina_3@email.com", Name = "НінаНікитюк", Password = "1234", Family_Id = 1 };
            // this.curentUser = curentUser;
 
             // ContextMenu for dataGrid "Edit", "delete"

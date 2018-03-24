@@ -53,11 +53,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ChangeOrderForm.cs">
+    <Compile Include="ModifyOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChangeOrderForm.Designer.cs">
-      <DependentUpon>ChangeOrderForm.cs</DependentUpon>
+    <Compile Include="ModifyOrderForm.Designer.cs">
+      <DependentUpon>ModifyOrderForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -85,8 +85,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="ChangeOrderForm.resx">
-      <DependentUpon>ChangeOrderForm.cs</DependentUpon>
+    <EmbeddedResource Include="ModifyOrderForm.resx">
+      <DependentUpon>ModifyOrderForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

@@ -20,12 +20,15 @@ namespace Home_Bugaltery
         private Users curentUser;
 
         Users selectUserToDelete = null;
-        int selectUserId = 0;
 
+        bool IsChangeMyData = false;
 
         public ModifiUserForm(Users curentUser, HomeBugaltery homeBugaltery, HomeBugalteryAction actHomeBogaltery)
         {
             InitializeComponent();
+
+            // title Family name
+            this.Text = homeBugaltery.getFamilyName(curentUser.Family_Id);
 
             this.homeBugaltery = homeBugaltery;
             this.actHomeBugaltery = actHomeBogaltery;
@@ -33,6 +36,8 @@ namespace Home_Bugaltery
             this.curentUser = curentUser;
 
             updateUsers();
+
+            enabledForm(false);
         }
 
         private void updateUsers()
@@ -52,25 +57,44 @@ namespace Home_Bugaltery
 
         }
 
-        private void enabledForm(bool typ)
+        private void enabledForm(bool type)
         {
-            textBoxEmail.Enabled = typ;
-            textBoxName.Enabled = typ;
-            textBoxPass.Enabled = typ;
+            //textBoxEmail.Enabled = type;
+            //textBoxName.Enabled = type;
+            //textBoxPass.Enabled = type;
+            panelNewUser.Enabled = type;
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        private void dataGridViewUsers_SelectionChanged(object sender, EventArgs e)
         {
+            if(dataGridViewUsers.SelectedRows.Count == 0 || dataGridViewUsers.SelectedRows[0].Tag == null)
+            {
+                selectUserToDelete = null;
+                return;
+            }
             enabledForm(false);
+            panelAllUser.Enabled = true;
 
-            selectUserId = (int)dataGridViewUsers.SelectedRows[0].Tag;
+            var selectUserId = (int)dataGridViewUsers.SelectedRows[0].Tag;
 
             selectUserToDelete = homeBugaltery.ListUsers.Find(us => us.Id == selectUserId);
         }
 
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("Видалити? \nВи впевнені?");
+            if(dataGridViewUsers.SelectedRows.Count > 0)
+            {
+                try
+                {
+                    homeBugaltery.deleteUser(selectUserToDelete.Id);
+                }
+                catch (Exception exc)
+                {
+                    MessageBox.Show("Не можливо видалити користувача!!!\nДетально:\n" + exc.Message, "Помилка!!!");
+                }
+            }
+            updateUsers();
 
         }
 
@@ -82,12 +106,24 @@ namespace Home_Bugaltery
                 return;
             }
 
-            actHomeBugaltery.SetCommand((int)HomeActionEnum.addNewUser, new AddNewUserCommand(homeBugaltery, textBoxEmail.Text, textBoxName.Text,
-                                                                                              textBoxPass.Text));
+            // Change my data
+            if (IsChangeMyData == true)
+            {
+                actHomeBugaltery.SetCommand((int)HomeActionEnum.changeDataCurentUser, new ChangeCurentUserCommand(homeBugaltery,
+                                                              curentUser.Id, textBoxEmail.Text, textBoxName.Text, textBoxPass.Text, curentUser.Family_Id));
 
-            actHomeBugaltery.DoAction((int)HomeActionEnum.addNewUser);
+                actHomeBugaltery.DoAction((int)HomeActionEnum.changeDataCurentUser);
+            }
+            else // add new User
+            {
+                actHomeBugaltery.SetCommand((int)HomeActionEnum.addNewUser, new AddNewUserCommand(homeBugaltery, textBoxEmail.Text, textBoxName.Text,
+                                                                                                  textBoxPass.Text, curentUser.Family_Id));
+
+                actHomeBugaltery.DoAction((int)HomeActionEnum.addNewUser);
+            }
 
             updateUsers();
+            panelAllUser.Enabled = true;
 
             textBoxEmail.Clear();
             textBoxName.Clear();
@@ -98,10 +134,19 @@ namespace Home_Bugaltery
         private void btnChangeDataCurentUser_Click(object sender, EventArgs e)
         {
             enabledForm(true);
-            actHomeBugaltery.SetCommand((int)HomeActionEnum.changeDataCurentUser, new ChangeCurentUserCommand(homeBugaltery,
-                                                           curentUser.Id, textBoxEmail.Text, textBoxName.Text, textBoxPass.Text));
 
-            actHomeBugaltery.DoAction((int)HomeActionEnum.changeDataCurentUser);
+            IsChangeMyData = true;
+
+            //Go to the last ROW in GRID
+            int lastIndex = dataGridViewUsers.Rows.Count - 1;
+            dataGridViewUsers.Rows[lastIndex].Selected = true;
+            dataGridViewUsers.FirstDisplayedScrollingRowIndex = lastIndex;
+
+            textBoxEmail.Text = curentUser.Email;
+            textBoxName.Text = curentUser.Name;
+            textBoxPass.Text = curentUser.Password;
+
+           // dataGridViewUsers.SelectedRows[curentUser.Id];
         }
 
         private void btnClouse_Click(object sender, EventArgs e)
@@ -109,6 +154,23 @@ namespace Home_Bugaltery
             this.Close();
         }
 
-     
+        private void btnNewUser_Click(object sender, EventArgs e)
+        {
+            labelUser.Text = "Новий користувач :";
+
+            panelAllUser.Enabled = false;
+            IsChangeMyData = false;
+
+            //Go to the last ROW in GRID
+            int lastIndex = dataGridViewUsers.Rows.Count - 1;
+            dataGridViewUsers.Rows[lastIndex].Selected = true;
+            dataGridViewUsers.FirstDisplayedScrollingRowIndex = lastIndex;
+
+            textBoxEmail.Clear();
+            textBoxName.Clear();
+            textBoxPass.Clear();
+
+            enabledForm(true);
+        }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace Home_Bugaltery
 {
-    partial class ChangeOrderForm
+    partial class ModifyOrderForm
     {
         /// <summary>
         /// Required designer variable.

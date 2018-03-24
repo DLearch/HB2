@@ -1,91 +1,94 @@
-п»ї--Server=tcp:dobro.database.windows.net,1433;Initial Catalog=Market;Persist Security Info=False;User ID=test@dobro;Password=!QAZ2wsx;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
+--Server=tcp:dobro.database.windows.net,1433;Initial Catalog=Market;Persist Security Info=False;User ID=test@dobro;Password=!QAZ2wsx;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;
 
 --Server=tcp:dobro.database.windows.net,1433;  Or -- tcp:dobro.database.windows.net,1433\sqlexpres
 --Initial Catalog=Market;
 --User ID=test@dobro;
 --Password=!QAZ2wsx;
 
-Create Table HB.Categories(
-	[Id] int identity primary key not null,
-	[Name] nvarchar(50) not null,
-	[Type] bit not null
-)
+--Create Table HB.Categories(
+--	[Id] int identity primary key not null,
+--	[Name] nvarchar(50) not null,
+--	[Type] bit not null
+--)
 
-Create Table HB.Users(
-	[Id] int identity primary key not null,
-	[Name] nvarchar(50) not null,
-	[Password] nvarchar(50) not null
-)
+--Create Table HB.Users(
+--	[Id] int identity primary key not null,
+--	[Name] nvarchar(50) not null,
+--	[Password] nvarchar(50) not null
+--)
 
-Create Table HB.Orders(
-	[Id] int identity primary key not null,
-	[Category_Id] int not null foreign key references HB.Categories(Id),
-	[User_Id] int not null foreign key references HB.Users(Id),
-	[Price] money not null,
-	[Date] DateTime not null,
-	[Description] nvarchar(MAX) null
-)
+--Create Table HB.Orders(
+--	[Id] int identity primary key not null,
+--	[Category_Id] int not null foreign key references HB.Categories(Id),
+--	[User_Id] int not null foreign key references HB.Users(Id),
+--	[Price] money not null,
+--	[Date] DateTime not null,
+--	[Description] nvarchar(MAX) null
+--)
 
-Create Table HB.LogHistDateOrder(
-[Id] int identity primary key NOT NULL,
-[OrderId] int NOT NULL,
-[DateOrder] DateTime NOT NULL,
-[Summa] money NOT NULL
-)
-
-/* 
-Create Table HB.Users(
-	[Id] int identity primary key not null,
-	[Email] nvarchar(50) not null,
-	[Name] nvarchar(50) not null,
-	[Password] nvarchar(50) not null
-)
-
-Create Table HB.FamilyMembers(
-	[Id] int identity primary key not null,
-	[Name] nvarchar(50) not null,
-	[User_Id] int not null foreign key references HB.Users(Id)
-)
- */
---С‚СЂРёРіРµСЂ, РєРѕС‚РѕСЂС‹Р№ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё РїРѕСЃР»Рµ РєР°Р¶РґРѕР№ РїРѕРєСѓРїРєРё РґРѕРїРёСЃС‹РІР°РµС‚ РІ РѕС‚РґРµР»СЊРЅСѓСЋ С‚Р°Р±Р»РёС†Сѓ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕС‚СЂР°С‡РµРЅРЅС‹С… РґРµРЅРµРі 
--- (РїРѕРґСЃС‡С‘С‚ СЃСѓРјРјС‹ РґРµРЅРµРі РєРѕС‚РѕСЂР°СЏ РїРѕС‚СЂР°С‡РµРЅР° РЅР° РїРѕРєСѓРїРєРё)
-CREATE TRIGGER HB.InsertGodds_tg
-	ON HB.Orders
-    FOR INSERT
-    AS
-		INSERT INTO HB.LogHistDateOrder([DateOrder], [OrderId], [Summa]) 		
-		SELECT  inserted.Date, inserted.Id, inserted.Price
-		FROM inserted
-
-INSERT INTO HB.Users VALUES(N'РќС–РЅР° РќС–РєРёС‚СЋРє', '1234')
-INSERT INTO HB.Users VALUES(N'Tarasik@', '1234')
-INSERT INTO HB.Users VALUES(N'Р СѓСЃР»Р°РЅ', '1234')
-INSERT INTO HB.Users VALUES(N'РЎРµСЂРіС–Р№', '1234')
-INSERT INTO HB.Users VALUES(N'TanyGmail', '1234')
-
-INSERT INTO  HB.Categories  VALUES(N'Р—Р°СЂРїР»Р°С‚Р°', 1)
-INSERT INTO  HB.Categories  VALUES(N'Р‡Р¶Р°', 0)
-INSERT INTO  HB.Categories  VALUES(N'РћРґСЏРі', 0)
-INSERT INTO  HB.Categories  VALUES(N'Р’Р·СѓС‚С‚СЏ', 0)
-INSERT INTO  HB.Categories  VALUES(N'Р’С–РґРґРёС… С– СЂРѕР·РІР°РіРё', 0)
-INSERT INTO  HB.Categories  VALUES(N'РџРѕР±СѓС‚РѕРІС– С‚РµС…РЅС–РєР°', 0)
-INSERT INTO  HB.Categories  VALUES(N'РђРїС‚РµРєР°', 0)
-INSERT INTO  HB.Categories  VALUES(N'РўРѕРІР°СЂРё РґР»СЏ РґРѕРјР°', 0)
-INSERT INTO  HB.Categories  VALUES(N'РџСЂРёС…С–Рґ РІС–Рґ Р±РёР·РЅРµСЃy', 1)
-INSERT INTO  HB.Categories  VALUES(N'РџСЂРѕС†РµРЅС‚ РїРѕ РІРєР»Р°РґСѓ РІ Р±Р°РЅРєСѓ', 1)
-INSERT INTO  HB.Categories  VALUES(N'РџРµРЅСЃРёСЏ', 1)
-INSERT INTO  HB.Categories  VALUES(N'РЎС‚РёРїРµРЅРґС–СЏ', 1)
-INSERT INTO  HB.Categories  VALUES(N'Р”РѕС…С–Рґ РІС–Рґ РїСЂРѕРґР°Р¶Сѓ РѕСЃРѕР±РёСЃС‚РёС… СЂРµС‡РµР№', 1)
+--Create Table HB.LogHistDateOrder(
+--[Id] int identity primary key NOT NULL,
+--[OrderId] int NOT NULL,
+--[DateOrder] DateTime NOT NULL,
+--[Summa] money NOT NULL
+--)
 
 
-	INSERT INTO HB.Orders VALUES (2, 1, 100, '2017-10-10', N'РҐР»С–Р±, С†СѓРєРѕСЂ, РјР°СЃР»Рѕ') 
-	INSERT INTO HB.Orders VALUES (3, 1, 250, '2017-10-12', N'РџР°Р»СЊС‚Рѕ') 
-	INSERT INTO HB.Orders VALUES (7, 2, 150, '2017-03-10', N'РђСЃРїС–СЂРёРЅ, РђРЅР°Р»СЊРіС–РЅ')
-	INSERT INTO HB.Orders VALUES (1, 3, 5000, '2017-09-10', Null) 
-	INSERT INTO HB.Orders VALUES (4, 5, 1500, '2018-01-01', N'РўСѓС„Р»С–') 
-	INSERT INTO HB.Orders VALUES (6, 2, 450, '2018-03-02', N'РЎРєРѕРІРѕСЂС–РґРєР°')
-	INSERT INTO HB.Orders VALUES (2, 4, 200, '2018-02-02', N'РњРѕР»РѕРєРѕ, Р№РѕРіСѓСЂС‚')
-	INSERT INTO HB.Orders VALUES (1, 4, 7000, '2018-03-02', null) 
-	INSERT INTO HB.Orders VALUES (1, 3, 10000, '2018-01-02', null)
-	INSERT INTO HB.Orders VALUES (1, 2, 10000, '2018-02-02', null)
-	INSERT INTO HB.Orders VALUES (5, 2, 2000, '2018-01-02', null)
+--Create Table HB.Users(
+--	[Id] int identity primary key not null,
+--	[Email] nvarchar(50) not null,
+--	[Name] nvarchar(50) not null,
+--	[Password] nvarchar(50) not null,
+--	[Family_Id] int not null foreign key references HB.FamilyMembers(Id)
+--)
+
+--Create Table HB.FamilyMembers(
+--	[Id] int identity primary key not null,
+--	[Name] nvarchar(50) not null
+--)
+ 
+--тригер, который автоматически после каждой покупки дописывает в отдельную таблицу количество потраченных денег 
+-- (подсчёт суммы денег которая потрачена на покупки)
+--CREATE TRIGGER HB.InsertGodds_tg
+--	ON HB.Orders
+--    FOR INSERT
+--    AS
+--		INSERT INTO HB.LogHistDateOrder([DateOrder], [OrderId], [Summa]) 		
+--		SELECT  inserted.Date, inserted.Id, inserted.Price
+--		FROM inserted
+
+--INSERT INTO HB.Users VALUES(N'nina_3@email.com', N'НінаНікитюк', '1234', 1)
+--INSERT INTO HB.Users VALUES(N'taras_2@email.com', N'Tarasik@', '1234', 1)
+--INSERT INTO HB.Users VALUES(N'ru_23@email.com', N'Руслан', '1234', 1)
+--INSERT INTO HB.Users VALUES(N'sergiy_56@email.com', N'Сергій', '1234', 1)
+--INSERT INTO HB.Users VALUES(N'tany_2@email.com', N'TanyGmail', '1234', 1)
+
+--INSERT INTO HB.FamilyMembers VALUES('Family_1')
+--INSERT INTO HB.FamilyMembers VALUES('Family_2')
+
+--INSERT INTO  HB.Categories  VALUES(N'Зарплата', 1)
+--INSERT INTO  HB.Categories  VALUES(N'Їжа', 0)
+--INSERT INTO  HB.Categories  VALUES(N'Одяг', 0)
+--INSERT INTO  HB.Categories  VALUES(N'Взуття', 0)
+--INSERT INTO  HB.Categories  VALUES(N'Віддих і розваги', 0)
+--INSERT INTO  HB.Categories  VALUES(N'Побутові техніка', 0)
+--INSERT INTO  HB.Categories  VALUES(N'Аптека', 0)
+--INSERT INTO  HB.Categories  VALUES(N'Товари для дома', 0)
+--INSERT INTO  HB.Categories  VALUES(N'Прихід від бизнесy', 1)
+--INSERT INTO  HB.Categories  VALUES(N'Процент по вкладу в банку', 1)
+--INSERT INTO  HB.Categories  VALUES(N'Пенсия', 1)
+--INSERT INTO  HB.Categories  VALUES(N'Стипендія', 1)
+--INSERT INTO  HB.Categories  VALUES(N'Дохід від продажу особистих речей', 1)
+
+
+	--INSERT INTO HB.Orders VALUES (2, 1, 100, '2017-10-10', N'Хліб, цукор, масло') 
+	--INSERT INTO HB.Orders VALUES (3, 1, 250, '2017-10-12', N'Пальто') 
+	--INSERT INTO HB.Orders VALUES (7, 2, 150, '2017-03-10', N'Аспірин, Анальгін')
+	--INSERT INTO HB.Orders VALUES (1, 3, 5000, '2017-09-10', Null) 
+	--INSERT INTO HB.Orders VALUES (4, 5, 1500, '2018-01-01', N'Туфлі') 
+	--INSERT INTO HB.Orders VALUES (6, 2, 450, '2018-03-02', N'Сковорідка')
+	--INSERT INTO HB.Orders VALUES (2, 4, 200, '2018-02-02', N'Молоко, йогурт')
+	--INSERT INTO HB.Orders VALUES (1, 4, 7000, '2018-03-02', null) 
+	--INSERT INTO HB.Orders VALUES (1, 3, 10000, '2018-01-02', null)
+	--INSERT INTO HB.Orders VALUES (1, 2, 10000, '2018-02-02', null)
+	--INSERT INTO HB.Orders VALUES (5, 2, 2000, '2018-01-02', N'Аквапарк')

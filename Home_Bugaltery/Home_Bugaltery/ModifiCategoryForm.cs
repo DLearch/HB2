@@ -65,6 +65,7 @@ namespace Home_Bugaltery
                 labelAddEdit.Text = "Додати нову категорію :";
 
                 textBoxNewCategory.ReadOnly = false;
+
                 textBoxNewCategory.Text = "";
                 comboBoxType.SelectedIndex = 0;
                 curentCategory = null;
