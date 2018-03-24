@@ -194,29 +194,16 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteEditCategoryCommand(object parameter)
         {
-            
+            HomeBugaltery.changeCategory((ListBoxCategoriesSelectedItem as Categories).Id, 
+                                            TextBoxEditCategoryText, 
+                                            RadioButtonEditCategoryIncomeIsChecked);
+
             UpdateListBoxCategories();
         }
 
         public bool CanExecuteEditCategoryCommand(object parameter)
         {
-            if (ListBoxCategoriesSelectedItem == null)
-            {
-                TextBoxEditCategoryText = string.Empty;
-                GroupBoxEditCategoryIsEnabled = TextBoxEditCategoryIsEnabled = false;
-                return false;
-            }
-
-            Categories curCategory = ListBoxCategoriesSelectedItem as Categories;
-
-            if (curCategory.Type)
-                RadioButtonEditCategoryIncomeIsChecked = true;
-            else
-                RadioButtonEditCategoryOutcomeIsChecked = true;
-            TextBoxEditCategoryText = curCategory.Name;
-            GroupBoxEditCategoryIsEnabled = TextBoxEditCategoryIsEnabled = true;
-
-            return true;
+            return ListBoxCategoriesSelectedItem != null;
         }
 
         #endregion
@@ -236,13 +223,52 @@ namespace WpfApplication1.ViewModel
 
         public void ExecuteRemoveCategoryCommand(object parameter)
         {
+            HomeBugaltery.deleteCategory((ListBoxCategoriesSelectedItem as Categories).Id);
 
             UpdateListBoxCategories();
         }
 
         public bool CanExecuteRemoveCategoryCommand(object parameter)
         {
-            return ListBoxCategoriesSelectedItem != null;
+            return ListBoxCategoriesSelectedItem != null 
+                && !HomeBugaltery.ListOrders.Any(o => o.CategoryName == (ListBoxCategoriesSelectedItem as Categories).Name);
+        }
+
+        #endregion
+
+        #region ListBoxCategories SelectedItemChanged Command
+
+        RelayCommand _listBoxCategoriesSelectedItemChanged;
+        public System.Windows.Input.ICommand ListBoxCategoriesSelectedItemChangedCommand
+        {
+            get
+            {
+                if (_listBoxCategoriesSelectedItemChanged == null)
+                    _listBoxCategoriesSelectedItemChanged = new RelayCommand(ExecuteListBoxCategoriesSelectedItemChangedCommand);
+                return _listBoxCategoriesSelectedItemChanged;
+            }
+        }
+
+        public void ExecuteListBoxCategoriesSelectedItemChangedCommand(object parameter)
+        {
+            Categories curCategory = ListBoxCategoriesSelectedItem as Categories;
+
+            if (ListBoxCategoriesSelectedItem != null)
+            {
+                if (curCategory.Type)
+                    RadioButtonEditCategoryIncomeIsChecked = true;
+                else
+                    RadioButtonEditCategoryOutcomeIsChecked = true;
+
+                TextBoxEditCategoryText = curCategory.Name;
+                GroupBoxEditCategoryIsEnabled = TextBoxEditCategoryIsEnabled = true;
+            }
+            else
+            {
+                TextBoxEditCategoryText = string.Empty;
+                GroupBoxEditCategoryIsEnabled = TextBoxEditCategoryIsEnabled = false;
+            }
+
         }
 
         #endregion
