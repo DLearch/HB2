@@ -72,7 +72,7 @@ namespace WpfApplication1.ViewModel
 
         #endregion
 
-        ObservableCollection<Users> users;
+        ObservableCollection<FamilyMembers> familyMembers;
         HomeBugaltery _homeBugaltery;
 
         public HomeBugaltery HomeBugaltery
@@ -80,7 +80,7 @@ namespace WpfApplication1.ViewModel
             set
             {
                 _homeBugaltery = value;
-                ListBoxFamilyMembersItemsSource = users = new ObservableCollection<Users>();
+                ListBoxFamilyMembersItemsSource = familyMembers = new ObservableCollection<FamilyMembers>();
                 UpdateListBoxFamilyMembers();
             }
             private get
@@ -91,9 +91,9 @@ namespace WpfApplication1.ViewModel
         
         private void UpdateListBoxFamilyMembers()
         {
-            users.Clear();
-            foreach (Users user in HomeBugaltery.ListUsers)
-                users.Add(user);
+        //    familyMembers.Clear();
+        //    foreach (FamilyMembers familyMember in HomeBugaltery)
+        //        familyMembers.Add(familyMember);
         }
 
         #region Add Family Member Command
@@ -181,5 +181,34 @@ namespace WpfApplication1.ViewModel
 
         #endregion
 
+        #region ListBoxFamilyMembers SelectedItemChanged Command
+
+        RelayCommand _listBoxFamilyMembersSelectedItemChanged;
+        public System.Windows.Input.ICommand ListBoxFamilyMembersSelectedItemChangedCommand
+        {
+            get
+            {
+                if (_listBoxFamilyMembersSelectedItemChanged == null)
+                    _listBoxFamilyMembersSelectedItemChanged = new RelayCommand(ExecuteListBoxFamilyMembersSelectedItemChangedCommand);
+                return _listBoxFamilyMembersSelectedItemChanged;
+            }
+        }
+
+        public void ExecuteListBoxFamilyMembersSelectedItemChangedCommand(object parameter)
+        {
+            if (ListBoxFamilyMembersSelectedItem != null)
+            {
+                TextBoxEditFamilyMembersText = (ListBoxFamilyMembersSelectedItem as FamilyMembers).Name;
+                TextBoxEditFamilyMembersIsEnabled = true;
+            }
+            else
+            {
+                TextBoxEditFamilyMembersText = string.Empty;
+                TextBoxEditFamilyMembersIsEnabled = false;
+            }
+
+        }
+
+        #endregion
     }
 }
