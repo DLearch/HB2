@@ -69,13 +69,19 @@
   <ItemGroup>
     <Compile Include="AddCategoryCommand.cs" />
     <Compile Include="AddNewOrderCommand.cs" />
+    <Compile Include="AddNewUserCommand.cs" />
     <Compile Include="BisnesLogic.cs" />
     <Compile Include="Categories.cs">
       <DependentUpon>ModelEntity_HB.tt</DependentUpon>
     </Compile>
+    <Compile Include="ChangeCategoryCommand.cs" />
+    <Compile Include="ChangeCurentUserCommand.cs" />
     <Compile Include="ChangeOrderCommand.cs" />
     <Compile Include="DataTypes.cs" />
     <Compile Include="DeleteOrderCommand.cs" />
+    <Compile Include="FamilyMembers.cs">
+      <DependentUpon>ModelEntity_HB.tt</DependentUpon>
+    </Compile>
     <Compile Include="HomeBugaltery.cs" />
     <Compile Include="HomeBugalteryAction.cs" />
     <Compile Include="ICommand.cs" />

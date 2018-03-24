@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="MarketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище MarketModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="Id" />
@@ -12,6 +12,13 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Type" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FamilyMembers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="LogHistDateOrder">
           <Key>
@@ -38,10 +45,12 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Family_Id" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK__Orders__Category__690797E6">
+        <Association Name="FK__Orders__Category__0697FACD">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -53,7 +62,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__User_Id__69FBBC1F">
+        <Association Name="FK__Orders__User_Id__078C1F06">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -65,18 +74,35 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MarketModelStoreContainer">
+        <Association Name="FK__Users__Family_Id__03BB8E22">
+          <End Role="FamilyMembers" Type="Self.FamilyMembers" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilyMembers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Family_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище MarketModelContainer">
           <EntitySet Name="Categories" EntityType="Self.Categories" Schema="HB" store:Type="Tables" />
+          <EntitySet Name="FamilyMembers" EntityType="Self.FamilyMembers" Schema="HB" store:Type="Tables" />
           <EntitySet Name="LogHistDateOrder" EntityType="Self.LogHistDateOrder" Schema="HB" store:Type="Tables" />
           <EntitySet Name="Orders" EntityType="Self.Orders" Schema="HB" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="HB" store:Type="Tables" />
-          <AssociationSet Name="FK__Orders__Category__690797E6" Association="Self.FK__Orders__Category__690797E6">
+          <AssociationSet Name="FK__Orders__Category__0697FACD" Association="Self.FK__Orders__Category__0697FACD">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__User_Id__69FBBC1F" Association="Self.FK__Orders__User_Id__69FBBC1F">
+          <AssociationSet Name="FK__Orders__User_Id__078C1F06" Association="Self.FK__Orders__User_Id__078C1F06">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Users__Family_Id__03BB8E22" Association="Self.FK__Users__Family_Id__03BB8E22">
+            <End Role="FamilyMembers" EntitySet="FamilyMembers" />
+            <End Role="Users" EntitySet="Users" />
           </AssociationSet>
         </EntityContainer>
       </Schema>
@@ -91,7 +117,15 @@
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Type" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Category__690797E6" FromRole="Categories" ToRole="Orders" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Category__0697FACD" FromRole="Categories" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="FamilyMembers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Users__Family_Id__03BB8E22" FromRole="FamilyMembers" ToRole="Users" />
         </EntityType>
         <EntityType Name="LogHistDateOrder">
           <Key>
@@ -112,19 +146,22 @@
           <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Categories" Relationship="Self.FK__Orders__Category__690797E6" FromRole="Orders" ToRole="Categories" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Orders__User_Id__69FBBC1F" FromRole="Orders" ToRole="Users" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK__Orders__Category__0697FACD" FromRole="Orders" ToRole="Categories" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Orders__User_Id__078C1F06" FromRole="Orders" ToRole="Users" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__User_Id__69FBBC1F" FromRole="Users" ToRole="Orders" />
+          <Property Name="Family_Id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="FamilyMembers" Relationship="Self.FK__Users__Family_Id__03BB8E22" FromRole="Users" ToRole="FamilyMembers" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__User_Id__078C1F06" FromRole="Users" ToRole="Orders" />
         </EntityType>
-        <Association Name="FK__Orders__Category__690797E6">
+        <Association Name="FK__Orders__Category__0697FACD">
           <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -136,7 +173,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Orders__User_Id__69FBBC1F">
+        <Association Name="FK__Users__Family_Id__03BB8E22">
+          <End Role="FamilyMembers" Type="Self.FamilyMembers" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FamilyMembers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="Family_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__User_Id__078C1F06">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
           <ReferentialConstraint>
@@ -148,16 +197,21 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="MarketEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MarketEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="FamilyMembers" EntityType="Self.FamilyMembers" />
           <EntitySet Name="LogHistDateOrder" EntityType="Self.LogHistDateOrder" />
           <EntitySet Name="Orders" EntityType="Self.Orders" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK__Orders__Category__690797E6" Association="Self.FK__Orders__Category__690797E6">
+          <AssociationSet Name="FK__Orders__Category__0697FACD" Association="Self.FK__Orders__Category__0697FACD">
             <End Role="Categories" EntitySet="Categories" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
-          <AssociationSet Name="FK__Orders__User_Id__69FBBC1F" Association="Self.FK__Orders__User_Id__69FBBC1F">
+          <AssociationSet Name="FK__Users__Family_Id__03BB8E22" Association="Self.FK__Users__Family_Id__03BB8E22">
+            <End Role="FamilyMembers" EntitySet="FamilyMembers" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__User_Id__078C1F06" Association="Self.FK__Orders__User_Id__078C1F06">
             <End Role="Users" EntitySet="Users" />
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
@@ -167,13 +221,21 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="MarketModelStoreContainer" CdmEntityContainer="MarketEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище MarketModelContainer" CdmEntityContainer="MarketEntities">
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="MarketModel.Categories">
               <MappingFragment StoreEntitySet="Categories">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FamilyMembers">
+            <EntityTypeMapping TypeName="MarketModel.FamilyMembers">
+              <MappingFragment StoreEntitySet="FamilyMembers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -203,8 +265,10 @@
             <EntityTypeMapping TypeName="MarketModel.Users">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Family_Id" ColumnName="Family_Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -225,7 +289,7 @@
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

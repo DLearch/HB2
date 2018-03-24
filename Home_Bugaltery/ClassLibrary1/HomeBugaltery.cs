@@ -40,21 +40,57 @@ namespace ClassLibrary1
             validateLocalData();
         }
 
-        public void addCategory(string categoryName, bool type)
-        {
-            bisnesLogic.addCategory(categoryName, type);
-            validateLocalData();
-        }
-
         public void changeOrder(int id, string categoryName, string userName, DateTime dateOrder, decimal price, string description)
         {
             bisnesLogic.changeOrder(id, categoryName, userName, dateOrder, price, description);
             validateLocalData();
         }
 
-        public void deleteOrder(int index)
-        {      
-            bisnesLogic.deleteOrder(index);
+        public void addCategory(string categoryName, bool type)
+        {
+            bisnesLogic.addCategory(categoryName, type);
+            validateLocalData();
+        }
+
+        // deleteOrder
+        public void deleteOrder(int id)
+        {
+            bisnesLogic.deleteOrder(id);
+            validateLocalData();
+        }
+
+        // deleteCategory
+        public void deleteCategory(int id)
+        {
+            bisnesLogic.delateCategory(id);
+            validateLocalData();
+        }
+
+        // change category
+        public void changeCategory(int id, string newName, bool newType)
+        {
+            bisnesLogic.changeCategory(id, newName, newType);
+            validateLocalData();
+        }
+
+        // add user
+        public void addNewUser(string email, string name, string password)
+        {
+            bisnesLogic.addNewUser(email, name, password);
+            validateLocalData();
+        }
+
+        //CHANGE local user
+        public void changeDataCurentUser(int id, string email, string name, string pass)
+        {
+            bisnesLogic.changeCurentUser(id, email, name, pass);
+            validateLocalData();
+        }
+
+        // Delete user for Id
+        public void deleteUser(int id)
+        {
+            bisnesLogic.delateUser(id);
             validateLocalData();
         }
 

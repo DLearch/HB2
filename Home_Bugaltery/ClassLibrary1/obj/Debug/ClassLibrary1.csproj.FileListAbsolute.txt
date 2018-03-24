@@ -95,3 +95,16 @@ C:\Users\Daniel\Source\hhbb2\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru\Entit
 C:\Users\Daniel\Source\hhbb2\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
 C:\Users\Daniel\Source\hhbb2\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\Daniel\Source\hhbb2\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.xml
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru\EntityFramework.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.csproj.CoreCompileInputs.cache
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.pdb

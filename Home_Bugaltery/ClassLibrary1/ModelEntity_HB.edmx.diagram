@@ -4,13 +4,15 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ec8e69345ec94894b4716921f30bc3f2" Name="Diagram1">
-        <EntityTypeShape EntityType="MarketModel.Categories" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketModel.LogHistDateOrder" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketModel.Orders" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="MarketModel.Users" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <AssociationConnector Association="MarketModel.FK__Orders__Category__690797E6" ManuallyRouted="false" />
-        <AssociationConnector Association="MarketModel.FK__Orders__User_Id__69FBBC1F" ManuallyRouted="false" />
+      <Diagram DiagramId="eb653272282e438b86ffff9c7456059b" Name="Diagram1">
+        <EntityTypeShape EntityType="MarketModel.Categories" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketModel.FamilyMembers" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketModel.LogHistDateOrder" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketModel.Orders" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketModel.Users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="MarketModel.FK__Orders__Category__0697FACD" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketModel.FK__Users__Family_Id__03BB8E22" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketModel.FK__Orders__User_Id__078C1F06" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

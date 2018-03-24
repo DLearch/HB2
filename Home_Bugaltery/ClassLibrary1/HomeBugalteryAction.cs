@@ -17,7 +17,7 @@ namespace ClassLibrary1
 
         public HomeBugalteryAction()
         {
-            commands = new ICommand[5];
+            commands = new ICommand[10];
             doneActionsIndexes = new Stack<int>(20);
 
             for (int i = 0; i < commands.Length; i++)

@@ -8,12 +8,11 @@ namespace ClassLibrary1
 {
     public class BisnesLogic
     {
-        MarketEntities1 db;
+        MarketEntities db;
 
         public BisnesLogic()
         {
-            db = new MarketEntities1();
-
+            db = new MarketEntities();
         }
 
         public List<Users> getAllUsers()
@@ -83,33 +82,7 @@ namespace ClassLibrary1
             db.SaveChanges();
         }
 
-        public void addCategory(string categoryName, bool type)
-        {
-            var newCategory = new Categories()
-            {
-                Name = categoryName,
-                Type = type
-            };
-
-            db.Categories.Add(newCategory);
-            db.SaveChanges();
-        }
-
-        public void addUser(string userName, string pass)
-        {
-            var newUser = new Users()
-            {
-                Name = userName,
-                Password = pass
-            };
-
-            db.Users.Add(newUser);
-            db.SaveChanges();
-        }
-
-
-
-
+        //DELETE ORDER
         public void deleteOrder(int id)
         {
             var orderToDelete = db.Orders.Where(o => o.Id == id).FirstOrDefault();
@@ -120,6 +93,8 @@ namespace ClassLibrary1
                 db.SaveChanges();
             }
         }
+
+      
 
         public void changeOrder(int id, string categoryName, string userName, DateTime dateOrder, decimal price, string description)
         {
@@ -143,5 +118,93 @@ namespace ClassLibrary1
             db.SaveChanges();
 
         }
+
+        // Add Category
+        public void addCategory(string categoryName, bool type)
+        {
+            var newCategory = new Categories()
+            {
+                Name = categoryName,
+                Type = type
+            };
+
+            db.Categories.Add(newCategory);
+            db.SaveChanges();
+        }
+
+        // Delete category
+        public void delateCategory(int id)
+        {
+            var categoryToDelete = db.Categories.Where(cat => cat.Id == id).FirstOrDefault();
+
+            var useOrders = db.Orders.Where(ord => ord.Category_Id == id);
+
+            if (useOrders.Count() > 0)
+            {
+                throw new Exception("Category is used in orders!!!");
+            }                
+
+            if (categoryToDelete != null)
+            {
+                db.Categories.Remove(categoryToDelete);
+                db.SaveChanges();
+            }
+        }
+
+        // Change category
+        public void changeCategory(int id, string newName, bool newType)
+        {
+            var categoryToChange = db.Categories.Where(c => c.Id == id).FirstOrDefault();
+            if (categoryToChange != null)
+            {
+                categoryToChange.Name = newName;
+                categoryToChange.Type = newType;
+
+                db.SaveChanges();
+            }
+        }
+
+        // Add newUser
+        public void addNewUser(string email, string userName, string pass)
+        {
+            var newUser = new Users()
+            {
+                //Email = email,
+                Name = userName,
+                Password = pass
+            };
+
+            db.Users.Add(newUser);
+            db.SaveChanges();
+        }
+
+
+        // Delete user
+        public void delateUser(int id)
+        {
+            var categoryToDelete = db.Categories.Where(o => o.Id == id).FirstOrDefault();
+
+            if (categoryToDelete != null)
+            {
+                db.Categories.Remove(categoryToDelete);
+                db.SaveChanges();
+            }
+        }
+
+
+
+        // Change my data
+        public void changeCurentUser(int id, string email, string name, string pass)
+        {
+            var userToChange = db.Users.Where(c => c.Id == id).FirstOrDefault();
+
+           // userToChange.Email = email;
+            userToChange.Name = name;
+            userToChange.Password = pass;
+
+            db.SaveChanges();
+        }
+
+
     }
 }
