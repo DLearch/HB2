@@ -43,6 +43,81 @@ namespace WpfApplication1.ViewModel
 
         #endregion
 
+        #region ListBoxCategoriesFiltersItemsSource
+
+        private IEnumerable<object> _listBoxCategoriesFiltersItemsSource;
+        public IEnumerable<object> ListBoxCategoriesFiltersItemsSource
+        {
+            get { return _listBoxCategoriesFiltersItemsSource; }
+            set
+            {
+                _listBoxCategoriesFiltersItemsSource = value;
+                OnPropertyChanged("ListBoxCategoriesFiltersItemsSource");
+            }
+        }
+
+        #endregion
+
+        #region CheckBoxCategoriesFilterIsChecked
+
+        private bool? _checkBoxCategoriesFilterIsChecked;
+        public bool? CheckBoxCategoriesFilterIsChecked
+        {
+            get { return _checkBoxCategoriesFilterIsChecked; }
+            set
+            {
+                _checkBoxCategoriesFilterIsChecked = value;
+                OnPropertyChanged("CheckBoxCategoriesFilterIsChecked");
+            }
+        }
+
+        #endregion
+
+        #region CheckBoxDateFilterIsChecked
+
+        private bool? _checkBoxDateFilterIsChecked;
+        public bool? CheckBoxDateFilterIsChecked
+        {
+            get { return _checkBoxDateFilterIsChecked; }
+            set
+            {
+                _checkBoxDateFilterIsChecked = value;
+                OnPropertyChanged("CheckBoxDateFilterIsChecked");
+            }
+        }
+
+        #endregion
+
+        #region DatePickerDateFromSelectedDate
+
+        private DateTime? _datePickerDateFromSelectedDate;
+        public DateTime? DatePickerDateFromSelectedDate
+        {
+            get { return _datePickerDateFromSelectedDate; }
+            set
+            {
+                _datePickerDateFromSelectedDate = value;
+                OnPropertyChanged("DatePickerDateFromSelectedDate");
+            }
+        }
+
+        #endregion
+        
+        #region DatePickerDateToSelectedDate
+
+        private DateTime? _datePickerDateToSelectedDate;
+        public DateTime? DatePickerDateToSelectedDate
+        {
+            get { return _datePickerDateToSelectedDate; }
+            set
+            {
+                _datePickerDateToSelectedDate = value;
+                OnPropertyChanged("DatePickerDateToSelectedDate");
+            }
+        }
+
+        #endregion
+
         #region HomeBugaltery
 
         HomeBugaltery _homeBugaltery;
@@ -52,6 +127,8 @@ namespace WpfApplication1.ViewModel
             {
                 _homeBugaltery = value;
                 ListViewOrdersItemsSource = orders = new ObservableCollection<OrdersView>();
+                ListBoxCategoriesFiltersItemsSource = filterCategories = new ObservableCollection<FilterCategoriesItem>();
+                CheckBoxCategoriesFilterIsChecked = CheckBoxDateFilterIsChecked = false;
                 Update();
             }
             private get
@@ -63,12 +140,21 @@ namespace WpfApplication1.ViewModel
         #endregion 
 
         ObservableCollection<OrdersView> orders;
+        ObservableCollection<FilterCategoriesItem> filterCategories;
 
         public void Update()
         {
+            ObservableCollection<FilterCategoriesItem> tmp = new ObservableCollection<FilterCategoriesItem>();
+
+            foreach (var item in HomeBugaltery.ListCategories)
+                tmp.Add(filterCategories.DefaultIfEmpty(new FilterCategoriesItem(false, item)).FirstOrDefault(c => c.Category == item));
+
+            ListBoxCategoriesFiltersItemsSource = filterCategories = tmp;
+            
             orders.Clear();
             foreach (OrdersView orderView in HomeBugaltery.ListOrders)
                 orders.Add(orderView);
+            
         }
 
         #region Edit Order Command
@@ -127,5 +213,58 @@ namespace WpfApplication1.ViewModel
         }
         #endregion
         
+        #region Apply Filters Command
+
+        RelayCommand _applyFiltersCommand;
+        public System.Windows.Input.ICommand ApplyFiltersCommand
+        {
+            get
+            {
+                if (_applyFiltersCommand == null)
+                    _applyFiltersCommand = new RelayCommand(ExecuteApplyFiltersCommand);
+                return _applyFiltersCommand;
+            }
+        }
+
+        public void ExecuteApplyFiltersCommand(object parameter)
+        {
+            HomeBugaltery.ClearOrdersFilters();
+
+            List<string> categoriesList = null;
+            DateTime? dateFrom = null;
+            DateTime? dateTo = null;
+
+            if (CheckBoxCategoriesFilterIsChecked == true)
+                categoriesList = filterCategories.Where(f => f.IsSelected).Select(f => f.Category.Name).ToList();
+            
+            if(CheckBoxDateFilterIsChecked == true)
+            {
+                dateFrom = DatePickerDateFromSelectedDate;
+                dateTo = DatePickerDateToSelectedDate;
+            }
+
+            HomeBugaltery.aplyOrdersFilters(
+                categoriesList,
+                null,
+                dateFrom,
+                dateTo
+            );
+
+            Update();
+        }
+        #endregion
+    }
+
+    class FilterCategoriesItem
+    {
+        public bool IsSelected { get; set; }
+
+        public Categories Category { get; set; }
+
+        public FilterCategoriesItem(bool isSelected, Categories category)
+        {
+            IsSelected = isSelected;
+            Category = category;
+        }
     }
 }
