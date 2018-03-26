@@ -15,7 +15,6 @@ namespace WpfApplication1.ViewModel
 {
     class MainWindowViewModel : ViewModelBase
     {
-
         #region GridOrdersUControlVisibility
 
         private Visibility _gridOrdersUControlVisibility;
