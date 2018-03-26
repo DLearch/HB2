@@ -36,9 +36,12 @@ namespace ClassLibrary1
             //validExRevOrderForType();
         }
 
-        public List<OrdersView> ListOrders { get { if (filteredListOrders.Count == 0) return listOrders; else return filteredListOrders; } }
+        public List<OrdersView> ListOrders { get { return listOrders;} }
 
-        // f
+        // filter order category, user, date
+        public List<OrdersView> FilteredListOrders { get { return filteredListOrders; } }
+
+        // Filter Order for Expens, Revenues
         public List<OrdersView> FilterOrderExpensRevenues { get { return filterOrderExpensRevenues;  } }
 
         public List<Categories> ListCategories { get { return listCategories; } }
@@ -114,38 +117,16 @@ namespace ClassLibrary1
 
         }
 
-        // Suma for prise
-        public decimal summPrice(bool type)
-        {
-            return bisnesLogic.getSumPriceOrdersForType(type);
-        }
+        //// Suma for prise
+        //public decimal summPrice(bool type)
+        //{
+        //    return bisnesLogic.getSumPriceOrdersForType(type);
+        //}
         
-
-        // data Orders for expenses,  revenues
-        public decimal applyFiltersForExpensRevenues(bool type, DateTime? dateFrom = null, DateTime? dateTo = null)
-        {
-            filterOrderExpensRevenues.Clear();
-            decimal sum = 0;
-            
-            foreach (OrdersView order in listOrders)
-            {
-                bool orderCategoryType = listCategories.Where(c => c.Name == order.CategoryName).FirstOrDefault().Type;
-
-                if ((dateFrom == null || order.DateOrder >= dateFrom) && (dateTo == null || order.DateOrder <= dateTo) &&
-                    (type == orderCategoryType))
-                {
-                    sum += order.Price;
-                    filterOrderExpensRevenues.Add(order);
-                }
-            }
-            return sum;
-
-        }
-
     
 
         // Filter for Orders
-        public void aplyOrdersFilters(List<string> categoriesNames, List<string> usersNames = null, DateTime? dateFrom = null , DateTime? dateTo = null)
+        public void aplyOrdersFilters(List<string> categoriesNames = null, List<string> usersNames = null, DateTime? dateFrom = null , DateTime? dateTo = null)
         {
             filteredListOrders.Clear();
 
@@ -161,10 +142,32 @@ namespace ClassLibrary1
             }
         }
 
-        public void ClearOrdersFilters()
+        // data Orders for expenses,  revenues
+        public decimal applyFiltersForExpensRevenues(bool type, DateTime? dateFrom = null, DateTime? dateTo = null)
         {
-            filteredListOrders.Clear();
+            filterOrderExpensRevenues.Clear();
+            decimal sum = 0;
+
+            foreach (OrdersView order in listOrders)
+            {
+                bool orderCategoryType = listCategories.Where(c => c.Name == order.CategoryName).FirstOrDefault().Type;
+
+                if ((dateFrom == null || order.DateOrder >= dateFrom) && (dateTo == null || order.DateOrder <= dateTo) &&
+                    (type == orderCategoryType))
+                {
+                    sum += order.Price;
+                    filterOrderExpensRevenues.Add(order);
+                }
+            }
+            return sum;
+
         }
+
+
+        //public void ClearOrdersFilters()
+        //{
+        //    filteredListOrders.Clear();
+        //}
 
         public string getFamilyName(int id)
         {

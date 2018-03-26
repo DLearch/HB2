@@ -25,6 +25,8 @@ namespace Home_Bugaltery
 
         Users curentUser;
 
+        bool isFiltersActive = false;
+
 
         public Form1(/*Users curentUser*/)
         {
@@ -61,9 +63,9 @@ namespace Home_Bugaltery
 
         private void updateOrdersGrid()
         {
-
+            List<OrdersView> orders = isFiltersActive ? homeBugaltery.FilteredListOrders : homeBugaltery.ListOrders;
             dataGridViewOrders.Rows.Clear();
-            foreach (OrdersView orderView in homeBugaltery.ListOrders)
+            foreach (OrdersView orderView in orders)
             {
                 
                 int rowIndex = dataGridViewOrders.Rows.Add(orderView.CategoryName);
@@ -145,22 +147,16 @@ namespace Home_Bugaltery
         // Apply filter
         private void btnApplyFilters_Click(object sender, EventArgs e)
         {
-            if (checkBoxEnableCategoryFilter.Checked == false && checkBoxUserEnabletFilter.Checked == false && checkBoxDateFilter.Checked == false)
-            {
-                homeBugaltery.ClearOrdersFilters();
-                updateOrdersGrid();
-                return;
-            }
-
             List<string> categoriesList = null;
             List<string> usersList = null;
             DateTime? dateFrom = null;
             DateTime? dateTo = null;
-
+            isFiltersActive = false;
 
             //Categories
             if (checkBoxEnableCategoryFilter.Checked && listBoxFilterCategories.Items.Count > 0)
             {
+                isFiltersActive = true;
                 categoriesList = new List<string>();
                 categoriesList.AddRange(listBoxFilterCategories.Items.Cast<string>());
             }
@@ -168,6 +164,7 @@ namespace Home_Bugaltery
             //Users
             if (checkBoxUserEnabletFilter.Checked && listBoxFilterUsers.Items.Count > 0)
             {
+                isFiltersActive = true;
                 usersList = new List<string>();
                 usersList.AddRange(listBoxFilterUsers.Items.Cast<string>());
             }
@@ -175,10 +172,13 @@ namespace Home_Bugaltery
             // Date
             if(checkBoxDateFilter.Checked)
             {
+                isFiltersActive = true;
                 dateFrom = dateTimePickerFrom.Value;
                 dateTo = dateTimePickerTo.Value;
             }
-            homeBugaltery.aplyOrdersFilters(categoriesList, usersList, dateFrom, dateTo);
+
+            if (isFiltersActive)
+                homeBugaltery.aplyOrdersFilters(categoriesList, usersList, dateFrom, dateTo);
 
             updateOrdersGrid();
         }

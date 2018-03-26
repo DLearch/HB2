@@ -53,34 +53,6 @@ namespace ClassLibrary1
             return result;
         }
 
-        // data expenses, data revenues
-        public decimal getSumPriceOrdersForType(bool type)
-        {
-            var ord = db.Orders.Where(or => or.Categories.Type == type).Select(o => o.Price).Sum();
-            return ord;
-        }
-
-        // data expenses, data revenues 
-        public List<OrdersView> getAllOrdersForType(bool type)
-        {
-
-            var result = (from order in db.Orders
-                          join category in db.Categories on order.Category_Id equals category.Id
-                          join user in db.Users on order.User_Id equals user.Id
-                          where category.Type == type
-                          select new OrdersView
-                          {
-                              Id = order.Id,
-                              CategoryName = category.Name,
-                              UserName = user.Name,
-                              DateOrder = order.Date,
-                              Price = order.Price,
-
-                          }).ToList();
-
-
-            return result;
-        }
 
         public string getCategoryName(int index)
         {

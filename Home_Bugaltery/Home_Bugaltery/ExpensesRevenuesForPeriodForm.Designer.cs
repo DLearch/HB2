@@ -28,36 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panelDateFilter = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dateTimePickerTo = new System.Windows.Forms.DateTimePicker();
             this.dateTimePickerDateFrom = new System.Windows.Forms.DateTimePicker();
             this.dataGridViewEx = new System.Windows.Forms.DataGridView();
-            this.textBoxSum = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.btnShow = new System.Windows.Forms.Button();
-            this.labelType = new System.Windows.Forms.Label();
             this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserNames = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Summa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.textBoxSum = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btnShow = new System.Windows.Forms.Button();
+            this.labelType = new System.Windows.Forms.Label();
             this.btnClouse = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
+            this.checkBoxDate = new System.Windows.Forms.CheckBox();
+            this.panelDateFilter.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEx)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // panelDateFilter
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.dateTimePickerTo);
-            this.panel1.Controls.Add(this.dateTimePickerDateFrom);
-            this.panel1.Location = new System.Drawing.Point(163, 26);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(194, 109);
-            this.panel1.TabIndex = 0;
+            this.panelDateFilter.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.panelDateFilter.Controls.Add(this.label2);
+            this.panelDateFilter.Controls.Add(this.label1);
+            this.panelDateFilter.Controls.Add(this.dateTimePickerTo);
+            this.panelDateFilter.Controls.Add(this.dateTimePickerDateFrom);
+            this.panelDateFilter.Location = new System.Drawing.Point(163, 26);
+            this.panelDateFilter.Name = "panelDateFilter";
+            this.panelDateFilter.Size = new System.Drawing.Size(194, 109);
+            this.panelDateFilter.TabIndex = 0;
             // 
             // label2
             // 
@@ -106,43 +107,6 @@
             this.dataGridViewEx.Size = new System.Drawing.Size(545, 175);
             this.dataGridViewEx.TabIndex = 1;
             // 
-            // textBoxSum
-            // 
-            this.textBoxSum.Location = new System.Drawing.Point(259, 401);
-            this.textBoxSum.Multiline = true;
-            this.textBoxSum.Name = "textBoxSum";
-            this.textBoxSum.Size = new System.Drawing.Size(88, 33);
-            this.textBoxSum.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label3.Location = new System.Drawing.Point(52, 409);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(125, 20);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Загальна сума ";
-            // 
-            // btnShow
-            // 
-            this.btnShow.Location = new System.Drawing.Point(196, 150);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(115, 23);
-            this.btnShow.TabIndex = 4;
-            this.btnShow.Text = "Показати";
-            this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
-            // 
-            // labelType
-            // 
-            this.labelType.AutoSize = true;
-            this.labelType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelType.Location = new System.Drawing.Point(183, 410);
-            this.labelType.Name = "labelType";
-            this.labelType.Size = new System.Drawing.Size(0, 20);
-            this.labelType.TabIndex = 5;
-            // 
             // Category
             // 
             this.Category.HeaderText = "Категорія";
@@ -170,6 +134,44 @@
             this.Summa.ReadOnly = true;
             this.Summa.Width = 80;
             // 
+            // textBoxSum
+            // 
+            this.textBoxSum.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxSum.Location = new System.Drawing.Point(259, 408);
+            this.textBoxSum.Multiline = true;
+            this.textBoxSum.Name = "textBoxSum";
+            this.textBoxSum.Size = new System.Drawing.Size(110, 28);
+            this.textBoxSum.TabIndex = 2;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(52, 409);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(125, 20);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Загальна сума ";
+            // 
+            // btnShow
+            // 
+            this.btnShow.Location = new System.Drawing.Point(141, 152);
+            this.btnShow.Name = "btnShow";
+            this.btnShow.Size = new System.Drawing.Size(228, 23);
+            this.btnShow.TabIndex = 4;
+            this.btnShow.Text = "Примінити фільтр";
+            this.btnShow.UseVisualStyleBackColor = true;
+            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
+            // 
+            // labelType
+            // 
+            this.labelType.AutoSize = true;
+            this.labelType.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelType.Location = new System.Drawing.Point(181, 409);
+            this.labelType.Name = "labelType";
+            this.labelType.Size = new System.Drawing.Size(0, 20);
+            this.labelType.TabIndex = 5;
+            // 
             // btnClouse
             // 
             this.btnClouse.Location = new System.Drawing.Point(207, 468);
@@ -180,21 +182,33 @@
             this.btnClouse.UseVisualStyleBackColor = true;
             this.btnClouse.Click += new System.EventHandler(this.btnClouse_Click);
             // 
+            // checkBoxDate
+            // 
+            this.checkBoxDate.AutoSize = true;
+            this.checkBoxDate.Location = new System.Drawing.Point(167, 5);
+            this.checkBoxDate.Name = "checkBoxDate";
+            this.checkBoxDate.Size = new System.Drawing.Size(111, 17);
+            this.checkBoxDate.TabIndex = 7;
+            this.checkBoxDate.Text = "Фільтр по датам";
+            this.checkBoxDate.UseVisualStyleBackColor = true;
+            this.checkBoxDate.CheckedChanged += new System.EventHandler(this.checkBoxDate_CheckedChanged);
+            // 
             // ExpensesRevenuesForPeriodForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(556, 503);
+            this.Controls.Add(this.checkBoxDate);
             this.Controls.Add(this.btnClouse);
             this.Controls.Add(this.labelType);
             this.Controls.Add(this.btnShow);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxSum);
             this.Controls.Add(this.dataGridViewEx);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panelDateFilter);
             this.Name = "ExpensesRevenuesForPeriodForm";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.panelDateFilter.ResumeLayout(false);
+            this.panelDateFilter.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEx)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -203,7 +217,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panelDateFilter;
         private System.Windows.Forms.DateTimePicker dateTimePickerDateFrom;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -218,5 +232,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private System.Windows.Forms.DataGridViewTextBoxColumn Summa;
         private System.Windows.Forms.Button btnClouse;
+        private System.Windows.Forms.CheckBox checkBoxDate;
     }
 }

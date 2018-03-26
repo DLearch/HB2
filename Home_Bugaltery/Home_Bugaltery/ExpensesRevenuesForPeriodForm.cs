@@ -36,10 +36,12 @@ namespace Home_Bugaltery
             if (type == false)
                 labelType.Text = "витрат : ";
             else
-                this.Text = "доходів : ";
+                labelType.Text = "доходів : ";
 
             sum = homeBugaltery.applyFiltersForExpensRevenues(type);
             updateTable();
+
+            panelDateFilter.Enabled = checkBoxDate.Checked;
 
         }
 
@@ -64,16 +66,23 @@ namespace Home_Bugaltery
 
         private void btnShow_Click(object sender, EventArgs e)
         {
-            if (true)
+            if (checkBoxDate.Checked)
                 sum = homeBugaltery.applyFiltersForExpensRevenues(type, dateTimePickerDateFrom.Value, dateTimePickerTo.Value);
             else
                 sum = homeBugaltery.applyFiltersForExpensRevenues(type);
+
             updateTable();
         }
 
         private void btnClouse_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        //checkBoxDateFilter
+        private void checkBoxDate_CheckedChanged(object sender, EventArgs e)
+        {
+            panelDateFilter.Enabled = checkBoxDate.Checked;
         }
     }
 }
