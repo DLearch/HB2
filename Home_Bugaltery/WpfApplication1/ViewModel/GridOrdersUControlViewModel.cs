@@ -118,6 +118,21 @@ namespace WpfApplication1.ViewModel
 
         #endregion
 
+        #region CheckBoxFiltersIsChecked
+
+        private bool? _checkBoxFiltersIsChecked;
+        public bool? CheckBoxFiltersIsChecked
+        {
+            get { return _checkBoxFiltersIsChecked; }
+            set
+            {
+                _checkBoxFiltersIsChecked = value;
+                OnPropertyChanged("CheckBoxFiltersIsChecked");
+            }
+        }
+
+        #endregion
+
         #region HomeBugaltery
 
         HomeBugaltery _homeBugaltery;
@@ -128,7 +143,7 @@ namespace WpfApplication1.ViewModel
                 _homeBugaltery = value;
                 ListViewOrdersItemsSource = orders = new ObservableCollection<OrdersView>();
                 ListBoxCategoriesFiltersItemsSource = filterCategories = new ObservableCollection<FilterCategoriesItem>();
-                CheckBoxCategoriesFilterIsChecked = CheckBoxDateFilterIsChecked = false;
+                CheckBoxCategoriesFilterIsChecked = CheckBoxFiltersIsChecked = CheckBoxDateFilterIsChecked = false;
                 Update();
             }
             private get
@@ -234,13 +249,16 @@ namespace WpfApplication1.ViewModel
             DateTime? dateFrom = null;
             DateTime? dateTo = null;
 
-            if (CheckBoxCategoriesFilterIsChecked == true)
-                categoriesList = filterCategories.Where(f => f.IsSelected).Select(f => f.Category.Name).ToList();
-            
-            if(CheckBoxDateFilterIsChecked == true)
+            if (CheckBoxFiltersIsChecked == true)
             {
-                dateFrom = DatePickerDateFromSelectedDate;
-                dateTo = DatePickerDateToSelectedDate;
+                if (CheckBoxCategoriesFilterIsChecked == true)
+                    categoriesList = filterCategories.Where(f => f.IsSelected).Select(f => f.Category.Name).ToList();
+
+                if (CheckBoxDateFilterIsChecked == true)
+                {
+                    dateFrom = DatePickerDateFromSelectedDate;
+                    dateTo = DatePickerDateToSelectedDate;
+                }
             }
 
             HomeBugaltery.aplyOrdersFilters(
