@@ -53,6 +53,35 @@ namespace ClassLibrary1
             return result;
         }
 
+        // data expenses, data revenues
+        public decimal getSumPriceOrdersForType(bool type)
+        {
+            var ord = db.Orders.Where(or => or.Categories.Type == type).Select(o => o.Price).Sum();
+            return ord;
+        }
+
+        // data expenses, data revenues 
+        public List<OrdersView> getAllOrdersForType(bool type)
+        {
+
+            var result = (from order in db.Orders
+                          join category in db.Categories on order.Category_Id equals category.Id
+                          join user in db.Users on order.User_Id equals user.Id
+                          where category.Type == type
+                          select new OrdersView
+                          {
+                              Id = order.Id,
+                              CategoryName = category.Name,
+                              UserName = user.Name,
+                              DateOrder = order.Date,
+                              Price = order.Price,
+
+                          }).ToList();
+
+
+            return result;
+        }
+
         public string getCategoryName(int index)
         {
             var categoryName = db.Categories.FirstOrDefault(categ => categ.Id == index).Name;
@@ -61,7 +90,7 @@ namespace ClassLibrary1
         }
 
         public bool userIdentification(string login, string pass)
-        {          
+        {
             var user = db.Users.Where(u => u.Name == login && u.Password == pass).FirstOrDefault();
             return true;
         }
@@ -99,7 +128,7 @@ namespace ClassLibrary1
             }
         }
 
-      
+
 
         public void changeOrder(int id, string categoryName, string userName, DateTime dateOrder, decimal price, string description)
         {
@@ -147,7 +176,7 @@ namespace ClassLibrary1
             if (useOrders.Count() > 0)
             {
                 throw new Exception("Category is used in orders!!!");
-            }                
+            }
 
             if (categoryToDelete != null)
             {
@@ -179,7 +208,7 @@ namespace ClassLibrary1
             {
                 Email = email,
                 Name = userName,
-                Password = pass, 
+                Password = pass,
                 FamilyMembers = family
             };
 
@@ -206,8 +235,6 @@ namespace ClassLibrary1
             }
         }
 
-
-
         // Change my data
         public void changeCurentUser(int id, string email, string name, string pass, int familyId)
         {
@@ -221,6 +248,7 @@ namespace ClassLibrary1
             db.SaveChanges();
         }
 
+        
 
     }
 }

@@ -53,6 +53,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExpensesRevenuesForPeriodForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ExpensesRevenuesForPeriodForm.Designer.cs">
+      <DependentUpon>ExpensesRevenuesForPeriodForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ModifyOrderForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ExpensesRevenuesForPeriodForm.resx">
+      <DependentUpon>ExpensesRevenuesForPeriodForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ModifyOrderForm.resx">
       <DependentUpon>ModifyOrderForm.cs</DependentUpon>
     </EmbeddedResource>

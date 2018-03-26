@@ -250,19 +250,27 @@ namespace Home_Bugaltery
             addChangeUser.ShowDialog();
         }
 
+        // For revenues
         private void menuItemRevenues_Click(object sender, EventArgs e)
         {
+            bool type = true;
 
+            ExpensesRevenuesForPeriodForm expForm = new ExpensesRevenuesForPeriodForm(type);
+            expForm.ShowDialog();
         }
 
+        // Expenses Form
         private void menuItemCosts_Click(object sender, EventArgs e)
         {
+            bool type = false;
 
+            ExpensesRevenuesForPeriodForm expForm = new ExpensesRevenuesForPeriodForm(type);
+            expForm.ShowDialog();
         }
 
         private void menuItemSaldo_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
