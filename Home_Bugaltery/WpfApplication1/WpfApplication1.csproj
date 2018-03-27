@@ -64,12 +64,16 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\CategoriesWindowViewModel.cs" />
+    <Compile Include="ViewModel\ExpensesRevenuesForPeriodViewModel.cs" />
     <Compile Include="ViewModel\FamilyMembersViewModel.cs" />
     <Compile Include="ViewModel\GridOrdersUControlViewModel.cs" />
     <Compile Include="ViewModel\LoginWindowViewModel.cs" />
     <Compile Include="ViewModel\OrderWindowViewModel.cs" />
     <Compile Include="View\CategoriesWindow.xaml.cs">
       <DependentUpon>CategoriesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExpensesRevenuesForPeriodUControl.xaml.cs">
+      <DependentUpon>ExpensesRevenuesForPeriodUControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\FamilyMembersWindow.xaml.cs">
       <DependentUpon>FamilyMembersWindow.xaml</DependentUpon>
@@ -84,6 +88,10 @@
       <DependentUpon>OrderWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="View\CategoriesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExpensesRevenuesForPeriodUControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
