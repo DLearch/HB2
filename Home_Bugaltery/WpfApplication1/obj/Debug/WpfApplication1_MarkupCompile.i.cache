@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\student.LAN\Source\Repos1\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\
 WpfApplication1
 none
 false
 DEBUG;TRACE
-C:\Users\student.LAN\Source\Repos1\HB2\Home_Bugaltery\WpfApplication1\App.xaml
-6766198021
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\WpfApplication1\App.xaml
+7-274814446
 
-22799950644
-18-1005606009
-View\CategoriesWindow.xaml;View\FamilyMembersWindow.xaml;View\GridOrdersUControl.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\OrderWindow.xaml;
+241339635448
+18142501442
+View\CategoriesWindow.xaml;View\ExpensesRevenuesForPeriodUControl.xaml;View\FamilyMembersWindow.xaml;View\GridOrdersUControl.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\OrderWindow.xaml;
 
-True
+False
 

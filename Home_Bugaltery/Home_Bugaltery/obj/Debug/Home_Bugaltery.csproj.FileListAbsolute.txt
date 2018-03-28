@@ -108,6 +108,7 @@ D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugalt
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ModifiUserForm.resources
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ModifyOrderForm.resources
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ExpensesRevenuesForPeriodForm.resources
+<<<<<<< HEAD
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\NUnit3.TestAdapter.dll
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\NUnit3.TestAdapter.pdb
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\nunit.engine.dll
@@ -117,3 +118,27 @@ D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugalt
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\nunit.framework.pdb
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\nunit.framework.xml
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.SaldoForm.resources
+=======
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\Home_Bugaltery.exe.config
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.exe
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.pdb
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\Home_Bugaltery.exe
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\Home_Bugaltery.pdb
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\ClassLibrary1.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\EntityFramework.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\ClassLibrary1.pdb
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\EntityFramework.xml
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.csprojResolveAssemblyReference.cache
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ExpensesRevenuesForPeriodForm.resources
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ModifyOrderForm.resources
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.Form1.resources
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ModifiCategoryForm.resources
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.ModifiUserForm.resources
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.NewOrderForm.resources
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.Properties.Resources.resources
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.csproj.GenerateResource.Cache
+>>>>>>> c3ee312ae75824bd36c876a7cc12652c82338250

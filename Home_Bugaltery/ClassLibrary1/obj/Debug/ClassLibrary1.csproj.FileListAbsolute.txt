@@ -132,6 +132,7 @@ C:\Users\student.LAN\Source\Repos1\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru
 C:\Users\student.LAN\Source\Repos1\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
 C:\Users\student.LAN\Source\Repos1\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.dll
 C:\Users\student.LAN\Source\Repos1\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+<<<<<<< HEAD
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\NUnit3.TestAdapter.dll
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\NUnit3.TestAdapter.pdb
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\nunit.engine.dll
@@ -140,3 +141,17 @@ D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugalt
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\nunit.framework.dll
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\nunit.framework.pdb
 D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\nunit.framework.xml
+=======
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.dll.config
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ClassLibrary1.pdb
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.xml
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru\EntityFramework.resources.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\bin\Debug\ru\EntityFramework.SqlServer.resources.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.csprojResolveAssemblyReference.cache
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.dll
+C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\ClassLibrary1\obj\Debug\ClassLibrary1.pdb
+>>>>>>> c3ee312ae75824bd36c876a7cc12652c82338250
