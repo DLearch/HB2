@@ -19,7 +19,15 @@ namespace ClassLibrary1
             : base("name=MarketEntities")
         {
         }
-    
+        // DB  for test
+#if DEBUG
+        public MarketEntities(String connection)
+            :base(connection)
+        {
+
+        }
+#endif
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();

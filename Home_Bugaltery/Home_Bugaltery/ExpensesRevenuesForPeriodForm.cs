@@ -14,19 +14,19 @@ namespace Home_Bugaltery
     public partial class ExpensesRevenuesForPeriodForm : Form
     {
         HomeBugaltery homeBugaltery;
-        HomeBugalteryAction actHomeBogaltery;
+        
 
         bool type;
         decimal sum;
 
-        public ExpensesRevenuesForPeriodForm(bool type)
+        public ExpensesRevenuesForPeriodForm(bool type, HomeBugaltery homeBugaltery)
         {
             InitializeComponent();
 
             this.type = type;
 
-            homeBugaltery = new HomeBugaltery();
-            actHomeBogaltery = new HomeBugalteryAction();
+            this.homeBugaltery = homeBugaltery;
+       
 
             if (type == false)
                 this.Text = "Витрати за період";

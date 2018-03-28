@@ -255,7 +255,7 @@ namespace Home_Bugaltery
         {
             bool type = true;
 
-            ExpensesRevenuesForPeriodForm expForm = new ExpensesRevenuesForPeriodForm(type);
+            ExpensesRevenuesForPeriodForm expForm = new ExpensesRevenuesForPeriodForm(type, homeBugaltery);
             expForm.ShowDialog();
         }
 
@@ -264,13 +264,14 @@ namespace Home_Bugaltery
         {
             bool type = false;
 
-            ExpensesRevenuesForPeriodForm expForm = new ExpensesRevenuesForPeriodForm(type);
+            ExpensesRevenuesForPeriodForm expForm = new ExpensesRevenuesForPeriodForm(type, homeBugaltery);
             expForm.ShowDialog();
         }
 
         private void menuItemSaldo_Click(object sender, EventArgs e)
         {
-            
+            SaldoForm saldoForm = new SaldoForm(homeBugaltery);
+            saldoForm.ShowDialog();
         }
     }
 }

@@ -35,7 +35,6 @@
             this.categoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.операціяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuItemInitialRemains = new System.Windows.Forms.ToolStripMenuItem();
             this.звітиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.всіДокументиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuItemCosts = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +43,11 @@
             this.допомогаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.проРозробниківToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dataGridViewOrders = new System.Windows.Forms.DataGridView();
+            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.panelFilters = new System.Windows.Forms.Panel();
             this.checkBoxDateFilter = new System.Windows.Forms.CheckBox();
@@ -68,11 +72,6 @@
             this.contextMenuCategories = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.додатиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.редагуватиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.User = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOrders)).BeginInit();
             this.panelFilters.SuspendLayout();
@@ -121,8 +120,7 @@
             // операціяToolStripMenuItem
             // 
             this.операціяToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newDocumentToolStripMenuItem,
-            this.menuItemInitialRemains});
+            this.newDocumentToolStripMenuItem});
             this.операціяToolStripMenuItem.Name = "операціяToolStripMenuItem";
             this.операціяToolStripMenuItem.Size = new System.Drawing.Size(67, 20);
             this.операціяToolStripMenuItem.Text = "Операції";
@@ -130,15 +128,9 @@
             // newDocumentToolStripMenuItem
             // 
             this.newDocumentToolStripMenuItem.Name = "newDocumentToolStripMenuItem";
-            this.newDocumentToolStripMenuItem.Size = new System.Drawing.Size(182, 22);
+            this.newDocumentToolStripMenuItem.Size = new System.Drawing.Size(154, 22);
             this.newDocumentToolStripMenuItem.Text = "Нова операція";
             this.newDocumentToolStripMenuItem.Click += new System.EventHandler(this.newDocumentToolStripMenuItem_Click);
-            // 
-            // menuItemInitialRemains
-            // 
-            this.menuItemInitialRemains.Name = "menuItemInitialRemains";
-            this.menuItemInitialRemains.Size = new System.Drawing.Size(182, 22);
-            this.menuItemInitialRemains.Text = "Початкові залишки";
             // 
             // звітиToolStripMenuItem
             // 
@@ -210,6 +202,37 @@
             this.dataGridViewOrders.TabIndex = 26;
             this.dataGridViewOrders.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOrders_CellClick);
             this.dataGridViewOrders.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewOrders_CellMouseClick);
+            // 
+            // Category
+            // 
+            this.Category.HeaderText = "Category";
+            this.Category.Name = "Category";
+            this.Category.ReadOnly = true;
+            // 
+            // User
+            // 
+            this.User.HeaderText = "Користувач";
+            this.User.Name = "User";
+            this.User.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Дата";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
+            // 
+            // Price
+            // 
+            this.Price.HeaderText = "Сума";
+            this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
+            // 
+            // Description
+            // 
+            this.Description.HeaderText = "Опис";
+            this.Description.Name = "Description";
+            this.Description.ReadOnly = true;
+            this.Description.Width = 320;
             // 
             // label3
             // 
@@ -441,37 +464,6 @@
             this.редагуватиToolStripMenuItem.Size = new System.Drawing.Size(134, 22);
             this.редагуватиToolStripMenuItem.Text = "Редагувати";
             // 
-            // Category
-            // 
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            // 
-            // User
-            // 
-            this.User.HeaderText = "Користувач";
-            this.User.Name = "User";
-            this.User.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Дата";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
-            // 
-            // Price
-            // 
-            this.Price.HeaderText = "Сума";
-            this.Price.Name = "Price";
-            this.Price.ReadOnly = true;
-            // 
-            // Description
-            // 
-            this.Description.HeaderText = "Опис";
-            this.Description.Name = "Description";
-            this.Description.ReadOnly = true;
-            this.Description.Width = 320;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -507,7 +499,6 @@
         private System.Windows.Forms.ToolStripMenuItem звітиToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem menuItemUser;
         private System.Windows.Forms.ToolStripMenuItem newDocumentToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem menuItemInitialRemains;
         private System.Windows.Forms.ToolStripMenuItem menuItemCosts;
         private System.Windows.Forms.ToolStripMenuItem menuItemRevenues;
         private System.Windows.Forms.ToolStripMenuItem menuItemSaldo;

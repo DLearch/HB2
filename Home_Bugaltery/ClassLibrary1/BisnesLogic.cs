@@ -14,6 +14,14 @@ namespace ClassLibrary1
         {
             db = new MarketEntities();
         }
+// DB for TEST
+#if DEBUG
+        public BisnesLogic(MarketEntities entity)
+        {
+            db = entity;
+        }
+#endif
+
 
         public List<Users> getAllUsers()
         {

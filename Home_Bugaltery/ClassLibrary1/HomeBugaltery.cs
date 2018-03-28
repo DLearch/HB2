@@ -22,6 +22,9 @@ namespace ClassLibrary1
 
 
         List<OrdersView> filterOrderExpensRevenues;
+        List<OrdersView> filterOrderSaldo;
+
+        List<UserSaldo> usersSaldo;
 
 
         public HomeBugaltery()
@@ -31,9 +34,10 @@ namespace ClassLibrary1
             filteredListOrders = new List<OrdersView>();
             filterOrderExpensRevenues = new List<OrdersView>();
 
+            usersSaldo = new List<UserSaldo>();
+
             validateLocalData();
 
-            //validExRevOrderForType();
         }
 
         public List<OrdersView> ListOrders { get { return listOrders;} }
@@ -43,6 +47,9 @@ namespace ClassLibrary1
 
         // Filter Order for Expens, Revenues
         public List<OrdersView> FilterOrderExpensRevenues { get { return filterOrderExpensRevenues;  } }
+
+        // SALDO
+        public List<UserSaldo> UsersSaldo { get { return usersSaldo; } }
 
         public List<Categories> ListCategories { get { return listCategories; } }
         public List<Users> ListUsers { get { return listUsers; } }
@@ -163,11 +170,69 @@ namespace ClassLibrary1
 
         }
 
+        public void calculateUsersSaldo(DateTime? dateFrom = null, DateTime? dateTo = null)
+        {
 
-        //public void ClearOrdersFilters()
-        //{
-        //    filteredListOrders.Clear();
-        //}
+
+            usersSaldo.Clear();
+            foreach (Users user in listUsers)
+            {
+                decimal debet = listOrders.Where(o => o.UserName == user.Name && (dateFrom == null || o.DateOrder >= dateFrom) &&
+                (dateTo == null || o.DateOrder <= dateTo) &&
+                listCategories.Where(c => c.Name == o.CategoryName).FirstOrDefault().Type == false).Sum(o => o.Price);
+
+                decimal credyt = listOrders.Where(o => o.UserName == user.Name && (dateFrom == null || o.DateOrder >= dateFrom) &&
+                (dateTo == null || o.DateOrder <= dateTo) &&
+                listCategories.Where(c => c.Name == o.CategoryName).FirstOrDefault().Type == true).Sum(o => o.Price);
+
+                usersSaldo.Add(new UserSaldo {UserName = user.Name, Debet = debet, Credit = credyt, Saldo = credyt - debet });
+            }
+        }
+
+
+        // saldo for users
+        public List<decimal> applyFilerDateForSaldo(DateTime? dateFrom = null, DateTime? dateTo = null)
+        {
+            decimal sum = 0;
+            decimal sumExpForUser = 0;
+            decimal sumRevForUser = 0;
+            List<decimal> buffSum = null;
+
+            filterOrderSaldo.Clear();
+            foreach (OrdersView order in listOrders)
+            {
+                bool orderCategoryType = listCategories.Where(c => c.Name == order.CategoryName).FirstOrDefault().Type;
+                var curenUser = listUsers.FirstOrDefault(u => u.Name == order.UserName);
+
+                if ((dateFrom == null || order.DateOrder >= dateFrom) && (dateTo == null || order.DateOrder <= dateTo))
+                {
+                    if (orderCategoryType == false && curenUser.Name == order.UserName)
+                    {
+                        sumExpForUser += order.Price;
+
+                    }
+                    else if (orderCategoryType == true && curenUser.Name == order.UserName)
+                    {
+                        sumRevForUser += order.Price;
+                    }
+                    sum += sumExpForUser + sumRevForUser;
+                    filterOrderSaldo.Add(order);
+                }
+                buffSum.Add(sum);
+                buffSum.Add(sumExpForUser);
+                buffSum.Add(sumRevForUser);
+            }
+
+            
+            
+            return buffSum;
+        }
+
+
+        public void ClearOrdersFilters()
+        {
+            filteredListOrders.Clear();
+        }
 
         public string getFamilyName(int id)
         {

@@ -18,5 +18,13 @@ namespace ClassLibrary1
 
     }
 
+    public class UserSaldo
+    {
+        public string UserName { get; set; }
+        public decimal Debet { get; set; }
+        public decimal Credit { get; set; }
+        public decimal Saldo { get; set; }
+    }
+
    
 }
