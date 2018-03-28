@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0e092e9c58b544dc831ad5feb16eeca5" Name="Diagram1">
+        <EntityTypeShape EntityType="MarketModel.Categories" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketModel.FamilyMembers" Width="1.5" PointX="3" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketModel.Orders" Width="1.5" PointX="5.25" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MarketModel.Users" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="MarketModel.FK__Categorie__User___27F8EE98" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketModel.FK__Orders__Category__2AD55B43" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketModel.FK__FamilyMem__User___251C81ED" ManuallyRouted="false" />
+        <AssociationConnector Association="MarketModel.FK__Orders__FamilyMe__2BC97F7C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

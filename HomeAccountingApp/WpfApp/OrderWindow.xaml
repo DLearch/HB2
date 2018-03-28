@@ -1,0 +1,63 @@
+﻿<Window x:Class="WpfApp.OrderWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="Операція" Height="300" Width="300">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="90"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="90"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Label Content="Категорія: " VerticalAlignment="Center"/>
+        <ComboBox VerticalAlignment="Center" 
+                  Name="ComboBoxCategories"
+                  DisplayMemberPath="Name"
+                  Grid.Column="1" Margin="10, 0" Grid.ColumnSpan="3"/>
+
+        <Label Content="Користувач: " 
+               VerticalAlignment="Center" Grid.Row="1"/>
+        <ComboBox VerticalAlignment="Center" 
+                  Name="ComboBoxFamilyMembers"
+                  DisplayMemberPath="Name"
+                  Grid.Column="1" Grid.Row="1"
+                  Margin="10, 0" Grid.ColumnSpan="3"/>
+
+        <Label Content="Дата: " 
+               VerticalAlignment="Center" Grid.Row="2"/>
+        <DatePicker Name="DatePickerDate" Grid.Column="1" Grid.Row="2" 
+                    VerticalAlignment="Center" Margin="10, 0" Grid.ColumnSpan="3"/>
+
+        <Label Content="Ціна: " 
+               VerticalAlignment="Center" Grid.Row="3"/>
+        <TextBox Grid.Row="3" Grid.Column="1" Name="TextBoxPrice"
+                 VerticalAlignment="Center" Margin="10, 0" Grid.ColumnSpan="3"/>
+
+        <Label Content="Опис: " Grid.Row="4"
+               VerticalAlignment="Center"/>
+        <TextBox Grid.Row="4" Grid.Column="1" Name="TextBoxDescription"
+                 VerticalAlignment="Center" Margin="10, 0" Grid.ColumnSpan="3"/>
+
+        <Button Grid.Row="5" 
+                VerticalAlignment="Center" Name="ButtonOk"
+                Margin="10, 0" Grid.ColumnSpan="2"
+                Click="ButtonOk_Click"
+                Content="Ок"/>
+        <Button Grid.Row="5" Grid.Column="2"
+                VerticalAlignment="Center" IsCancel="True"
+                Content="Скасувати" Margin="10, 0" Grid.ColumnSpan="2"/>
+    </Grid>
+</Window>

@@ -1,0 +1,10 @@
+C:\Users\Daniel\Desktop\HomeAccountingApp\ClassLib\bin\Debug\ClassLib.dll
+C:\Users\Daniel\Desktop\HomeAccountingApp\ClassLib\bin\Debug\ClassLib.pdb
+C:\Users\Daniel\Desktop\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Desktop\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.dll
+C:\Users\Daniel\Desktop\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.pdb
+C:\Users\student.LAN\Desktop\HomeAccountingApp\ClassLib\bin\Debug\ClassLib.dll
+C:\Users\student.LAN\Desktop\HomeAccountingApp\ClassLib\bin\Debug\ClassLib.pdb
+C:\Users\student.LAN\Desktop\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.csprojResolveAssemblyReference.cache
+C:\Users\student.LAN\Desktop\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.dll
+C:\Users\student.LAN\Desktop\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.pdb

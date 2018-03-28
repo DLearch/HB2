@@ -1,0 +1,75 @@
+﻿<Window x:Class="WpfApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="Домашня бугалтерія" Height="500" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Menu>
+            <MenuItem Header="Довідники">
+                <MenuItem Header="Члени сімї" Click="MenuItemFamilyMembers_Click"/>
+                <MenuItem Header="Категорії" Click="MenuItemCategories_Click"/>
+            </MenuItem>
+            <MenuItem Header="Операції">
+                <MenuItem Header="Нова операція" Click="MenuItemAddOrder_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="40"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Name="GridFilters" Grid.RowSpan="2"/>
+
+            <GridSplitter HorizontalAlignment="Center" VerticalAlignment="Stretch" 
+                      ShowsPreview="False" Grid.Column="1" Width="4" Grid.RowSpan="2"/>
+
+            <ListView Name="ListBoxOrders"
+                      SelectionMode="Single"
+                      Margin="10" Grid.Column="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding CategoryName}" Header="Категорія"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding FamilyMemberName}" Header="Користувач"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Date}" Header="Дата"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Price}" Header="Ціна"/>
+                        <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Опис"/>
+                    </GridView>
+                </ListView.View>
+
+                <ListBox.Resources>
+                    <ContextMenu x:Key="cm">
+                        <MenuItem Header="Додати" Click="MenuItemAddOrder_Click"/>
+                        <MenuItem Header="Редагувати" Click="MenuItemEditOrder_Click"/>
+                        <MenuItem Header="Видалити" Click="MenuItemRemoveOrder_Click"/>
+                    </ContextMenu>
+                </ListBox.Resources>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="{x:Type ListViewItem}">
+                        <Setter Property="ContextMenu">
+                            <Setter.Value>
+                                <StaticResource ResourceKey="cm" />
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListView.ItemContainerStyle>
+            </ListView>
+
+            <Label Margin="20, 0" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Name="LabelSum"/>
+        </Grid>
+    </Grid>
+</Window>
