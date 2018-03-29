@@ -233,12 +233,18 @@ namespace Home_Bugaltery
         //Context menu (delete) on clik order
         private void onContextDeleteClick(object o, EventArgs ea)
         {
-            MessageBox.Show("Видалити? \nВи впевнені?");
-
-            if (dataGridViewOrders.SelectedRows.Count > 0)
+            DialogResult result = MessageBox.Show("Видалити? \nВи впевнені?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-                // Delete for Id - ((int)dataGridViewOrders.SelectedRows[0].Tag)
-                homeBugaltery.deleteOrder((int)dataGridViewOrders.SelectedRows[0].Tag);
+                if (dataGridViewOrders.SelectedRows.Count > 0)
+                {
+                    // Delete for Id - ((int)dataGridViewOrders.SelectedRows[0].Tag)
+                    homeBugaltery.deleteOrder((int)dataGridViewOrders.SelectedRows[0].Tag);
+                }
+            }
+            else if (result == DialogResult.No)
+            {
+                return;
             }
 
             updateOrdersGrid();

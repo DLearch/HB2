@@ -82,17 +82,24 @@ namespace Home_Bugaltery
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Видалити? \nВи впевнені?");
-            if(dataGridViewUsers.SelectedRows.Count > 0)
+            DialogResult result = MessageBox.Show("Видалити? \nВи впевнені?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-                try
+                if (dataGridViewUsers.SelectedRows.Count > 0)
                 {
-                    homeBugaltery.deleteUser(selectUserToDelete.Id);
+                    try
+                    {
+                        homeBugaltery.deleteUser(selectUserToDelete.Id);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show("Не можливо видалити користувача!!!\nДетально:\n" + exc.Message, "Помилка!!!");
+                    }
                 }
-                catch (Exception exc)
-                {
-                    MessageBox.Show("Не можливо видалити користувача!!!\nДетально:\n" + exc.Message, "Помилка!!!");
-                }
+            }
+            else if (result == DialogResult.No)
+            {
+                return;
             }
             updateUsers();
 
@@ -110,7 +117,7 @@ namespace Home_Bugaltery
             if (IsChangeMyData == true)
             {
                 actHomeBugaltery.SetCommand((int)HomeActionEnum.changeDataCurentUser, new ChangeCurentUserCommand(homeBugaltery,
-                                                              curentUser.Id, textBoxEmail.Text, textBoxName.Text, textBoxPass.Text, curentUser.Family_Id));
+                                                              curentUser.Id, textBoxEmail.Text, textBoxName.Text, textBoxPass.Text/*, curentUser.Family_Id*/));
 
                 actHomeBugaltery.DoAction((int)HomeActionEnum.changeDataCurentUser);
             }

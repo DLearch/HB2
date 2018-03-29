@@ -126,9 +126,6 @@ namespace ClassLibrary1
             orderToChange.Price = price;
             orderToChange.Description = description;
 
-            //db.Orders.Add(orderToChange);
-            //db.Entry(orderToChange).State = System.Data.Entity.EntityState.Modified;
-
             db.SaveChanges();
 
         }
@@ -216,14 +213,14 @@ namespace ClassLibrary1
         }
 
         // Change my data
-        public void changeCurentUser(int id, string email, string name, string pass, int familyId)
+        public void changeCurentUser(int id, string email, string name, string pass/*, int familyId*/)
         {
             var userToChange = db.Users.Where(c => c.Id == id).FirstOrDefault();
 
             userToChange.Email = email;
             userToChange.Name = name;
             userToChange.Password = pass;
-            userToChange.Family_Id = familyId;
+            //userToChange.Family_Id = familyId;
 
             db.SaveChanges();
         }

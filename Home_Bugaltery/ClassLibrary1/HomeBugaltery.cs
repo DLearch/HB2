@@ -101,9 +101,9 @@ namespace ClassLibrary1
         }
 
         //CHANGE local user
-        public void changeDataCurentUser(int id, string email, string name, string pass, int familyId)
+        public void changeDataCurentUser(int id, string email, string name, string pass/*, int familyId*/)
         {
-            bisnesLogic.changeCurentUser(id, email, name, pass, familyId);
+            bisnesLogic.changeCurentUser(id, email, name, pass);
             validateLocalData();
         }
 

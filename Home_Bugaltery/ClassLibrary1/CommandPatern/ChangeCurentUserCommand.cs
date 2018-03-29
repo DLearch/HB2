@@ -16,9 +16,9 @@ namespace ClassLibrary1
         string newEmail;
         string newName;
         string newPass;
-        int familyId;
+       // int familyId;
 
-        public ChangeCurentUserCommand(HomeBugaltery homeBugaltery, int curentUserId, string newEmail,  string newName,  string newPass, int familyId)
+        public ChangeCurentUserCommand(HomeBugaltery homeBugaltery, int curentUserId, string newEmail,  string newName,  string newPass/*, int familyId*/)
         {
             this.homeBugaltery = homeBugaltery;
 
@@ -27,12 +27,12 @@ namespace ClassLibrary1
             this.newEmail = newEmail;
             this.newName = newName;
             this.newPass = newPass;
-            this.familyId = familyId;
+           // this.familyId = familyId;
         } 
 
         public void Execute()
         {
-            homeBugaltery.changeDataCurentUser(curentUserId, newEmail, newName, newPass, familyId);
+            homeBugaltery.changeDataCurentUser(curentUserId, newEmail, newName, newPass/*, familyId*/);
         }
 
         public void Undo()

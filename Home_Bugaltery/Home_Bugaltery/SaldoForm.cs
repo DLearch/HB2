@@ -14,8 +14,7 @@ namespace Home_Bugaltery
     public partial class SaldoForm : Form
     {
         HomeBugaltery homeBugaltery;
-        decimal sumDebet = 0;
-        decimal sumCredit = 0;
+      
 
         public SaldoForm(HomeBugaltery homeBugaltery)
         {
@@ -35,6 +34,7 @@ namespace Home_Bugaltery
             decimal sumDebet = 0;
             decimal sumCredit = 0;
             decimal sumSaldo = 0;
+
             dataGridViewSaldo.Rows.Clear();
             foreach (var saldo in homeBugaltery.UsersSaldo)
             {

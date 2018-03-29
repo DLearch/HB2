@@ -53,6 +53,7 @@ namespace Home_Bugaltery
                 dataGridViewCategory.Rows[rowIndex].Tag = category.Id;
             }
 
+            
 
         }
 
@@ -122,21 +123,32 @@ namespace Home_Bugaltery
         // DElete selected category
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            
-            MessageBox.Show("Видалити? \nВи впевнені?");
-            if (dataGridViewCategory.SelectedRows.Count > 0)
+            //DialogResult vibor = MessageBox.Show("Видалити? \nВи впевнені?", "YesNo", MessageBoxButtons.YesNo);
+
+            DialogResult result = MessageBox.Show("Видалити? \nВи впевнені?", "Confirmation", MessageBoxButtons.YesNo);
+            if (result == DialogResult.Yes)
             {
-                try
+                if (dataGridViewCategory.SelectedRows.Count > 0)
                 {
-                    homeBugaltery.deleteCategory(curentCategory.Id);
+                    try
+                    {
+                        homeBugaltery.deleteCategory(curentCategory.Id);
+                    }
+                    catch (Exception exc)
+                    {
+                        MessageBox.Show("Не можливо видалити категорію!!!\nДетально:\n" + exc.Message, "Помилка!!!");
+                    }
+
                 }
-                catch (Exception exc)
-                {
-                    MessageBox.Show("Не можливо видалити категорію!!!\nДетально:\n" + exc.Message, "Помилка!!!");
-                }
-                
+               
             }
+            else if (result == DialogResult.No)
+            {
+                return;
+            }
+
             updateCategory();
+
         }
 
         //Go to the last ROW in GRID

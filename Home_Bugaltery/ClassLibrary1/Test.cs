@@ -27,12 +27,12 @@ namespace ClassLibrary1
         {
             //MarketEntities dbLocal = new MarketEntities("new Connection String!!!");
             //BisnesLogic bisnesLogic = new BisnesLogic(dbLocal);
-            //var listUser = bisnesLogic.getAllUsers();
+            HomeBugaltery homeBugaltery = new HomeBugaltery();
+            var listUser = homeBugaltery.ListUsers;
 
-            // bisnesLogic.addNewUser("em@", "Emma", "1111", 2);
-            HomeBugaltery homeBugaltery = new HomeBugaltery();           
+             //bisnesLogic.addNewUser("em@", "Emma", "1111", 2);          
 
-            Assert.AreEqual(5, homeBugaltery.ListUsers.Count());
+            Assert.AreEqual(5, listUser);
         }
 
         [Test]
