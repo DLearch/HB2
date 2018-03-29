@@ -142,3 +142,6 @@ C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\H
 C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.Properties.Resources.resources
 C:\Users\student.LAN\Source\Repos4\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.csproj.GenerateResource.Cache
 >>>>>>> c3ee312ae75824bd36c876a7cc12652c82338250
+C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\Home_Bugaltery\bin\Debug\Home_Bugaltery.exe.config
+C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.exe
+C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\Home_Bugaltery\obj\Debug\Home_Bugaltery.pdb

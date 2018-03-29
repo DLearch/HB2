@@ -1,0 +1,64 @@
+﻿<Window x:Class="WpfApp.FamilyMembersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp"
+        mc:Ignorable="d"
+        Title="Члени сім'ї" 
+        Height="300" Width="300"
+        MinHeight="200" MinWidth="200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="42"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <ListBox Grid.RowSpan="6"
+                 Name="ListBoxFamilyMembers"
+                 DisplayMemberPath="Name"
+                 Margin="10"
+                 SelectionChanged="ListBoxFamilyMembers_SelectionChanged"/>
+
+        <TextBox Grid.Column="1"
+                 VerticalAlignment="Bottom" 
+                 Margin="10, 0"
+                 Name="TextBoxAddFamilyMember"/>
+
+        <Button Grid.Row="1" Grid.Column="1"
+                Content="Додати"
+                VerticalAlignment="Top" 
+                Margin="10, 0"
+                Click="ButtonAddFamilyMember_Click"/>
+
+        <TextBox Grid.Row="2" Grid.Column="1"
+                 VerticalAlignment="Bottom"
+                 Margin="10, 0"
+                 IsEnabled="False"
+                 Name="TextBoxEditFamilyMember"/>
+
+        <Button Grid.Row="3" Grid.Column="1"
+                Content="Редагувати" 
+                VerticalAlignment="Top" 
+                Margin="10, 0"
+                Name="ButtonEditFamilyMember"
+                IsEnabled="False"
+                Click="ButtonEditFamilyMember_Click"/>
+
+        <Button Grid.Row="4" Grid.Column="1"
+                Content="Видалити" 
+                VerticalAlignment="Center" 
+                Margin="10, 0"
+                IsEnabled="False"
+                Name="ButtonRemoveFamilyMember"
+                Click="ButtonRemoveFamilyMember_Click"/>
+    </Grid>
+</Window>
