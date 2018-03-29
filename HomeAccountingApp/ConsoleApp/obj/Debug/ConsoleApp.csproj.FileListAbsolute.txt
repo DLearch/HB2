@@ -25,3 +25,15 @@ C:\Users\student.LAN\Desktop\HomeAccountingApp\ConsoleApp\obj\Debug\ConsoleApp.c
 C:\Users\Daniel\Desktop\Git\HomeAccountingApp\ConsoleApp\bin\Debug\ConsoleApp.exe.config
 C:\Users\Daniel\Desktop\Git\HomeAccountingApp\ConsoleApp\obj\Debug\ConsoleApp.exe
 C:\Users\Daniel\Desktop\Git\HomeAccountingApp\ConsoleApp\obj\Debug\ConsoleApp.pdb
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\bin\Debug\ConsoleApp.exe.config
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\obj\Debug\ConsoleApp.exe
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\obj\Debug\ConsoleApp.pdb
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\bin\Debug\ConsoleApp.exe
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\bin\Debug\ConsoleApp.pdb
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\bin\Debug\ClassLib.dll
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\bin\Debug\EntityFramework.dll
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\bin\Debug\ClassLib.pdb
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\bin\Debug\EntityFramework.xml
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ConsoleApp\obj\Debug\ConsoleApp.csprojResolveAssemblyReference.cache

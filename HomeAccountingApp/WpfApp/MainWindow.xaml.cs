@@ -117,5 +117,10 @@ namespace WpfApp
             ListViewItem listViewItem = contextMenu.PlacementTarget as ListViewItem;
             return listViewItem.DataContext as OrderView;
         }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            ha.SignOut();
+        }
     }
 }

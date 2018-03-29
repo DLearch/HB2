@@ -8,3 +8,8 @@ C:\Users\student.LAN\Desktop\HomeAccountingApp\ClassLib\bin\Debug\ClassLib.pdb
 C:\Users\student.LAN\Desktop\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.csprojResolveAssemblyReference.cache
 C:\Users\student.LAN\Desktop\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.dll
 C:\Users\student.LAN\Desktop\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.pdb
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ClassLib\bin\Debug\ClassLib.dll
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ClassLib\bin\Debug\ClassLib.pdb
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.csprojResolveAssemblyReference.cache
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.dll
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\ClassLib\obj\Debug\ClassLib.pdb

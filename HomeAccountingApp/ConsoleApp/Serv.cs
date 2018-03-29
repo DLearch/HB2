@@ -34,6 +34,18 @@ namespace ConsoleApp
         #region Error
 
         string error;
+        string Error
+        {
+            get
+            {
+                return error;
+            }
+            set
+            {
+                error = value;
+                Console.WriteLine(value);
+            }
+        }
 
         public string GetLastError()
         {
@@ -60,6 +72,8 @@ namespace ConsoleApp
             }
 
             user = db.Users.DefaultIfEmpty(null).FirstOrDefault(u => u.Email == email && u.Password == password);
+
+            Console.WriteLine(user.Email + " - користувач приєднався.");
             return true;
         }
 
@@ -98,6 +112,7 @@ namespace ConsoleApp
 
             db.SaveChanges();
 
+            Console.WriteLine(user.Email + " - користувач зареєструвався.");
             return true;
         }
 
@@ -117,11 +132,14 @@ namespace ConsoleApp
 
             user.Password = newPassword;
             db.SaveChanges();
+
+            Console.WriteLine(user.Email + " - пароль змінено.");
             return true;
         }
 
         public void SignOut()
         {
+            Console.WriteLine(user.Email + " - користувач відє'днався");
             user = null;
             return;
         }
@@ -188,7 +206,6 @@ namespace ConsoleApp
             });
 
             db.SaveChanges();
-
             return true;
         }
 
