@@ -24,8 +24,7 @@ namespace WpfApp
     public partial class MainWindow : Window
     {
         HomeAccounting ha;
-        ObservableCollection<OrderView> ordersViews;
-        FiltersUserControl fuco;
+        OrdersUserControl ouc;
 
         public MainWindow()
         {
@@ -33,37 +32,18 @@ namespace WpfApp
 
             ha = new HomeAccounting();
             ha.Authentication("terminator@gmail.com", "3453");
-            ha.FiltersUpdated += UpdateListBoxOrders;
-            ha.FiltersUpdated += UpdateLabelSum;
 
-            ListBoxOrders.ItemsSource = ordersViews = new ObservableCollection<OrderView>();
-
-            fuco = new FiltersUserControl(ha);
-            GridFilters.Children.Add(fuco);
+            ouc = new OrdersUserControl(ha);
+            GridMain.Children.Add(ouc);
 
             UpdateAll();
         }
 
         #region Update
-
-        void UpdateListBoxOrders()
-        {
-            ordersViews.Clear();
-
-            foreach (var orderView in ha.FilteredOrdersViews)
-                ordersViews.Add(orderView);
-        }
-
+        
         void UpdateAll()
         {
-            UpdateListBoxOrders();
-            fuco.UpdateAll();
-            UpdateLabelSum();
-        }
-
-        void UpdateLabelSum()
-        {
-            LabelSum.Content = "Загальна сума: " + ha.GetFilteredOrdersViewsPriceSum();
+            ouc.UpdateAll();
         }
 
         #endregion
@@ -93,31 +73,7 @@ namespace WpfApp
             if(w.ShowDialog() == true)
                 UpdateAll();
         }
-
-        private void MenuItemEditOrder_Click(object sender, RoutedEventArgs e)
-        {
-            OrderWindow w = new OrderWindow(ha, ha.GetOrder(GetOrderViewFromSender(sender).Id));
-
-            if (w.ShowDialog() == true)
-                UpdateAll();
-        }
-
-        private void MenuItemRemoveOrder_Click(object sender, RoutedEventArgs e)
-        {
-
-            ha.RemoveOrder(GetOrderViewFromSender(sender).Id);
-
-            UpdateAll();
-        }
-
-        OrderView GetOrderViewFromSender(object sender)
-        {
-            MenuItem menuItem = sender as MenuItem;
-            ContextMenu contextMenu = menuItem.Parent as ContextMenu;
-            ListViewItem listViewItem = contextMenu.PlacementTarget as ListViewItem;
-            return listViewItem.DataContext as OrderView;
-        }
-
+        
         private void Window_Closed(object sender, EventArgs e)
         {
             ha.SignOut();

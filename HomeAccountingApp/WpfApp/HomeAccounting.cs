@@ -5,6 +5,7 @@ using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
+using WpfApp.Views;
 
 namespace WpfApp
 {
@@ -261,7 +262,7 @@ namespace WpfApp
             set
             {
                 filterCategories = value;
-                FiltersUpdated();
+                FiltersUpdated?.Invoke();
             }
         }
 
@@ -393,6 +394,30 @@ namespace WpfApp
             }
         }
 
+        public List<BalanceView> FilteredFamilyMembersBalanceViews
+        {
+            get
+            {
+                List<BalanceView> balanceViews = new List<BalanceView>();
+
+                foreach (var balanceView in BalanceViews)
+                {
+                    Order order = Orders.First(o => o.Id == balanceView.FamilyMemberId);
+
+                    if ((FilterCategories == null || FilterCategories.Count == 0 || FilterCategories.Any(c => c.Id == order.CategoryId))
+                        && (FilterFamilyMembers == null || FilterFamilyMembers.Count == 0 || FilterFamilyMembers.Any(fm => fm.Id == order.FamilyMemberId))
+                        && (FilterDateFrom == null || FilterDateFrom <= order.Date)
+                        && (FilterDateTo == null || FilterDateTo >= order.Date)
+                        && (FilterPriceFrom == null || FilterPriceFrom <= order.Price)
+                        && (FilterPriceTo == null || FilterPriceTo >= order.Price)
+                        && (FilterIsIncome == null || FilterIsIncome == Categories.First(c => c.Id == order.CategoryId).Type))
+                        balanceViews.Add(balanceView);
+                }
+
+                return balanceViews;
+            }
+        }
+
         public void ApplyFilters(List<Category> categories, List<FamilyMember> familyMembers = null, DateTime? dateFrom = null, DateTime? dateTo = null, decimal? priceFrom = null, decimal? priceTo = null, bool? isIncome = null)
         {
             filterCategories = categories;
@@ -422,9 +447,26 @@ namespace WpfApp
             FiltersUpdated();
         }
 
-        public decimal GetFilteredOrdersViewsPriceSum()
+        public decimal GetFilteredOrdersViewsPriceSum() // Доделать
         {
             return FilteredOrdersViews.Sum(ov => Orders.First(o => o.Id == ov.Id).Price);
+        }
+
+        #endregion
+
+        # region BalanceViews
+
+        public List<BalanceView> BalanceViews
+        {
+            get
+            {
+                return FamilyMembers.Select(fm => new BalanceView() {
+                                        FamilyMemberId = fm.Id,
+                                        Income = Orders.Where(o => o.FamilyMemberId == fm.Id && Categories.First(c => c.Id == fm.Id).Type).Sum(o => o.Price),
+                                        Outcome = Orders.Where(o => o.FamilyMemberId == fm.Id && !Categories.First(c => c.Id == fm.Id).Type).Sum(o => o.Price)
+                                    })
+                                    .ToList();
+            }
         }
 
         #endregion

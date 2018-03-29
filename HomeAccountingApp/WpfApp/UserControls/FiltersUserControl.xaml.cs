@@ -22,12 +22,13 @@ namespace WpfApp
     /// </summary>
     public partial class FiltersUserControl : UserControl
     {
+        #region Properties
 
         public List<Category> Categories
         {
             get
             {
-                if (CheckBoxFilters.IsChecked != true || CheckBoxCategoriesFilter.IsChecked != true || filterCategories.Count == 0)
+                if (CheckBoxFilters.IsChecked != true || !FilterCategoriesIsEnabled || CheckBoxCategoriesFilter.IsChecked != true || filterCategories.Count == 0)
                     return null;
                 return filterCategories.Where(c => c.IsSelected).Select(c => c.Category).ToList();
             }
@@ -37,7 +38,7 @@ namespace WpfApp
         {
             get
             {
-                if (CheckBoxFilters.IsChecked != true || CheckBoxFamilyMembersFilter.IsChecked != true || filterFamilyMembers.Count == 0)
+                if (CheckBoxFilters.IsChecked != true || !FilterFamilyMembersIsEnabled || CheckBoxFamilyMembersFilter.IsChecked != true || filterFamilyMembers.Count == 0)
                     return null;
                 return filterFamilyMembers.Where(c => c.IsSelected).Select(c => c.FamilyMember).ToList();
             }
@@ -47,7 +48,7 @@ namespace WpfApp
         {
             get
             {
-                if (CheckBoxFilters.IsChecked != true || CheckBoxDateFilter.IsChecked != true)
+                if (CheckBoxFilters.IsChecked != true || !FilterDateIsEnabled || CheckBoxDateFilter.IsChecked != true)
                     return null;
                 return DatePickerDateFilterFrom.SelectedDate;
             }
@@ -56,7 +57,7 @@ namespace WpfApp
         {
             get
             {
-                if (CheckBoxFilters.IsChecked != true || CheckBoxDateFilter.IsChecked != true)
+                if (CheckBoxFilters.IsChecked != true || !FilterDateIsEnabled || CheckBoxDateFilter.IsChecked != true)
                     return null;
                 return DatePickerDateFilterTo.SelectedDate;
             }
@@ -67,7 +68,8 @@ namespace WpfApp
             get
             {
                 decimal price;
-                if (CheckBoxFilters.IsChecked != true 
+                if (CheckBoxFilters.IsChecked != true
+                    || !FilterPriceIsEnabled
                     || CheckBoxPriceFilter.IsChecked != true 
                     || !decimal.TryParse(TextBoxPriceFilterFrom.Text, out price))
                     return null;
@@ -79,7 +81,8 @@ namespace WpfApp
             get
             {
                 decimal price;
-                if (CheckBoxFilters.IsChecked != true 
+                if (CheckBoxFilters.IsChecked != true
+                    || !FilterPriceIsEnabled
                     || CheckBoxPriceFilter.IsChecked != true 
                     || !decimal.TryParse(TextBoxPriceFilterTo.Text, out price))
                     return null;
@@ -91,11 +94,86 @@ namespace WpfApp
         {
             get
             {
-                if (CheckBoxFilters.IsChecked != true || CheckBoxIsIncomeFilter.IsChecked != true)
+                if (CheckBoxFilters.IsChecked != true || !FilterIsIncomeIsEnabled || CheckBoxIsIncomeFilter.IsChecked != true)
                     return null;
                 return RadioButtonIsIncome.IsChecked;
             }
         }
+        
+        #endregion
+
+        #region FiltersIsEnubled Properties
+
+        public bool FilterCategoriesIsEnabled
+        {
+            get
+            {
+                return GroupBoxCategoriesFilter.IsEnabled;
+            }
+            set
+            {
+                GroupBoxCategoriesFilter.IsEnabled = value;
+                if(value)
+                    GroupBoxCategoriesFilter.Visibility = Visibility.Visible;
+                else
+                    GroupBoxCategoriesFilter.Visibility = Visibility.Collapsed;
+                ApplyFiltersCategories(null, null);
+            }
+        }
+
+        public bool FilterFamilyMembersIsEnabled
+        {
+            get
+            {
+                return GroupBoxFamilyMembersFilter.IsEnabled;
+            }
+            set
+            {
+                GroupBoxFamilyMembersFilter.IsEnabled = value;
+                ApplyFiltersFamilyMembers(null, null);
+            }
+        }
+
+        public bool FilterDateIsEnabled
+        {
+            get
+            {
+                return GroupBoxDateFilter.IsEnabled;
+            }
+            set
+            {
+                GroupBoxDateFilter.IsEnabled = value;
+                ApplyFiltersDate(null, null);
+            }
+        }
+
+        public bool FilterPriceIsEnabled
+        {
+            get
+            {
+                return GroupBoxPriceFilter.IsEnabled;
+            }
+            set
+            {
+                GroupBoxPriceFilter.IsEnabled = value;
+                ApplyFiltersPrice(null, null);
+            }
+        }
+
+        public bool FilterIsIncomeIsEnabled
+        {
+            get
+            {
+                return GroupBoxIsIncomeFilter.IsEnabled;
+            }
+            set
+            {
+                GroupBoxIsIncomeFilter.IsEnabled = value;
+                ApplyFiltersIsIncome(null, null);
+            }
+        }
+
+        #endregion
 
         HomeAccounting ha;
         ObservableCollection<FilterCategoriesItem> filterCategories;
@@ -156,12 +234,12 @@ namespace WpfApp
 
         private void ApplyFiltersCategories(object sender, EventArgs e)
         {
-            ha.FilterCategories = GetFilteredListCategories();
+            ha.FilterCategories = Categories;
         }
 
         private void ApplyFiltersFamilyMembers(object sender, EventArgs e)
         {
-            ha.FilterFamilyMembers = GetFilteredListFamilyMembers();
+            ha.FilterFamilyMembers = FamilyMembers;
         }
 
         private void ApplyFiltersDateFrom(object sender, EventArgs e)
@@ -202,23 +280,14 @@ namespace WpfApp
         private void ApplyFilters(object sender, EventArgs e)
         {
             ha.ApplyFilters(
-                GetFilteredListCategories(),
-                GetFilteredListFamilyMembers(),
+                Categories,
+                FamilyMembers,
                 DateFrom,
                 DateTo,
                 PriceFrom,
                 PriceTo,
                 IsIncome
             );
-        }
-
-        List<Category> GetFilteredListCategories()
-        {
-            return filterCategories.Where(c => c.IsSelected).Select(c => c.Category).ToList();
-        }
-        List<FamilyMember> GetFilteredListFamilyMembers()
-        {
-            return filterFamilyMembers.Where(fm => fm.IsSelected).Select(fm => fm.FamilyMember).ToList();
         }
         #endregion
     }

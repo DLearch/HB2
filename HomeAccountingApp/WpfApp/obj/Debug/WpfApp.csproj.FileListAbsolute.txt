@@ -85,3 +85,7 @@ C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\WpfApp\obj\Debug\Regist
 C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\WpfApp\obj\Debug\WpfApp.g.resources
 C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\WpfApp\obj\Debug\WpfApp.Properties.Resources.resources
 C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\WpfApp\obj\Debug\WpfApp.csproj.GenerateResource.Cache
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\WpfApp\obj\Debug\OrdersUserControl.g.cs
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\WpfApp\obj\Debug\OrdersUserControl.baml
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\WpfApp\obj\Debug\BalanceUserControl.g.cs
+C:\Users\student.LAN\Source\Repos6\HB2\HomeAccountingApp\WpfApp\obj\Debug\BalanceUserControl.baml
