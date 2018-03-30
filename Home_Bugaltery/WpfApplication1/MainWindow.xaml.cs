@@ -98,11 +98,5 @@ namespace WpfApplication1
             else
                 erfpuc.Visibility = Visibility.Collapsed;
         }
-
-        void MoveToBalance(object sender, EventArgs e)
-        {
-            ouc.Visibility = Visibility.Collapsed;
-            buc.Visibility = Visibility.Visible;
-        }
     }
 }
