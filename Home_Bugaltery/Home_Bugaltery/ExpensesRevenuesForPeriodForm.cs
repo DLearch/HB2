@@ -13,19 +13,19 @@ namespace Home_Bugaltery
 {
     public partial class ExpensesRevenuesForPeriodForm : Form
     {
-        HomeBugaltery homeBugaltery;
-        
+        //Singelton
+        HomeBugaltery homeBugaltery = HomeBugaltery.getInstance();
+       
+
 
         bool type;
         decimal sum;
 
-        public ExpensesRevenuesForPeriodForm(bool type, HomeBugaltery homeBugaltery)
+        public ExpensesRevenuesForPeriodForm(bool type)
         {
             InitializeComponent();
 
             this.type = type;
-
-            this.homeBugaltery = homeBugaltery;
        
 
             if (type == false)

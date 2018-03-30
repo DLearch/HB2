@@ -16,19 +16,17 @@ namespace Home_Bugaltery
 
         bool type = false;
 
-        HomeBugaltery homeBugaltery;
-        HomeBugalteryAction actHomeBogaltery;
+        //Singelton
+        HomeBugaltery homeBugaltery = HomeBugaltery.getInstance();
+        HomeBugalteryAction actHomeBogaltery = HomeBugalteryAction.getInstance();
 
         Categories curentCategory = null;
 
         string typeValue= "";
 
-        public ModifiCategoryForm(HomeBugaltery homeBugaltery, HomeBugalteryAction actHomeBogaltery)
+        public ModifiCategoryForm()
         {
             InitializeComponent();
-
-            this.homeBugaltery = homeBugaltery;
-            this.actHomeBogaltery = actHomeBogaltery;
 
             updateCategory();
 

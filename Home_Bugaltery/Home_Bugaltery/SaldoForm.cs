@@ -13,15 +13,12 @@ namespace Home_Bugaltery
 {
     public partial class SaldoForm : Form
     {
-        HomeBugaltery homeBugaltery;
-      
+        //Singelton
+        HomeBugaltery homeBugaltery = HomeBugaltery.getInstance();
 
         public SaldoForm(HomeBugaltery homeBugaltery)
         {
             InitializeComponent();
-
-            this.homeBugaltery = homeBugaltery;
-
 
             panelDate.Enabled = checkBoxDate.Checked;
 

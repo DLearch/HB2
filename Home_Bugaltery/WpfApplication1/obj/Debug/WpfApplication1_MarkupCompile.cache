@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2_W_F\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\
 WpfApplication1
 none
 false
 DEBUG;TRACE
-C:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\App.xaml
+D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2_W_F\HB2\Home_Bugaltery\WpfApplication1\App.xaml
 82065623318
 
 14647150936
-18269023208
+18262649483
 DialogWindows\AuthenticationWindow.xaml;DialogWindows\CategoriesWindow.xaml;DialogWindows\OrderWindow.xaml;MainWindow.xaml;UserControls\BalanceUserControl.xaml;UserControls\ExpensesRevenuesForPeriodUserControl.xaml;UserControls\FilterUserControl.xaml;UserControls\OrdersUserControl.xaml;
 
 False

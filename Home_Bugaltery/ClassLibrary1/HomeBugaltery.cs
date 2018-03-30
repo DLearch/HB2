@@ -13,6 +13,16 @@ namespace ClassLibrary1
     // 2.2. Конкретный исполнитель (получатель) :
     public class HomeBugaltery
     {
+        static private HomeBugaltery instance = null;
+
+        static public HomeBugaltery getInstance()
+        {
+            if (instance == null)
+                instance = new HomeBugaltery();
+
+            return instance;
+        }
+
 
         BisnesLogic bisnesLogic;
         List<OrdersView> listOrders;
@@ -26,8 +36,7 @@ namespace ClassLibrary1
 
         List<UserSaldo> usersSaldo;
 
-
-        public HomeBugaltery()
+        private HomeBugaltery()
         {
             bisnesLogic = new BisnesLogic();
 

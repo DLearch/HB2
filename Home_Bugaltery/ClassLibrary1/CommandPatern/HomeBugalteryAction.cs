@@ -11,6 +11,17 @@ namespace ClassLibrary1
 
     public class HomeBugalteryAction
     {
+
+        static private HomeBugalteryAction instance = null;
+
+        static public HomeBugalteryAction getInstance()
+        {
+            if (instance == null)
+                instance = new HomeBugalteryAction();
+
+            return instance;
+        }
+
         ICommand[] commands;
         Stack<int> doneActionsIndexes;
 

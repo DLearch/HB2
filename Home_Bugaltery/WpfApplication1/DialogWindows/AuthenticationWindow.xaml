@@ -20,18 +20,18 @@
             <ColumnDefinition Width="80"/>
         </Grid.ColumnDefinitions>
 
-        <Label VerticalAlignment="Center" Margin="10, 0" Content="Ім'я: " />
+        <Label VerticalAlignment="Center" Margin="10, 0" Content="Login: " />
 
         <Label VerticalAlignment="Center" Margin="10, 0" Content="Пароль: " Grid.Row="1"/>
 
 
         <TextBox VerticalAlignment="Center" Margin="10, 0" 
                  Grid.Column="1" Grid.ColumnSpan="3"
-                 Name="TextBoxName"/>
+                 Name="TextBoxName" Text="НінаНікитюк"/>
 
         <PasswordBox VerticalAlignment="Center" Margin="10, 0" 
                  Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"
-                     Name="PasswordBoxPassword"/>
+                     Name="PasswordBoxPassword" Password="1234"/>
 
 
         <Button VerticalAlignment="Center" Margin="10, 0" 

@@ -15,8 +15,9 @@ namespace Home_Bugaltery
     {
         ContextMenu dataGridContextMenu;
 
-        HomeBugaltery homeBugaltery;
-        HomeBugalteryAction actHomeBogaltery;
+        //Singelton
+        HomeBugaltery homeBugaltery = HomeBugaltery.getInstance();
+        HomeBugalteryAction actHomeBogaltery = HomeBugalteryAction.getInstance();
 
         NewOrderForm newOrder;
         ModifiCategoryForm newAddcategory;
@@ -40,11 +41,6 @@ namespace Home_Bugaltery
                                                                    new MenuItem("Delete", new EventHandler(onContextDeleteClick))});
 
             dataGridViewOrders.ContextMenu = dataGridContextMenu;
-
-
-
-            homeBugaltery = new HomeBugaltery();
-            actHomeBogaltery = new HomeBugalteryAction();
 
             newOrder = new NewOrderForm(homeBugaltery, actHomeBogaltery);
 
@@ -113,7 +109,7 @@ namespace Home_Bugaltery
         // New Category
         private void categoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            newAddcategory = new ModifiCategoryForm(homeBugaltery, actHomeBogaltery);
+            newAddcategory = new ModifiCategoryForm();
             newAddcategory.ShowDialog();//.showForm();
         }
 
@@ -252,7 +248,7 @@ namespace Home_Bugaltery
 
         private void menuItemUser_Click(object sender, EventArgs e)
         {
-            addChangeUser = new ModifiUserForm(curentUser, homeBugaltery, actHomeBogaltery);
+            addChangeUser = new ModifiUserForm(curentUser);
             addChangeUser.ShowDialog();
         }
 
@@ -261,7 +257,7 @@ namespace Home_Bugaltery
         {
             bool type = true;
 
-            ExpensesRevenuesForPeriodForm expForm = new ExpensesRevenuesForPeriodForm(type, homeBugaltery);
+            ExpensesRevenuesForPeriodForm expForm = new ExpensesRevenuesForPeriodForm(type);
             expForm.ShowDialog();
         }
 
@@ -270,7 +266,7 @@ namespace Home_Bugaltery
         {
             bool type = false;
 
-            ExpensesRevenuesForPeriodForm expForm = new ExpensesRevenuesForPeriodForm(type, homeBugaltery);
+            ExpensesRevenuesForPeriodForm expForm = new ExpensesRevenuesForPeriodForm(type);
             expForm.ShowDialog();
         }
 

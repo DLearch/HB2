@@ -14,8 +14,9 @@ namespace Home_Bugaltery
     public partial class ModifiUserForm : Form
     {
 
-        HomeBugaltery homeBugaltery;
-        HomeBugalteryAction actHomeBugaltery;
+        //Singelton
+        HomeBugaltery homeBugaltery = HomeBugaltery.getInstance();
+        HomeBugalteryAction actHomeBugaltery = HomeBugalteryAction.getInstance();
 
         private Users curentUser;
 
@@ -23,15 +24,12 @@ namespace Home_Bugaltery
 
         bool IsChangeMyData = false;
 
-        public ModifiUserForm(Users curentUser, HomeBugaltery homeBugaltery, HomeBugalteryAction actHomeBogaltery)
+        public ModifiUserForm(Users curentUser)
         {
             InitializeComponent();
 
             // title Family name
             this.Text = homeBugaltery.getFamilyName(curentUser.Family_Id);
-
-            this.homeBugaltery = homeBugaltery;
-            this.actHomeBugaltery = actHomeBogaltery;
 
             this.curentUser = curentUser;
 
