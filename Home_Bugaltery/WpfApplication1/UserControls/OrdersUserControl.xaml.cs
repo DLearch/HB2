@@ -67,7 +67,7 @@ namespace WpfApplication1.UserControls
 
         public void UpdateLabelSum()
         {
-            labelSum.Content = "Загальна сума: " + ordersViews.Sum(ov => ov.Price).ToString("G29"); ;
+            labelSum.Content = "Загальна сума: " + ordersViews.Sum(ov => (hb.ListCategories.First(c => c.Name == ov.CategoryName).Type) ? ov.Price : ov.Price * -1 ).ToString("G29"); ;
         }
 
         #endregion
