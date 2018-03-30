@@ -61,7 +61,6 @@ namespace Home_Bugaltery
             }
 
             textBoxSum.Text = sum.ToString();
-
         }
 
         private void btnShow_Click(object sender, EventArgs e)

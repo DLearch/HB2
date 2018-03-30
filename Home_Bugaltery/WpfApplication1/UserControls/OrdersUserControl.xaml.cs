@@ -25,7 +25,7 @@ namespace WpfApplication1.UserControls
     {
         HomeBugaltery hb;
         ObservableCollection<OrdersView> ordersViews;
-        FilterUserControl fuco;
+        FilterUserControl fuc;
 
         public OrdersUserControl(HomeBugaltery hb)
         {
@@ -35,13 +35,20 @@ namespace WpfApplication1.UserControls
 
             ListBoxOrders.ItemsSource = ordersViews = new ObservableCollection<OrdersView>();
 
-            fuco = new FilterUserControl(hb);
-            fuco.FiltersUpdated += UpdateAll;
-            GridFilters.Children.Add(fuco);
-            
+            fuc = new FilterUserControl(hb);
+            fuc.FiltersUpdated += FilteredOrdersListChanged;
+            GridFilters.Children.Add(fuc);
+
         }
 
         #region Update
+
+        public void FilteredOrdersListChanged()
+        {
+            hb.aplyOrdersFilters(fuc.CategoriesFilterList, fuc.UsersFilterList, fuc.DateFromFilter, fuc.DateToFilter);
+            UpdateListBoxOrders();
+            UpdateLabelSum();
+        }
 
         public void UpdateListBoxOrders()
         {
@@ -53,14 +60,14 @@ namespace WpfApplication1.UserControls
 
         public void UpdateAll()
         {
-            fuco.UpdateAll();
+            fuc.UpdateAll();
             UpdateListBoxOrders();
             UpdateLabelSum();
         }
 
         public void UpdateLabelSum()
         {
-            //LabelSum.Content = "Загальна сума: " + ha.GetFilteredOrdersViewsPriceSum();
+            labelSum.Content = "Загальна сума: " + ordersViews.Sum(ov => ov.Price).ToString("G29"); ;
         }
 
         #endregion
@@ -79,6 +86,7 @@ namespace WpfApplication1.UserControls
 
             UpdateAll();
         }
+
         private void MenuItemUpdateOrders_Click(object sender, RoutedEventArgs e)
         {
             UpdateAll();

@@ -4,30 +4,17 @@
 winexe
 C#
 .cs
-<<<<<<< HEAD
-D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\
-=======
-C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\
->>>>>>> 458bb18aba7dcd7ca2ea32e065ecb0246f591e68
+C:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\
 WpfApplication1
 none
 false
 DEBUG;TRACE
-<<<<<<< HEAD
-D:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\App.xaml
-7-274814446
+C:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\App.xaml
+82065623318
 
-201060076716
-18589686327
-View\CategoriesWindow.xaml;View\ExpensesRevenuesForPeriodUControl.xaml;View\FamilyMembersWindow.xaml;View\GridOrdersUControl.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\OrderWindow.xaml;
-=======
-C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\App.xaml
-5-1638538402
-
-1164511690
-181201243495
-DialogWindows\CategoriesWindow.xaml;DialogWindows\OrderWindow.xaml;MainWindow.xaml;UserControls\FilterUserControl.xaml;UserControls\OrdersUserControl.xaml;
->>>>>>> 458bb18aba7dcd7ca2ea32e065ecb0246f591e68
+14647150936
+18269023208
+DialogWindows\AuthenticationWindow.xaml;DialogWindows\CategoriesWindow.xaml;DialogWindows\OrderWindow.xaml;MainWindow.xaml;UserControls\BalanceUserControl.xaml;UserControls\ExpensesRevenuesForPeriodUserControl.xaml;UserControls\FilterUserControl.xaml;UserControls\OrdersUserControl.xaml;
 
 False
 

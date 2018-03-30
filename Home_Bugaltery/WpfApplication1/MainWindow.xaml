@@ -18,6 +18,12 @@
             </MenuItem>
             <MenuItem Header="Операції">
                 <MenuItem Header="Нова операція" Click="MenuItemAddOrder_Click"/>
+                <MenuItem Header="Операції" Click="MoveTo" CommandParameter="Orders"/>
+            </MenuItem>
+            <MenuItem Header="Звіти">
+                <MenuItem Header="Доходи за період" Click="MoveTo" CommandParameter="Incomes"/>
+                <MenuItem Header="Витрати за період" Click="MoveTo" CommandParameter="Outcomes"/>
+                <MenuItem Header="Сальдо" Click="MoveTo" CommandParameter="Balance"/>
             </MenuItem>
         </Menu>
 

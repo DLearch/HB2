@@ -30,8 +30,8 @@
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding CategoryName}" Header="Категорія"/>
                     <GridViewColumn DisplayMemberBinding="{Binding UserName}" Header="Користувач"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding DateOrder}" Header="Дата"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Price}" Header="Ціна"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding DateOrderShortString}" Header="Дата"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding PriceString}" Header="Ціна"/>
                     <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Опис"/>
                 </GridView>
             </ListView.View>
@@ -54,6 +54,6 @@
             </ListView.ItemContainerStyle>
         </ListView>
 
-        <Label Margin="20, 0" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Name="LabelSum"/>
+        <Label Margin="10, 0, 10, 10" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" Name="labelSum"/>
     </Grid>
 </UserControl>

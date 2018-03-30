@@ -17,10 +17,10 @@
                   Margin="10" Grid.Column="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding FamilyMemberName}" Header="Користувачі"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Income}" Header="Доходи"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Outcome}" Header="Витрати"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Balance}" Header="Сальдо"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding UserName}" Header="Користувачі"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Debet}" Header="Доходи"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Credit}" Header="Витрати"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Saldo}" Header="Сальдо"/>
                 </GridView>
             </ListView.View>
         </ListView>

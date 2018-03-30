@@ -1,18 +1,11 @@
 ﻿
 
-<<<<<<< HEAD
-FD:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\View\CategoriesWindow.xaml;;
-FD:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\View\ExpensesRevenuesForPeriodUControl.xaml;;
-FD:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\View\FamilyMembersWindow.xaml;;
-FD:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\View\GridOrdersUControl.xaml;;
-FD:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\View\LoginWindow.xaml;;
-FD:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\View\MainWindow.xaml;;
-FD:\MY\PROGECT_C++\PROGECT_CURSOVA_HOME_BUGGALTERY\15_03_From_Git\HB2\Home_Bugaltery\WpfApplication1\View\OrderWindow.xaml;;
-=======
-FC:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\DialogWindows\CategoriesWindow.xaml;;
-FC:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\DialogWindows\OrderWindow.xaml;;
-FC:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\MainWindow.xaml;;
-FC:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\UserControls\FilterUserControl.xaml;;
-FC:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\UserControls\OrdersUserControl.xaml;;
->>>>>>> 458bb18aba7dcd7ca2ea32e065ecb0246f591e68
+FC:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\DialogWindows\CategoriesWindow.xaml;;
+FC:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\DialogWindows\OrderWindow.xaml;;
+FC:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\MainWindow.xaml;;
+FC:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\UserControls\BalanceUserControl.xaml;;
+FC:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\UserControls\ExpensesRevenuesForPeriodUserControl.xaml;;
+FC:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\UserControls\FilterUserControl.xaml;;
+FC:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\UserControls\OrdersUserControl.xaml;;
+FC:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\DialogWindows\AuthenticationWindow.xaml;;
 

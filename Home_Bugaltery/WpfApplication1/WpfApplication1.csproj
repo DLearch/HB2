@@ -67,6 +67,15 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="DialogWindows\AuthenticationWindow.xaml.cs">
+      <DependentUpon>AuthenticationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\BalanceUserControl.xaml.cs">
+      <DependentUpon>BalanceUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\ExpensesRevenuesForPeriodUserControl.xaml.cs">
+      <DependentUpon>ExpensesRevenuesForPeriodUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\FilterUserControl.xaml.cs">
       <DependentUpon>FilterUserControl.xaml</DependentUpon>
     </Compile>
@@ -121,6 +130,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="DialogWindows\AuthenticationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DialogWindows\CategoriesWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -130,6 +143,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="MainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\BalanceUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ExpensesRevenuesForPeriodUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

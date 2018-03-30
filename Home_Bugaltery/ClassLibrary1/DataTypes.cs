@@ -12,10 +12,24 @@ namespace ClassLibrary1
         public string CategoryName { get; set; }
 
         public string UserName { get; set; }
-        public System.DateTime DateOrder { get; set; }
+        public DateTime DateOrder { get; set; }
         public decimal Price { get; set; }
         public string Description { get; set; }
 
+        public string PriceString
+        {
+            get
+            {
+                return Price.ToString("G29");
+            }
+        }
+        public string DateOrderShortString
+        {
+            get
+            {
+                return DateOrder.ToShortDateString();
+            }
+        }
     }
 
     public class UserSaldo
@@ -24,6 +38,28 @@ namespace ClassLibrary1
         public decimal Debet { get; set; }
         public decimal Credit { get; set; }
         public decimal Saldo { get; set; }
+
+        public string DebetString
+        {
+            get
+            {
+                return Debet.ToString("G29");
+            }
+        }
+        public string CreditString
+        {
+            get
+            {
+                return Credit.ToString("G29");
+            }
+        }
+        public string SaldoString
+        {
+            get
+            {
+                return Saldo.ToString("G29");
+            }
+        }
     }
 
    

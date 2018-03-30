@@ -24,7 +24,58 @@ namespace WpfApplication1.UserControls
     public partial class FilterUserControl : UserControl
     {
         #region Properties
+        public List<string> CategoriesFilterList
+        {
+            get
+            {
+                List<string> categoriesList = null;
 
+                if (FilterCategoriesIsEnabled && CheckBoxFilters.IsChecked == true && CheckBoxCategoriesFilter.IsChecked == true)
+                    categoriesList = filterCategories.Where(c => c.IsSelected).Select(c => c.Category.Name).ToList();
+
+                if (categoriesList != null && categoriesList.Count == 0)
+                    categoriesList = null;
+
+                return categoriesList;
+            }
+        }
+
+        public List<string> UsersFilterList
+        {
+            get
+            {
+                List<string> usersList = null;
+
+                if (FilterUsersIsEnabled && CheckBoxFilters.IsChecked == true && CheckBoxUsersFilter.IsChecked == true)
+                    usersList = filterUsers.Where(c => c.IsSelected).Select(c => c.User.Name).ToList();
+
+                if (usersList != null && usersList.Count == 0)
+                    usersList = null;
+
+                return usersList;
+            }
+        }
+
+        public DateTime? DateFromFilter
+        {
+            get
+            {
+                if (FilterDateIsEnabled && CheckBoxFilters.IsChecked == true && CheckBoxDateFilter.IsChecked == true)
+                    return DatePickerDateFilterFrom.SelectedDate;
+
+                return null;
+            }
+        }
+        public DateTime? DateToFilter
+        {
+            get
+            {
+                if (FilterDateIsEnabled && CheckBoxFilters.IsChecked == true && CheckBoxDateFilter.IsChecked == true)
+                    return DatePickerDateFilterTo.SelectedDate;
+
+                return null;
+            }
+        }
         //public decimal? PriceFrom
         //{
         //    get
@@ -170,7 +221,7 @@ namespace WpfApplication1.UserControls
             ListBoxFilterCategories.ItemsSource = filterCategories = new ObservableCollection<FilterCategoriesItem>();
             ListBoxFilterUsers.ItemsSource = filterUsers = new ObservableCollection<FilterUsersItem>();
 
-            ApplyFilters(null, null);
+            UpdateAll();
         }
 
         #region Update
@@ -179,6 +230,7 @@ namespace WpfApplication1.UserControls
         {
             UpdateListBoxFilterCategories();
             UpdateListBoxFilterUsers();
+            ApplyFilters(null, null);
         }
 
         public void UpdateListBoxFilterCategories()
@@ -209,39 +261,6 @@ namespace WpfApplication1.UserControls
 
         private void ApplyFilters(object sender, EventArgs e)
         {
-            List<string> categoriesList = null;
-            List<string> usersList = null;
-            DateTime? dateFrom = null;
-            DateTime? dateTo = null;
-
-            if (CheckBoxFilters.IsChecked == true)
-            {
-                if (CheckBoxCategoriesFilter.IsChecked == true)
-                    categoriesList = filterCategories.Where(c => c.IsSelected).Select(c => c.Category.Name).ToList();
-
-                if (categoriesList != null && categoriesList.Count == 0)
-                    categoriesList = null;
-
-                if (CheckBoxUsersFilter.IsChecked == true)
-                    usersList = filterUsers.Where(c => c.IsSelected).Select(c => c.User.Name).ToList();
-
-                if (usersList != null && usersList.Count == 0)
-                    usersList = null;
-
-                if (CheckBoxDateFilter.IsChecked == true)
-                {
-                    dateFrom = DatePickerDateFilterFrom.SelectedDate;
-                    dateTo = DatePickerDateFilterTo.SelectedDate;
-                }
-            }
-
-            homeBugaltery.aplyOrdersFilters(
-                categoriesList,
-                usersList,
-                dateFrom,
-                dateTo
-            );
-
             FiltersUpdated?.Invoke();
         }
     }

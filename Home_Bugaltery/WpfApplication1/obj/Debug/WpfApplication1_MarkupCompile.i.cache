@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\
+C:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\
 WpfApplication1
 none
 false
 DEBUG;TRACE
-C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\App.xaml
-5-1638538402
+C:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\App.xaml
+82065623318
 
-1534234675
-181201243495
-DialogWindows\CategoriesWindow.xaml;DialogWindows\OrderWindow.xaml;MainWindow.xaml;UserControls\FilterUserControl.xaml;UserControls\OrdersUserControl.xaml;
+18926709668
+18269023208
+DialogWindows\AuthenticationWindow.xaml;DialogWindows\CategoriesWindow.xaml;DialogWindows\OrderWindow.xaml;MainWindow.xaml;UserControls\BalanceUserControl.xaml;UserControls\ExpensesRevenuesForPeriodUserControl.xaml;UserControls\FilterUserControl.xaml;UserControls\OrdersUserControl.xaml;
 
 True
 

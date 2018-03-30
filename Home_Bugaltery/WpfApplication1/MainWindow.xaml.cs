@@ -24,15 +24,33 @@ namespace WpfApplication1
     {
         HomeBugaltery hb;
         OrdersUserControl ouc;
+        BalanceUserControl buc;
+        ExpensesRevenuesForPeriodUserControl erfpuc;
 
         public MainWindow()
         {
-            InitializeComponent();
-
             hb = new HomeBugaltery();
 
+            AuthenticationWindow aw = new AuthenticationWindow(hb);
+
+            if (aw.ShowDialog() != true)
+            {
+                Close();
+                return;
+            }
+
+            InitializeComponent();
+            
             ouc = new OrdersUserControl(hb);
             GridMain.Children.Add(ouc);
+
+            buc = new BalanceUserControl(hb);
+            GridMain.Children.Add(buc);
+
+            erfpuc = new ExpensesRevenuesForPeriodUserControl(hb);
+            GridMain.Children.Add(erfpuc);
+
+            MoveTo(new MenuItem() { CommandParameter = "Orders"}, null);
 
             UpdateAll();
         }
@@ -40,6 +58,8 @@ namespace WpfApplication1
         void UpdateAll()
         {
             ouc.UpdateAll();
+            buc.UpdateAll();
+            erfpuc.UpdateAll();
         }
 
         private void MenuItemCategories_Click(object sender, RoutedEventArgs e)
@@ -53,6 +73,36 @@ namespace WpfApplication1
         {
             if (new OrderWindow(hb).ShowDialog() == true)
                 UpdateAll();
+        }
+
+        void MoveTo(object sender, EventArgs e)
+        {
+            string param = (sender as MenuItem).CommandParameter.ToString();
+
+            if(param == "Orders")
+                ouc.Visibility = Visibility.Visible;
+            else
+                ouc.Visibility = Visibility.Collapsed;
+
+            if (param == "Balance")
+                buc.Visibility = Visibility.Visible;
+            else
+                buc.Visibility = Visibility.Collapsed;
+
+            if (param == "Incomes" || param == "Outcomes")
+            {
+                erfpuc.Visibility = Visibility.Visible;
+                erfpuc.IsIncome = param == "Incomes";
+                erfpuc.UpdateAll();
+            }
+            else
+                erfpuc.Visibility = Visibility.Collapsed;
+        }
+
+        void MoveToBalance(object sender, EventArgs e)
+        {
+            ouc.Visibility = Visibility.Collapsed;
+            buc.Visibility = Visibility.Visible;
         }
     }
 }
