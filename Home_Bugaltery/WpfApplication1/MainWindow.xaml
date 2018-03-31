@@ -13,12 +13,13 @@
         </Grid.RowDefinitions>
 
         <Menu>
-            <MenuItem Header="Довідники">
-                <MenuItem Header="Категорії" Click="MenuItemCategories_Click"/>
-            </MenuItem>
             <MenuItem Header="Операції">
                 <MenuItem Header="Нова операція" Click="MenuItemAddOrder_Click"/>
                 <MenuItem Header="Операції" Click="MoveTo" CommandParameter="Orders"/>
+            </MenuItem>
+            <MenuItem Header="Довідники">
+                <MenuItem Header="Користувачі" Click="MenuItemUsers_Click"/>
+                <MenuItem Header="Категорії" Click="MenuItemCategories_Click"/>
             </MenuItem>
             <MenuItem Header="Звіти">
                 <MenuItem Header="Доходи за період" Click="MoveTo" CommandParameter="Incomes"/>

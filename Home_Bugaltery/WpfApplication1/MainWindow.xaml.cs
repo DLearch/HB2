@@ -22,15 +22,14 @@ namespace WpfApplication1
     /// </summary>
     public partial class MainWindow : Window
     {
-        HomeBugaltery hb;
+        HomeBugaltery hb = HomeBugaltery.getInstance();
         OrdersUserControl ouc;
         BalanceUserControl buc;
         ExpensesRevenuesForPeriodUserControl erfpuc;
+        Users user;
 
         public MainWindow()
         {
-            hb = new HomeBugaltery();
-
             AuthenticationWindow aw = new AuthenticationWindow(hb);
 
             if (aw.ShowDialog() != true)
@@ -38,6 +37,10 @@ namespace WpfApplication1
                 Close();
                 return;
             }
+
+            user = aw.User;
+
+            Title = "Домашня бугалтерія - " + user.Name;
 
             InitializeComponent();
             
@@ -68,11 +71,18 @@ namespace WpfApplication1
 
             UpdateAll();
         }
-
+        
         private void MenuItemAddOrder_Click(object sender, RoutedEventArgs e)
         {
             if (new OrderWindow(hb).ShowDialog() == true)
                 UpdateAll();
+        }
+
+        private void MenuItemUsers_Click(object sender, RoutedEventArgs e)
+        {
+            new UsersWindow(hb, user).ShowDialog();
+
+            UpdateAll();
         }
 
         void MoveTo(object sender, EventArgs e)

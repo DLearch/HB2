@@ -70,6 +70,9 @@
     <Compile Include="DialogWindows\AuthenticationWindow.xaml.cs">
       <DependentUpon>AuthenticationWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DialogWindows\UsersWindow.xaml.cs">
+      <DependentUpon>UsersWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\BalanceUserControl.xaml.cs">
       <DependentUpon>BalanceUserControl.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DialogWindows\OrderWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DialogWindows\UsersWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

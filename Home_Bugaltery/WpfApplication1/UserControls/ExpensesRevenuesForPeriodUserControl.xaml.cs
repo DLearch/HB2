@@ -26,15 +26,35 @@ namespace WpfApplication1.UserControls
         ObservableCollection<OrdersView> orders;
         FilterUserControl fuc;
 
-        public bool IsIncome { get; set; }
+        bool isIncome;
+        public bool IsIncome
+        {
+            get
+            {
+                return isIncome;
+            }
+            set
+            {
+                isIncome = value;
+                if (value)
+                {
+                    labelSum.Content = "Загальна сумма доходів: ";
+                    labelName.Content = "Доходи за період: ";
+                }
+                else
+                {
+                    labelSum.Content = "Загальна сума витрат: ";
+                    labelName.Content = "Витрати за період: ";
+                }
+                UpdateAll();
+            }
+        }
 
         public ExpensesRevenuesForPeriodUserControl(HomeBugaltery hb, bool isIncome = true)
         {
             InitializeComponent();
 
             this.hb = hb;
-
-            IsIncome = isIncome;
 
             ListBoxOrders.ItemsSource = orders = new ObservableCollection<OrdersView>();
 
@@ -43,6 +63,8 @@ namespace WpfApplication1.UserControls
             fuc.FilterUsersIsEnabled = false;
             fuc.FiltersUpdated += FilteredUsersSaldoListChanged;
             GridFilters.Children.Add(fuc);
+            
+            IsIncome = isIncome;
 
             UpdateAll();
         }
@@ -69,11 +91,6 @@ namespace WpfApplication1.UserControls
 
         public void UpdateLabelSum()
         {
-            if (IsIncome)
-                labelSum.Content = "Загальна сумма доходів: ";
-            else
-                labelSum.Content = "Загальна сума витрат: ";
-
             labelSum.Content += hb.applyFiltersForExpensRevenues(IsIncome, fuc.DateFromFilter, fuc.DateToFilter).ToString("G29");
         }
 

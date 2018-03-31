@@ -20,6 +20,8 @@ namespace WpfApplication1.DialogWindows
     /// </summary>
     public partial class AuthenticationWindow : Window
     {
+        public Users User { get; set; }
+
         HomeBugaltery hb;
         public AuthenticationWindow(HomeBugaltery hb)
         {
@@ -29,7 +31,8 @@ namespace WpfApplication1.DialogWindows
         }
         private void ButtonAuthentication_Click(object sender, RoutedEventArgs e)
         {
-            if (hb.ListUsers.Any(u => u.Name == TextBoxName.Text && u.Password == PasswordBoxPassword.Password))
+            User = hb.ListUsers.First(u => u.Name == TextBoxName.Text && u.Password == PasswordBoxPassword.Password);
+            if (User != null)
             {
                 DialogResult = true;
                 Close();
