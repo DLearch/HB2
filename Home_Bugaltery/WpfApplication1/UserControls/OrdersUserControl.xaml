@@ -28,7 +28,7 @@
         
         <ListView Name="ListBoxOrders"
                       SelectionMode="Single" Grid.Row="1"
-                      Margin="10" Grid.Column="2">
+                      Margin="10" Grid.Column="2" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding CategoryName}" Header="Категорія"/>
@@ -38,7 +38,6 @@
                     <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Опис"/>
                 </GridView>
             </ListView.View>
-
             <ListBox.Resources>
                 <ContextMenu x:Key="cm">
                     <MenuItem Header="Оновити" Click="MenuItemUpdateOrders_Click"/>

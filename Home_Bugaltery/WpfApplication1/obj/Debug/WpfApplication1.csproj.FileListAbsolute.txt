@@ -166,3 +166,5 @@ C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplicat
 C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\WpfApplication1.csproj.GenerateResource.Cache
 C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\DialogWindows\UsersWindow.g.cs
 C:\Users\Daniel\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\DialogWindows\UsersWindow.baml
+C:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\DialogWindows\UsersWindow.g.cs
+C:\Users\student.LAN\Desktop\HB2\Home_Bugaltery\WpfApplication1\obj\Debug\DialogWindows\UsersWindow.baml
