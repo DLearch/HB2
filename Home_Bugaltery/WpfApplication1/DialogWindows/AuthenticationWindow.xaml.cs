@@ -19,34 +19,8 @@ namespace WpfApplication1.DialogWindows
     /// <summary>
     /// Interaction logic for AuthenticationWindow.xaml
     /// </summary>
-    public partial class AuthenticationWindow : Window, IDataErrorInfo
+    public partial class AuthenticationWindow : Window
     {
-        public string UserName { get; set; }
-        public string Password { get; set; }
-        public string this[string columnName]
-        {
-            get
-            {
-                string error = String.Empty;
-                switch (columnName)
-                {
-                    case "UserName":
-                        if (string.IsNullOrEmpty(UserName))
-                            error = "Поле пусте. ";
-                        if (UserName.Length < 4)
-                            error += "Занадто коротке ім'я. ";
-                        if (UserName.Length > 40)
-                            error += "Занадто довге ім'я. ";
-                        break;
-                }
-                return error;
-            }
-        }
-        public string Error
-        {
-            get { throw new NotImplementedException(); }
-        }
-
         public Users User { get; set; }
 
         HomeBugaltery hb;
@@ -60,17 +34,53 @@ namespace WpfApplication1.DialogWindows
         }
         private void ButtonAuthentication_Click(object sender, RoutedEventArgs e)
         {
+            TextBlockError.Text = string.Empty;
+            if (!CheckFields())
+                return;
+
             User = hb.ListUsers.FirstOrDefault(u => u.Name == TextBoxName.Text && u.Password == PasswordBoxPassword.Password);
+
             if (User != null)
             {
                 DialogResult = true;
                 Close();
             }
+            else
+                TextBlockError.Text = "Неправильний пароль або ім'я";
         }
+
+        bool CheckFields()
+        {
+            bool result = true;
+
+            if (string.IsNullOrEmpty(TextBoxName.Text))
+            {
+                TextBlockNameError.Text = "Заповніть поле!";
+                result = false;
+            }
+
+            if (string.IsNullOrEmpty(PasswordBoxPassword.Password))
+            {
+                TextBlockPasswordError.Text = "Заповніть поле!";
+                result = false;
+            }
+
+            return result;
+        }
+
 
         private void ButtonRegistration_Click(object sender, RoutedEventArgs e)
         {
         }
 
+        private void PasswordBoxPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBlockPasswordError.Text = string.Empty;
+        }
+
+        private void TextBoxName_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBlockNameError.Text = string.Empty;
+        }
     }
 }

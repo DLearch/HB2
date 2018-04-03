@@ -6,61 +6,62 @@
         xmlns:local="clr-namespace:WpfApplication1.DialogWindows"
         mc:Ignorable="d"
         Title="Вхід"
-        Height="200" Width="300">
-    <Window.Resources>
-        <Style TargetType="TextBox">
-            <Style.Triggers>
-                <Trigger Property="Validation.HasError" Value="True">
-                    <Setter Property="ToolTip"
-                Value="{Binding RelativeSource={RelativeSource Self},
-                    Path=(Validation.Errors)[0].ErrorContent}" />
-                    <Setter Property="Foreground" Value="Red" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </Window.Resources>
+        Height="200" Width="300" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
+            <RowDefinition Height="14"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
             <ColumnDefinition/>
             <ColumnDefinition/>
-            <ColumnDefinition Width="80"/>
         </Grid.ColumnDefinitions>
 
-        <Label VerticalAlignment="Center" Margin="10, 0" Content="Имя: " />
+        <Grid Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="14"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
-        <Label VerticalAlignment="Center" Margin="10, 0" Content="Пароль: " Grid.Row="1"/>
+            <TextBlock VerticalAlignment="Bottom" Foreground="Red" FontSize="10"  Name="TextBlockNameError" Grid.Column="1" Margin="10, 0, 10, 2"/>
 
+            <Label VerticalAlignment="Top" Content="Ім'я: " Grid.Row="1" Margin="10, 0"/>
 
-        <TextBox VerticalAlignment="Center" Margin="10, 0" 
-                 Grid.Column="1" Grid.ColumnSpan="3"
-                 Name="TextBoxName">
-            <TextBox.Text>
-                <Binding Path="UserName">
-                    <Binding.ValidationRules>
-                        <DataErrorValidationRule/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+            <TextBox Text="НінаНікитюк" KeyDown="TextBoxName_KeyDown" Grid.Row="1" VerticalAlignment="Top" Name="TextBoxName" Grid.Column="1" Margin="10, 0"/>
+        </Grid>
 
-        <PasswordBox VerticalAlignment="Center" Margin="10, 0" 
-                 Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1"
-                     Name="PasswordBoxPassword" Password="1234"/>
+        <Grid Grid.ColumnSpan="2" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="14"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
 
+            <TextBlock VerticalAlignment="Bottom" FontSize="10" Foreground="Red" Name="TextBlockPasswordError" Grid.Column="1" Margin="10, 0, 10, 2"/>
+
+            <Label VerticalAlignment="Top" Content="Пароль: " Grid.Row="1" Margin="10, 0"/>
+
+            <PasswordBox Password="1234" KeyDown="PasswordBoxPassword_KeyDown" Grid.Row="1" VerticalAlignment="Top" Name="PasswordBoxPassword" Grid.Column="1" Margin="10, 0"/>
+        </Grid>
+
+        <TextBlock Margin="20, 0" Grid.Row="2" Grid.ColumnSpan="2" Foreground="Red" Name="TextBlockError" />
 
         <Button VerticalAlignment="Center" Margin="10, 0" 
-                Content="Увійти" Grid.Row="2" Grid.ColumnSpan="2"
+                Content="Увійти" Grid.Row="3"
                 Name="ButtonAuthentication"
                 Click="ButtonAuthentication_Click"/>
 
         <Button VerticalAlignment="Center" Margin="10, 0" 
-                Content="Зареєструватися" Grid.Row="2" Grid.Column="2" Grid.ColumnSpan="2"
+                Content="Зареєструватися" Grid.Row="3" Grid.Column="1"
                 Name="ButtonRegistration"
                 IsEnabled="False"
                 Click="ButtonRegistration_Click"/>

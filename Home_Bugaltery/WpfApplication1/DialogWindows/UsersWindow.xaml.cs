@@ -78,5 +78,21 @@ namespace WpfApplication1.DialogWindows
 
             ButtonRemoveUser.IsEnabled = true;
         }
+        
+
+        private void TextBoxEditName_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void TextBoxEditEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
+
+        private void TextBoxEditPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+
+        }
     }
 }

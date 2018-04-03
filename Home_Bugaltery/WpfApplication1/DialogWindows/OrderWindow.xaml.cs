@@ -59,20 +59,91 @@ namespace WpfApplication1.DialogWindows
             }
         }
 
+
         private void ButtonOk_Click(object sender, RoutedEventArgs e)
         {
-
-            decimal price;
-            if (!decimal.TryParse(TextBoxPrice.Text, out price))
+            if (!CheckFields())
                 return;
 
             if (IsEdit)
-                hb.changeOrder(orderId, ComboBoxCategories.SelectedItem.ToString(), ComboBoxUsers.SelectedItem.ToString(), (DateTime)DatePickerDate.SelectedDate, price, TextBoxDescription.Text);
+                hb.changeOrder(
+                    orderId, 
+                    ComboBoxCategories.SelectedItem.ToString(), 
+                    ComboBoxUsers.SelectedItem.ToString(), 
+                    (DateTime)DatePickerDate.SelectedDate, 
+                    decimal.Parse(TextBoxPrice.Text), 
+                    TextBoxDescription.Text
+                );
             else
-                hb.addOrder(ComboBoxCategories.SelectedItem.ToString(), ComboBoxUsers.SelectedItem.ToString(), (DateTime)DatePickerDate.SelectedDate, price, TextBoxDescription.Text);
+                hb.addOrder(
+                    ComboBoxCategories.SelectedItem.ToString(), 
+                    ComboBoxUsers.SelectedItem.ToString(), 
+                    (DateTime)DatePickerDate.SelectedDate,
+                    decimal.Parse(TextBoxPrice.Text), 
+                    TextBoxDescription.Text
+                );
 
             DialogResult = true;
             Close();
+        }
+
+        bool CheckFields()
+        {
+            bool result = true;
+
+            if (ComboBoxCategories.SelectedItem == null)
+            {
+                TextBlockCategoriesError.Text = "Виберіть категорію!";
+                result = false;
+            }
+            if (ComboBoxUsers.SelectedItem == null)
+            {
+                TextBlockUsersError.Text = "Виберіть користувача!";
+                result = false;
+            }
+            if (DatePickerDate.SelectedDate == null)
+            {
+                TextBlockDateError.Text = "Виберіть дату!";
+                result = false;
+            }
+            decimal price;
+            if (!decimal.TryParse(TextBoxPrice.Text, out price))
+            {
+                TextBlockPriceError.Text = "Помилка!";
+                result = false;
+            }
+            if (string.IsNullOrEmpty(TextBoxPrice.Text))
+            {
+                TextBlockPriceError.Text = "Введіть ціну!";
+                result = false;
+            }
+
+            return result;
+        }
+
+        private void ComboBoxCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TextBlockCategoriesError.Text = string.Empty;
+        }
+
+        private void ComboBoxUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TextBlockUsersError.Text = string.Empty;
+        }
+
+        private void DatePickerDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            TextBlockDateError.Text = string.Empty;
+        }
+
+        private void TextBoxPrice_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBlockPriceError.Text = string.Empty;
+        }
+
+        private void TextBoxDescription_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBlockDescriptionError.Text = string.Empty;
         }
     }
 }

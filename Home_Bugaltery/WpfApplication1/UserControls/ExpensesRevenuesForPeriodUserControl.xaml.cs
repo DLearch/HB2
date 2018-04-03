@@ -22,6 +22,7 @@ namespace WpfApplication1.UserControls
     /// </summary>
     public partial class ExpensesRevenuesForPeriodUserControl : UserControl
     {
+        string ct;
         HomeBugaltery hb;
         ObservableCollection<OrdersView> orders;
         FilterUserControl fuc;
@@ -38,12 +39,12 @@ namespace WpfApplication1.UserControls
                 isIncome = value;
                 if (value)
                 {
-                    labelSum.Content = "Загальна сумма доходів: ";
+                    ct = "Загальна сумма доходів: ";
                     labelName.Content = "Доходи за період: ";
                 }
                 else
                 {
-                    labelSum.Content = "Загальна сума витрат: ";
+                    ct = "Загальна сума витрат: ";
                     labelName.Content = "Витрати за період: ";
                 }
                 UpdateAll();
@@ -91,7 +92,7 @@ namespace WpfApplication1.UserControls
 
         public void UpdateLabelSum()
         {
-            labelSum.Content += hb.applyFiltersForExpensRevenues(IsIncome, fuc.DateFromFilter, fuc.DateToFilter).ToString("G29");
+            labelSum.Content = ct + hb.applyFiltersForExpensRevenues(IsIncome, fuc.DateFromFilter, fuc.DateToFilter).ToString("G29");
         }
 
         #endregion

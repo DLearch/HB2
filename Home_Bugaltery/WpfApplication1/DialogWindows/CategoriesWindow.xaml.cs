@@ -33,6 +33,7 @@ namespace WpfApplication1.DialogWindows
             ListBoxCategories.ItemsSource = categories = new ObservableCollection<Categories>();
 
             UpdateListBoxCategories();
+            ListBoxCategories_SelectionChanged(null, null);
         }
 
         void UpdateListBoxCategories()
@@ -45,6 +46,17 @@ namespace WpfApplication1.DialogWindows
 
         private void ButtonAddCategory_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(TextBoxAddCategory.Text))
+            {
+                TextBlockAddCategoryError.Text = "Заповніть поле!";
+                return;
+            }
+            if (categories.Any(c => c.Name == TextBoxAddCategory.Text))
+            {
+                TextBlockAddCategoryError.Text = "Категорія з таким ім'ям вже існуе!";
+                return;
+            }
+
             hb.addCategory(TextBoxAddCategory.Text, RadioButtonAddCategoryIncome.IsChecked == true);
 
             UpdateListBoxCategories();
@@ -52,6 +64,17 @@ namespace WpfApplication1.DialogWindows
 
         private void ButtonEditCategory_Click(object sender, RoutedEventArgs e)
         {
+            if (string.IsNullOrEmpty(TextBoxEditCategory.Text))
+            {
+                TextBlockEditCategoryError.Text = "Заповніть поле!";
+                return;
+            }
+            if (categories.Any(c => c.Name == TextBoxEditCategory.Text && c.Id != (ListBoxCategories.SelectedItem as Categories).Id))
+            {
+                TextBlockEditCategoryError.Text = "Категорія з таким ім'ям вже існуе!";
+                return;
+            }
+
             hb.changeCategory((ListBoxCategories.SelectedItem as Categories).Id, TextBoxEditCategory.Text, RadioButtonEditCategoryIncome.IsChecked == true);
 
             UpdateListBoxCategories();
@@ -70,9 +93,7 @@ namespace WpfApplication1.DialogWindows
 
             bool val = category != null;
 
-            GroupBoxEditCategoryRB.IsEnabled = val;
-            TextBoxEditCategory.IsEnabled = val;
-            ButtonEditCategory.IsEnabled = val;
+            GroupBoxEditCategory.IsEnabled = val;
             ButtonRemoveCategory.IsEnabled = val;
             if (val)
             {
@@ -89,6 +110,16 @@ namespace WpfApplication1.DialogWindows
             else
                 TextBoxEditCategory.Text = string.Empty;
 
+        }
+
+        private void TextBoxAddCategory_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBlockAddCategoryError.Text = string.Empty;
+        }
+
+        private void TextBoxEditCategory_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBlockEditCategoryError.Text = string.Empty;
         }
     }
 }
