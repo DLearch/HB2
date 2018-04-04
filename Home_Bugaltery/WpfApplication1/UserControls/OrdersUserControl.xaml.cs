@@ -23,9 +23,12 @@ namespace WpfApplication1.UserControls
     /// </summary>
     public partial class OrdersUserControl : UserControl
     {
+        #region Конструктор, поля и свойства
+        
+        public FilterUserControl FilterUserControl { get; set; }
+
         HomeBugaltery hb;
         ObservableCollection<OrdersView> ordersViews;
-        FilterUserControl fuc;
 
         public OrdersUserControl(HomeBugaltery hb)
         {
@@ -33,19 +36,27 @@ namespace WpfApplication1.UserControls
 
             this.hb = hb;
 
+            ButtonEdit.IsEnabled = ButtonRemove.IsEnabled = false;
+
             ListBoxOrders.ItemsSource = ordersViews = new ObservableCollection<OrdersView>();
 
-            fuc = new FilterUserControl(hb);
-            fuc.FiltersUpdated += FilteredOrdersListChanged;
-            GridFilters.Children.Add(fuc);
-
+            FilterUserControl = new FilterUserControl(hb);
+            FilterUserControl.FiltersUpdated += FilteredOrdersListChanged;
         }
+
+        #endregion
 
         #region Update
 
         public void FilteredOrdersListChanged()
         {
-            hb.aplyOrdersFilters(fuc.CategoriesFilterList, fuc.UsersFilterList, fuc.DateFromFilter, fuc.DateToFilter);
+            hb.aplyOrdersFilters(
+                FilterUserControl.CategoriesFilterList, 
+                FilterUserControl.UsersFilterList, 
+                FilterUserControl.DateFromFilter, 
+                FilterUserControl.DateToFilter
+                );
+
             UpdateListBoxOrders();
             UpdateLabelSum();
         }
@@ -60,44 +71,42 @@ namespace WpfApplication1.UserControls
 
         public void UpdateAll()
         {
-            fuc.UpdateAll();
+            FilterUserControl.UpdateAll();
             UpdateListBoxOrders();
             UpdateLabelSum();
         }
 
         public void UpdateLabelSum()
         {
-            labelSum.Content = "Загальна сума: " + ordersViews.Sum(ov => (hb.ListCategories.First(c => c.Name == ov.CategoryName).Type) ? ov.Price : ov.Price * -1 ).ToString("G29"); ;
+            LabelSum.Content = "Загальна сума: " + ordersViews.Sum(ov => (hb.ListCategories.First(c => c.Name == ov.CategoryName).Type) ? ov.Price : ov.Price * -1 ).ToString("G29"); ;
         }
 
         #endregion
-
-        private void MenuItemEditOrder_Click(object sender, RoutedEventArgs e)
+        
+        private void ButtonAdd_Click(object sender, RoutedEventArgs e)
         {
-            OrderWindow w = new OrderWindow(hb, hb.ListOrders.First(o => o.Id == GetOrderViewFromSender(sender).Id));
+            OrderWindow w = new OrderWindow(hb);
 
             if (w.ShowDialog() == true)
                 UpdateAll();
         }
-
-        private void MenuItemRemoveOrder_Click(object sender, RoutedEventArgs e)
+        private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            hb.deleteOrder(GetOrderViewFromSender(sender).Id);
+            OrderWindow w = new OrderWindow(hb, hb.ListOrders.First(o => o.Id == ordersViews[ListBoxOrders.SelectedIndex].Id));
+
+            if (w.ShowDialog() == true)
+                UpdateAll();
+        }
+        private void ButtonRemove_Click(object sender, RoutedEventArgs e)
+        {
+            hb.deleteOrder(ordersViews[ListBoxOrders.SelectedIndex].Id);
 
             UpdateAll();
         }
 
-        private void MenuItemUpdateOrders_Click(object sender, RoutedEventArgs e)
+        private void ListBoxOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            UpdateAll();
-        }
-
-        OrdersView GetOrderViewFromSender(object sender)
-        {
-            MenuItem menuItem = sender as MenuItem;
-            ContextMenu contextMenu = menuItem.Parent as ContextMenu;
-            ListViewItem listViewItem = contextMenu.PlacementTarget as ListViewItem;
-            return listViewItem.DataContext as OrdersView;
+            ButtonEdit.IsEnabled = ButtonRemove.IsEnabled = ListBoxOrders.SelectedItem != null;
         }
     }
 }

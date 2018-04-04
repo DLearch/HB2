@@ -22,13 +22,15 @@ namespace WpfApplication1
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region Конструктор и поля
+        
         HomeBugaltery hb = HomeBugaltery.getInstance();
         OrdersUserControl ouc;
         BalanceUserControl buc;
         ExpensesRevenuesForPeriodUserControl erfpuc;
         Users user;
-
         UserControl curUserControl;
+        Button curButton;
 
         public MainWindow()
         {
@@ -42,26 +44,30 @@ namespace WpfApplication1
 
             user = aw.User;
 
-            Title = "Домашня бугалтерія - " + user.Name;
-
             InitializeComponent();
+            
+            Title = "Домашня бугалтерія - " + user.Name;
 
             curUserControl = ouc = new OrdersUserControl(hb);
             GridMain.Children.Add(ouc);
+            GridFilters.Children.Add(ouc.FilterUserControl);
 
             buc = new BalanceUserControl(hb);
             GridMain.Children.Add(buc);
-            buc.Visibility = Visibility.Collapsed;
 
             erfpuc = new ExpensesRevenuesForPeriodUserControl(hb);
             GridMain.Children.Add(erfpuc);
-            erfpuc.Visibility = Visibility.Collapsed;
 
+            buc.Visibility = erfpuc.Visibility = Visibility.Collapsed;
 
-            MoveTo(new Button() { CommandParameter = "Orders"}, null);
+            curButton = ButtonOrders;
+
+            FieldChange("ButtonOrders");
 
             UpdateAll();
         }
+
+        #endregion
 
         void UpdateAll()
         {
@@ -70,68 +76,105 @@ namespace WpfApplication1
             erfpuc.UpdateAll();
         }
 
-        private void MenuItemCategories_Click(object sender, RoutedEventArgs e)
-        {
-            new CategoriesWindow(hb).ShowDialog();
-
-            UpdateAll();
-        }
-        
-        private void MenuItemAddOrder_Click(object sender, RoutedEventArgs e)
-        {
-            if (new OrderWindow(hb).ShowDialog() == true)
-                UpdateAll();
-        }
-
-        private void MenuItemUsers_Click(object sender, RoutedEventArgs e)
-        {
-            new UsersWindow(hb, user).ShowDialog();
-
-            UpdateAll();
-        }
+        #region Смена полей
 
         void MoveTo(object sender, EventArgs e)
         {
-            string param = (sender as Button).CommandParameter.ToString();
+            FieldChange((sender as Control).Name.ToString());
+        }
 
+        void FieldChange(string fieldName)
+        {
             curUserControl.Visibility = Visibility.Collapsed;
+            curButton.IsEnabled = true;
+            GridFilters.Children.Clear();
 
-            if(param == "Orders")
-                curUserControl = ouc;
-            if (param == "Balance")
-                curUserControl = buc;
-
-            if (param == "Incomes" || param == "Outcomes")
+            switch (fieldName)
             {
-                curUserControl = erfpuc;
-                erfpuc.IsIncome = param == "Incomes";
-                erfpuc.UpdateAll();
+                case "ButtonOrders":
+                    curUserControl = ouc;
+                    curButton = ButtonOrders;
+                    GridFilters.Children.Add(ouc.FilterUserControl);
+                    break;
+
+                case "ButtonBalance":
+                    curUserControl = buc;
+                    curButton = ButtonBalance;
+                    GridFilters.Children.Add(buc.FilterUserControl);
+                    break;
+
+                case "ButtonIncomes":
+                    curUserControl = erfpuc;
+                    curButton = ButtonIncomes;
+                    erfpuc.IsIncome = true;
+                    erfpuc.UpdateAll();
+                    GridFilters.Children.Add(erfpuc.FilterUserControlIncomes);
+                    break;
+
+                case "ButtonOutcomes":
+                    curUserControl = erfpuc;
+                    curButton = ButtonOutcomes;
+                    erfpuc.IsIncome = false;
+                    erfpuc.UpdateAll();
+                    GridFilters.Children.Add(erfpuc.FilterUserControlOutcomes);
+                    break;
             }
 
             curUserControl.Visibility = Visibility.Visible;
+            curButton.IsEnabled = false;
         }
+
+        #endregion
+
+        #region Показ фильтров
+
+        GridLength lastLenght;
 
         private void ButtonFilters_Click(object sender, RoutedEventArgs e)
         {
-            bool result;
+            if (ColumnFilters.Width.Value == 0)
+            {
+                if (lastLenght.Value > 150)
+                    ColumnFilters.Width = lastLenght;
+                else
+                    ColumnFilters.Width = new GridLength(250);
 
-            if (ouc == curUserControl)
-            {
-                result = ouc.FiltersIsVisible = !ouc.FiltersIsVisible;
-            }
-            else if (buc == curUserControl)
-            {
-                result = buc.FiltersIsVisible = !buc.FiltersIsVisible;
-            }
-            else
-            {
-                result = erfpuc.FiltersIsVisible = !erfpuc.FiltersIsVisible;
-            }
+                ColumnGridSplitterFilters.Width = new GridLength(4);
 
-            if(!result)
-                ButtonFilters.Content = "Показати фільтри ▶";
-            else
                 ButtonFilters.Content = "◀ Сховати фільтри ";
+
+                return;
+            }
+
+            lastLenght = ColumnFilters.Width;
+            ColumnGridSplitterFilters.Width = ColumnFilters.Width = new GridLength(0);
+
+            ButtonFilters.Content = "Показати фільтри ▶";
         }
+
+        #endregion
+
+        #region Показ окон категорий и пользователей
+
+        private void ButtonCategories_Click(object sender, RoutedEventArgs e)
+        {
+            ShowDialogWindow(new CategoriesWindow(hb), sender as Control);
+        }
+
+        private void ButtonUsers_Click(object sender, RoutedEventArgs e)
+        {
+            ShowDialogWindow(new UsersWindow(hb, user), sender as Control);
+        }
+
+        void ShowDialogWindow(Window w, Control c)
+        {
+            c.IsEnabled = false;
+            w.ShowDialog();
+            c.IsEnabled = true;
+
+            UpdateAll();
+        }
+
+        #endregion
     }
 }

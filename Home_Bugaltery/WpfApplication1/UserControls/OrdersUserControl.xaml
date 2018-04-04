@@ -7,55 +7,43 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="61*"/>
-            <RowDefinition Height="50"/>
-        </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <Grid Name="GridFilters" Grid.RowSpan="3"/>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
 
-        <GridSplitter HorizontalAlignment="Center" VerticalAlignment="Stretch" 
-                      ShowsPreview="False" Grid.Column="1" Width="4" Grid.RowSpan="3"/>
-
-        <Label Margin="10" Grid.Column="2" VerticalAlignment="Center" Content="Операції: "/>
-        
-        <ListView Name="ListBoxOrders"
-                      SelectionMode="Single" Grid.Row="1"
-                      Margin="10" Grid.Column="2" >
+        <ListView Name="ListBoxOrders" SelectionMode="Single" 
+                  Margin="10" Grid.ColumnSpan="3" 
+                  SelectionChanged="ListBoxOrders_SelectionChanged">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding CategoryName}" Header="Категорія"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding UserName}" Header="Користувач"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding DateOrderShortString}" Header="Дата"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding PriceString}" Header="Ціна"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Description}" Header="Опис"/>
+                    <GridViewColumn Header="Категорія" DisplayMemberBinding="{Binding CategoryName}"/>
+                    <GridViewColumn Header="Користувач" DisplayMemberBinding="{Binding UserName}"/>
+                    <GridViewColumn Header="Дата" DisplayMemberBinding="{Binding DateOrderShortString}"/>
+                    <GridViewColumn Header="Ціна" DisplayMemberBinding="{Binding PriceString}"/>
+                    <GridViewColumn Header="Опис" DisplayMemberBinding="{Binding Description}"/>
                 </GridView>
             </ListView.View>
-            <ListBox.Resources>
-                <ContextMenu x:Key="cm">
-                    <MenuItem Header="Оновити" Click="MenuItemUpdateOrders_Click"/>
-                    <MenuItem Header="Редагувати" Click="MenuItemEditOrder_Click"/>
-                    <MenuItem Header="Видалити" Click="MenuItemRemoveOrder_Click"/>
-                </ContextMenu>
-            </ListBox.Resources>
-            <ListView.ItemContainerStyle>
-                <Style TargetType="{x:Type ListViewItem}">
-                    <Setter Property="ContextMenu">
-                        <Setter.Value>
-                            <StaticResource ResourceKey="cm" />
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </ListView.ItemContainerStyle>
         </ListView>
 
-        <Label Margin="10" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" Name="labelSum"/>
+        <Label Name="LabelSum" Margin="10, 0" Grid.Row="1" VerticalAlignment="Center" Grid.ColumnSpan="3"/>
+
+        <Button Content="Додати нову операцію" Grid.Row="2" Click="ButtonAdd_Click"
+                VerticalAlignment="Center" Margin="10, 0"/>
+
+        <Button Content="Редагувати вибрану операцію" Grid.Row="2" Click="ButtonEdit_Click"
+                Name="ButtonEdit"
+                VerticalAlignment="Center" Margin="10, 0" Grid.Column="1"/>
+
+        <Button Content="Видалити вибрану операцію" Grid.Row="2" Click="ButtonRemove_Click"
+                Name="ButtonRemove"
+                VerticalAlignment="Center" Margin="10, 0" Grid.Column="2"/>
     </Grid>
 </UserControl>

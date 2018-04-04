@@ -56,12 +56,14 @@ namespace WpfApplication1.DialogWindows
             if (string.IsNullOrEmpty(TextBoxName.Text))
             {
                 TextBlockNameError.Text = "Заповніть поле!";
+                TextBoxName.BorderBrush = Brushes.Red;
                 result = false;
             }
 
             if (string.IsNullOrEmpty(PasswordBoxPassword.Password))
             {
                 TextBlockPasswordError.Text = "Заповніть поле!";
+                PasswordBoxPassword.BorderBrush = Brushes.Red;
                 result = false;
             }
 
@@ -76,11 +78,13 @@ namespace WpfApplication1.DialogWindows
         private void PasswordBoxPassword_KeyDown(object sender, KeyEventArgs e)
         {
             TextBlockPasswordError.Text = string.Empty;
+            PasswordBoxPassword.BorderBrush = Brushes.LightGray;
         }
 
         private void TextBoxName_KeyDown(object sender, KeyEventArgs e)
         {
             TextBlockNameError.Text = string.Empty;
+            TextBoxName.BorderBrush = Brushes.LightGray;
         }
     }
 }

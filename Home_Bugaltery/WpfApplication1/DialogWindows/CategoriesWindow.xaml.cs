@@ -49,11 +49,13 @@ namespace WpfApplication1.DialogWindows
             if (string.IsNullOrEmpty(TextBoxAddCategory.Text))
             {
                 TextBlockAddCategoryError.Text = "Заповніть поле!";
+                TextBoxAddCategory.BorderBrush = Brushes.Red;
                 return;
             }
             if (categories.Any(c => c.Name == TextBoxAddCategory.Text))
             {
                 TextBlockAddCategoryError.Text = "Категорія з таким ім'ям вже існуе!";
+                TextBoxAddCategory.BorderBrush = Brushes.Red;
                 return;
             }
 
@@ -67,11 +69,13 @@ namespace WpfApplication1.DialogWindows
             if (string.IsNullOrEmpty(TextBoxEditCategory.Text))
             {
                 TextBlockEditCategoryError.Text = "Заповніть поле!";
+                TextBoxEditCategory.BorderBrush = Brushes.Red;
                 return;
             }
             if (categories.Any(c => c.Name == TextBoxEditCategory.Text && c.Id != (ListBoxCategories.SelectedItem as Categories).Id))
             {
                 TextBlockEditCategoryError.Text = "Категорія з таким ім'ям вже існуе!";
+                TextBoxEditCategory.BorderBrush = Brushes.Red;
                 return;
             }
 
@@ -115,11 +119,13 @@ namespace WpfApplication1.DialogWindows
         private void TextBoxAddCategory_KeyDown(object sender, KeyEventArgs e)
         {
             TextBlockAddCategoryError.Text = string.Empty;
+            TextBoxAddCategory.BorderBrush = Brushes.LightGray;
         }
 
         private void TextBoxEditCategory_KeyDown(object sender, KeyEventArgs e)
         {
             TextBlockEditCategoryError.Text = string.Empty;
+            TextBoxEditCategory.BorderBrush = Brushes.LightGray;
         }
     }
 }

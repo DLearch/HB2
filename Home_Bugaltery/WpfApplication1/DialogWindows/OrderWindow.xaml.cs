@@ -94,27 +94,32 @@ namespace WpfApplication1.DialogWindows
             if (ComboBoxCategories.SelectedItem == null)
             {
                 TextBlockCategoriesError.Text = "Виберіть категорію!";
+                ComboBoxCategories.BorderBrush = Brushes.Red;
                 result = false;
             }
             if (ComboBoxUsers.SelectedItem == null)
             {
                 TextBlockUsersError.Text = "Виберіть користувача!";
+                ComboBoxUsers.BorderBrush = Brushes.Red;
                 result = false;
             }
             if (DatePickerDate.SelectedDate == null)
             {
                 TextBlockDateError.Text = "Виберіть дату!";
+                DatePickerDate.BorderBrush = Brushes.Red;
                 result = false;
             }
             decimal price;
             if (!decimal.TryParse(TextBoxPrice.Text, out price))
             {
                 TextBlockPriceError.Text = "Помилка!";
+                TextBoxPrice.BorderBrush = Brushes.Red;
                 result = false;
             }
             if (string.IsNullOrEmpty(TextBoxPrice.Text))
             {
                 TextBlockPriceError.Text = "Введіть ціну!";
+                TextBoxPrice.BorderBrush = Brushes.Red;
                 result = false;
             }
 
@@ -124,26 +129,31 @@ namespace WpfApplication1.DialogWindows
         private void ComboBoxCategories_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TextBlockCategoriesError.Text = string.Empty;
+            ComboBoxCategories.BorderBrush = Brushes.LightGray;
         }
 
         private void ComboBoxUsers_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             TextBlockUsersError.Text = string.Empty;
+            ComboBoxUsers.BorderBrush = Brushes.LightGray;
         }
 
         private void DatePickerDate_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             TextBlockDateError.Text = string.Empty;
+            DatePickerDate.BorderBrush = Brushes.LightGray;
         }
 
         private void TextBoxPrice_KeyDown(object sender, KeyEventArgs e)
         {
             TextBlockPriceError.Text = string.Empty;
+            TextBoxPrice.BorderBrush = Brushes.LightGray;
         }
 
         private void TextBoxDescription_KeyDown(object sender, KeyEventArgs e)
         {
             TextBlockDescriptionError.Text = string.Empty;
+            TextBoxDescription.BorderBrush = Brushes.LightGray;
         }
     }
 }

@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1.DialogWindows"
         mc:Ignorable="d"
-        Title="UsersWindow" Height="500" Width="500">
+        Title="UsersWindow" 
+        Height="520" Width="500"
+        MinHeight="300" MinWidth="320">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="1*" MinWidth="200"/>
         </Grid.ColumnDefinitions>
         
         <ListBox Margin="10" SelectionChanged="ListBoxUsers_SelectionChanged" Name="ListBoxUsers" DisplayMemberPath="Name"/>
@@ -43,9 +45,9 @@
                         <Label Content="Email: " VerticalAlignment="Top" Grid.Row="3"/>
                         <Label Content="Пароль: " VerticalAlignment="Top" Grid.Row="5"/>
 
-                        <TextBox Grid.Column="1" VerticalAlignment="Top" Grid.Row="1" Margin="10, 0" Name="TextBoxAddName"/>
-                        <TextBox Grid.Column="1" VerticalAlignment="Top" Grid.Row="3" Margin="10, 0" Name="TextBoxAddEmail"/>
-                        <TextBox Grid.Column="1" VerticalAlignment="Top" Grid.Row="5" Margin="10, 0" Name="TextBoxAddPassword"/>
+                        <TextBox KeyDown="TextBoxAddName_KeyDown"  Grid.Column="1" VerticalAlignment="Top" Grid.Row="1" Margin="10, 0" Name="TextBoxAddName"/>
+                        <TextBox KeyDown="TextBoxAddEmail_KeyDown"  Grid.Column="1" VerticalAlignment="Top" Grid.Row="3" Margin="10, 0" Name="TextBoxAddEmail"/>
+                        <TextBox KeyDown="TextBoxAddPassword_KeyDown"  Grid.Column="1" VerticalAlignment="Top" Grid.Row="5" Margin="10, 0" Name="TextBoxAddPassword"/>
                         
                         <Button Content="Додати" Padding="10, 4" 
                                 Grid.Row="6" Grid.ColumnSpan="2" Click="ButtonAddUser_Click" VerticalAlignment="Center" Margin="10, 0"/>

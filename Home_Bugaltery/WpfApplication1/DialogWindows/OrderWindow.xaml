@@ -105,7 +105,7 @@
 
             <TextBlock VerticalAlignment="Bottom" Foreground="Red" FontSize="10"  Name="TextBlockDescriptionError" Grid.Column="1" Margin="10, 0, 10, 2"/>
 
-            <Label VerticalAlignment="Top" Content="Ціна: " Grid.Row="1" Margin="10, 0"/>
+            <Label VerticalAlignment="Top" Content="Опис: " Grid.Row="1" Margin="10, 0"/>
 
             <TextBox KeyDown="TextBoxDescription_KeyDown" Grid.Row="1" 
                         VerticalAlignment="Top" Name="TextBoxDescription" Grid.Column="1" Margin="10, 0"/>

@@ -8,153 +8,75 @@
              d:DesignHeight="500" d:DesignWidth="400">
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <GroupBox Margin="10" BorderBrush="Gray">
-            <GroupBox.Header>
-                <CheckBox Content="Фільтри" 
-                          Name="CheckBoxFilters"
-                          Checked="ApplyFilters"
-                          Unchecked="ApplyFilters"/>
-            </GroupBox.Header>
+        <StackPanel Margin="0, 0, 10, 0" Name="StackPanelFilters">
+            <Button Content="Застосувати фільтри" 
+                    Name="ButtonFilters"
+                    Click="ButtonFilters_Click"
+                    Margin="10"/>
 
-            <StackPanel Margin="10" Name="StackPanelFilters">
+            <GroupBox BorderBrush="Gray" Name="GroupBoxCategoriesFilter">
+                <GroupBox.Header>
+                    <CheckBox VerticalAlignment="Center" 
+                              Content="Фільтр по категорії"
+                              Name="CheckBoxCategoriesFilter"/>
+                </GroupBox.Header>
+                <Grid Height="250" Margin="10" Name="GridCategoriesFilter">
+                    <ListBox Name="ListBoxFilterCategories">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox VerticalAlignment="Center" 
+                                          IsChecked="{Binding IsSelected}" 
+                                          Content="{Binding Category.Name}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </GroupBox>
 
-                <GroupBox BorderBrush="Gray" Name="GroupBoxCategoriesFilter">
-                    <GroupBox.Header>
-                        <CheckBox VerticalAlignment="Center" 
-                                  Content="Фільтр по категорії"
-                                  Name="CheckBoxCategoriesFilter"
-                                  Checked="ApplyFilters"
-                                  Unchecked="ApplyFilters"/>
-                    </GroupBox.Header>
-                    <Grid Height="250" Margin="10" Name="GridCategoriesFilter">
-                        <ListBox Name="ListBoxFilterCategories">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox VerticalAlignment="Center" 
-                                              IsChecked="{Binding IsSelected}" 
-                                              Content="{Binding Category.Name}"
-                                              Checked="ApplyFilters"
-                                              Unchecked="ApplyFilters"/>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </Grid>
-                </GroupBox>
+            <GroupBox BorderBrush="Gray" Name="GroupBoxUsersFilter">
+                <GroupBox.Header>
+                    <CheckBox VerticalAlignment="Center" 
+                              Content="Фільтр по користувачам"
+                              Name="CheckBoxUsersFilter"/>
+                </GroupBox.Header>
+                <Grid Height="250" Margin="10" Name="GridUsersFilter">
+                    <ListBox Name="ListBoxFilterUsers">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox VerticalAlignment="Center" 
+                                          IsChecked="{Binding IsSelected}" 
+                                          Content="{Binding User.Name}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </Grid>
+            </GroupBox>
 
-                <GroupBox BorderBrush="Gray" Name="GroupBoxUsersFilter">
-                    <GroupBox.Header>
-                        <CheckBox VerticalAlignment="Center" 
-                                  Content="Фільтр по користувачам"
-                                  Name="CheckBoxUsersFilter"
-                                  Checked="ApplyFilters"
-                                  Unchecked="ApplyFilters"/>
-                    </GroupBox.Header>
-                    <Grid Height="250" Margin="10" Name="GridUsersFilter">
-                        <ListBox Name="ListBoxFilterUsers">
-                            <ListBox.ItemTemplate>
-                                <DataTemplate>
-                                    <CheckBox VerticalAlignment="Center" 
-                                              IsChecked="{Binding IsSelected}" 
-                                              Content="{Binding User.Name}"
-                                              Checked="ApplyFilters"
-                                              Unchecked="ApplyFilters"/>
-                                </DataTemplate>
-                            </ListBox.ItemTemplate>
-                        </ListBox>
-                    </Grid>
-                </GroupBox>
+            <GroupBox BorderBrush="Gray" Name="GroupBoxDateFilter">
+                <GroupBox.Header>
+                    <CheckBox VerticalAlignment="Center" 
+                              Content="Фільтр по датам"
+                              Name="CheckBoxDateFilter"/>
+                </GroupBox.Header>
+                <Grid Margin="10" Name="GridDateFilter">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                        <RowDefinition Height="25"/>
+                    </Grid.RowDefinitions>
 
-                <GroupBox BorderBrush="Gray" Name="GroupBoxDateFilter">
-                    <GroupBox.Header>
-                        <CheckBox VerticalAlignment="Center" 
-                                  Content="Фільтр по датам"
-                                  Name="CheckBoxDateFilter"
-                                  Checked="ApplyFilters"
-                                  Unchecked="ApplyFilters"/>
-                    </GroupBox.Header>
-                    <Grid Margin="10" Name="GridDateFilter">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                        </Grid.RowDefinitions>
+                    <Label Content="Від" VerticalAlignment="Center"/>
 
-                        <Label Content="Від" VerticalAlignment="Center"/>
+                    <DatePicker VerticalAlignment="Center" Grid.Row="1" 
+                                Name="DatePickerDateFilterFrom"/>
 
-                        <DatePicker VerticalAlignment="Center" Grid.Row="1" 
-                                    Name="DatePickerDateFilterFrom"
-                                    SelectedDateChanged="ApplyFilters"/>
+                    <Label Grid.Row="2" Content="По" VerticalAlignment="Center"/>
 
-                        <Label Grid.Row="2" Content="По" VerticalAlignment="Center"/>
-
-                        <DatePicker VerticalAlignment="Center" Grid.Row="3"
-                                    Name="DatePickerDateFilterTo"
-                                    SelectedDateChanged="ApplyFilters"/>
-                    </Grid>
-                </GroupBox>
-
-                <GroupBox BorderBrush="Gray" Name="GroupBoxPriceFilter">
-                    <GroupBox.Header>
-                        <CheckBox VerticalAlignment="Center" 
-                                  Content="Фільтр по цінам"
-                                  Name="CheckBoxPriceFilter"
-                                  Checked="ApplyFilters"
-                                  Unchecked="ApplyFilters"/>
-                    </GroupBox.Header>
-                    <Grid Margin="10" Name="GridPriceFilter">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                        </Grid.RowDefinitions>
-
-                        <Label Content="Від" VerticalAlignment="Center"/>
-
-                        <TextBox VerticalAlignment="Center" Grid.Row="1" 
-                                    Name="TextBoxPriceFilterFrom"
-                                    TextChanged="ApplyFilters"/>
-
-                        <Label Grid.Row="2" Content="По" VerticalAlignment="Center"/>
-
-                        <TextBox VerticalAlignment="Center" Grid.Row="3"
-                                    Name="TextBoxPriceFilterTo"
-                                    TextChanged="ApplyFilters"/>
-                    </Grid>
-                </GroupBox>
-
-                <GroupBox BorderBrush="Gray" Name="GroupBoxIsIncomeFilter">
-                    <GroupBox.Header>
-                        <CheckBox VerticalAlignment="Center" 
-                                  Content="Фільтр по доходу"
-                                  Name="CheckBoxIsIncomeFilter"
-                                  Checked="ApplyFilters"
-                                  Unchecked="ApplyFilters"/>
-                    </GroupBox.Header>
-                    <Grid Margin="10" Name="GridIsIncomeFilter">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="25"/>
-                            <RowDefinition Height="25"/>
-                        </Grid.RowDefinitions>
-                        <RadioButton VerticalAlignment="Center" 
-                             Margin="10, 0"
-                             Content="Дохід" 
-                             Name="RadioButtonIsIncome"
-                             GroupName="IsIncomeRB"
-                             Unchecked="ApplyFilters"
-                             IsChecked="True"/>
-
-                        <RadioButton VerticalAlignment="Center" 
-                             Margin="10, 0"
-                             Content="Витрата"
-                             GroupName="IsIncomeRB"
-                             Unchecked="ApplyFilters"
-                             Grid.Row="1"/>
-                    </Grid>
-                </GroupBox>
-            </StackPanel>
-
-        </GroupBox>
+                    <DatePicker VerticalAlignment="Center" Grid.Row="3"
+                                Name="DatePickerDateFilterTo"/>
+                </Grid>
+            </GroupBox>
+        </StackPanel>
     </ScrollViewer>
 </UserControl>

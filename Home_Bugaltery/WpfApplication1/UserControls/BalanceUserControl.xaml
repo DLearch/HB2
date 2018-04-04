@@ -8,26 +8,13 @@
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
-            <RowDefinition Height="171*"/>
+            <RowDefinition/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="auto"/>
-            <ColumnDefinition Width="2*"/>
-        </Grid.ColumnDefinitions>
-
-        <Grid Name="GridFilters" Grid.RowSpan="3"/>
-
-        <GridSplitter HorizontalAlignment="Center" VerticalAlignment="Stretch" 
-                      ShowsPreview="False" Grid.Column="1" Width="4" Grid.RowSpan="3"/>
-
-        <Label VerticalAlignment="Center" Margin="10" Grid.Column="2" Content="Сальдо: "/>
 
         <ListView Name="ListBoxBalance"
                   SelectionMode="Single"
-                  Margin="10" Grid.Column="2" Grid.Row="1">
+                  Margin="10">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding UserName}" Header="Користувачі"/>
@@ -38,23 +25,23 @@
             </ListView.View>
         </ListView>
 
-        <Grid Grid.Row="2" Grid.Column="2" Margin="10">
+        <Grid Grid.Row="1" Margin="10">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="140"/>
-                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Label VerticalAlignment="Center" Content="Загальна сума: "/>
             <Label VerticalAlignment="Center" Content="Загальна сума витрат: " Grid.Row="1"/>
             <Label VerticalAlignment="Center" Content="Загальна сума доходів: " Grid.Row="2"/>
 
-            <Label VerticalAlignment="Center" Name="labelDebetSum" Grid.Column="1"/>
-            <Label VerticalAlignment="Center" Name="labelCreditSum" Grid.Column="1" Grid.Row="1"/>
-            <Label VerticalAlignment="Center" Name="labelSaldoSum" Grid.Column="1" Grid.Row="2"/>
+            <Label VerticalAlignment="Center" Name="LabelDebetSum" Grid.Column="1"/>
+            <Label VerticalAlignment="Center" Name="LabelCreditSum" Grid.Column="1" Grid.Row="1"/>
+            <Label VerticalAlignment="Center" Name="LabelSaldoSum" Grid.Column="1" Grid.Row="2"/>
         </Grid>
     </Grid>
 </UserControl>

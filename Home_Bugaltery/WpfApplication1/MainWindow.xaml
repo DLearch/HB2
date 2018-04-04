@@ -5,14 +5,16 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Домашня бугалтерія" Height="500" Width="800">
+        Title="Домашня бугалтерія" 
+        Height="500" Width="800"
+        MinHeight="300" MinWidth="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="0" Name="ColumnFilters"/>
+            <ColumnDefinition Width="auto" Name="ColumnGridSplitterFilters"/>
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
-
-        <Grid Grid.Column="1" Name="GridMain" Grid.ColumnSpan="2"/>
 
         <Grid Margin="10">
             <Grid.RowDefinitions>
@@ -23,27 +25,44 @@
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="30"/>
                 <RowDefinition Height="30"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition/>
                 <RowDefinition Height="30"/>
             </Grid.RowDefinitions>
 
-            <Button VerticalAlignment="Center" Click="MoveTo" CommandParameter="Orders" 
-                    Content="Операції" Name="ButtonOrders"/>
-            
-            <Button VerticalAlignment="Center" Click="MoveTo" CommandParameter="Incomes" 
-                    Content="Доходи за період" Grid.Row="1" Name="ButtonIncomes"/>
-            
-            <Button VerticalAlignment="Center" Click="MoveTo" CommandParameter="Outcomes" 
-                    Content="Витрати за період" Grid.Row="2" Name="ButtonOutcomes"/>
+            <Button Content="Операції" Name="ButtonOrders"
+                    VerticalAlignment="Center" 
+                    Click="MoveTo"/>
 
-            <Button VerticalAlignment="Center" Click="MoveTo" CommandParameter="Balance"
-                    Content="Сальдо" Grid.Row="3" Name="ButtonBalance"/>
+            <Button Content="Доходи за період" Name="ButtonIncomes"
+                    VerticalAlignment="Center" Grid.Row="1"
+                    Click="MoveTo"/>
 
-            <Button VerticalAlignment="Center" Content="Категорії" Name="ButtonCategories" Grid.Row="5" Click="MenuItemCategories_Click"/>
-            <Button VerticalAlignment="Center" Content="Користувачі" Name="ButtonUsers" Grid.Row="6" Click="MenuItemUsers_Click"/>
+            <Button Content="Витрати за період" Name="ButtonOutcomes"
+                    VerticalAlignment="Center" Grid.Row="2"
+                    Click="MoveTo"/>
 
+            <Button Content="Сальдо" Name="ButtonBalance"
+                    Click="MoveTo"
+                    VerticalAlignment="Center" Grid.Row="3"/>
 
-            <Button VerticalAlignment="Center" Content="Показати фільтри" Grid.Row="8" Name="ButtonFilters" Click="ButtonFilters_Click"/>
+            <Button Content="Категорії"
+                    VerticalAlignment="Center" Grid.Row="5" 
+                    Click="ButtonCategories_Click"/>
+
+            <Button Content="Користувачі"
+                    VerticalAlignment="Center" Grid.Row="6" 
+                    Click="ButtonUsers_Click"/>
+
+            <Button Content="Показати фільтри ▶" Name="ButtonFilters" 
+                    VerticalAlignment="Center" Grid.Row="8" 
+                    Click="ButtonFilters_Click"/>
         </Grid>
+        
+        <Grid Name="GridFilters" Grid.Column="1"/>
+
+        <GridSplitter HorizontalAlignment="Center" VerticalAlignment="Stretch" 
+                      ShowsPreview="False" Grid.Column="2" Width="4"/>
+
+        <Grid Name="GridMain" Grid.Column="3"/>
     </Grid>
 </Window>

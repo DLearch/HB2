@@ -53,14 +53,119 @@ namespace WpfApplication1.DialogWindows
 
         private void ButtonAddUser_Click(object sender, RoutedEventArgs e)
         {
+            if (!CheckAddFields())
+                return;
+
             hb.addNewUser(TextBoxAddEmail.Text, TextBoxAddName.Text, TextBoxAddPassword.Text, user.Family_Id);
             UpdateListBoxUsers();
         }
+
+        bool CheckAddFields()
+        {
+            bool result = true;
+            
+            if (users.Any(c => c.Name == TextBoxAddName.Text))
+            {
+                TextBlockAddNameError.Text = "Користувач з таким ім'ям вже існуе!";
+                TextBoxAddName.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (users.Any(c => c.Email == TextBoxAddEmail.Text))
+            {
+                TextBlockAddEmailError.Text = "Користувач з таким Email вже існуе!";
+                TextBoxAddEmail.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (TextBoxAddPassword.Text.Length < 4)
+            {
+                TextBlockAddPasswordError.Text = "Занадто короткий пароль!";
+                TextBoxAddPassword.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (TextBoxAddPassword.Text.Length > 30)
+            {
+                TextBlockAddPasswordError.Text = "Занадто довгий пароль!";
+                TextBoxAddPassword.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (string.IsNullOrEmpty(TextBoxAddName.Text))
+            {
+                TextBlockAddNameError.Text = "Заповніть поле!";
+                TextBoxAddName.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (string.IsNullOrEmpty(TextBoxAddEmail.Text))
+            {
+                TextBlockAddEmailError.Text = "Заповніть поле!";
+                TextBoxAddEmail.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (string.IsNullOrEmpty(TextBoxAddPassword.Text))
+            {
+                TextBlockAddPasswordError.Text = "Заповніть поле!";
+                TextBoxAddPassword.BorderBrush = Brushes.Red;
+                result = false;
+            }
+
+            return result;
+        }
+
         private void ButtonEditUser_Click(object sender, RoutedEventArgs e)
         {
+            if (!CheckEditFields())
+                return;
+
             hb.changeDataCurentUser(user.Id, TextBoxEditEmail.Text, TextBoxEditName.Text, TextBoxEditPassword.Text);
             UpdateListBoxUsers();
         }
+
+        bool CheckEditFields()
+        {
+            bool result = true;
+
+            if (users.Any(c => c.Name == TextBoxEditName.Text && c.Id != (ListBoxUsers.SelectedItem as Users).Id))
+            {
+                TextBlockEditNameError.Text = "Користувач з таким ім'ям вже існуе!";
+                TextBoxEditName.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (users.Any(c => c.Email == TextBoxEditEmail.Text && c.Id != (ListBoxUsers.SelectedItem as Users).Id))
+            {
+                TextBlockEditEmailError.Text = "Користувач з таким Email вже існуе!";
+                TextBoxEditEmail.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (TextBoxEditPassword.Text.Length < 4)
+            {
+                TextBlockEditPasswordError.Text = "Занадто короткий пароль!";
+                TextBoxEditPassword.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (TextBoxEditPassword.Text.Length > 30)
+            {
+                TextBlockEditPasswordError.Text = "Занадто довгий пароль!";
+                TextBoxEditPassword.BorderBrush = Brushes.Red;
+                result = false;
+            }
+            if (string.IsNullOrEmpty(TextBoxEditPassword.Text))
+            {
+                TextBlockEditPasswordError.Text = "Заповніть поле!";
+                result = false;
+            }
+            if (string.IsNullOrEmpty(TextBoxEditEmail.Text))
+            {
+                TextBlockEditEmailError.Text = "Заповніть поле!";
+                result = false;
+            }
+            if (string.IsNullOrEmpty(TextBoxEditName.Text))
+            {
+                TextBlockEditNameError.Text = "Заповніть поле!";
+                result = false;
+            }
+
+            return result;
+        }
+
         private void ButtonRemoveUser_Click(object sender, RoutedEventArgs e)
         {
             hb.deleteUser((ListBoxUsers.SelectedItem as Users).Id);
@@ -82,17 +187,38 @@ namespace WpfApplication1.DialogWindows
 
         private void TextBoxEditName_KeyDown(object sender, KeyEventArgs e)
         {
-
+            TextBlockEditNameError.Text = string.Empty;
+            TextBoxEditName.BorderBrush = Brushes.LightGray;
         }
 
         private void TextBoxEditEmail_KeyDown(object sender, KeyEventArgs e)
         {
-
+            TextBlockEditEmailError.Text = string.Empty;
+            TextBoxEditEmail.BorderBrush = Brushes.LightGray;
         }
 
         private void TextBoxEditPassword_KeyDown(object sender, KeyEventArgs e)
         {
+            TextBlockEditPasswordError.Text = string.Empty;
+            TextBoxEditPassword.BorderBrush = Brushes.LightGray;
+        }
 
+        private void TextBoxAddName_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBlockAddNameError.Text = string.Empty;
+            TextBoxAddName.BorderBrush = Brushes.LightGray;
+        }
+
+        private void TextBoxAddEmail_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBlockAddEmailError.Text = string.Empty;
+            TextBoxAddEmail.BorderBrush = Brushes.LightGray;
+        }
+
+        private void TextBoxAddPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            TextBlockAddPasswordError.Text = string.Empty;
+            TextBoxAddPassword.BorderBrush = Brushes.LightGray;
         }
     }
 }

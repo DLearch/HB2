@@ -24,7 +24,7 @@ namespace WpfApplication1.UserControls
     {
         HomeBugaltery hb;
         ObservableCollection<UserSaldo> usersSaldo;
-        FilterUserControl fuc;
+        public FilterUserControl FilterUserControl { get; set; }
         public BalanceUserControl(HomeBugaltery hb)
         {
             InitializeComponent();
@@ -33,11 +33,9 @@ namespace WpfApplication1.UserControls
 
             ListBoxBalance.ItemsSource = usersSaldo = new ObservableCollection<UserSaldo>();
 
-            fuc = new FilterUserControl(hb);
-            fuc.FilterCategoriesIsEnabled = false;
-            fuc.FilterUsersIsEnabled = false;
-            fuc.FiltersUpdated += FilteredUsersSaldoListChanged;
-            GridFilters.Children.Add(fuc);
+            FilterUserControl = new FilterUserControl(hb);
+            FilterUserControl.FilterUsersIsEnabled = FilterUserControl.FilterCategoriesIsEnabled = false;
+            FilterUserControl.FiltersUpdated += FilteredUsersSaldoListChanged;
 
             UpdateAll();
         }
@@ -51,23 +49,23 @@ namespace WpfApplication1.UserControls
         }
         public void UpdateAll()
         {
-            fuc.UpdateAll();
+            FilterUserControl.UpdateAll();
             UpdateListBoxBalance();
             UpdateLabelsSum();
         }
         public void UpdateListBoxBalance()
         {
             usersSaldo.Clear();
-            hb.calculateUsersSaldo(fuc.DateFromFilter, fuc.DateToFilter);
+            hb.calculateUsersSaldo(FilterUserControl.DateFromFilter, FilterUserControl.DateToFilter);
             foreach (var userSaldo in hb.UsersSaldo)
                 usersSaldo.Add(userSaldo);
         }
 
         public void UpdateLabelsSum()
         {
-            labelSaldoSum.Content = usersSaldo.Sum(us => us.Saldo).ToString("G29");
-            labelDebetSum.Content = usersSaldo.Sum(us => us.Debet).ToString("G29");
-            labelCreditSum.Content = usersSaldo.Sum(us => us.Credit).ToString("G29");
+            LabelSaldoSum.Content = usersSaldo.Sum(us => us.Saldo).ToString("G29");
+            LabelDebetSum.Content = usersSaldo.Sum(us => us.Debet).ToString("G29");
+            LabelCreditSum.Content = usersSaldo.Sum(us => us.Credit).ToString("G29");
         }
 
         #endregion

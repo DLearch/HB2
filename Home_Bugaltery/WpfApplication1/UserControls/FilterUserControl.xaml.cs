@@ -23,14 +23,15 @@ namespace WpfApplication1.UserControls
     /// </summary>
     public partial class FilterUserControl : UserControl
     {
-        #region Properties
+        #region Filters Data Properties
+
         public List<string> CategoriesFilterList
         {
             get
             {
                 List<string> categoriesList = null;
 
-                if (FilterCategoriesIsEnabled && CheckBoxFilters.IsChecked == true && CheckBoxCategoriesFilter.IsChecked == true)
+                if (FilterCategoriesIsEnabled && CheckBoxCategoriesFilter.IsChecked == true)
                     categoriesList = filterCategories.Where(c => c.IsSelected).Select(c => c.Category.Name).ToList();
 
                 if (categoriesList != null && categoriesList.Count == 0)
@@ -46,7 +47,7 @@ namespace WpfApplication1.UserControls
             {
                 List<string> usersList = null;
 
-                if (FilterUsersIsEnabled && CheckBoxFilters.IsChecked == true && CheckBoxUsersFilter.IsChecked == true)
+                if (FilterUsersIsEnabled && CheckBoxUsersFilter.IsChecked == true)
                     usersList = filterUsers.Where(c => c.IsSelected).Select(c => c.User.Name).ToList();
 
                 if (usersList != null && usersList.Count == 0)
@@ -60,7 +61,7 @@ namespace WpfApplication1.UserControls
         {
             get
             {
-                if (FilterDateIsEnabled && CheckBoxFilters.IsChecked == true && CheckBoxDateFilter.IsChecked == true)
+                if (FilterDateIsEnabled && CheckBoxDateFilter.IsChecked == true)
                     return DatePickerDateFilterFrom.SelectedDate;
 
                 return null;
@@ -70,52 +71,16 @@ namespace WpfApplication1.UserControls
         {
             get
             {
-                if (FilterDateIsEnabled && CheckBoxFilters.IsChecked == true && CheckBoxDateFilter.IsChecked == true)
+                if (FilterDateIsEnabled && CheckBoxDateFilter.IsChecked == true)
                     return DatePickerDateFilterTo.SelectedDate;
 
                 return null;
             }
         }
-        //public decimal? PriceFrom
-        //{
-        //    get
-        //    {
-        //        decimal price;
-        //        if (CheckBoxFilters.IsChecked != true
-        //            || !FilterPriceIsEnabled
-        //            || CheckBoxPriceFilter.IsChecked != true 
-        //            || !decimal.TryParse(TextBoxPriceFilterFrom.Text, out price))
-        //            return null;
-        //        return price;
-        //    }
-        //}
-        //public decimal? PriceTo
-        //{
-        //    get
-        //    {
-        //        decimal price;
-        //        if (CheckBoxFilters.IsChecked != true
-        //            || !FilterPriceIsEnabled
-        //            || CheckBoxPriceFilter.IsChecked != true 
-        //            || !decimal.TryParse(TextBoxPriceFilterTo.Text, out price))
-        //            return null;
-        //        return price;
-        //    }
-        //}
-
-        //public bool? IsIncome
-        //{
-        //    get
-        //    {
-        //        if (CheckBoxFilters.IsChecked != true || !FilterIsIncomeIsEnabled || CheckBoxIsIncomeFilter.IsChecked != true)
-        //            return null;
-        //        return RadioButtonIsIncome.IsChecked;
-        //    }
-        //}
-
+        
         #endregion
 
-        #region FiltersIsEnubled Properties
+        #region FilterIsEnabled
 
         public bool FilterCategoriesIsEnabled
         {
@@ -125,12 +90,7 @@ namespace WpfApplication1.UserControls
             }
             set
             {
-                GroupBoxCategoriesFilter.IsEnabled = value;
-                if (value)
-                    GroupBoxCategoriesFilter.Visibility = Visibility.Visible;
-                else
-                    GroupBoxCategoriesFilter.Visibility = Visibility.Collapsed;
-                ApplyFilters(null, null);
+                ChangeFilterStatus(GroupBoxCategoriesFilter, value);
             }
         }
 
@@ -142,12 +102,7 @@ namespace WpfApplication1.UserControls
             }
             set
             {
-                GroupBoxUsersFilter.IsEnabled = value;
-                if (value)
-                    GroupBoxUsersFilter.Visibility = Visibility.Visible;
-                else
-                    GroupBoxUsersFilter.Visibility = Visibility.Collapsed;
-                ApplyFilters(null, null);
+                ChangeFilterStatus(GroupBoxUsersFilter, value);
             }
         }
 
@@ -159,70 +114,44 @@ namespace WpfApplication1.UserControls
             }
             set
             {
-                GroupBoxDateFilter.IsEnabled = value;
-                if (value)
-                    GroupBoxDateFilter.Visibility = Visibility.Visible;
-                else
-                    GroupBoxDateFilter.Visibility = Visibility.Collapsed;
-                ApplyFilters(null, null);
+                ChangeFilterStatus(GroupBoxDateFilter, value);
             }
         }
-
-        /*public*/ bool FilterPriceIsEnabled
+        
+        void ChangeFilterStatus(Control c, bool s)
         {
-            get
-            {
-                return GroupBoxPriceFilter.IsEnabled;
-            }
-            set
-            {
-                GroupBoxPriceFilter.IsEnabled = value;
-                if (value)
-                    GroupBoxPriceFilter.Visibility = Visibility.Visible;
-                else
-                    GroupBoxPriceFilter.Visibility = Visibility.Collapsed;
-                ApplyFilters(null, null);
-            }
-        }
+            c.IsEnabled = s;
+            if (s)
+                c.Visibility = Visibility.Visible;
+            else
+                c.Visibility = Visibility.Collapsed;
 
-        /*public*/ bool FilterIsIncomeIsEnabled
-        {
-            get
-            {
-                return GroupBoxIsIncomeFilter.IsEnabled;
-            }
-            set
-            {
-                GroupBoxIsIncomeFilter.IsEnabled = value;
-                if (value)
-                    GroupBoxIsIncomeFilter.Visibility = Visibility.Visible;
-                else
-                    GroupBoxIsIncomeFilter.Visibility = Visibility.Collapsed;
-                ApplyFilters(null, null);
-            }
+            FiltersUpdated?.Invoke();
         }
 
         #endregion
 
+        #region Конструктор, поля
+        
         public event Action FiltersUpdated;
-        HomeBugaltery homeBugaltery;
+
+        HomeBugaltery hb;
         ObservableCollection<FilterCategoriesItem> filterCategories;
         ObservableCollection<FilterUsersItem> filterUsers;
 
-        public FilterUserControl(HomeBugaltery homeBugaltery)
+        public FilterUserControl(HomeBugaltery hb)
         {
             InitializeComponent();
 
-            this.homeBugaltery = homeBugaltery;
+            this.hb = hb;
 
-            FilterPriceIsEnabled = false;
-            FilterIsIncomeIsEnabled = false;
-            
             ListBoxFilterCategories.ItemsSource = filterCategories = new ObservableCollection<FilterCategoriesItem>();
             ListBoxFilterUsers.ItemsSource = filterUsers = new ObservableCollection<FilterUsersItem>();
 
             UpdateAll();
         }
+
+        #endregion
 
         #region Update
 
@@ -230,14 +159,14 @@ namespace WpfApplication1.UserControls
         {
             UpdateListBoxFilterCategories();
             UpdateListBoxFilterUsers();
-            ApplyFilters(null, null);
+            FiltersUpdated?.Invoke();
         }
 
         public void UpdateListBoxFilterCategories()
         {
             ObservableCollection<FilterCategoriesItem> tmp = new ObservableCollection<FilterCategoriesItem>();
 
-            foreach (var item in homeBugaltery.ListCategories)
+            foreach (var item in hb.ListCategories)
                 tmp.Add(filterCategories.DefaultIfEmpty(new FilterCategoriesItem(false, item)).FirstOrDefault(c => c.Category == item));
 
             filterCategories.Clear();
@@ -249,7 +178,7 @@ namespace WpfApplication1.UserControls
         {
             ObservableCollection<FilterUsersItem> tmp = new ObservableCollection<FilterUsersItem>();
 
-            foreach (var user in homeBugaltery.ListUsers)
+            foreach (var user in hb.ListUsers)
                 tmp.Add(filterUsers.DefaultIfEmpty(new FilterUsersItem(false, user)).FirstOrDefault(c => c.User == user));
 
             filterUsers.Clear();
@@ -258,8 +187,8 @@ namespace WpfApplication1.UserControls
         }
 
         #endregion
-
-        private void ApplyFilters(object sender, EventArgs e)
+        
+        private void ButtonFilters_Click(object sender, RoutedEventArgs e)
         {
             FiltersUpdated?.Invoke();
         }

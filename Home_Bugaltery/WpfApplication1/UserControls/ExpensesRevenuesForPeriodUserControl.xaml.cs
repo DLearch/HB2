@@ -25,7 +25,8 @@ namespace WpfApplication1.UserControls
         string ct;
         HomeBugaltery hb;
         ObservableCollection<OrdersView> orders;
-        FilterUserControl fuc;
+        public FilterUserControl FilterUserControlIncomes { get; set; }
+        public FilterUserControl FilterUserControlOutcomes { get; set; }
 
         bool isIncome;
         public bool IsIncome
@@ -38,15 +39,9 @@ namespace WpfApplication1.UserControls
             {
                 isIncome = value;
                 if (value)
-                {
                     ct = "Загальна сумма доходів: ";
-                    labelName.Content = "Доходи за період: ";
-                }
                 else
-                {
                     ct = "Загальна сума витрат: ";
-                    labelName.Content = "Витрати за період: ";
-                }
                 UpdateAll();
             }
         }
@@ -59,12 +54,14 @@ namespace WpfApplication1.UserControls
 
             ListBoxOrders.ItemsSource = orders = new ObservableCollection<OrdersView>();
 
-            fuc = new FilterUserControl(hb);
-            fuc.FilterCategoriesIsEnabled = false;
-            fuc.FilterUsersIsEnabled = false;
-            fuc.FiltersUpdated += FilteredUsersSaldoListChanged;
-            GridFilters.Children.Add(fuc);
-            
+            FilterUserControlIncomes = new FilterUserControl(hb);
+            FilterUserControlIncomes.FilterUsersIsEnabled = FilterUserControlIncomes.FilterCategoriesIsEnabled = false;
+            FilterUserControlIncomes.FiltersUpdated += FilteredUsersSaldoListChanged;
+
+            FilterUserControlOutcomes = new FilterUserControl(hb);
+            FilterUserControlOutcomes.FilterUsersIsEnabled = FilterUserControlOutcomes.FilterCategoriesIsEnabled = false;
+            FilterUserControlOutcomes.FiltersUpdated += FilteredUsersSaldoListChanged;
+
             IsIncome = isIncome;
 
             UpdateAll();
@@ -79,7 +76,8 @@ namespace WpfApplication1.UserControls
         }
         public void UpdateAll()
         {
-            fuc.UpdateAll();
+            FilterUserControlIncomes.UpdateAll();
+            FilterUserControlOutcomes.UpdateAll();
             UpdateLabelSum();
             UpdateListBoxOrder();
         }
@@ -92,7 +90,21 @@ namespace WpfApplication1.UserControls
 
         public void UpdateLabelSum()
         {
-            labelSum.Content = ct + hb.applyFiltersForExpensRevenues(IsIncome, fuc.DateFromFilter, fuc.DateToFilter).ToString("G29");
+            DateTime? from;
+            DateTime? to;
+
+            if (IsIncome)
+            {
+                from = FilterUserControlIncomes.DateFromFilter;
+                to = FilterUserControlIncomes.DateToFilter;
+            }
+            else
+            {
+                from = FilterUserControlOutcomes.DateFromFilter;
+                to = FilterUserControlOutcomes.DateToFilter;
+            }
+            
+            LabelSum.Content = ct + hb.applyFiltersForExpensRevenues(IsIncome, from, to).ToString("G29");
         }
 
         #endregion
