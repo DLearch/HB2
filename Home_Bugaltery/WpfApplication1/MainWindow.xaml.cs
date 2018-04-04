@@ -28,6 +28,8 @@ namespace WpfApplication1
         ExpensesRevenuesForPeriodUserControl erfpuc;
         Users user;
 
+        UserControl curUserControl;
+
         public MainWindow()
         {
             AuthenticationWindow aw = new AuthenticationWindow(hb);
@@ -43,17 +45,20 @@ namespace WpfApplication1
             Title = "Домашня бугалтерія - " + user.Name;
 
             InitializeComponent();
-            
-            ouc = new OrdersUserControl(hb);
+
+            curUserControl = ouc = new OrdersUserControl(hb);
             GridMain.Children.Add(ouc);
 
             buc = new BalanceUserControl(hb);
             GridMain.Children.Add(buc);
+            buc.Visibility = Visibility.Collapsed;
 
             erfpuc = new ExpensesRevenuesForPeriodUserControl(hb);
             GridMain.Children.Add(erfpuc);
+            erfpuc.Visibility = Visibility.Collapsed;
 
-            MoveTo(new MenuItem() { CommandParameter = "Orders"}, null);
+
+            MoveTo(new Button() { CommandParameter = "Orders"}, null);
 
             UpdateAll();
         }
@@ -87,26 +92,46 @@ namespace WpfApplication1
 
         void MoveTo(object sender, EventArgs e)
         {
-            string param = (sender as MenuItem).CommandParameter.ToString();
+            string param = (sender as Button).CommandParameter.ToString();
+
+            curUserControl.Visibility = Visibility.Collapsed;
 
             if(param == "Orders")
-                ouc.Visibility = Visibility.Visible;
-            else
-                ouc.Visibility = Visibility.Collapsed;
-
+                curUserControl = ouc;
             if (param == "Balance")
-                buc.Visibility = Visibility.Visible;
-            else
-                buc.Visibility = Visibility.Collapsed;
+                curUserControl = buc;
 
             if (param == "Incomes" || param == "Outcomes")
             {
-                erfpuc.Visibility = Visibility.Visible;
+                curUserControl = erfpuc;
                 erfpuc.IsIncome = param == "Incomes";
                 erfpuc.UpdateAll();
             }
+
+            curUserControl.Visibility = Visibility.Visible;
+        }
+
+        private void ButtonFilters_Click(object sender, RoutedEventArgs e)
+        {
+            bool result;
+
+            if (ouc == curUserControl)
+            {
+                result = ouc.FiltersIsVisible = !ouc.FiltersIsVisible;
+            }
+            else if (buc == curUserControl)
+            {
+                result = buc.FiltersIsVisible = !buc.FiltersIsVisible;
+            }
             else
-                erfpuc.Visibility = Visibility.Collapsed;
+            {
+                result = erfpuc.FiltersIsVisible = !erfpuc.FiltersIsVisible;
+            }
+
+            if(!result)
+                ButtonFilters.Content = "Показати фільтри ▶";
+            else
+                ButtonFilters.Content = "◀ Сховати фільтри ";
         }
     }
 }

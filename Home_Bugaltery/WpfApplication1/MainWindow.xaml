@@ -7,27 +7,43 @@
         mc:Ignorable="d"
         Title="Домашня бугалтерія" Height="500" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="140"/>
+            <ColumnDefinition Width="1*"/>
+        </Grid.ColumnDefinitions>
 
-        <Menu>
-            <MenuItem Header="Операції">
-                <MenuItem Header="Нова операція" Click="MenuItemAddOrder_Click"/>
-                <MenuItem Header="Операції" Click="MoveTo" CommandParameter="Orders"/>
-            </MenuItem>
-            <MenuItem Header="Довідники">
-                <MenuItem Header="Користувачі" Click="MenuItemUsers_Click"/>
-                <MenuItem Header="Категорії" Click="MenuItemCategories_Click"/>
-            </MenuItem>
-            <MenuItem Header="Звіти">
-                <MenuItem Header="Доходи за період" Click="MoveTo" CommandParameter="Incomes"/>
-                <MenuItem Header="Витрати за період" Click="MoveTo" CommandParameter="Outcomes"/>
-                <MenuItem Header="Сальдо" Click="MoveTo" CommandParameter="Balance"/>
-            </MenuItem>
-        </Menu>
+        <Grid Grid.Column="1" Name="GridMain" Grid.ColumnSpan="2"/>
 
-        <Grid Grid.Row="1" Name="GridMain"></Grid>
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="30"/>
+            </Grid.RowDefinitions>
+
+            <Button VerticalAlignment="Center" Click="MoveTo" CommandParameter="Orders" 
+                    Content="Операції" Name="ButtonOrders"/>
+            
+            <Button VerticalAlignment="Center" Click="MoveTo" CommandParameter="Incomes" 
+                    Content="Доходи за період" Grid.Row="1" Name="ButtonIncomes"/>
+            
+            <Button VerticalAlignment="Center" Click="MoveTo" CommandParameter="Outcomes" 
+                    Content="Витрати за період" Grid.Row="2" Name="ButtonOutcomes"/>
+
+            <Button VerticalAlignment="Center" Click="MoveTo" CommandParameter="Balance"
+                    Content="Сальдо" Grid.Row="3" Name="ButtonBalance"/>
+
+            <Button VerticalAlignment="Center" Content="Категорії" Name="ButtonCategories" Grid.Row="5" Click="MenuItemCategories_Click"/>
+            <Button VerticalAlignment="Center" Content="Користувачі" Name="ButtonUsers" Grid.Row="6" Click="MenuItemUsers_Click"/>
+
+
+            <Button VerticalAlignment="Center" Content="Показати фільтри" Grid.Row="8" Name="ButtonFilters" Click="ButtonFilters_Click"/>
+        </Grid>
     </Grid>
 </Window>
