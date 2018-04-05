@@ -41,6 +41,7 @@ namespace WpfApplication1.DialogWindows
             TextBoxEditPassword.Text = user.Password;
 
             UpdateListBoxUsers();
+            ButtonRemoveUser.IsEnabled = false;
         }
 
         void UpdateListBoxUsers()
@@ -88,26 +89,26 @@ namespace WpfApplication1.DialogWindows
                 TextBoxAddPassword.BorderBrush = Brushes.Red;
                 result = false;
             }
-            if (string.IsNullOrEmpty(TextBoxAddName.Text))
-            {
-                TextBlockAddNameError.Text = "Заповніть поле!";
-                TextBoxAddName.BorderBrush = Brushes.Red;
+
+            if (CheckIsNotNullOrEmpty(TextBlockAddNameError, TextBoxAddName))
                 result = false;
-            }
-            if (string.IsNullOrEmpty(TextBoxAddEmail.Text))
-            {
-                TextBlockAddEmailError.Text = "Заповніть поле!";
-                TextBoxAddEmail.BorderBrush = Brushes.Red;
+            if (CheckIsNotNullOrEmpty(TextBlockAddEmailError, TextBoxAddEmail))
                 result = false;
-            }
-            if (string.IsNullOrEmpty(TextBoxAddPassword.Text))
-            {
-                TextBlockAddPasswordError.Text = "Заповніть поле!";
-                TextBoxAddPassword.BorderBrush = Brushes.Red;
+            if (CheckIsNotNullOrEmpty(TextBlockAddPasswordError, TextBoxAddPassword))
                 result = false;
-            }
 
             return result;
+        }
+
+        bool CheckIsNotNullOrEmpty(TextBlock error, TextBox textBox)
+        {
+            if (!string.IsNullOrEmpty(textBox.Text))
+                return true;
+
+            error.Text = "Заповніть поле!";
+            textBox.BorderBrush = Brushes.Red;
+
+            return false;
         }
 
         private void ButtonEditUser_Click(object sender, RoutedEventArgs e)
@@ -123,13 +124,13 @@ namespace WpfApplication1.DialogWindows
         {
             bool result = true;
 
-            if (users.Any(c => c.Name == TextBoxEditName.Text && c.Id != (ListBoxUsers.SelectedItem as Users).Id))
+            if (users.Any(c => c.Name == TextBoxEditName.Text && c.Id != user.Id))
             {
                 TextBlockEditNameError.Text = "Користувач з таким ім'ям вже існуе!";
                 TextBoxEditName.BorderBrush = Brushes.Red;
                 result = false;
             }
-            if (users.Any(c => c.Email == TextBoxEditEmail.Text && c.Id != (ListBoxUsers.SelectedItem as Users).Id))
+            if (users.Any(c => c.Email == TextBoxEditEmail.Text && c.Id != user.Id))
             {
                 TextBlockEditEmailError.Text = "Користувач з таким Email вже існуе!";
                 TextBoxEditEmail.BorderBrush = Brushes.Red;
@@ -147,21 +148,13 @@ namespace WpfApplication1.DialogWindows
                 TextBoxEditPassword.BorderBrush = Brushes.Red;
                 result = false;
             }
-            if (string.IsNullOrEmpty(TextBoxEditPassword.Text))
-            {
-                TextBlockEditPasswordError.Text = "Заповніть поле!";
+
+            if (CheckIsNotNullOrEmpty(TextBlockEditNameError, TextBoxEditName))
                 result = false;
-            }
-            if (string.IsNullOrEmpty(TextBoxEditEmail.Text))
-            {
-                TextBlockEditEmailError.Text = "Заповніть поле!";
+            if (CheckIsNotNullOrEmpty(TextBlockEditEmailError, TextBoxEditEmail))
                 result = false;
-            }
-            if (string.IsNullOrEmpty(TextBoxEditName.Text))
-            {
-                TextBlockEditNameError.Text = "Заповніть поле!";
+            if (CheckIsNotNullOrEmpty(TextBlockEditPasswordError, TextBoxEditPassword))
                 result = false;
-            }
 
             return result;
         }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -38,10 +39,11 @@ namespace WpfApplication1.UserControls
 
             ButtonEdit.IsEnabled = ButtonRemove.IsEnabled = false;
 
-            ListBoxOrders.ItemsSource = ordersViews = new ObservableCollection<OrdersView>();
+            ListViewOrders.ItemsSource = ordersViews = new ObservableCollection<OrdersView>();
 
             FilterUserControl = new FilterUserControl(hb);
             FilterUserControl.FiltersUpdated += FilteredOrdersListChanged;
+
         }
 
         #endregion
@@ -67,6 +69,8 @@ namespace WpfApplication1.UserControls
             
             foreach (var orderView in hb.FilteredListOrders)
                 ordersViews.Add(orderView);
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewOrders.ItemsSource);
+            view.SortDescriptions.Add(new SortDescription("DateOrder", ListSortDirection.Ascending));
         }
 
         public void UpdateAll()
@@ -92,21 +96,21 @@ namespace WpfApplication1.UserControls
         }
         private void ButtonEdit_Click(object sender, RoutedEventArgs e)
         {
-            OrderWindow w = new OrderWindow(hb, hb.ListOrders.First(o => o.Id == ordersViews[ListBoxOrders.SelectedIndex].Id));
+            OrderWindow w = new OrderWindow(hb, hb.ListOrders.First(o => o.Id == ordersViews[ListViewOrders.SelectedIndex].Id));
 
             if (w.ShowDialog() == true)
                 UpdateAll();
         }
         private void ButtonRemove_Click(object sender, RoutedEventArgs e)
         {
-            hb.deleteOrder(ordersViews[ListBoxOrders.SelectedIndex].Id);
+            hb.deleteOrder(ordersViews[ListViewOrders.SelectedIndex].Id);
 
             UpdateAll();
         }
 
         private void ListBoxOrders_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ButtonEdit.IsEnabled = ButtonRemove.IsEnabled = ListBoxOrders.SelectedItem != null;
+            ButtonEdit.IsEnabled = ButtonRemove.IsEnabled = ListViewOrders.SelectedItem != null;
         }
     }
 }

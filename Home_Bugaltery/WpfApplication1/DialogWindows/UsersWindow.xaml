@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="UsersWindow" 
         Height="520" Width="500"
-        MinHeight="300" MinWidth="320">
+        MinHeight="300" MinWidth="400">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="1*" MinWidth="200"/>
+            <ColumnDefinition Width="1*" MinWidth="300"/>
         </Grid.ColumnDefinitions>
         
         <ListBox Margin="10" SelectionChanged="ListBoxUsers_SelectionChanged" Name="ListBoxUsers" DisplayMemberPath="Name"/>

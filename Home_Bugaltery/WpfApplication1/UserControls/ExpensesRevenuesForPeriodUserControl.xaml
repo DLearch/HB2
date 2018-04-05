@@ -13,7 +13,7 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ListView Name="ListBoxOrders"
+        <ListView Name="ListViewOrders"
                   SelectionMode="Single"
                   Margin="10">
             <ListView.View>

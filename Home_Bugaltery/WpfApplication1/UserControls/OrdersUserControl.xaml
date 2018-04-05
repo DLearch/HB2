@@ -19,7 +19,7 @@
             <RowDefinition Height="50"/>
         </Grid.RowDefinitions>
 
-        <ListView Name="ListBoxOrders" SelectionMode="Single" 
+        <ListView Name="ListViewOrders" SelectionMode="Single" 
                   Margin="10" Grid.ColumnSpan="3" 
                   SelectionChanged="ListBoxOrders_SelectionChanged">
             <ListView.View>

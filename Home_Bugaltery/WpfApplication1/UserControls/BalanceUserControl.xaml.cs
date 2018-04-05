@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,7 @@ namespace WpfApplication1.UserControls
 
             this.hb = hb;
 
-            ListBoxBalance.ItemsSource = usersSaldo = new ObservableCollection<UserSaldo>();
+            ListViewBalance.ItemsSource = usersSaldo = new ObservableCollection<UserSaldo>();
 
             FilterUserControl = new FilterUserControl(hb);
             FilterUserControl.FilterUsersIsEnabled = FilterUserControl.FilterCategoriesIsEnabled = false;
@@ -44,21 +45,24 @@ namespace WpfApplication1.UserControls
 
         public void FilteredUsersSaldoListChanged()
         {
-            UpdateListBoxBalance();
+            UpdateListViewBalance();
             UpdateLabelsSum();
         }
         public void UpdateAll()
         {
             FilterUserControl.UpdateAll();
-            UpdateListBoxBalance();
+            UpdateListViewBalance();
             UpdateLabelsSum();
         }
-        public void UpdateListBoxBalance()
+        public void UpdateListViewBalance()
         {
             usersSaldo.Clear();
             hb.calculateUsersSaldo(FilterUserControl.DateFromFilter, FilterUserControl.DateToFilter);
             foreach (var userSaldo in hb.UsersSaldo)
                 usersSaldo.Add(userSaldo);
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewBalance.ItemsSource);
+            view.SortDescriptions.Add(new SortDescription("UserName", ListSortDirection.Ascending));
         }
 
         public void UpdateLabelsSum()

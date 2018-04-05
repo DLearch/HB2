@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,7 +53,7 @@ namespace WpfApplication1.UserControls
 
             this.hb = hb;
 
-            ListBoxOrders.ItemsSource = orders = new ObservableCollection<OrdersView>();
+            ListViewOrders.ItemsSource = orders = new ObservableCollection<OrdersView>();
 
             FilterUserControlIncomes = new FilterUserControl(hb);
             FilterUserControlIncomes.FilterUsersIsEnabled = FilterUserControlIncomes.FilterCategoriesIsEnabled = false;
@@ -86,6 +87,9 @@ namespace WpfApplication1.UserControls
             orders.Clear();
             foreach (var order in hb.FilterOrderExpensRevenues)
                 orders.Add(order);
+
+            CollectionView view = (CollectionView)CollectionViewSource.GetDefaultView(ListViewOrders.ItemsSource);
+            view.SortDescriptions.Add(new SortDescription("DateOrder", ListSortDirection.Ascending));
         }
 
         public void UpdateLabelSum()
